@@ -1,0 +1,44 @@
+.route {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FDFDFD;
+  margin-top: 110px;
+}
+
+.route_wrap {
+  width: 85%;
+}
+
+.indicator {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+}
+
+.Body_Promo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 50px;
+}
+
+.Body_Promo_wrap {
+  width: 85%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #E2F4FF;
+  border-radius: 20px;
+}
+
+.Body_Promo_text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
