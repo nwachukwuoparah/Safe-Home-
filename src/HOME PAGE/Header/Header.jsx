@@ -5,14 +5,15 @@ import { TbUserCircle } from "react-icons/tb";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
+import { useNavigate } from 'react-router-dom';
 function Header() {
-
+ const Navigate= useNavigate()
   return (
     <header className='header'>
       <div className='header1'>
         <div className='header1_wrap'>
           <nav className='hi_2' >
-            <img style={{ width: 70 }} src={Logo} />
+            <img onClick={()=> Navigate('/')} style={{ width: 70 }} src={Logo} />
             <div className='input'>
               <input />
               <BsSearch />
@@ -34,7 +35,7 @@ function Header() {
 
       <div className='header2'>
         <div className='header2_wrap'>
-          <div className='catigories'>
+          <div onClick={()=> Navigate('/Catogories')} className='catigories'>
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>

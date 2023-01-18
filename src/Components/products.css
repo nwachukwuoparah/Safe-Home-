@@ -7,7 +7,7 @@
 
 .Products_wrap {
   width: 85%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-color: white;
   margin-top: 50px;
   display: flex;
@@ -41,13 +41,14 @@
 }
 
 .Products_Cards {
-  width: 244.6px;
+  width:20%;
   height: 350px;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin: 0px 3px; */
+  text-decoration: none;
+  color: inherit;
 }
 
 .Products_Cards:hover {

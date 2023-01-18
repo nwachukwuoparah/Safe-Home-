@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import './body.css'
-import { Slide } from '../../Components/Slider'
-import { Slide1 } from '../../Components/Slider'
-import Products from '../../Components/Products'
-import Categoriesroute from "../../Components/Categoriesroute";
+import axios from "axios";
+import './allcategories.css'
+import Products from '../Components/Products'
+import Categoriesroute from '../Components/Categoriesroute';
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
-import axios from 'axios'
-function Body(props) {
+function AllCategories({}) {
+
   const [item, setItem] = useState([])
   async function getItem() {
     try {
@@ -25,23 +24,20 @@ function Body(props) {
   }, [])
 
 
-
   return (
-    <>
-      <Categoriesroute />
-      <Slide />
-      <Slide1 />
-      <Products item={item} title='Best Sellers'/>
-      <div className='Body_Promo'>
-        <div className='Body_Promo_wrap' >
-          <div className="Body_Promo_text">
+    <div>
+      <Categoriesroute/>
+      < Products item={item} title='All category'/>
+      <div className='categories_Promo'>
+        <div className='categories_Promo_wrap' >
+          <div className="categories_Promo_text">
             < TbTruckDelivery fontSize={60} color='#FFA903' />
             <div>
               <h4>free delivery</h4>
               <p>on order above $50,000</p>
             </div>
           </div>
-          <div className="Body_Promo_text">
+          <div className="categories_Promo_text">
             <MdHighQuality fontSize={60} color='#FFA903' />
             <div>
               <h4>Best quality</h4>
@@ -49,7 +45,7 @@ function Body(props) {
             </div>
 
           </div>
-          <div className="Body_Promo_text">
+          <div className="categories_Promo_text">
             <RiShieldKeyholeFill fontSize={60} color='#FFA903' />
             <div>
               <h4>1 Year warranty</h4>
@@ -58,14 +54,15 @@ function Body(props) {
           </div>
         </div>
       </div>
-      <Slide1 />
-      <div className="Body_Call_To_Action">
+      <div className="categories_Call_To_Action">
         <button>
           Sign in
         </button>
-        <span className="Body_Nav">New customers? <p> Start here.</p></span>
+        <span className="categories_Nav">New customers? <p> Start here.</p></span>
       </div>
-    </>
+    </div>
   )
 }
-export default Body
+
+
+export default AllCategories

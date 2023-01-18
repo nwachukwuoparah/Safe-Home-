@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+ 
 }
 
 .slid_contain {
@@ -10,15 +11,73 @@
   box-shadow: 0px 0px 12px -2px rgba(234, 233, 233, 0.75);
   background-color: white;
   /* background-color: red; */
+   
 }
-
+.slider_wrap{
+  outline: none;
+  margin: 0px 50px;
+  /* background-color: grey; */
+}
 .Slider {
   width: 100%;
   /* background-color: grey; */
 }
-
 .image {
-  width: 80%;
+  width: 100%;
   height: 478px;
   margin: 0px auto;
+  object-fit:contain;
+}
+
+
+/* Second slide*/
+
+
+
+
+/* Third slide */
+.slid_contain1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #F9F9F9;
+  margin-top: 50px;
+  /* background-color: grey; */
+}
+.slider_wrap1{
+  outline: none;
+  /* background-color: grey; */
+}
+.Slider1 {
+  width: 85%;
+  display: flex;
+  align-items: center;
+}
+
+.Card{
+  margin: 0px 10px;
+  background-color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+  font-size: 7px;
+  gap: 10px;
+  padding: 15px;
+  min-height:150px;
+  border-radius: 20px;
+}
+.card_title{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.card_P{
+  padding: 20px;
+  background-color: #B3D4E5;
+  border-radius: 20px;
+}
+.image1 {
+  width: 50px;
+  height: 40px;
+  border-radius: 20px;
 }
