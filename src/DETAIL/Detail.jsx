@@ -41,6 +41,21 @@ function Detail({ }) {
     getItem()
     getItem1()
   }, [])
+  function payKorapay() {
+    let random = `Key${Math.floor(Math.random() * 10) + 1}`
+    window.Korapay.initialize({
+      key: "pk_test_kXVDeYounapXU8VC1HN5u2yYqHk8xa9uu1tBaYdX",
+      reference: random,
+
+      amount: 22000,
+      currency: "NGN",
+      customer: {
+        name: "John Doe",
+        email: "john@doe.com"
+      },
+      notification_url: "https://example.com/webhook"
+    })
+  }
 
   return (
     <div >
@@ -64,21 +79,7 @@ function Detail({ }) {
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
                 <button className='button1'
-                onClick={
-                  function payKorapay() {
-                    window.Korapay.initialize({
-                        key: "pk_test_kXVDeYounapXU8VC1HN5u2yYqHk8xa9uu1tBaYdX",
-                        reference: "your-unique-reference",
-                        amount: 22000, 
-                        currency: "NGN",
-                        customer: {
-                          name: "John Doe",
-                          email: "john@doe.com"
-                        },
-                        notification_url: "https://example.com/webhook"
-                    });
-                }
-                }
+                  onClick={payKorapay}
                 >Buy now</button>
                 <button className='button2'>Add to cart</button>
               </div>
@@ -93,8 +94,8 @@ function Detail({ }) {
         </div>
 
       </div >
-      <Products  item={item1} title='Recently Viewed'/>
-      <Products  item={item1} title='Related items'/>
+      <Products item={item1} title='Recently Viewed' />
+      <Products item={item1} title='Related items' />
     </div >
   )
 }

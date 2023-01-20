@@ -6,7 +6,7 @@ import { IoLogoTwitter } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";
 import { BsLinkedin } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
-import logo from './Logo.png'
+
 export default function Footer({ }) {
 
 
@@ -55,7 +55,6 @@ export default function Footer({ }) {
           </div>
         </div>
         <div className='footer_footer'>
-          <img src={logo} />
           <div className='footer_aderss'><MdLocationOn fontSize={30} /><p>2, Troy street Lagos Nigeria </p></div>
           <div className='footer_socials'>
             <BsLinkedin  fontSize={30}/>
