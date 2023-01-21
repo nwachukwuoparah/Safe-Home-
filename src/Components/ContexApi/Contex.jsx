@@ -5,7 +5,7 @@ export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
 
   const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('state')))
-
+  const [notice, setNotice] = useState(false)
   const theSetter = {
     backgroundColor: theme ? "#99582a" : '#f8f8f8',
     color: theme ? '#f8f8f8' : "black",
@@ -13,7 +13,9 @@ export const ThemeProvider = ({ children }) => {
   const theSetter1 = {
     backgroundColor: theme ? '#f8f8f8' : "#292c2d",
   }
-
+  const addToCart = () => {
+    console.log('delay')
+  }
   const changeTheme = () => {
     setTheme(!theme)
   }
@@ -23,7 +25,7 @@ export const ThemeProvider = ({ children }) => {
   }, [theme])
 
   return (
-    <ThemeContext.Provider value={{ theme, theSetter, theSetter1, changeTheme }}>
+    <ThemeContext.Provider value={{ theme, theSetter, theSetter1, changeTheme, addToCart, notice }}>
       {children}
     </ThemeContext.Provider>
   )

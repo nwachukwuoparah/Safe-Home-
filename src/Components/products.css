@@ -47,13 +47,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  color: inherit;
+
 }
 
 .Products_Cards:hover {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
-  z-index: 1;
+  z-index: 1; 
+  
 }
 
 .Products_Cards_wrap {
@@ -63,6 +63,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+   text-decoration: none;
+  color: inherit;
 }
 
 .Products_Cards_wrap img {
@@ -113,4 +115,11 @@
   font-size: 20px;
 }
 
+.swal2-container.swal2-center>.swal2-popup{
+  width: 40%;
+  margin-top:-550px;
+  background-color: #FFA903;
+  display: grid;
+  z-index: 1000000000;
+}
 /* TOGGLE */

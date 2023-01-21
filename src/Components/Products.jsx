@@ -8,9 +8,11 @@ import { MdStarHalf } from "react-icons/md";
 import { MdStarOutline } from "react-icons/md";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link } from 'react-router-dom';
-
-function Products({ item,title }) {
-
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../REDUX/features';
+import Swal from 'sweetalert2'
+function Products({ item, title }) {
+  const dispach = useDispatch()
   return (
     <div className='Products'>
       <div className='Products_wrap'>
@@ -24,34 +26,45 @@ function Products({ item,title }) {
           </div>
         </div>
         {item?.map((i) => (
-          <Link key={i.id} className='Products_Cards' to={`/detail/${i.id}`}>
+          <div key={i.id} className='Products_Cards'>
             <div className='Products_Cards_wrap'>
-              <img src={i.image} />
-              <div className='Products_text'>
-                <p>{i.title}</p>
-                <p>₦{i.price}</p>
-                <div className='Products_Rating'>
-                  <MdStar />
-                  <MdStar />
-                  <MdStar />
-                  <MdStarHalf />
-                  <MdStarOutline />
+              <Link className='Products_Cards_wrap' to={`/detail/${i.id}`}>
+                <img src={i.image} />
+                <div className='Products_text'>
+                  <p>{i.title}</p>
+                  <p>₦{i.price}</p>
+                  <div className='Products_Rating'>
+                    <MdStar />
+                    <MdStar />
+                    <MdStar />
+                    <MdStarHalf />
+                    <MdStarOutline />
+                  </div>
                 </div>
-              </div>
-              <div className='Products_add' >
+              </Link>
+              <div  onClick={() => {
+              dispach(addToCart(item));
+              Swal.fire({
+                title: 'Added sucessfully',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              });
+            }}
+           className='Products_add' >
                 <div className='Products_add_wrap'>
                   <p> Add to Cart</p>
                   <HiOutlineShoppingCart />
                 </div>
               </div>
-
-
             </div>
-
-          </Link>
+          </div>
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 export default Products

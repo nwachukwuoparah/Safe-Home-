@@ -7,8 +7,10 @@ import AllCategories from './ALL_CATEGORIES/AllCategories'
 import Detail from './DETAIL/Detail'
 import Login from './LOGIN/Login'
 import Signup from './SIGNUP/Signup'
+import Cart from './CART/Cart'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeContext } from './Components/ContexApi/Contex'
+
 function App() {
   // const [state, setState] = useState(false)
   const { theme } = useContext(ThemeContext)
@@ -21,6 +23,7 @@ function App() {
           <Route path={'*'} element={<Home />} />
           <Route path={'/Catogories'} element={<AllCategories />} />
           <Route path={'/detail/:id'} element={<Detail />} />
+          <Route path={'/cart'} element={<Cart />} />
           <Route path={'/login'} element={<Login/>} />
           <Route path={'/signUp'} element={<Signup />} />
         </Routes>

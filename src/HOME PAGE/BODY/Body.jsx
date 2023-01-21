@@ -7,13 +7,18 @@ import Categoriesroute from "../../Components/Categoriesroute";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
+import { useDispatch } from 'react-redux'
+import { AllProducts} from "../../REDUX/features";
 import axios from 'axios'
 function Body(props) {
+  const dispach = useDispatch()
   const [item, setItem] = useState([])
   async function getItem() {
     try {
       const response = await axios.get('https://fakestoreapi.com/products')
+      dispach(AllProducts(response.data))
       setItem(response.data)
+
       // console.log(response.data)
     } catch (e) {
       console.log(e)
@@ -31,7 +36,7 @@ function Body(props) {
       <Categoriesroute />
       <Slide />
       <Slide1 />
-      <Products item={item} title='Best Sellers'/>
+      <Products item={item} title='Best Sellers' />
       <div className='Body_Promo'>
         <div className='Body_Promo_wrap' >
           <div className="Body_Promo_text">

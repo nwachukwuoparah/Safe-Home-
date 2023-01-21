@@ -2,7 +2,6 @@ import './slider.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Carousel from 'react-elastic-carousel';
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
 export function Slide({ }) {

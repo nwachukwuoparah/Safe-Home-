@@ -1,4 +1,4 @@
-import React,{ useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './header.css'
 import Logo from './logo.png'
 import { TbUserCircle } from "react-icons/tb";
@@ -7,9 +7,16 @@ import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../Components/ContexApi/Contex'
+import { useSelector } from 'react-redux';
 function Header() {
+  const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
-  const { changeTheme } = useContext(ThemeContext)
+  const { changeTheme,notice} = useContext(ThemeContext)
+  const quantity = () => {
+    let QTY = 0;
+    cart.map((i) => QTY += i.QTY)
+    return QTY
+  }
   return (
     <header className='header'>
       <div className='header1'>
@@ -24,11 +31,11 @@ function Header() {
 
           <nav className='hl_2'>
             <TbUserCircle fontSize={30} />
-            <p onClick={()=>{ Navigate('/login');  changeTheme(); }} >Login</p>
-            <p onClick={()=>{ Navigate('/signup');  changeTheme(); }} >Sign up</p>
+            <p onClick={() => { Navigate('/login'); changeTheme(); }} >Login</p>
+            <p onClick={() => { Navigate('/signup'); changeTheme(); }} >Sign up</p>
             <span style={{ display: 'flex' }}>
-              <p>Cart</p>
-              <HiOutlineShoppingCart />
+              <p onClick={() => Navigate('/cart')}>Cart</p>
+              <HiOutlineShoppingCart />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
             </span>
           </nav>
 
@@ -41,6 +48,7 @@ function Header() {
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
+          {notice ? <h3>Added</h3> : null}
           <h2 style={{ color: '#003F62' }}>30 Days Free return</h2>
         </div>
       </div>
