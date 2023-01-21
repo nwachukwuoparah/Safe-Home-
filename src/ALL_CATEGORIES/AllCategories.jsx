@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './allcategories.css'
-import Products from '../Components/Products'
-import Categoriesroute from '../Components/Categoriesroute';
+import Products from '../Components/PRODUCT/Products'
+import Categoriesroute from '../Components/ROUT/Categoriesroute';
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";

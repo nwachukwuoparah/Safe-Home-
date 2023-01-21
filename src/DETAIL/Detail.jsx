@@ -1,14 +1,20 @@
 import './detail.css'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Categoriesroute from '../Components/Categoriesroute'
-import Products from '../Components/Products'
+import Categoriesroute from '../Components/ROUT/Categoriesroute'
+import Products from '../Components/PRODUCT/Products'
 import { useParams } from 'react-router-dom'
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarHalf } from "react-icons/md";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { MdGppGood } from "react-icons/md";
+import { useSelector } from 'react-redux';
+import payKorapay from '../Components/Payments'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../REDUX/features'
 function Detail({ }) {
+  const dispach = useDispatch()
+  const recent = useSelector((state) => state.Commerce.RECENT)
   const { id } = useParams()
   const [item, setItem] = useState([])
   const [item1, setItem1] = useState([])
@@ -41,21 +47,6 @@ function Detail({ }) {
     getItem()
     getItem1()
   }, [])
-  function payKorapay() {
-    let random = `Key${Math.floor(Math.random() * 10) + 1}`
-    window.Korapay.initialize({
-      key: "pk_test_kXVDeYounapXU8VC1HN5u2yYqHk8xa9uu1tBaYdX",
-      reference: random,
-
-      amount: 22000,
-      currency: "NGN",
-      customer: {
-        name: "John Doe",
-        email: "john@doe.com"
-      },
-      notification_url: "https://example.com/webhook"
-    })
-  }
 
   return (
     <div >
@@ -78,10 +69,8 @@ function Detail({ }) {
               <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
-                <button className='button1'
-                  onClick={payKorapay}
-                >Buy now</button>
-                <button className='button2'>Add to cart</button>
+                <button className='button1' onClick={() => { payKorapay(item.price) }}  >Buy now</button>
+                <button className='button2' onClick={() => { dispach(addToCart(item)) }}  >Add to cart</button>
               </div>
             </div>
           </div>
@@ -94,7 +83,7 @@ function Detail({ }) {
         </div>
 
       </div >
-      <Products item={item1} title='Recently Viewed' />
+      <Products item={recent} title='Recently Viewed' />
       <Products item={item1} title='Related items' />
     </div >
   )

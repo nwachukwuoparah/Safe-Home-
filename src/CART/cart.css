@@ -10,8 +10,9 @@
 }
 
 .cart_wrap {
-  width: 90%;
+  width: 85%;
   /* background-color: grey; */
+  margin-top: 30px;
 }
 
 .cart_card_wrap {

@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './cart.css'
 import axios from "axios";
-import Categoriesroute from '../Components/Categoriesroute'
-import Products from '../Components/Products';
+import Categoriesroute from '../Components/ROUT/Categoriesroute'
+import Products from '../Components/PRODUCT/Products';
 import { useSelector } from 'react-redux';
+import payKorapay from '../Components/payments';
+import { useDispatch } from 'react-redux'
+import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
 export default function Cart() {
+  const dispach = useDispatch()
   const cart = useSelector((state) => state.Commerce.cart)
+  const recent = useSelector((state) => state.Commerce.RECENT)
   const [item, setItem] = useState([])
   async function getItem() {
     try {
@@ -44,28 +49,28 @@ export default function Cart() {
                   <img className='cart_image' src={i.image} />
                   <div className='cart_card_top_text'>
                     <h3>4K  & HD Camera System-Sony Pro</h3>
-                    <h4>$123</h4>
+                    <h4>${i.price}</h4>
                   </div>
                 </div>
                 <div className='cart_card_middle'>
-                  <button className='cart_delete'>Delete</button>
+                  <button className='cart_delete' onClick={() => { dispach(removeItem(i)) }} >Delete</button>
                   <div className='cart_card_middel_navs'>
-                    <button className='cart_change'>+</button>
+                    <button className='cart_change' onClick={() => { dispach(addToCart(i)) }}>+</button>
                     <h4>{i.QTY}</h4>
-                    <button className='cart_change'>-</button>
+                    <button className='cart_change' onClick={() => { dispach(Check(i)) }}>-</button>
                   </div>
                 </div>
               </div>
             ))}
             <div className='cart_card_buttom'>
-              <button className='cart_checkout'>Checkout</button>
+              <button className='cart_checkout' onClick={() => { payKorapay(Total()) }}>Checkout</button>
               <h4>Total:{Total()}</h4>
             </div>
           </div>
         </div>
       </div>
-      <Products item={item} title='Recently Viewed'/>
-      <Products item={item} title='Related items'/>
+      <Products item={recent} title='Recently Viewed' />
+      <Products item={item} title='Related items' />
     </div>
   )
 }
