@@ -11,7 +11,7 @@ import { MdGppGood } from "react-icons/md";
 import { useSelector } from 'react-redux';
 import payKorapay from '../Components/Payments'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../REDUX/features'
+import {addToCart} from '../REDUX/features'
 function Detail({ }) {
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
@@ -70,7 +70,7 @@ function Detail({ }) {
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
                 <button className='button1' onClick={() => { payKorapay(item.price) }}  >Buy now</button>
-                <button className='button2' onClick={() => { dispach(addToCart(item)) }}  >Add to cart</button>
+                <button className='button2' onClick={()=>{dispach(addToCart(item))}}  >Add to cart</button>
               </div>
             </div>
           </div>

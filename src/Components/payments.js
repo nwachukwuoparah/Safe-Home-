@@ -1,3 +1,4 @@
+
 function payKorapay(amount) {
   let key = `key${Math.random()}`
   if (amount) {
@@ -16,5 +17,6 @@ function payKorapay(amount) {
     return
   }
 }
+
 
 export default payKorapay
