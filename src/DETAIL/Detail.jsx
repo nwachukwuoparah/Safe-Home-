@@ -9,9 +9,9 @@ import { MdOutlineStarHalf } from "react-icons/md";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { MdGppGood } from "react-icons/md";
 import { useSelector } from 'react-redux';
-import payKorapay from '../Components/Payments'
+// import payKorapay from '../Components/payments'
 import { useDispatch } from 'react-redux'
-import {addToCart} from '../REDUX/features'
+import { addToCart } from '../REDUX/features'
 function Detail({ }) {
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
@@ -69,8 +69,28 @@ function Detail({ }) {
               <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
-                <button className='button1' onClick={() => { payKorapay(item.price) }}  >Buy now</button>
-                <button className='button2' onClick={()=>{dispach(addToCart(item))}}  >Add to cart</button>
+                <button className='button1'
+                  onClick={
+                    function payKorapay() {
+                      let key = `key${Math.random()}`
+                      if (item.price) {
+                        window.Korapay.initialize({
+                          key: 'pk_test_gNgfQ3Cmh5CqTwM7GApbuU4WnanGqxykYRJCoNm9',
+                          reference: key,
+                          amount: item.price,
+                          currency: "NGN",
+                          customer: {
+                            name: "John Doe",
+                            email: "john@doe.com"
+                          },
+                          notification_url: "https://example.com/webhook"
+                        });
+                      } else {
+                        return
+                      }
+                    }
+                  }  >Buy now</button>
+                <button className='button2' onClick={() => { dispach(addToCart(item)) }}  >Add to cart</button>
               </div>
             </div>
           </div>
