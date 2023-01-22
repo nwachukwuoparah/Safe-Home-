@@ -5,7 +5,6 @@ export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
 
   const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('state')))
-  const [notice, setNotice] = useState(true)
   const theSetter = {
     backgroundColor: theme ? "#99582a" : '#f8f8f8',
     color: theme ? '#f8f8f8' : "black",
