@@ -1,0 +1,131 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.dashboard {
+  width: 100%;
+  height: 100vh;
+  background-color: #F4FBFF;
+}
+
+.dashboard_head {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: grey; */
+}
+
+.dashboard_head_wrap {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard_input {
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 50%;
+  border-radius: 20px;
+  border: 1px solid rgb(192, 189, 189);
+}
+
+.dashboard_input input {
+  width: 95%;
+  outline: none;
+  border: none;
+  background-color: inherit;
+}
+
+.dashboard_body {
+  width: 100%;
+  height: 90%;
+  display: flex;
+}
+
+.dashboard_body_left {
+  background-color: #003F62;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.dashboard_body_left_wrap {
+  /* background-color: grey; */
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  color: #f8f8f8;
+  gap: 60px;
+  height: 90%;
+}
+.inventory{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.inventory_item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.dashboard_profile{
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: start;
+  margin-top: 160px;
+}
+
+.logout{
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.dashboard_body_right {
+  /* background-color: grey; */
+  width: 80%;
+  height: 100%;
+}
+
+.dashboard_body_right_head {
+  background-color: white;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  box-shadow: -2px 10px 5px -8px rgba(208, 208, 208, 0.75);
+}
+
+.dashboard_body_right_head_wrap {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: grey; */
+  margin-left: 37px;
+  
+}
+
+.dashboard_body_right_head_wrap button {
+  /* display: flex; */
+  border: none;
+  height: 45px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #FFA903;
+  font-size: 20px;
+  font-weight: 600;
+}

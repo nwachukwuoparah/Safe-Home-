@@ -34,6 +34,19 @@
   background-color: #f8f8f8;
 }
 
+.err {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
+.SignUp_input:invalid[focused="true"] ~.err {
+  display: block;
+}
+
+.SignUp_input:invalid[focused="true"]{
+  border: 1px solid red;
+}
 .check {
   display: flex;
   flex-direction: column;
@@ -67,6 +80,14 @@
   gap: 7px;
   margin-top: 50px;
 }
+
 .Signup_action p {
   font-size: 14px;
+}
+.signup_Home{
+  position: relative;
+  top: -360px;
+  right: -1000px;
+  font-size: 25px;
+  color: #003F62;
 }

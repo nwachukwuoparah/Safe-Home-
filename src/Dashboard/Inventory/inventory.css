@@ -1,0 +1,130 @@
+.inventory {
+  width: 100%;
+  height: 90%;
+}
+
+.inventory_wrap {
+  /* background-color: grey; */
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 37px;
+}
+
+.inventory_top {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 10%;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inventory_top_wrap {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inventory_top_wrap_amount {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.inventory_top_wrap_cashout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inventory_card_wrap {
+  width: 100%;
+  background-color: rgb(196, 193, 193);
+}
+
+
+
+.inventory_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0px -1px 3px 0px rgba(207, 203, 207, 1);
+  background: linear-gradient(to top, rgba(244, 251, 255, 50%), white);
+}
+
+.inventory_main_head {
+  /* background-color: grey; */
+  width: 95%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inventory_main_card {
+  width: 100%;
+  height: 90%;
+}
+
+.inventory_main_card_head {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F4F5;
+}
+
+.inventory_main_card_head_wrap {
+  width: 95%;
+  /* background-color: white; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inventory_main_card_head_wrap_detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.inventory_Card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.inventory_Card_wrap {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inventory_Card_image {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: 20px;
+}
+
+.inventory_Card_details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}

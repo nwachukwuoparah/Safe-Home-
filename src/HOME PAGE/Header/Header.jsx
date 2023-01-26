@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import './header.css'
-import Logo from './logo.png'
+import Logo from './Union.svg'
 import { TbUserCircle } from "react-icons/tb";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 function Header() {
   const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
-  const { changeTheme,notice} = useContext(ThemeContext)
+  const { changeTheme, notice } = useContext(ThemeContext)
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
@@ -30,9 +30,9 @@ function Header() {
           </nav>
 
           <nav className='hl_2'>
-            <TbUserCircle fontSize={30} />
-            <p onClick={() => { Navigate('/login'); changeTheme(); }} >Login</p>
-            <p onClick={() => { Navigate('/signup'); changeTheme(); }} >Sign up</p>
+            <TbUserCircle onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+            <p onClick={() => { Navigate('/login'); }} >Login</p>
+            <p onClick={() => { Navigate('/signup');}} >Sign up</p>
             <span style={{ display: 'flex' }}>
               <p onClick={() => Navigate('/cart')}>Cart</p>
               <HiOutlineShoppingCart />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}

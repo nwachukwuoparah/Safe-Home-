@@ -8,6 +8,7 @@ import Detail from './DETAIL/Detail'
 import Login from './LOGIN/Login'
 import Signup from './SIGNUP/Signup'
 import Cart from './CART/Cart'
+import Dashboard from './Dashboard/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeContext } from './Components/ContexApi/Contex'
 
@@ -26,6 +27,7 @@ function App() {
           <Route path={'/cart'} element={<Cart />} />
           <Route path={'/login'} element={<Login/>} />
           <Route path={'/signUp'} element={<Signup />} />
+          <Route path={'/dashboard'} element={<Dashboard />} />
         </Routes>
         {!theme ? <Footer /> : null}
       </Router>

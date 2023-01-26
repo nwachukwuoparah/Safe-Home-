@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import './body.css'
 import { Slide } from '../../Components/Slider'
 import { Slide1 } from '../../Components/Slider'
@@ -8,13 +8,16 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 import { useDispatch } from 'react-redux'
-import { AllProducts} from "../../REDUX/features";
+import { AllProducts } from "../../REDUX/features";
 import axios from 'axios'
+import { ThemeContext } from "../../Components/ContexApi/Contex";
 function Body(props) {
+  const { changeTheme, theme } = useContext(ThemeContext)
   const dispach = useDispatch()
   const [item, setItem] = useState([])
   async function getItem() {
     try {
+      theme ? changeTheme() : null
       const response = await axios.get('https://fakestoreapi.com/products')
       dispach(AllProducts(response.data))
       setItem(response.data)

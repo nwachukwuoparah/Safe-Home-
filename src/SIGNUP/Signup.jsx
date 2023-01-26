@@ -1,70 +1,111 @@
 import './signup.css'
-import React, { useState ,useEffect,useContext} from 'react'
-import { input } from './input'
+import React, { useState, useEffect, useContext } from 'react'
 import Form from './Form'
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
+import { HiHome } from "react-icons/hi";
 export default function Signup({ }) {
-  const { changeTheme } = useContext(ThemeContext)
+  const { changeTheme, theme } = useContext(ThemeContext)
   const [checked, setChecked] = useState(false)
+  const [terms, setTerms] = useState(false)
   const Navigate = useNavigate()
-  const [brand, setBrand] = useState(input)
   const [value, setValue] = useState({
-    userName: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
     admin: false,
-    brandName: "",
-  })
 
-  const agent = () => {
-    if (!checked) {
-      const Val = [...brand, {
+  })
+  let password;
+  const input = [
+    {
+      id: 1,
+      name: "name",
+      type: "text",
+      err: "Username should be 3-16 caharters and should not include any special charater!",
+      placeholder: "name",
+      pattern: "^[A-Za-z0-9 ]{3,16}$",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "email",
+      type: "email",
+      err: "It should be a valid email address!",
+      placeholder: "email",
+      required: true,
+    }, {
+      id: 3,
+      name: "password",
+      type: "password",
+      err: "Password should be 8-20 charaters and include at least 1 letter, 1 number and one special charater! ",
+      placeholder: "password",
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      required: true,
+    }, {
+      id: 4,
+      name: "confirmPassword",
+      type: "password",
+      err: "Password dont match",
+      placeholder: " confirmPassword",
+      pattern: value.password,
+      required: true,
+    }
+  ]
+  const [brand, setBrand] = useState(input)
+
+  const admin = () => {
+    if (value.admin) {
+      setBrand([...input,{
         id: 5,
-        placeholder: "Brand Name",
-        type: "number",
-        name: "Brand Name"
-      }
-      ]
-      setBrand(Val)
+        name: "brand name",
+        type: "text",
+        err: "Brand name should be 3-16 caharters and should not include any special charater!",
+        placeholder: "brand name",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+      }])
     } else {
       setBrand(input)
     }
-
   }
 
-useEffect(() => {
-  // console.log(brand)
-}, [checked])
+  const onChange = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value })
+  }
+  useEffect(() => {
+    admin()
+  }, [checked, value])
+
+  useEffect(() => {
+    !theme && changeTheme()
+  }, [])
   return (
     <>
       <div className='sign_in'>
+        <HiHome  onClick={() => { Navigate('/') }} className='signup_Home' />
         <div className='sign_in_Wrap'>
           <div className='sign_in_Wrap_head'>
-            <img  onClick={()=>{ Navigate('/');  changeTheme(); }} style={{ width: 200 }} src='/Union.svg' />
+            <img onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form>
+          <form onSubmit={(e) => { e.preventDefault(); console.log(value) }}>
             {brand.map((i) => (
-              <Form key={i.id} {...i} />
+              <Form key={i.id} {...i} value={value[i.name]} onChange={onChange} />
             ))}
             <div className='check'>
               <label className='label'><input type="checkbox"
-                onChange={() => {
-                  setChecked(!checked)
-                  agent()
-                }}
+                // checked={checked}
+                onChange={() => { setValue({ ...value, admin: !value.admin }) }}
               /> <p>sign up as our Agent(Optional)</p></label>
-              <label className='label'><input type="checkbox" /> <span className='label'><p>I Agree to the </p> <p style={{ color: "#0056FC" }}>Terms & Privacy Policy</p></span></label>
+              <label className='label'><input type="checkbox"
+                onChange={() => { setTerms(!terms) }}
+              /> <span className='label'><p>I Agree to the </p> <p style={{ color: "#0056FC" }}>Terms & Privacy Policy</p></span></label>
             </div>
 
             <div className='Signup_action'>
-              <button className='button'
-              onClick={()=>{
-                event.preventDefault()
-             }} 
-              >Sign up</button>
+              <button className='button'>Sign up</button>
               <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')}>Sign in </p></span>
             </div>
 

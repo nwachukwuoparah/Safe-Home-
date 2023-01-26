@@ -6,7 +6,7 @@ import { IoLogoTwitter } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";
 import { BsLinkedin } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
-
+import Logo from './Union.svg'
 export default function Footer({ }) {
 
 
@@ -55,11 +55,12 @@ export default function Footer({ }) {
           </div>
         </div>
         <div className='footer_footer'>
+          <img style={{ width: 70 }} src={Logo} />
           <div className='footer_aderss'><MdLocationOn fontSize={30} /><p>2, Troy street Lagos Nigeria </p></div>
           <div className='footer_socials'>
-            <BsLinkedin  fontSize={30}/>
-            <IoLogoTwitter  fontSize={30}/>
-            <FiInstagram  fontSize={30}/>
+            <BsLinkedin fontSize={30} />
+            <IoLogoTwitter fontSize={30} />
+            <FiInstagram fontSize={30} />
           </div>
 
         </div >
