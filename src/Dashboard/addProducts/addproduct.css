@@ -84,7 +84,7 @@ textarea {
 
 
 .Addproduct_right {
-  width: 44%;
+  width: 45%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -103,13 +103,19 @@ textarea {
 }
 
 .Addproduct_right_top_image1 {
-  width: 80%;
+  width: 90%;
+  /* height: 90%; */
   background-color: white;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.Addproduct_right_top_image1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .Addproduct_right_top_image2_wrap {
@@ -141,15 +147,17 @@ textarea {
 .Addproduct_right_buttom {
   width: 80%;
   /* background-color: grey; */
-   /* margin-top: -50px; */
+  /* margin-top: -50px; */
 }
-.Addproduct_right_buttom_text{
+
+.Addproduct_right_buttom_text {
   display: flex;
   flex-direction: column;
   gap: 5px;
   font-size: 13px;
 }
-.Addproduct_right_buttom_button{
+
+.Addproduct_right_buttom_button {
   width: 100%;
   height: 50px;
   margin-top: 5px;

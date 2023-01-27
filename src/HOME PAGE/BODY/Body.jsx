@@ -12,12 +12,12 @@ import { AllProducts } from "../../REDUX/features";
 import axios from 'axios'
 import { ThemeContext } from "../../Components/ContexApi/Contex";
 function Body(props) {
-  const { changeTheme, theme } = useContext(ThemeContext)
+  const { changeTheme, display } = useContext(ThemeContext)
   const dispach = useDispatch()
   const [item, setItem] = useState([])
   async function getItem() {
     try {
-      theme ? changeTheme() : null
+      display  && changeTheme()
       const response = await axios.get('https://fakestoreapi.com/products')
       dispach(AllProducts(response.data))
       setItem(response.data)
@@ -27,7 +27,6 @@ function Body(props) {
       console.log(e)
     }
   }
-
   useEffect(() => {
     getItem()
   }, [])

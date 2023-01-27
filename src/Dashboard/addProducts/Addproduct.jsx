@@ -1,9 +1,25 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './addproduct.css'
 import add from './add.png'
+import { FaUserCircle } from "react-icons/fa";
 export default function Addproduct(props) {
 
+  const [state, setState] = useState(false)
+  const [image, setImage] = useState(null)
+  const handleChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    // console.log(reader)
+    reader.onloadend = () => {
+      setImage(reader.result);
+    }
+    reader.readAsDataURL(file);
 
+  };
+
+  useEffect(() => {
+    console.log(image)
+  }, [image])
   return (
     <div className='Addproduct'>
       <div className='Addproduct_left'>
@@ -14,14 +30,14 @@ export default function Addproduct(props) {
           </div>
           <div className=''>
             <p>Details</p>
-            <textarea maxlength="500" id="w3review" name="w3review" rows="10" cols="59">
+            <textarea maxLength="500" id="w3review" name="w3review" rows="10" cols="59">
             </textarea>
           </div>
         </div>
 
         <label className='Addproduct_left_middle'>
           <h3>Image</h3>
-          <input style={{ display: 'none' }} type='file' />
+          <input style={{ display: 'none' }} onChange={handleChange} type='file' />
         </label>
 
         <div className='Addproduct_left_bottom'>
@@ -40,27 +56,12 @@ export default function Addproduct(props) {
         </div>
       </div>
 
-
-
-
       <div className='Addproduct_right'>
         <div className='Addproduct_right_top'>
           <div className='Addproduct_right_top_image1'>
-            <img src={add} />
-          </div>
-          <div className='Addproduct_right_top_image2_wrap'>
-            <div className='Addproduct_right_top_image2'>
-              <img src={add} />
-            </div>
-            <div className='Addproduct_right_top_image2'>
-              <img src={add} />
-            </div>
-            <div className='Addproduct_right_top_image2'>
-              <img src={add} />
-            </div>
+          {image ? <img className='' src={image} /> :< FaUserCircle fontSize={300}/>}
           </div>
         </div>
-
 
         <div className='Addproduct_right_buttom'>
           <div className='Addproduct_right_buttom_text'>

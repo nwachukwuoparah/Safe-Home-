@@ -18,7 +18,7 @@ function Inventory(props) {
 
         <div className='inventory_main'>
           <div className='inventory_main_head'>
-            <h4>products</h4>
+            <h4>{props.title}</h4>
             <p>Last 7days</p>
           </div>
           <div className='inventory_main_card'>

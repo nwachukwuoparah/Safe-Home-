@@ -14,12 +14,12 @@ import { ThemeContext } from './Components/ContexApi/Contex'
 
 function App() {
   // const [state, setState] = useState(false)
-  const { theme } = useContext(ThemeContext)
+  const { display } = useContext(ThemeContext)
   // console.log(theme)
   return (
     <div className='App'>
       <Router>
-        {!theme ? <Header /> : null}
+        {!display ? <Header /> : null}
         <Routes>
           <Route path={'*'} element={<Home />} />
           <Route path={'/Catogories'} element={<AllCategories />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path={'/signUp'} element={<Signup />} />
           <Route path={'/dashboard'} element={<Dashboard />} />
         </Routes>
-        {!theme ? <Footer /> : null}
+        {!display ? <Footer /> : null}
       </Router>
       <Router>
 

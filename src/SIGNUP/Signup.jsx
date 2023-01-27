@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Signup({ }) {
-  const { changeTheme, theme } = useContext(ThemeContext)
+  const { changeTheme, display} = useContext(ThemeContext)
   const [checked, setChecked] = useState(false)
   const [terms, setTerms] = useState(false)
   const Navigate = useNavigate()
@@ -57,7 +57,7 @@ export default function Signup({ }) {
 
   const admin = () => {
     if (value.admin) {
-      setBrand([...input,{
+      setBrand([...input, {
         id: 5,
         name: "brand name",
         type: "text",
@@ -79,12 +79,12 @@ export default function Signup({ }) {
   }, [checked, value])
 
   useEffect(() => {
-    !theme && changeTheme()
+    !display && changeTheme()
   }, [])
   return (
     <>
       <div className='sign_in'>
-        <HiHome  onClick={() => { Navigate('/') }} className='signup_Home' />
+        <HiHome onClick={() => { Navigate('/') }} className='signup_Home' />
         <div className='sign_in_Wrap'>
           <div className='sign_in_Wrap_head'>
             <img onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
@@ -105,7 +105,7 @@ export default function Signup({ }) {
             </div>
 
             <div className='Signup_action'>
-              <button className='button'>Sign up</button>
+              {value.admin ? <button className='button'>Admin</button> : <button className='button'>Sign up</button>}
               <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')}>Sign in </p></span>
             </div>
 

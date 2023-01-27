@@ -6,7 +6,7 @@ import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
   const inputRef = useRef('')
-  const { changeTheme, theme } = useContext(ThemeContext)
+  const { changeTheme, display } = useContext(ThemeContext)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     Email: "",
@@ -34,7 +34,7 @@ export default function Login({ }) {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
   useEffect(() => {
-    !theme && changeTheme()
+    !display&& changeTheme()
   }, [])
   return (
     <>
