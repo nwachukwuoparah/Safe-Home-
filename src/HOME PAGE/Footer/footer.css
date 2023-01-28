@@ -59,7 +59,9 @@
   justify-content: space-around;
   /* background-color: #f8f8f8; */
 }
-
+.p{
+  display: none;
+}
 .footer_nav_wrap {
   display: flex;
   flex-direction: column;
@@ -141,5 +143,8 @@
 }
 .mobile_footer{
   font-size: 20px;
+}
+.p{
+  display: flex;
 }
 }

@@ -26,11 +26,11 @@ export default function Footer({ }) {
 
         <div className='footer_navs'>
 
-          <p>HELP CENTER</p>
-          <p>CONTACT US</p>
-          <p>TERMS & CONDITIOND</p>
-          <p>BECOME AN AGENT</p>
-          <p>REPORT A PRODUCT</p>
+          <p className='p'>HELP CENTER</p>
+          <p className='p'>CONTACT US</p>
+          <p className='p'>TERMS & CONDITIOND</p>
+          <p className='p'>BECOME AN AGENT</p>
+          <p className='p'>REPORT A PRODUCT</p>
 
           <div className='footer_nav_wrap'>
             <h3>Find Product</h3>
