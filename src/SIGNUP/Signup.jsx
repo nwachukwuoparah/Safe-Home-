@@ -96,7 +96,7 @@ export default function Signup({ }) {
             <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form onSubmit={(e) => { e.preventDefault(); console.log(value) }}>
+          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); console.log(value) }}>
             {brand.map((i) => (
               <div key={i.id}>
 

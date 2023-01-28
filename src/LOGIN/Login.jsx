@@ -45,7 +45,7 @@ export default function Login({ }) {
       <div className='login_in_Wrap'>
         <div className='login_in_Wrap_head'>
           <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
-          <h1> Create an account</h1>
+          <h1> Log into your account</h1>
         </div>
         <form className='form_wrap' onSubmit={
           () => {
