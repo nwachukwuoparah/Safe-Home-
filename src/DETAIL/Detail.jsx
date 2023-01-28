@@ -55,6 +55,7 @@ function Detail({ }) {
         <div className='detail_wrap'>
           <div className='detail_item'>
             <img src={item.image} />
+
             <div className='detail_info_wrap'>
               <h3>{item.title}</h3>
               <p>₦{item.price}</p>
@@ -94,8 +95,11 @@ function Detail({ }) {
               </div>
             </div>
           </div>
+
+
+
           <div className='detail_description'>
-            <div className='detail_description_head'> <h3>Product details</h3></div>
+            <div className='detail_description_head'><h3>Product details</h3></div>
             <div className='detail_description_text'>
               <p>{item.description}</p>
             </div>
