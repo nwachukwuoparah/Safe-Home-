@@ -13,6 +13,8 @@ export default function Footer({ }) {
   return (
     <div className='footer'>
       <div className='footer_wrap'>
+
+
         <div className='News_Letter'>
           <h2>Subscribe Newsletter</h2>
           <div className='input_wrap'>
@@ -20,7 +22,16 @@ export default function Footer({ }) {
             <IoIosSend color='#4A4A4A' />
           </div>
         </div>
+
+
         <div className='footer_navs'>
+
+          <p>HELP CENTER</p>
+          <p>CONTACT US</p>
+          <p>TERMS & CONDITIOND</p>
+          <p>BECOME AN AGENT</p>
+          <p>REPORT A PRODUCT</p>
+
           <div className='footer_nav_wrap'>
             <h3>Find Product</h3>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
@@ -40,13 +51,15 @@ export default function Footer({ }) {
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
           </div>
         </div>
+
+
         <div className='footer_footer'>
           <img style={{ width: 70 }} src={Logo} />
-          <div className='footer_aderss'><MdLocationOn fontSize={30} /><p>2, Troy street Lagos Nigeria </p></div>
+          <div className='footer_aderss'><MdLocationOn className='mobile_footer' fontSize={30} /><p>Lagos Nigeria </p></div>
           <div className='footer_socials'>
-            <BsLinkedin fontSize={30} />
-            <IoLogoTwitter fontSize={30} />
-            <FiInstagram fontSize={30} />
+            <BsLinkedin className='mobile_footer' fontSize={30} />
+            <IoLogoTwitter className='mobile_footer' fontSize={30} />
+            <FiInstagram className='mobile_footer' fontSize={30} />
           </div>
 
         </div >
