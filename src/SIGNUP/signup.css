@@ -21,6 +21,9 @@
   gap: 30px;
   /* background-color: grey; */
 }
+.sign_form {
+  width: 80%;
+}
 
 .SignUp_input {
   width: 100%;
@@ -95,9 +98,10 @@
 }
 
 .sign_eye {
-  position: relative;
-  top: 50px;
-  left: 470px;
+  position: absolute;
+  top: 380px;
+  left: 980px;
+  font-size: 20px;
 }
 
 @media screen and (max-width:425px) {
