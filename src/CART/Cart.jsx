@@ -53,17 +53,17 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className='cart_card_middle'>
-                  <button className='cart_delete' onClick={() => { dispach(removeItem(i)) }} >Delete</button>
+                  <button className='cart_delete pointer' onClick={() => { dispach(removeItem(i)) }} >Delete</button>
                   <div className='cart_card_middel_navs'>
-                    <button className='cart_change' onClick={() => { dispach(addToCart(i)) }}>+</button>
+                    <button className='cart_change pointer' onClick={() => { dispach(addToCart(i)) }}>+</button>
                     <h4>{i.QTY}</h4>
-                    <button className='cart_change' onClick={() => { dispach(Check(i)) }}>-</button>
+                    <button className='cart_change pointer' onClick={() => { dispach(Check(i)) }}>-</button>
                   </div>
                 </div>
               </div>
             ))}
             <div className='cart_card_buttom'>
-              <button className='cart_checkout' onClick={() => { payKorapay(Total()) }}>Checkout</button>
+              <button className='cart_checkout pointer' onClick={() => { payKorapay(Total()) }}>Checkout</button>
               <h4>Total:{Total()}</h4>
             </div>
           </div>

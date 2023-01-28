@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: grey; */
+  background-color: white;
 }
 
 .login_in_Wrap_head h1 {
@@ -13,17 +13,23 @@
 }
 
 .login_in_Wrap {
-  width: 50%;
+  width: 60%;
   height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
   gap: 30px;
-  /* background-color: grey; */
+  /* background-color: rgb(164, 162, 162); */
+}
+
+.form_wrap {
+  width: 60%;
+  /* background-color: white; */
 }
 
 .login_input {
-  width: 500px;
+  width: 100%;
   height: 57px;
   padding: 0px 15px;
   border-radius: 13px;
@@ -38,11 +44,12 @@
   display: none;
   color: red;
 }
-.login_input:invalid[focused="true"] ~.login_err{
+
+.login_input:invalid[focused="true"]~.login_err {
   display: block;
 }
 
-.login_input:invalid[focused="true"]{
+.login_input:invalid[focused="true"] {
   border: 1px solid red;
 }
 
@@ -75,10 +82,46 @@
 .login_action p {
   font-size: 14px;
 }
-.login_Home{
-  position: relative;
+
+.login_Home {
+  position: absolute;
   top: -360px;
   right: -1000px;
   font-size: 25px;
   color: #003F62;
+  /* display: none; */
+}
+
+.login_eye {
+  position: relative;
+  top: 50px;
+  left: 470px;
+}
+
+@media screen and (max-width:425px) {
+  .login_in_Wrap_head h1 {
+    font-size: 25px;
+  }
+  .login_eye {
+    position: relative;
+    top: 50px;
+    left: 200px;
+  }
+
+  .login_Home {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 35px;
+  }
+
+  .login_in_Wrap {
+    width: 90%;
+  }
+
+  .form_wrap {
+    width: 100%;
+    /* background-color: white; */
+  }
+
 }

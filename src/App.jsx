@@ -9,7 +9,7 @@ import Login from './LOGIN/Login'
 import Signup from './SIGNUP/Signup'
 import Cart from './CART/Cart'
 import Dashboard from './Dashboard/Dashboard'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeContext } from './Components/ContexApi/Contex'
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       <Router>
         {!display ? <Header /> : null}
         <Routes>
-          <Route path={'*'} element={<Home />} />
+          <Route path={'/'} element={<Home />} />
           <Route path={'/Catogories'} element={<AllCategories />} />
           <Route path={'/detail/:id'} element={<Detail />} />
           <Route path={'/cart'} element={<Cart />} />

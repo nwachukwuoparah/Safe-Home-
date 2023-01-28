@@ -1,12 +1,14 @@
 * {
   margin: 0px;
 }
-.header{
+
+.header {
   position: fixed;
   top: 0px;
   z-index: 1000;
   width: 100%;
 }
+
 .header1 {
   display: flex;
   align-items: center;
@@ -66,8 +68,12 @@
   font-size: 1em;
 }
 
-
-
+.hl_2 p{
+  cursor: pointer;
+}
+.pointer {
+  cursor: pointer;
+}
 
 
 .header2_wrap {
@@ -77,8 +83,9 @@
   align-items: center;
   justify-content: space-between;
 }
-.catigories{
-display: flex;
-align-items: center;
-gap: 20px;
+
+.catigories {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

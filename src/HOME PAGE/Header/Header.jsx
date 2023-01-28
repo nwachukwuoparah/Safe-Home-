@@ -22,34 +22,32 @@ function Header() {
       <div className='header1'>
         <div className='header1_wrap'>
           <nav className='hi_2' >
-            <img onClick={() => Navigate('/')} style={{ width: 70 }} src={Logo} />
+            <img className='pointer' onClick={() => Navigate('/')} style={{ width: 70 }} src={Logo} />
             <div className='input'>
               <input />
-              <BsSearch />
+              <BsSearch className='pointer'  />
             </div>
           </nav>
 
           <nav className='hl_2'>
-            <TbUserCircle onClick={() => { Navigate('/dashboard') }} fontSize={30} />
-            <p onClick={() => { Navigate('/login'); }} >Login</p>
+            <TbUserCircle className='pointer'  onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+            <p  onClick={() => { Navigate('/login'); }} >Login</p>
             <p onClick={() => { Navigate('/signup');}} >Sign up</p>
-            <span style={{ display: 'flex' }}>
-              <p onClick={() => Navigate('/cart')}>Cart</p>
-              <HiOutlineShoppingCart />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
+            <span onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
+              <p>Cart</p>
+              <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
             </span>
-          </nav>
-
+          </nav> 
         </div>
       </div>
 
       <div className='header2'>
         <div className='header2_wrap'>
-          <div onClick={() => Navigate('/Catogories')} className='catigories'>
+          <div onClick={() => Navigate('/Catogories')} className='catigories pointer'>
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
-          {notice ? <h3>Added</h3> : null}
-          <h2 style={{ color: '#003F62' }}>30 Days Free return</h2>
+          <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
         </div>
       </div>
     </header >

@@ -27,7 +27,7 @@ function Products({ item, title }) {
           </div>
         </div>
         {item?.map((i) => (
-          <div onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards'>
+          <div  onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards pointer'>
             <div className='Products_Cards_wrap'>
               <Link  className='Products_Cards_wrap' to={`/detail/${i.id}`}>
                 <img src={i.image} />
@@ -56,7 +56,7 @@ function Products({ item, title }) {
                 })
               }} className='Products_add' >
                 <div className='Products_add_wrap'>
-                  <p> Add to Cart</p>
+                  <p  className='pointer' > Add to Cart</p>
                   <HiOutlineShoppingCart />
                 </div>
               </div>

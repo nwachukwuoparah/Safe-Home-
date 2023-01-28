@@ -11,7 +11,9 @@ import { useDispatch } from 'react-redux'
 import { AllProducts } from "../../REDUX/features";
 import axios from 'axios'
 import { ThemeContext } from "../../Components/ContexApi/Contex";
+import { useNavigate } from "react-router-dom";
 function Body(props) {
+  const navigate = useNavigate()
   const { changeTheme, display } = useContext(ThemeContext)
   const dispach = useDispatch()
   const [item, setItem] = useState([])
@@ -67,10 +69,10 @@ function Body(props) {
       </div>
       <Slide1 />
       <div className="Body_Call_To_Action">
-        <button>
-          Sign in
+        <button onClick={()=>{navigate('/login')}} className='pointer' >
+          Login
         </button>
-        <span className="Body_Nav">New customers? <p> Start here.</p></span>
+        <span className="Body_Nav pointer">New customers? <p onClick={()=>{navigate('/signup')}}> Start here.</p></span>
       </div>
     </>
   )

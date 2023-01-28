@@ -13,7 +13,7 @@ export default function Form(props) {
 
   return (
     <>
-      <div>
+      <div >
         <input
           onChange={props.onChange}
           className='login_input'
