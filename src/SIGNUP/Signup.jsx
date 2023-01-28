@@ -98,31 +98,30 @@ export default function Signup({ }) {
           </div>
           <form className='sign_form' onSubmit={(e) => { e.preventDefault(); console.log(value) }}>
             {brand.map((i) => (
-              <div key={i.id}>
-
-                {i.name === "Password" ? view ? <AiOutlineEyeInvisible className='sign_eye pointer' onClick={() => { setView(!view) }} /> : <MdRemoveRedEye className='sign_eye pointer' onClick={() => { setView(!view) }} /> : null}
-                <Form  {...i} value={value[i.name]} onChange={onChange} />
-              </div>
+              <div style={{ marginTop: i.name === "Password" ? -25 :null}}  key={i.id}>
+            {i.name === "Password" ? view ? <AiOutlineEyeInvisible className='sign_eye pointer' onClick={() => { setView(!view) }} /> : <MdRemoveRedEye className='sign_eye pointer' onClick={() => { setView(!view) }} /> : null}
+            <Form  {...i} value={value[i.name]} onChange={onChange} />
+        </div>
 
             ))}
-            <div className='check'>
-              <label className='label'><input className='pointer' type="checkbox"
-                // checked={checked}
-                onChange={() => { setValue({ ...value, admin: !value.admin }) }}
-              /> <p>sign up as our Agent(Optional)</p></label>
-              <label className='label'><input className='pointer' type="checkbox"
-                onChange={() => { setTerms(!terms) }}
-              /> <span className='label'><p>I Agree to the </p> <p style={{ color: "#0056FC" }} className="pointer">Terms & Privacy Policy</p></span></label>
-            </div>
-
-            <div className='Signup_action'>
-              {value.admin ? <button  className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}
-              <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
-            </div>
-
-          </form>
+        <div className='check'>
+          <label className='label'><input className='pointer' type="checkbox"
+            // checked={checked}
+            onChange={() => { setValue({ ...value, admin: !value.admin }) }}
+          /> <p>sign up as our Agent(Optional)</p></label>
+          <label className='label'><input className='pointer' type="checkbox"
+            onChange={() => { setTerms(!terms) }}
+          /> <span className='label'><p>I Agree to the </p> <p style={{ color: "#0056FC" }} className="pointer">Terms & Privacy Policy</p></span></label>
         </div>
-      </div>
+
+        <div className='Signup_action'>
+          {value.admin ? <button className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}
+          <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
+        </div>
+
+      </form>
+    </div>
+      </div >
     </>
   )
 }

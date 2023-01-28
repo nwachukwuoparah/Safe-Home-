@@ -30,7 +30,7 @@
   height: 57px;
   padding: 0px 15px;
   border-radius: 13px;
-  margin-top: 10px;
+  margin-top: 15px;
   /* outline: none; */
   border: none;
   border-bottom: 1px solid;
@@ -98,9 +98,9 @@
 }
 
 .sign_eye {
-  position: absolute;
-  top: 380px;
-  left: 980px;
+  position: relative;
+  top:58px;
+  left: 535px;
   font-size: 20px;
 }
 
@@ -120,7 +120,7 @@
 
   .sign_eye {
     position: relative;
-    top: 47px;
+    top: 54px;
     left: 280px;
   }
 
