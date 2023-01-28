@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import './header.css'
 import Logo from './Union.svg'
+import Unionheader from './Union header.svg'
 import { TbUserCircle } from "react-icons/tb";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
@@ -21,23 +22,24 @@ function Header() {
     <header className='header'>
       <div className='header1'>
         <div className='header1_wrap'>
+          <FiMenu className='mobile_menu' fontSize={25} />
           <nav className='hi_2' >
             <img className='pointer' onClick={() => Navigate('/')} style={{ width: 70 }} src={Logo} />
             <div className='input'>
               <input />
-              <BsSearch className='pointer'  />
+              <BsSearch className='pointer' />
             </div>
           </nav>
 
           <nav className='hl_2'>
-            <TbUserCircle className='pointer'  onClick={() => { Navigate('/dashboard') }} fontSize={30} />
-            <p  onClick={() => { Navigate('/login'); }} >Login</p>
-            <p onClick={() => { Navigate('/signup');}} >Sign up</p>
+            <TbUserCircle className='pointer' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+            <p onClick={() => { Navigate('/login'); }} >Login</p>
+            <p onClick={() => { Navigate('/signup'); }} >Sign up</p>
             <span onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
               <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
             </span>
-          </nav> 
+          </nav>
         </div>
       </div>
 
@@ -47,10 +49,11 @@ function Header() {
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
+          <img  className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 80 }} src={Unionheader} />
           <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
         </div>
       </div>
-    </header >
+    </header>
   )
 }
 export default Header

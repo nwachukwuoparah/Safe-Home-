@@ -21,11 +21,13 @@ function Products({ item, title }) {
           <div className='Products_bar_wrap'>
             <h2>{title}</h2>
             <div className='Products_filter'>
-              <MdList fontSize={55} />
-              <MdOutlineApps fontSize={40} />
+              <MdList  fontSize={30} />
+              <MdOutlineApps  fontSize={22.5} />
             </div>
           </div>
         </div>
+
+        
         {item?.map((i) => (
           <div  onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards pointer'>
             <div className='Products_Cards_wrap'>

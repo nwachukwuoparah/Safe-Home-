@@ -26,29 +26,15 @@ export default function Footer({ }) {
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
           </div>
           <div className='footer_nav_wrap'>
             <h3>Find Product</h3>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
           </div>
           <div className='footer_nav_wrap'>
             <h3>Find Product</h3>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-          </div>
-          <div className='footer_nav_wrap'>
-            <h3>Find Product</h3>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
-            <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>
             <span className='span_nav'><IoMdArrowDropright color='#FFA903' /> <p>Food</p> </span>

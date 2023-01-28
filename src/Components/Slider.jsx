@@ -33,7 +33,33 @@ export function Slide({ }) {
     autoplay: true,
     speed: 6000,
     autoplaySpeed: 2000,
-    arrows: false
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <div className='slid_contain'>
@@ -46,6 +72,9 @@ export function Slide({ }) {
     </div>
   )
 }
+
+
+
 // ###################################
 export function Slide1({ auto, arrows }) {
   const [item, setItem] = useState([])
@@ -76,7 +105,33 @@ export function Slide1({ auto, arrows }) {
     autoplay: true,
     speed: 6000,
     autoplaySpeed: 2000,
-    arrows: false
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <div className='slid_contain1'>
