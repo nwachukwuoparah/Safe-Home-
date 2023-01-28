@@ -14,7 +14,7 @@
 
 .login_in_Wrap {
   width: 60%;
-  height: 85%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +105,7 @@
   .login_eye {
     position: relative;
     top: 50px;
-    left: 350px;
+    left: 300px;
   }
 
   .login_Home {
@@ -128,5 +128,7 @@
   width: 150px;
   height: 40px;
 }
-
+.login_label p{
+  font-size: 12px;
+}
 }
