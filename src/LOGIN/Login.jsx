@@ -54,7 +54,7 @@ export default function Login({ }) {
           }>
           {input.map((i) => (
             <div >
-              {i.name === 'Password' ? view ? <AiOutlineEyeInvisible className='login_eye pointer' onClick={() => { setView(!view) }} /> : <MdRemoveRedEye className='login_eye pointer' onClick={() => { setView(!view) }} /> : null}
+              {i.name === 'Password' ? view ? <AiOutlineEyeInvisible fontSize={20} className='login_eye pointer' onClick={() => { setView(!view) }} /> : <MdRemoveRedEye fontSize={20} className='login_eye pointer' onClick={() => { setView(!view) }} /> : null}
               <Form key={i.id} {...i} value={value} onChange={onChange} />
             </div>
 
