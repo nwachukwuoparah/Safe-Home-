@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   product: [],
   cart: [],
-  RECENT: []
+  RECENT: [],
+  addProduct: [],
 }
 const features = createSlice({
   name: 'e-store',
@@ -44,10 +45,14 @@ const features = createSlice({
       // console.log(check)
       if (check === -1) {
         const recent = [...state.RECENT, payload]
-          state.RECENT = recent
-        }
+        state.RECENT = recent
+      }
+    },
+    addProduct:(state, { payload }) => {
+    state.addProduct = [...state.addProduct, payload]
+    }
   }
-}
 })
-export const { AllProducts, addToCart, removeItem, clearAll, Check, recent } = features.actions
+
+export const { AllProducts, addToCart, removeItem, clearAll, Check, recent,addProduct } = features.actions
 export default features.reducer

@@ -79,12 +79,11 @@
 }
 
 .dashboard_profile{
-  width: 95%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-self: start;
-  margin-top: 160px;
 }
 
 .logout{

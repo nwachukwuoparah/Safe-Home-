@@ -151,10 +151,12 @@ textarea {
 }
 
 .Addproduct_right_buttom_text {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   font-size: 13px;
+  /* background-color: grey; */
 }
 
 .Addproduct_right_buttom_button {
