@@ -43,7 +43,7 @@
   display: none;
 }
 
-.SignUp_input:invalid[focused="true"]~.err {
+.SignUp_input:invalid[focused="true"] ~ .err {
   display: block;
 }
 
@@ -77,7 +77,7 @@
 
 .Signup_action {
   width: 100%;
-  /* background-color: grey; */
+  /*background-color: grey;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,9 +90,9 @@
 }
 
 .signup_Home {
-  position: relative;
-  top: -360px;
-  right: -1000px;
+  position: absolute;
+  top: 30px;
+  right: 40px;
   font-size: 25px;
   color: #003F62;
 }

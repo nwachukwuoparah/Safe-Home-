@@ -41,7 +41,9 @@ export default function Login({ }) {
   }, [])
   return (
     <div className='login_in'>
-      <HiHome onClick={() => { Navigate('/') }} className='login_Home pointer' />
+
+      <HiHome onClick={() => { Navigate('/') }}  className='login_Home pointer' />
+
       <div className='login_in_Wrap'>
         <div className='login_in_Wrap_head'>
           <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
@@ -53,11 +55,10 @@ export default function Login({ }) {
           }
           }>
           {input.map((i) => (
-            <div >
+            <div>
               {i.name === 'Password' ? view ? <AiOutlineEyeInvisible fontSize={20} className='login_eye pointer' onClick={() => { setView(!view) }} /> : <MdRemoveRedEye fontSize={20} className='login_eye pointer' onClick={() => { setView(!view) }} /> : null}
               <Form key={i.id} {...i} value={value} onChange={onChange} />
             </div>
-
           ))}
 
           <div className='login_action'>

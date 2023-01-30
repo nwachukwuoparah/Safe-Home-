@@ -83,11 +83,10 @@
 
 .login_Home {
   position: absolute;
-  top: -360px;
-  right: -1000px;
+  top: 30px;
+  right: 40px;
   font-size: 25px;
   color: #003F62;
-  /* display: none; */
 }
 
 .login_eye {

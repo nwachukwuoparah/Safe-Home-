@@ -17,8 +17,7 @@ export default function Signup({ }) {
     email: "",
     password: "",
     confirmPassword: "",
-    admin: false,
-
+    admin: false
   })
   let password;
   const input = [

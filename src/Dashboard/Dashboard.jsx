@@ -10,20 +10,18 @@ import Inventory from './Inventory/Inventory';
 import Addproduct from './addProducts/Addproduct';
 import { MdOutlineInsertLink } from "react-icons/md";
 function Dashboard(props) {
-  const { changeTheme, theme } = useContext(ThemeContext)
+  const { changeTheme, display } = useContext(ThemeContext)
   const Navigate = useNavigate()
   const [goods, setGoods] = useState(true)
   const [add, setAdd] = useState(false)
   const [listed, setListed] = useState(false)
   const [sold, setSold] = useState(false)
-
   useEffect(() => {
-    !theme && changeTheme()
+    !display && changeTheme()
   }, [])
 
   return (
     <div className='dashboard'>
-
       <div className='dashboard_head'>
         <div className='dashboard_head_wrap'>
           <h2>Dashboard</h2>
@@ -79,7 +77,6 @@ function Dashboard(props) {
               <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span>
             </div>
           </div>
-
         </div>
         <div className='dashboard_body_right'>
           <div className='dashboard_body_right_head'>

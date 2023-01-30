@@ -25,14 +25,13 @@ function App() {
           <Route path={'/Catogories'} element={<AllCategories />} />
           <Route path={'/detail/:id'} element={<Detail />} />
           <Route path={'/cart'} element={<Cart />} />
-          <Route path={'/login'} element={<Login/>} />
+          <Route path={'/login'} element={<Login />} />
           <Route path={'/signUp'} element={<Signup />} />
           <Route path={'/dashboard'} element={<Dashboard />} />
         </Routes>
         {!display ? <Footer /> : null}
       </Router>
       <Router>
-
       </Router>
     </div>
   )
