@@ -31,9 +31,9 @@ export default function Form(props) {
     <>
       <div style={{marginTop : props.name === "Password" ?  30: null}} className='form_input_wrap'>
         <div  className='login_input_warp'>
-          <input
+          <input className='login_input'
           onChange={props.onChange}
-          className='login_input'
+         
           placeholder={props.placeholder}
           type={props.type}
           name={props.name}

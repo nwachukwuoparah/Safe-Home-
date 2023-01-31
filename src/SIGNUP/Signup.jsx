@@ -4,8 +4,6 @@ import Form from './Form'
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
-import { MdRemoveRedEye } from "react-icons/md";
 export default function Signup({ }) {
   const [view, setView] = useState(false)
   const { changeTheme, display } = useContext(ThemeContext)
@@ -97,12 +95,9 @@ export default function Signup({ }) {
           </div>
           <form className='sign_form' onSubmit={(e) => { e.preventDefault(); console.log(value) }}>
             {brand.map((i) => (
-              <div style={{ marginTop: i.name === "Password" ? -25 : null }} key={i.id}>
-                {i.name === "Password" ? view ? <AiOutlineEyeInvisible className='sign_eye pointer' onClick={() => { setView(!view) }} /> : <MdRemoveRedEye className='sign_eye pointer' onClick={() => { setView(!view) }} /> : null}
-                <Form  {...i} value={value[i.name]} onChange={onChange} />
-              </div>
-
+                <Form  {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
+
             <div className='check'>
               <label className='label'><input className='pointer' type="checkbox"
                 // checked={checked}

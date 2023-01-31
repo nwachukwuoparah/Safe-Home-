@@ -53,6 +53,7 @@ export default function Login({ }) {
         </div>
 
         <form className='form_wrap' onSubmit={() => { event.preventDefault(); }}>
+          
           {input.map((i) => (
             <Form key={i.id} {...i} view={view} setView={setView} />
           ))}
@@ -62,8 +63,6 @@ export default function Login({ }) {
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>
-
-
       </div>
     </div>
   )
