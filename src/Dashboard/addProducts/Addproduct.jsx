@@ -3,7 +3,7 @@ import './addproduct.css'
 import add from './add.png'
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch } from 'react-redux'
-import {addProduct} from '../../REDUX/features'
+import { addProduct } from '../../REDUX/features'
 export default function Addproduct(props) {
   const dispach = useDispatch()
   const [state, setState] = useState(false)
@@ -13,7 +13,7 @@ export default function Addproduct(props) {
       title: "",
       description: "",
       image: "",
-      price:"",
+      price: "",
       stockQuantity: "",
       categories: ""
     }
@@ -24,7 +24,7 @@ export default function Addproduct(props) {
     // console.log(reader)
     reader.onloadend = () => {
       setProduct(reader.result);
-      setProduct({ ...product, image:reader.result});
+      setProduct({ ...product, image: reader.result });
     }
     reader.readAsDataURL(file);
   };
@@ -48,11 +48,11 @@ export default function Addproduct(props) {
             <input onChange={(e) => { setProduct({ ...product, [e.target.name]: e.target.value }) }} name="title" type="text" placeholder='Title' />
           </div>
 
-          <div className=''>
-            <p>description</p>
-            <textarea onChange={(e) => { setProduct({ ...product, [e.target.name]: e.target.value }) }} type="text" maxLength="500" id="w3review" name="description" rows="10" cols="59">
-            </textarea>
-          </div>
+
+          <p className='textarea'>description</p>
+          <textarea onChange={(e) => { setProduct({ ...product, [e.target.name]: e.target.value }) }} type="text" id="w3review" name="description" maxLength="50%" rows="10" cols="59">
+          </textarea>
+
         </div>
 
         <label className='Addproduct_left_middle'>
@@ -88,7 +88,7 @@ export default function Addproduct(props) {
             <h3>{product.price}</h3>
             <p>{product.description}</p>
           </div>
-          <button onClick={()=>{dispach(addProduct(product)) }} className='Addproduct_right_buttom_button'>Commit</button>
+          <button onClick={() => { dispach(addProduct(product)) }} className='Addproduct_right_buttom_button'>Commit</button>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .Addproduct_left_top_input {
@@ -80,8 +80,12 @@ textarea {
   outline: none;
   border: 1px solid #d4d1d1;
   border-radius: 5px;
+  width: 95%;
 }
 
+.textarea {
+  width: 90%;
+}
 
 .Addproduct_right {
   width: 45%;
@@ -168,4 +172,17 @@ textarea {
   font-size: 20px;
   font-weight: 700;
   background-color: #FFA903;
+}
+
+@media screen and (width <= 600px) {
+  .Addproduct {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .Addproduct_left {
+    width: 100%;
+  }
+  .Addproduct_right {
+    width: 100%;
+  }
 }

@@ -12,6 +12,7 @@ import { MdOutlineInsertLink } from "react-icons/md";
 import { useSelector } from 'react-redux';
 function Dashboard(props) {
   const addProduct = useSelector((state) => state.Commerce.addProduct)
+  const [productitem, setProductitem] = useState((localStorage.getItem('Product')))
   const { changeTheme, display } = useContext(ThemeContext)
   const Navigate = useNavigate()
   const [goods, setGoods] = useState(true)
@@ -56,7 +57,7 @@ function Dashboard(props) {
                   setGoods(false)
                   setSold(false)
                 }}
-              ><p >Listed</p><p>5000</p></div>
+              ><p >Listed</p><p>{addProduct.length}</p></div>
               <div className='inventory_item '
                 onClick={() => {
                   setSold(true)
@@ -87,9 +88,9 @@ function Dashboard(props) {
               {listed && <button>Push</button>}
             </div>
           </div>
-          {goods && < Inventory subtitle='Products'  title="Total products:" amount="50,000"/>}
-          {listed && <Inventory addProduct={addProduct} subtitle='Listed' title="Total listed products:" amount={addProduct.length}/>}
-          {sold && <Inventory subtitle="Sold" title="Account Balance:" subtitle="Recently Sold Item"  amount="50,000" sold={sold} />}
+          {goods && < Inventory subtitle='Products' title="Total products:" amount="50,000" />}
+          {listed && <Inventory addProduct={addProduct} addProduct="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />}
+          {sold && <Inventory subtitle="Sold" title="Account Balance:" subtitle="Recently Sold Item" amount="50,000" sold={sold} />}
           {add && <Addproduct />}
         </div>
       </div>
