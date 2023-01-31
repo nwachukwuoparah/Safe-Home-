@@ -147,9 +147,11 @@
 .mobile_input {
   display: none;
 }
-.mobile_nav{
+
+.mobile_nav {
   display: none;
 }
+
 @media screen and (max-width:425px) {
 
   .header {
@@ -208,8 +210,10 @@
     width: 100%;
     top: 60px;
     left: 0px;
-    position:absolute;
+    position: absolute;
     /* background-color: red; */
+    backdrop-filter: blur(2.1px);
+    background: rgba(255, 255, 255, 0.3);
   }
 
   .mobile_sidebar {
@@ -231,19 +235,11 @@
     /* background-color: grey; */
   }
 
-  
+
   .All_category {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-
-  .mobile_sidebar_invisible {
-    width: 40%;
-    height: 100vh;
-    background-color: red;
-    backdrop-filter: blur(2.1px);
-    background: rgba(255, 255, 255, 0.3);
   }
 
   .mobile_sidebar_wrap_profile {
@@ -275,12 +271,13 @@
     background-color: inherit;
 
   }
-  .mobile_nav{
+
+  .mobile_nav {
     width: 35%;
     color: #f8f8f8;
     display: flex;
     align-items: center;
-   justify-content: space-between;
-   /* font-size: 20px; */
+    justify-content: space-between;
+    /* font-size: 20px; */
   }
 }

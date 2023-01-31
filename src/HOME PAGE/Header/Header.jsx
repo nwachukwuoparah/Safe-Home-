@@ -50,6 +50,9 @@ function Header() {
             </div>
           </nav>
 
+
+
+
           <nav className='hl_2'>
             <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
             <p onClick={() => { Navigate('/login'); }} >Login</p>
@@ -59,6 +62,9 @@ function Header() {
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
             </span>
           </nav>
+
+
+
 
         </div>
       </div>
@@ -83,7 +89,7 @@ function Header() {
           </div>}
           {!mobile && <div></div>}
           {mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
-            <div className='mobile_sidebar_cont'>
+            <div  onClick={() => setMobile(!mobile)}  className='mobile_sidebar_cont'>
               <div className='mobile_sidebar'>
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
@@ -109,7 +115,6 @@ function Header() {
                   {/* <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> */}
                 </div>
               </div>
-              <div onClick={() => setMobile(!mobile)} className='mobile_sidebar_invisible'></div>
             </div>}
           <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
         </div>
