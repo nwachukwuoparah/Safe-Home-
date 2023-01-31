@@ -89,8 +89,8 @@ function Dashboard(props) {
             </div>
           </div>
           {goods && < Inventory subtitle='Products' title="Total products:" amount="50,000" />}
-          {listed && <Inventory addProduct={addProduct} addProduct="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />}
-          {sold && <Inventory subtitle="Sold" title="Account Balance:" subtitle="Recently Sold Item" amount="50,000" sold={sold} />}
+          {listed && <Inventory addProduct={addProduct} Product="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />}
+          {sold && <Inventory subtitle="Sold" title="Account Balance:" title="Recently Sold Item" amount="50,000" sold={sold} />}
           {add && <Addproduct />}
         </div>
       </div>
