@@ -128,3 +128,23 @@
   justify-content: space-between;
   width: 40%;
 }
+
+@media screen and (max-width: 425px) {
+  .inventory {
+    display: flex;
+    align-items: center;
+    
+  }
+  .inventory_wrap {
+    width: 95%;
+    margin-left: 0px;
+  }
+ 
+.inventory_main_card_head_wrap_detail{
+  width: 60%;
+}
+.inventory_top_wrap{
+  font-size: 10px;
+}
+
+}

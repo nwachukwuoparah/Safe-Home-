@@ -94,7 +94,6 @@ function Dashboard(props) {
               <BsSearch onClick={() => setSearch(!search)} className='pointer' fontSize={17} />
             </div>}
 
-
           <HiHome onClick={() => { Navigate('/') }} fontSize={30} color='#003F62' />
         </div>
 

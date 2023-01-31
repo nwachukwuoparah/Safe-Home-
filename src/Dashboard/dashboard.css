@@ -45,8 +45,9 @@
 
 .dashboard_body {
   width: 100%;
-  height: 90%;
+  height: 95%;
   display: flex;
+
 }
 
 .dashboard_body_left {
@@ -130,10 +131,24 @@
   font-size: 20px;
   font-weight: 600;
 }
-.dashboard_head_wrap_mobile{
+
+.dashboard_head_wrap_mobile {
   display: none;
 }
+
 @media screen and (max-width:768px) {
+  .dashboard_head {
+    position: fixed;
+    top: 0px;
+    left: 0.1px;
+    backdrop-filter: blur(5.4px);
+    background: rgba(235, 234, 234, 0.27);
+  }
+
+  .dashboard_body {
+    margin-top: 70px;
+  }
+
   .dashboard_head_wrap {
     display: none;
   }
@@ -156,30 +171,34 @@
     /* justify-content: center; */
     box-shadow: -2px 10px 5px -8px rgba(208, 208, 208, 0.75);
   }
-  .dashboard_head_wrap_mobile{
+
+  .dashboard_head_wrap_mobile {
     width: 90%;
     /* background-color: grey; */
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .dashboard_head_wrap_mobile_nav{
+
+  .dashboard_head_wrap_mobile_nav {
     display: flex;
     align-items: center;
-   justify-content: space-between;
+    justify-content: space-between;
     /* background-color: grey; */
-  width: 75%;
+    width: 75%;
   }
+
   .dashboard_input {
     background-color: #f8f8f8;
     display: flex;
     align-items: center;
     justify-content: center;
-    height:27px;
+    height: 27px;
     width: 75%;
     border-radius: 20px;
     border: 1px solid rgb(192, 189, 189);
   }
+
   .dashboard_input input {
     width: 85%;
     outline: none;
@@ -192,9 +211,10 @@
     position: absolute;
     top: 73px;
     left: 0.1px;
-    backdrop-filter: blur(2.4px);
-    background: rgba(255, 255, 255, 0.27);
+    background: rgba(255, 255, 255, 0.7);
+   backdrop-filter: blur(2.9px);
   }
+
   .mobile_dashboard_body_left {
     background-color: #003F62;
     width: 60%;
@@ -203,7 +223,7 @@
     flex-direction: column;
     align-items: end;
   }
-  
+
   .mobile_dashboard_body_left_wrap {
     /* background-color: grey; */
     width: 80%;
@@ -213,20 +233,20 @@
     gap: 60px;
     height: 90%;
   }
-  
+
   .mobile_inventory {
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
-  
+
   .mobile_inventory_item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 95%;
   }
-  
+
   .mobile_dashboard_profile {
     width: 90%;
     display: flex;
@@ -234,10 +254,10 @@
     justify-content: space-between;
     align-self: start;
   }
-  
+
   .mobile_logout {
     display: flex;
     gap: 10px;
   }
-  
+
 }
