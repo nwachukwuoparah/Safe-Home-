@@ -184,13 +184,16 @@
     display: flex;
     align-items: center;
     gap: 50%;
+    padding: 5px;
   }
+
   .mobile_sidebar_close_wrap {
     width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+
   .mobile_sidebar_cont {
     display: flex;
     width: 100%;
@@ -215,16 +218,27 @@
     width: 75%;
     /* background-color: grey; */
   }
-.All_category{
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+
+  .All_category {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
   .mobile_sidebar_invisible {
     width: 40%;
     height: 100vh;
     background-color: red;
     backdrop-filter: blur(2.1px);
     background: rgba(255, 255, 255, 0.3);
+  }
+
+  .mobile_sidebar_wrap_profile {
+    width: 80%;
+  }
+
+  .mobile_cart {
+    font-size: 16px;
+    color: #003F62;
   }
 }

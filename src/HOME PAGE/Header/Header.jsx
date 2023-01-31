@@ -7,6 +7,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import { VscClose } from "react-icons/vsc";
+import { CiLogout } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../Components/ContexApi/Contex'
 import { useSelector } from 'react-redux';
@@ -32,7 +33,7 @@ function Header() {
               <div className='mobile_sidebar'>
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
-                    <VscClose onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} />
+                    <div></div>
                     <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
                   </div>
 
@@ -47,12 +48,12 @@ function Header() {
                     <p>desks.</p>
                     <p>tables.</p>
                   </div>}
+
                 </div>
-
-
-
-
-
+                <div className='mobile_sidebar_wrap_profile'>
+                  {/* <p onClick={() => { Navigate('/signup'); }} >Sign up</p> */}
+                  <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span>
+                </div>
               </div>
               <div onClick={() => setMobile(!mobile)} className='mobile_sidebar_invisible'></div>
             </div>
@@ -99,6 +100,10 @@ function Header() {
           </div>}
           <img className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 80 }} src={Unionheader} />
           <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
+          <span className='mobile_cart' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
+              <p >Cart</p>
+              <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
+            </span>
         </div>
       </div>
 
