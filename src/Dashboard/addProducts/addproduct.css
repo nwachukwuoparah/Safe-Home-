@@ -174,14 +174,16 @@ textarea {
   background-color: #FFA903;
 }
 
-@media screen and (width <= 600px) {
+@media screen and (max-width:425px) {
   .Addproduct {
     display: flex;
     flex-wrap: wrap;
   }
+
   .Addproduct_left {
     width: 100%;
   }
+
   .Addproduct_right {
     width: 100%;
   }
