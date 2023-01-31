@@ -148,7 +148,7 @@
   display: none;
 }
 .mobile_nav{
-  display: block;
+  display: none;
 }
 @media screen and (max-width:425px) {
 

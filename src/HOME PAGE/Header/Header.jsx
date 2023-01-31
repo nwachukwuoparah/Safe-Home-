@@ -105,8 +105,8 @@ function Header() {
 
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
-                  {/* <p onClick={() => { Navigate('/signup'); }} >Sign up</p> */}
-                  <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span>
+                  <p onClick={() => { Navigate('/signup'); }} >Sign up</p>
+                  {/* <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> */}
                 </div>
               </div>
               <div onClick={() => setMobile(!mobile)} className='mobile_sidebar_invisible'></div>
