@@ -13,7 +13,7 @@ import { ThemeContext } from '../../Components/ContexApi/Contex'
 import { useSelector } from 'react-redux';
 function Header() {
   const [search, setSearch] = useState(false)
-  const [mobile, setMobile] = useState(true)
+  const [mobile, setMobile] = useState(false)
   const [category, setCategory] = useState(false)
   const [mobileCategory, setmobilCategory] = useState(false)
   const cart = useSelector((state) => state.Commerce.cart)
@@ -30,10 +30,10 @@ function Header() {
         <div className='header1_wrap'>
           <img className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 80 }} src={Unionheader} />
           {search ? <div className='mobile_input'>
-              <input />
-              <BsSearch className='pointer' onClick={()=>setSearch(!search)} fontSize={13}/>
-            </div> : <div className='mobile_nav'>
-            <BsSearch onClick={()=>setSearch(!search)} className='pointer' />
+            <input />
+            <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
+          </div> : <div className='mobile_nav'>
+            <BsSearch onClick={() => setSearch(!search)} className='pointer' />
             <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} />
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
@@ -69,7 +69,7 @@ function Header() {
         </div>
       </div>
 
-      <div className='header2' onClick={()=>setSearch(false)}>
+      <div className='header2' onClick={() => setSearch(false)}>
         <div className='header2_wrap'>
           <div
             onMouseEnter={() => setCategory(true)}
@@ -87,10 +87,10 @@ function Header() {
             <p>desks.</p>
             <p>tables.</p>
           </div>}
-          {!mobile && <div></div>}
-          {mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
-            <div  onClick={() => setMobile(!mobile)}  className='mobile_sidebar_cont'>
-              <div className='mobile_sidebar'>
+          {mobile && <div></div>}
+          {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
+            <div className='mobile_sidebar_cont'>
+              <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
@@ -115,6 +115,7 @@ function Header() {
                   {/* <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> */}
                 </div>
               </div>
+              <div className="invisible" onClick={() => setMobile(!mobile)}></div>
             </div>}
           <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
         </div>
