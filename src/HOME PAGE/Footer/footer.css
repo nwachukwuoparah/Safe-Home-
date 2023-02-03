@@ -101,11 +101,12 @@ width: 100%;
 
 @media screen and (max-width:425px) {
   .footer {
-    height: 70vh;
+    height: 50vh;
   }
 
   .footer_wrap {
     width: 90%;
+    padding: 0px;
   }
 
   .News_Letter {
