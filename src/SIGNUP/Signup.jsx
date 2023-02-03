@@ -13,11 +13,13 @@ export default function Signup({ }) {
   const [value, setValue] = useState({
     name: "",
     email: "",
-    password: "",
+    Password: "",
     confirmPassword: "",
-    admin: false
+    admin: false,
+    brandName: "",
   })
-  let password;
+  const { name, email, Password, brandName, } = value
+  const userData = { name, email, Password, brandName, }
   const input = [
     {
       id: 1,
@@ -49,7 +51,7 @@ export default function Signup({ }) {
       type: view ? "text" : "password",
       err: "Password dont match",
       placeholder: " confirmPassword",
-      pattern: value.password,
+      // pattern: value.password,
       required: true,
     }
   ]
@@ -59,7 +61,7 @@ export default function Signup({ }) {
     if (value.admin) {
       setBrand([...input, {
         id: 5,
-        name: "brand name",
+        name: "brandName",
         type: "text",
         err: "Brand name should be 3-16 caharters and should not include any special charater!",
         placeholder: "brand name",
@@ -93,9 +95,9 @@ export default function Signup({ }) {
             <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); console.log(value) }}>
+          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); console.log(userData) }}>
             {brand.map((i) => (
-                <Form  {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
+              <Form  {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
 
             <div className='check'>

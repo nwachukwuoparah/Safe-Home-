@@ -11,7 +11,7 @@ import Addproduct from './addProducts/Addproduct';
 import { MdOutlineInsertLink } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import { useSelector } from 'react-redux';
-
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 function Dashboard(props) {
   const [search, setSearch] = useState(false)
   const [menu, setMenu] = useState(false)
@@ -30,51 +30,27 @@ function Dashboard(props) {
   const mobileSide = (
     <div onClick={() => setMenu(false)} className='mobile_dashboard_body_left_cont '>
       <div className='mobile_dashboard_body_left'>
-      <div className='mobile_dashboard_body_left_wrap'>
-        <img style={{ width: 150 }} src={Logo} />
-        <div className='mobile_inventory'>
-          <h5>inventory</h5>
-          <div className='mobile_inventory_item '
-            onClick={() => {
-              setAdd(false)
-              setGoods(true)
-              setListed(false)
-              setSold(false)
-            }}
-          ><p>Products</p><p>5000</p></div>
-          <div className='mobile_inventory_item'
-            onClick={() => {
-              setListed(true)
-              setAdd(false)
-              setGoods(false)
-              setSold(false)
-            }}
-          ><p >Listed</p><p>{addProduct.length}</p></div>
-          <div className='mobile_inventory_item'
-            onClick={() => {
-              setSold(true)
-              setListed(false)
-              setAdd(false)
-              setGoods(false)
-            }}
-          ><p>Sold</p><p>5000</p></div>
-          <div className='mobile_inventory_item'><p>Processing</p><p>5000</p></div>
-          <MdOutlineInsertLink fontSize={50} onClick={() => {
-            setAdd(true)
-            setGoods(false)
-            setListed(false)
-            setSold(false)
-          }} />
+        <div className='mobile_dashboard_body_left_wrap'>
+          <img style={{ width: 150 }} src={Logo} />
+          <div className='mobile_inventory'>
+            <h5>inventory</h5>
+            <div className='mobile_inventory_item '><p>Products</p><p>5000</p></div>
+            <div className='mobile_inventory_item'
+              onClick={() => { Navigate('/listed') }}
+            ><p >Listed</p><p>{addProduct.length}</p></div>
+            <div className='mobile_inventory_item' onClick={() => { Navigate('/sold') }}><p>Sold</p><p>5000</p></div>
+            <div className='mobile_inventory_item'><p>Processing</p><p>5000</p></div>
+            <MdOutlineInsertLink onClick={() => { Navigate('/addProduct') }} fontSize={50} />
 
-        </div>
-        <div className='mobile_dashboard_profile'>
-          <img style={{ width: 50 }} src={Logo} />
-          <span className='mobile_logout'><CiLogout fontSize={20} /><p>Log Out</p></span>
+          </div>
+          <div className='mobile_dashboard_profile'>
+            <img style={{ width: 50 }} src={Logo} />
+            <span className='mobile_logout'><CiLogout fontSize={20} /><p>Log Out</p></span>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    
+
   )
 
 
@@ -113,37 +89,11 @@ function Dashboard(props) {
             <img style={{ width: 150 }} src={Logo} />
             <div className='inventory'>
               <h5>inventory</h5>
-              <div className='inventory_item '
-                onClick={() => {
-                  setAdd(false)
-                  setGoods(true)
-                  setListed(false)
-                  setSold(false)
-                }}
-              ><p>Products</p><p>5000</p></div>
-              <div className='inventory_item '
-                onClick={() => {
-                  setListed(true)
-                  setAdd(false)
-                  setGoods(false)
-                  setSold(false)
-                }}
-              ><p >Listed</p><p>{addProduct.length}</p></div>
-              <div className='inventory_item '
-                onClick={() => {
-                  setSold(true)
-                  setListed(false)
-                  setAdd(false)
-                  setGoods(false)
-                }}
-              ><p>Sold</p><p>5000</p></div>
+              <div className='inventory_item ' onClick={() => { Navigate('/dashboard') }}><p>Products</p><p>5000</p></div>
+              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/listed') }} ><p >Listed</p><p>{addProduct.length}</p></div>
+              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/sold') }}><p>Sold</p><p>5000</p></div>
               <div className='inventory_item '><p>Processing</p><p>5000</p></div>
-              <MdOutlineInsertLink fontSize={50} onClick={() => {
-                setAdd(true)
-                setGoods(false)
-                setListed(false)
-                setSold(false)
-              }} />
+              <MdOutlineInsertLink fontSize={50} onClick={() => { Navigate('/dashboard/addProduct') }} />
 
             </div>
             <div className='dashboard_profile'>
@@ -153,7 +103,6 @@ function Dashboard(props) {
           </div>
         </div>
 
-
         <div onClick={() => setSearch(false)} className='dashboard_body_right'>
           <div className='dashboard_body_right_head'>
             <div className='dashboard_body_right_head_wrap'>
@@ -161,13 +110,16 @@ function Dashboard(props) {
               {listed && <button>Push</button>}
             </div>
           </div>
-          {goods && < Inventory subtitle='Products' title="Total products:" amount="50,000" />}
-          {listed && <Inventory addProduct={addProduct} Product="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />}
-          {sold && <Inventory subtitle="Sold" title="Account Balance:" title="Recently Sold Item" amount="50,000" sold={sold} />}
-          {add && <Addproduct />}
+          <Routes>
+            <Route path={'/'} element={< Inventory subtitle='Products' title="Total products:" amount="50,000" />} />
+            <Route path={'listed'} element={<Inventory addProduct={addProduct} Product="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />} />
+            <Route path={'/sold'} element={<Inventory subtitle="Sold" title="Account Balance:" title="Recently Sold Item" amount="50,000" sold={sold} />} />
+            <Route path={'/addProduct'} element={<Addproduct />} />
+          </Routes>
         </div>
       </div>
     </div>
   )
 }
 export default Dashboard
+

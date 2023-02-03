@@ -11,27 +11,36 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
-import Swal from 'sweetalert2'
 function Products({ item, title }) {
+  const [cartAlert, setCartAlert] = useState(false)
   const dispach = useDispatch()
+
+  const cartA = () => {
+    setCartAlert(true)
+    setTimeout(function () {
+      setCartAlert(false)
+    }, 3000);
+    return
+  }
+
   return (
     <div className='Products'>
+      {cartAlert && <div className='cartAlert'><h3>Product added successfully</h3></div>}
       <div className='Products_wrap'>
         <div className='Products_bar'>
           <div className='Products_bar_wrap'>
             <h2>{title}</h2>
             <div className='Products_filter'>
-              <MdList  fontSize={30} />
-              <MdOutlineApps  fontSize={22.5} />
+              <MdList fontSize={30} />
+              <MdOutlineApps fontSize={22.5} />
             </div>
           </div>
         </div>
 
-        
         {item?.map((i) => (
-          <div  onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards pointer'>
+          <div onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards pointer'>
             <div className='Products_Cards_wrap'>
-              <Link  className='Products_Cards_wrap' to={`/detail/${i.id}`}>
+              <Link className='Products_Cards_wrap' to={`/detail/${i.id}`}>
                 <img src={i.image} />
                 <div className='Products_text'>
                   <p>{i.title}</p>
@@ -45,20 +54,9 @@ function Products({ item, title }) {
                   </div>
                 </div>
               </Link>
-              <div onClick={() => {
-                dispach(addToCart(i));
-                Swal.fire({
-                  title: 'Custom animation with Animate.css',
-                  showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                  },
-                  hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                  }
-                })
-              }} className='Products_add' >
+              <div onClick={() => { dispach(addToCart(i)); cartA(); }} className='Products_add' >
                 <div className='Products_add_wrap'>
-                  <p  className='pointer' > Add to Cart</p>
+                  <p className='pointer' > Add to Cart</p>
                   <HiOutlineShoppingCart />
                 </div>
               </div>

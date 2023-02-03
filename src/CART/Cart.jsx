@@ -4,10 +4,12 @@ import axios from "axios";
 import Categoriesroute from '../Components/ROUT/Categoriesroute'
 import Products from '../Components/PRODUCT/Products';
 import { useSelector } from 'react-redux';
-import payKorapay from '../Components/payments';
 import { useDispatch } from 'react-redux'
 import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
+import Alert from '../Components/Alert/Alert'
 export default function Cart() {
+  const [remove, setremove] = useState({})
+  const [alert, setAlert] = useState(false)
   const dispach = useDispatch()
   const cart = useSelector((state) => state.Commerce.cart)
   const recent = useSelector((state) => state.Commerce.RECENT)
@@ -53,7 +55,8 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className='cart_card_middle'>
-                  <button className='cart_delete pointer' onClick={() => { dispach(removeItem(i)) }} >Delete</button>
+
+                  <button className='cart_delete pointer' onClick={() => { setAlert(true); setremove(i) }}>Delete</button>
                   <div className='cart_card_middel_navs'>
                     <button className='cart_change pointer' onClick={() => { dispach(addToCart(i)) }}>+</button>
                     <h4>{i.QTY}</h4>
@@ -63,10 +66,13 @@ export default function Cart() {
               </div>
             ))}
             <div className='cart_card_buttom'>
-              <button className='cart_checkout pointer' onClick={() => { payKorapay(Total()) }}>Checkout</button>
+              <button className='cart_checkout pointer'>Checkout</button>
               <h4>Total:{Total()}</h4>
             </div>
           </div>
+
+          {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
+
         </div>
       </div>
       <Products item={recent} title='Recently Viewed' />

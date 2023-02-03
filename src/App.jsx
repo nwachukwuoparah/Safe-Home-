@@ -27,7 +27,7 @@ function App() {
           <Route path={'/cart'} element={<Cart />} />
           <Route path={'/login'} element={<Login />} />
           <Route path={'/signUp'} element={<Signup />} />
-          <Route path={'/dashboard'} element={<Dashboard />} />
+          <Route path={'/dashboard/*'} element={<Dashboard />} />
         </Routes>
         {!display ? <Footer /> : null}
       </Router>

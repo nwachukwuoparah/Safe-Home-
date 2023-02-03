@@ -3,7 +3,6 @@ import React from 'react'
 
  function Categoriesroute({ }) {
 
-
   return (
       <div className='route'>
         <div className='route_wrap'>
