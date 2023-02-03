@@ -34,13 +34,11 @@ function Dashboard(props) {
           <img style={{ width: 150 }} src={Logo} />
           <div className='mobile_inventory'>
             <h5>inventory</h5>
-            <div className='mobile_inventory_item '><p>Products</p><p>5000</p></div>
-            <div className='mobile_inventory_item'
-              onClick={() => { Navigate('/listed') }}
-            ><p >Listed</p><p>{addProduct.length}</p></div>
-            <div className='mobile_inventory_item' onClick={() => { Navigate('/sold') }}><p>Sold</p><p>5000</p></div>
+            <div className='mobile_inventory_item ' onClick={() => { Navigate('/dashboard') }}><p>Products</p><p>5000</p></div>
+            <div className='mobile_inventory_item'onClick={() => { Navigate('/dashboard/listed') }}><p >Listed</p><p>{addProduct.length}</p></div>
+            <div className='mobile_inventory_item' onClick={() => { Navigate('/dashboard/sold') }}><p>Sold</p><p>5000</p></div>
             <div className='mobile_inventory_item'><p>Processing</p><p>5000</p></div>
-            <MdOutlineInsertLink onClick={() => { Navigate('/addProduct') }} fontSize={50} />
+            <MdOutlineInsertLink onClick={() => { Navigate('/dashboard/addProduct') }} fontSize={50} />
 
           </div>
           <div className='mobile_dashboard_profile'>
