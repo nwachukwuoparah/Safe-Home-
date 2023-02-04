@@ -78,11 +78,7 @@ function Detail({ }) {
                 <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button>
               </div>
             </div>
-
           </div>
-
-
-
           <div className='detail_description'>
             <div className='detail_description_head'><h3>Product details</h3></div>
             <div className='detail_description_text'>
@@ -91,7 +87,10 @@ function Detail({ }) {
           </div>
         </div>
 
-      </div >
+      </div>
+
+
+
       {recent.length !== 0 ? <Products item={recent} title='Recently Viewed' /> : null}
       <Products item={item1} title='Related items' />
     </div >

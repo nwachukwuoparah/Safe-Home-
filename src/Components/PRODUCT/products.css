@@ -122,6 +122,47 @@
 }
 /* TOGGLE */
 
+@media screen and (max-width:768px) {
+  .Products_wrap {
+    width: 95%;
+  }
+
+  .Products_bar {
+    height: 40px;
+  }
+
+  .Products_bar h2 {
+    font-size: 16px;
+  }
+
+  .Products_filter {
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Products_Cards {
+    width: 30%;
+    /* border: 1px solid; */
+  }
+
+  .Products_Cards_wrap {
+    width: 100%;
+  }
+
+  .Products_add {
+    display: flex;
+    width: 80%;
+    font-size: 20px;
+  }
+  .Products_add_wrap {
+width: 70%;
+  }
+  .Products_add p{
+    font-size: 14px;
+  }
+}
 @media screen and (max-width:425px) {
   .Products_wrap {
     width: 95%;
