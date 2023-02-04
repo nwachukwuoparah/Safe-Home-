@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './inventory.css'
 import { GrMoney } from "react-icons/gr";
 import image from "./image.jpeg"
 function Inventory(props) {
-
 
   return (
     <div className='inventory'>
@@ -36,7 +35,7 @@ function Inventory(props) {
                 <div className='inventory_Card_wrap'>
                   <div className='inventory_Card_image'>
                     <img style={{ width: 100, height: 100 }} src={i.image} />
-                    <h3>Computer Chair</h3>
+                    <h3>{i.title}</h3>
                   </div>
                   <div className='inventory_Card_details'>
                     <p>{i.categories}</p>

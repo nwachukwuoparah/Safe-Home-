@@ -11,7 +11,7 @@ import Cart from './CART/Cart'
 import Dashboard from './Dashboard/Dashboard'
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeContext } from './Components/ContexApi/Contex'
-
+import Payment from './PAYMENT/Payment'
 function App() {
   // const [state, setState] = useState(false)
   const { display } = useContext(ThemeContext)
@@ -22,6 +22,7 @@ function App() {
         {!display ? <Header /> : null}
         <Routes>
           <Route path={'/'} element={<Home />} />
+          <Route path={'/payment'} element={<Payment />} />
           <Route path={'/Catogories'} element={<AllCategories />} />
           <Route path={'/detail/:id'} element={<Detail />} />
           <Route path={'/cart'} element={<Cart />} />

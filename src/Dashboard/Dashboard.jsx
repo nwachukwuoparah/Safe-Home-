@@ -19,14 +19,16 @@ function Dashboard(props) {
   const [productitem, setProductitem] = useState((localStorage.getItem('Product')))
   const { changeTheme, display } = useContext(ThemeContext)
   const Navigate = useNavigate()
-  const [goods, setGoods] = useState(true)
-  const [add, setAdd] = useState(false)
+
   const [listed, setListed] = useState(false)
   const [sold, setSold] = useState(false)
+
   useEffect(() => {
     !display && changeTheme()
   }, [])
-
+  useEffect(() => {
+    console.log(listed)
+  }, [listed])
   const mobileSide = (
     <div onClick={() => setMenu(false)} className='mobile_dashboard_body_left_cont '>
       <div className='mobile_dashboard_body_left'>
@@ -34,11 +36,11 @@ function Dashboard(props) {
           <img style={{ width: 150 }} src={Logo} />
           <div className='mobile_inventory'>
             <h5>inventory</h5>
-            <div className='mobile_inventory_item ' onClick={() => { Navigate('/dashboard') }}><p>Products</p><p>5000</p></div>
-            <div className='mobile_inventory_item'onClick={() => { Navigate('/dashboard/listed') }}><p >Listed</p><p>{addProduct.length}</p></div>
-            <div className='mobile_inventory_item' onClick={() => { Navigate('/dashboard/sold') }}><p>Sold</p><p>5000</p></div>
+            <div className='mobile_inventory_item ' onClick={() => { Navigate('/dashboard'); setListed(false) ; setSold(false) }}><p>Products</p><p>5000</p></div>
+            <div className='mobile_inventory_item' onClick={() => { Navigate('/dashboard/listed'); setListed(true); setSold(false) }}><p >Listed</p><p>{addProduct.length}</p></div>
+            <div className='mobile_inventory_item' onClick={() => { Navigate('/dashboard/sold') ;setListed(false) ;setSold(true) }}><p>Sold</p><p>5000</p></div>
             <div className='mobile_inventory_item'><p>Processing</p><p>5000</p></div>
-            <MdOutlineInsertLink onClick={() => { Navigate('/dashboard/addProduct') }} fontSize={50} />
+            <MdOutlineInsertLink onClick={() => { Navigate('/dashboard/addProduct') ;setListed(false) ; setSold(false) }} fontSize={50} />
 
           </div>
           <div className='mobile_dashboard_profile'>
@@ -87,12 +89,11 @@ function Dashboard(props) {
             <img style={{ width: 150 }} src={Logo} />
             <div className='inventory'>
               <h5>inventory</h5>
-              <div className='inventory_item ' onClick={() => { Navigate('/dashboard') }}><p>Products</p><p>5000</p></div>
-              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/listed') }} ><p >Listed</p><p>{addProduct.length}</p></div>
-              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/sold') }}><p>Sold</p><p>5000</p></div>
+              <div className='inventory_item ' onClick={() => { Navigate('/dashboard') ;setListed(false) ; setSold(false) }}><p>Products</p><p>5000</p></div>
+              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/listed');setListed(true) ; setSold(false) }} ><p >Listed</p><p>{addProduct.length}</p></div>
+              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/sold'); setListed(false); setSold(true)  }}><p>Sold</p><p>5000</p></div>
               <div className='inventory_item '><p>Processing</p><p>5000</p></div>
-              <MdOutlineInsertLink fontSize={50} onClick={() => { Navigate('/dashboard/addProduct') }} />
-
+              <MdOutlineInsertLink fontSize={50} onClick={() => { Navigate('/dashboard/addProduct') ; setSold(false) }} />
             </div>
             <div className='dashboard_profile'>
               <img style={{ width: 50 }} src={Logo} />

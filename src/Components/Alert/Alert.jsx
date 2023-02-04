@@ -16,3 +16,9 @@ export default function ({ red, blue, Click, SetAlert, alert, dispach, removeIte
     </div>
   )
 }
+
+export const CartAlert = () => {
+  return (
+    <div className='cartAlert'><h3>Product added successfully</h3></div>
+  )
+}

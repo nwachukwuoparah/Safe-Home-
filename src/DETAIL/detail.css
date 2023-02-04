@@ -8,8 +8,7 @@
 }
 
 .detail_wrap {
-  width: 85%;
-
+  width: 80%;
 }
 
 .detail_item {
@@ -17,7 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  min-height: 400px;
+  height: 400px;
   width: 60%;
   padding: 20px;
   gap: 50px;

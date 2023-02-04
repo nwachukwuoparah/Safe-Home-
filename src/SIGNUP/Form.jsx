@@ -9,7 +9,7 @@ export default function Form(props) {
   }
   return (
     <>
-      <div className='signup_form_input_wrap'>
+      <div style={{ border: focus ? '1px solid red' : null }} className='signup_form_input_wrap'>
         <div className='signup_input_warp'>
           <input className='SignUp_input'
             onChange={props.onChange}

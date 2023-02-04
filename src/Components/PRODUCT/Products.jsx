@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import axios from 'axios';
 import './products.css'
 import { MdOutlineApps } from "react-icons/md";
@@ -11,18 +11,10 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
+import { ThemeContext } from '../ContexApi/Contex';
 function Products({ item, title }) {
-  const [cartAlert, setCartAlert] = useState(false)
+  const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
-
-  const cartA = () => {
-    setCartAlert(true)
-    setTimeout(function () {
-      setCartAlert(false)
-    }, 3000);
-    return
-  }
-
   return (
     <div className='Products'>
       {cartAlert && <div className='cartAlert'><h3>Product added successfully</h3></div>}

@@ -99,7 +99,7 @@ export default function Signup({ }) {
             {brand.map((i) => (
               <Form  {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
-
+       
             <div className='check'>
               <label className='label'><input className='pointer' type="checkbox"
                 // checked={checked}

@@ -4,23 +4,6 @@ import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 
 export default function Form(props) {
-  // const input = [
-  //   {
-  //     id: 1,
-  //     placeholder: "Email",
-  //     type: "email",
-  //     name: "Email",
-  //     err: "not a valid email",
-  //     required: true
-  //   },
-  //   {
-  //     id: 2,
-  //     placeholder: "Password",
-  //     type: view ? "text" : "password",
-  //     name: "Password",
-  //     err: "Password must include upper case ",
-  //   }
-  // ]
 
   const [focus, setFocus] = useState(false)
 
@@ -29,7 +12,7 @@ export default function Form(props) {
   }
   return (
     <>
-      <div style={{marginTop : props.name === "Password" ?  30: null}} className='form_input_wrap'>
+      <div style={{marginTop : props.name === "Password" ?  30: null,  border: focus ? '1px solid red' : null}} className='form_input_wrap'>
         <div  className='login_input_warp'>
           <input className='login_input'
           onChange={props.onChange}

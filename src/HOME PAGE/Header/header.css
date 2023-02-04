@@ -66,17 +66,9 @@
   cursor: pointer;
 }
 
-.hl_2 p:hover {
-  transform: scale(1.3);
-  transition: 1.2s;
-  height: 100%;
-  /* color:black */
-}
-
 .adm:hover {
-  transform: scale(1.1);
-  /* color:black */
-  transition: 1.2s;
+  transform: scale(1.3); 
+  transition: 1.5s;
 }
 
 .pointer {

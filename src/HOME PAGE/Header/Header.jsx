@@ -55,12 +55,12 @@ function Header() {
 
           <nav className='hl_2'>
             <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
-            <p onClick={() => { Navigate('/login'); }} >Login</p>
-            <p onClick={() => { Navigate('/signup'); }} >Sign up</p>
-            <span className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
-              <p >Cart</p>
-              <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
-            </span>
+            <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>
+            <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>
+            <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
+              <p>Cart</p>
+              <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
+            </div>
           </nav>
 
 
