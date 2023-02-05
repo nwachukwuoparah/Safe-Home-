@@ -38,7 +38,7 @@ function Header() {
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} />
+            {activeuser.admin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -94,7 +94,7 @@ function Header() {
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
-                    {activeuser.admin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
+                    <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
                   </div>
 
                 </div>
@@ -121,7 +121,7 @@ function Header() {
         </div>
       </div>
 
-    </header>
+    </header >
   )
 }
 export default Header
