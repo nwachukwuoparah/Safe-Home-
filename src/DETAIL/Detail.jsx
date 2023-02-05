@@ -17,7 +17,7 @@ import { CartAlert } from "../Components/Alert/Alert"
 import { ThemeContext } from '../Components/ContexApi/Contex';
 function Detail({ }) {
   const navigate = useNavigate()
-  const { changeTheme, display, cartAlert, cartA } = useContext(ThemeContext)
+  const { changeTheme, display, cartAlert, cartA, activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
   const { id } = useParams()
@@ -74,7 +74,7 @@ function Detail({ }) {
               <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
-                <button className='button1 pointer' onClick={() => { navigate('/payment') }}>Buy now</button>
+                <button className='button1 pointer' onClick={() => { activeuser ? navigate('/payment') : navigate('/signUp') }}>Buy now</button>
                 <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button>
               </div>
             </div>

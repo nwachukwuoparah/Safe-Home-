@@ -9,7 +9,7 @@ export default function Form(props) {
   }
   return (
     <>
-      <div style={{ border: focus ? '1px solid red' : null }} className='signup_form_input_wrap'>
+      <div className='signup_form_input_wrap'>
         <div className='signup_input_warp'>
           <input className='SignUp_input'
             onChange={props.onChange}
@@ -23,7 +23,7 @@ export default function Form(props) {
           />
           <span className='err'>{props.err}</span>
         </div>
-        {props.name === "Password" ? props.view ? <AiOutlineEyeInvisible onClick={() => { props.setView(!props.view) }} /> : <MdRemoveRedEye className='sign_eye pointer' onClick={() => { props.setView(!props.view) }} /> : null}
+        {props.name === "password" ? props.view ? <AiOutlineEyeInvisible onClick={() => { props.setView(!props.view) }} /> : <MdRemoveRedEye className='sign_eye pointer' onClick={() => { props.setView(!props.view) }} /> : null}
       </div>
 
     </>

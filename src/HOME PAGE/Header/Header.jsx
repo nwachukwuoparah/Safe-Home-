@@ -18,12 +18,16 @@ function Header() {
   const [mobileCategory, setmobilCategory] = useState(false)
   const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
-  const { changeTheme, notice } = useContext(ThemeContext)
+  const { changeTheme, notice, activeuser } = useContext(ThemeContext)
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
-    return QTY
+    return QT
   }
+
+  useEffect(() => {
+    // activeuser ? null : Navigate("/signUp")
+  }, [])
   return (
     <header className='header' >
       <div className='header1'>
@@ -54,7 +58,7 @@ function Header() {
 
 
           <nav className='hl_2'>
-            <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+            {activeuser?.admin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
             <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>
             <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
@@ -62,10 +66,6 @@ function Header() {
               <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
             </div>
           </nav>
-
-
-
-
         </div>
       </div>
 
@@ -94,7 +94,7 @@ function Header() {
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
-                    <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+                    {activeuser.admin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
                   </div>
 
                 </div>

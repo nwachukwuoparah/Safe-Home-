@@ -6,20 +6,22 @@ import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Signup({ }) {
   const [view, setView] = useState(false)
-  const { changeTheme, display } = useContext(ThemeContext)
+  const { changeTheme, display, users, setUsers } = useContext(ThemeContext)
   const [checked, setChecked] = useState(false)
   const [terms, setTerms] = useState(false)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     name: "",
     email: "",
-    Password: "",
+    password: "",
     confirmPassword: "",
     admin: false,
     brandName: "",
   })
-  const { name, email, Password, brandName, } = value
-  const userData = { name, email, Password, brandName, }
+
+  const { name, email, password, brandName, admin } = value
+  const userData = { name, email, password, brandName, admin }
+
   const input = [
     {
       id: 1,
@@ -39,7 +41,7 @@ export default function Signup({ }) {
       required: true,
     }, {
       id: 3,
-      name: "Password",
+      name: "password",
       type: view ? "text" : "Password",
       err: "Password should be 8-20 charaters and include at least 1 letter, 1 number and one special charater! ",
       placeholder: "password",
@@ -52,12 +54,12 @@ export default function Signup({ }) {
       err: "Password dont match",
       placeholder: " confirmPassword",
       // pattern: value.password,
-      required: true,
+      // required: true,
     }
   ]
   const [brand, setBrand] = useState(input)
 
-  const admin = () => {
+  const adminC = () => {
     if (value.admin) {
       setBrand([...input, {
         id: 5,
@@ -79,12 +81,19 @@ export default function Signup({ }) {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
   useEffect(() => {
-    admin()
+    adminC()
   }, [checked, value, view])
 
   useEffect(() => {
     !display && changeTheme()
   }, [])
+
+  const SingUp = (value) => {
+    setUsers([...users, userData])
+
+    Navigate("/login")
+  }
+
 
   return (
     <>
@@ -95,11 +104,11 @@ export default function Signup({ }) {
             <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); console.log(userData) }}>
+          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); SingUp(value) }}>
             {brand.map((i) => (
               <Form  {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
-       
+
             <div className='check'>
               <label className='label'><input className='pointer' type="checkbox"
                 // checked={checked}

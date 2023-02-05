@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-
+import { user } from "../../LOGIN/user"
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
@@ -8,13 +8,30 @@ export const ThemeProvider = ({ children }) => {
   const changeTheme = () => {
     setDisplay(!display)
   }
-  
   useEffect(() => {
     localStorage.setItem('state', display);
   }, [display])
 
-  const [cartAlert, setCartAlert] = useState(false)
 
+
+  // handles user logins
+  const [activeuser, setactiveuser] = useState(JSON.parse(localStorage.getItem('activeuser')))
+  useEffect(() => {
+    localStorage.setItem('activeuser', JSON.stringify(activeuser ? activeuser : []));
+    // console.log(activeuser)
+  }, [activeuser])
+
+
+  // handle signUps
+  const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')))
+  useEffect(() => {
+    localStorage.setItem('users', JSON.stringify(users ? users : []))
+    // console.log(users)
+  }, [users])
+
+
+
+  const [cartAlert, setCartAlert] = useState(false)
   const cartA = () => {
     setCartAlert(true)
     setTimeout(function () {
@@ -23,7 +40,7 @@ export const ThemeProvider = ({ children }) => {
 
   }
   return (
-    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA }}>
+    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, activeuser, setactiveuser, users, setUsers }}>
       {children}
     </ThemeContext.Provider>
   )

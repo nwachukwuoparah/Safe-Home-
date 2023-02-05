@@ -7,18 +7,18 @@ import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
   const [view, setView] = useState(false)
   const inputRef = useRef('')
-  const { changeTheme, display } = useContext(ThemeContext)
+  const { changeTheme, display, setactiveuser, users } = useContext(ThemeContext)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
-    Email: "",
-    Password: ""
+    email: "",
+    password: ""
   })
   const input = [
     {
       id: 1,
       placeholder: "Email",
       type: "email",
-      name: "Email",
+      name: "email",
       err: "not a valid email",
       required: true
     },
@@ -26,7 +26,7 @@ export default function Login({ }) {
       id: 2,
       placeholder: "Password",
       type: view ? "text" : "password",
-      name: "Password",
+      name: "password",
       err: "forget password",
     }
   ]
@@ -43,7 +43,21 @@ export default function Login({ }) {
   useEffect(() => {
     !display && changeTheme()
   }, [])
+  // console.log("grace1224#" === "grace1224")
+  const checkUser = () => {
+    const item = users.map((i) => {
+      if (i.email === value.email) {
+        if (i.password === value.password)
+          setactiveuser(i)
+        Navigate("/")
+      } else {
+        Navigate("/signUp")
+      }
+
+    })
+  }
   return (
+
     <div className='login_in'>
       <HiHome onClick={() => { Navigate('/') }} className='login_Home pointer' />
       <div className='login_in_Wrap'>
@@ -52,19 +66,19 @@ export default function Login({ }) {
           <h1> Log into account</h1>
         </div>
 
-        <form className='form_wrap' onSubmit={() => { event.preventDefault(); }}>
-          
+        <form className='form_wrap' onSubmit={() => { event.preventDefault(); checkUser() }}>
           {input.map((i) => (
-            <Form key={i.id} {...i} view={view} setView={setView} />
+            <Form key={i.id} {...i} view={view} setView={setView} onChange={onChange} />
           ))}
 
           <div className='login_action'>
-            <button className='login_button pointer'  >Sign in</button>
+            <button className='login_button pointer'>Sign in</button>
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>
       </div>
     </div>
+
   )
 
 }

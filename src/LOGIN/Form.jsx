@@ -12,11 +12,10 @@ export default function Form(props) {
   }
   return (
     <>
-      <div style={{marginTop : props.name === "Password" ?  30: null,  border: focus ? '1px solid red' : null}} className='form_input_wrap'>
+      <div style={{marginTop : props.name === "password" ?  30: null,  border: focus ? '1px solid red' : null}} className='form_input_wrap'>
         <div  className='login_input_warp'>
           <input className='login_input'
           onChange={props.onChange}
-         
           placeholder={props.placeholder}
           type={props.type}
           name={props.name}
@@ -27,7 +26,7 @@ export default function Form(props) {
           />
           <span className='login_err'>{props.err}</span>
         </div>
-        {props.name === "Password" ? props.view ? <AiOutlineEyeInvisible fontSize={20} className='login_eye pointer' onClick={() => { props.setView(!props.view) }} /> : <MdRemoveRedEye fontSize={20} className='login_eye pointer' onClick={() => { props.setView(!props.view) }} /> : null}
+        {props.name === "password" ? props.view ? <AiOutlineEyeInvisible fontSize={20} className='login_eye pointer' onClick={() => { props.setView(!props.view) }} /> : <MdRemoveRedEye fontSize={20} className='login_eye pointer' onClick={() => { props.setView(!props.view) }} /> : null}
       </div>
 
     </>

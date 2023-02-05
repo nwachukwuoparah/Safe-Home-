@@ -14,7 +14,7 @@ import { ThemeContext } from './Components/ContexApi/Contex'
 import Payment from './PAYMENT/Payment'
 function App() {
   // const [state, setState] = useState(false)
-  const { display } = useContext(ThemeContext)
+  const {display } = useContext(ThemeContext)
   // console.log(theme)
   return (
     <div className='App'>

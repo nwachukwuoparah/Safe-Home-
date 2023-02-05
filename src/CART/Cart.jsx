@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './cart.css'
 import axios from "axios";
@@ -10,7 +10,7 @@ import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
 import Alert from '../Components/Alert/Alert'
 import { ThemeContext } from '../Components/ContexApi/Contex';
 export default function Cart() {
-  const { changeTheme, display } = useContext(ThemeContext)
+  const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const navigate = useNavigate()
   const [remove, setremove] = useState({})
   const [alert, setAlert] = useState(false)
@@ -70,7 +70,7 @@ export default function Cart() {
               </div>
             ))}
             <div className='cart_card_buttom'>
-              <button className='cart_checkout pointer' onClick={() => { navigate('/payment') }}>Checkout</button>
+              <button className='cart_checkout pointer' onClick={() => { activeuser ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
               <h4>Total:{Total()}</h4>
             </div>
           </div>
