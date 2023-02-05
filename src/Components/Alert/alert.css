@@ -87,8 +87,28 @@
   z-index: 300000;
 }
 
-@media screen and (width <=768px) {
+ @media screen and (max-width:768px) {
+  .alert_wrap {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:425px) {
   .alert_wrap {
     width: 80%;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .alert_wrap {
+    width: 80%;
+    height: 25%;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .alert_wrap {
+    width: 80%;
+    height: 20%;
   }
 }
