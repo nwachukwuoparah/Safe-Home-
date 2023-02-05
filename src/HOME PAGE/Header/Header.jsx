@@ -22,7 +22,7 @@ function Header() {
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
-    return QT
+    return QTY
   }
 
   useEffect(() => {
