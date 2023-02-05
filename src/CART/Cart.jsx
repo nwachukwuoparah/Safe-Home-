@@ -69,7 +69,7 @@ export default function Cart() {
               </div>
             ))}
             <div className='cart_card_buttom'>
-              <button className='cart_checkout pointer' onClick={() => { activeuser === true ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
+              <button className='cart_checkout pointer' onClick={() => { activeuser?.email ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
               <h4>Total:{Total()}</h4>
             </div>
           </div>

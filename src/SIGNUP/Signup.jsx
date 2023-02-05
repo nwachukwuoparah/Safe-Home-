@@ -106,7 +106,7 @@ export default function Signup({ }) {
           </div>
           <form className='sign_form' onSubmit={(e) => { e.preventDefault(); SingUp(value) }}>
             {brand.map((i) => (
-              <Form  {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
+              <Form key={i.id} {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
 
             <div className='check'>
