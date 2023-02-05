@@ -57,7 +57,7 @@
   height: 45px;
   outline: none;
   border: none;
-  background-color: #f8f8f8;
+ background: none;
 }
 
 .err{

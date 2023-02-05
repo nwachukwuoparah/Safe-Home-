@@ -11,7 +11,7 @@ export default function Form(props) {
     <>
       <div className='signup_form_input_wrap'>
         <div className='signup_input_warp'>
-          <input className='SignUp_input'
+          <input  className='SignUp_input'
             onChange={props.onChange}
             placeholder={props.placeholder} type={props.type}
             name={props.name}
