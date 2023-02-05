@@ -38,7 +38,7 @@ function Header() {
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            {activeuser.admin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
+            {activeuser?.admin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
