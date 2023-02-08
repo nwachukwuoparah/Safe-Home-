@@ -1,6 +1,7 @@
 import './signup.css'
 import React, { useState, useEffect, useContext } from 'react'
 import Form from './Form'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
@@ -18,9 +19,31 @@ export default function Signup({ }) {
     admin: false,
     brandName: "",
   })
+  const { name, email, password, brandName } = value
+  const userData = { name, email, password, brandName }
 
-  const { name, email, password, brandName, admin } = value
-  const userData = { name, email, password, brandName, admin }
+  const adminSign = () => {
+    axios.post(`https://safehomefurniture.onrender.com/api/adminSign`, userData)
+      .then(function (res) {
+        console.log(res)
+        res.status === 201 ? Navigate('/login') : null
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  const userSign = () => {
+    axios.post(`https://safehomefurniture.onrender.com/api/sign`, userData)
+      .then(function (res) {
+        console.log(res)
+        res.status === 201 ? Navigate('/login') : null
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   const input = [
     {
@@ -78,6 +101,8 @@ export default function Signup({ }) {
       setBrand(input)
     }
   }
+
+
   const onChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
@@ -89,13 +114,6 @@ export default function Signup({ }) {
     !display && changeTheme()
   }, [])
 
-  const SingUp = (value) => {
-    setUsers([...users, userData])
-
-    Navigate("/login")
-  }
-
-
   return (
     <>
       <div className='sign_in'>
@@ -105,7 +123,7 @@ export default function Signup({ }) {
             <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); SingUp(value) }}>
+          <form className='sign_form' onSubmit={(e) => { e.preventDefault();}}>
             {brand.map((i) => (
               <Form key={i.id} {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
@@ -121,7 +139,7 @@ export default function Signup({ }) {
             </div>
 
             <div className='Signup_action'>
-              {value.admin ? <button className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}
+              {value.admin ? <button onClick={() => { adminSign() }} className='button pointer'>Admin</button> : <button onClick={() => { userSign() }} className='button pointer'>Sign up</button>}
               <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
             </div>
 

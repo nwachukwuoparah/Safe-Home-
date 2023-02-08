@@ -1,18 +1,33 @@
 import './login.css'
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import Form from './Form'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
   const [view, setView] = useState(false)
   const inputRef = useRef('')
-  const { changeTheme, display, setactiveuser, users } = useContext(ThemeContext)
+  const { changeTheme, display, setactiveuser } = useContext(ThemeContext)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     email: "",
     password: ""
   })
+
+  const userSign = () => {
+    axios.post(`https://safehomefurniture.onrender.com/api/adminLogin`, value)
+      .then(function (res) {
+        // console.log(res.data.data)
+        res.status === 201 ? Navigate('/') : null
+        res.status === 201 ? setactiveuser(res.data.data) : null
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
   const input = [
     {
       id: 1,
@@ -43,19 +58,7 @@ export default function Login({ }) {
   useEffect(() => {
     !display && changeTheme()
   }, [])
-  // console.log("grace1224#" === "grace1224")
-  const checkUser = () => {
-    const item = users.map((i) => {
-      if (i.email === value.email) {
-        if (i.password === value.password)
-          setactiveuser(i)
-        Navigate("/")
-      } else {
-        Navigate("/signUp")
-      }
-
-    })
-  }
+  
   return (
 
     <div className='login_in'>
@@ -66,13 +69,13 @@ export default function Login({ }) {
           <h1> Log into account</h1>
         </div>
 
-        <form className='form_wrap' onSubmit={() => { event.preventDefault(); checkUser() }}>
+        <form className='form_wrap' onSubmit={() => { event.preventDefault(); }}>
           {input.map((i) => (
             <Form key={i.id} {...i} view={view} setView={setView} onChange={onChange} />
           ))}
 
           <div className='login_action'>
-            <button className='login_button pointer'>Sign in</button>
+            <button onClick={() => { userSign() }} className='login_button pointer'>Sign in</button>
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>

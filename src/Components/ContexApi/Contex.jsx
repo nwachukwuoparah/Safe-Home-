@@ -22,15 +22,6 @@ export const ThemeProvider = ({ children }) => {
   }, [activeuser])
 
 
-  // handle signUps
-  const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')))
-  useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users ? users : []))
-    // console.log(users)
-  }, [users])
-
-
-
   const [cartAlert, setCartAlert] = useState(false)
   const cartA = () => {
     setCartAlert(true)
@@ -40,7 +31,7 @@ export const ThemeProvider = ({ children }) => {
 
   }
   return (
-    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, activeuser, setactiveuser, users, setUsers }}>
+    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, activeuser, setactiveuser }}>
       {children}
     </ThemeContext.Provider>
   )
