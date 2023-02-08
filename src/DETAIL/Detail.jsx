@@ -26,19 +26,18 @@ function Detail({ }) {
   async function getItem() {
     display ? changeTheme() : null
     try {
-      const res = await axios.get(`https://fakestoreapi.com/products/${id}`)
+      const res = await axios.get(`https://dummyjson.com/products/${id}`)
       setItem(res.data)
-      // console.log(res.data)
+      console.log(res.data)
     } catch (e) {
       console.log(e)
     }
   }
 
-
   async function getItem1() {
     try {
-      const res = await axios.get(`https://fakestoreapi.com/products?limit=5`)
-      setItem1(res.data)
+      const res = await axios.get(`https://dummyjson.com/products/category/furniture`)
+      setItem1(res.data.products)
       // console.log(res.data)
     } catch (e) {
       console.log(e)
@@ -52,14 +51,13 @@ function Detail({ }) {
 
   return (
     <div >
-      < Categoriesroute />
-      {/* <Rating /> */}
+      <Categoriesroute />
+      {/* <Rating/> */}
       {cartAlert && <CartAlert />}
       <div className='detail'>
         <div className='detail_wrap'>
           <div className='detail_item'>
-            <img src={item.image} />
-
+            <img src={item?.images?.[0]} />
             <div className='detail_info_wrap'>
               <h3>{item.title}</h3>
               <p>₦{item.price}</p>
@@ -88,9 +86,6 @@ function Detail({ }) {
         </div>
 
       </div>
-
-
-
       {recent.length !== 0 ? <Products item={recent} title='Recently Viewed' /> : null}
       <Products item={item1} title='Related items' />
     </div >

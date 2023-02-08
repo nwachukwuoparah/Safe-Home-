@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios';
 import './products.css'
 import { MdOutlineApps } from "react-icons/md";
@@ -33,7 +33,7 @@ function Products({ item, title }) {
           <div onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards pointer'>
             <div className='Products_Cards_wrap'>
               <Link className='Products_Cards_wrap' to={`/detail/${i.id}`}>
-                <img src={i.image} />
+                <img src={i?.images[0]} />
                 <div className='Products_text'>
                   <p>{i.title}</p>
                   <p>₦{i.price}</p>

@@ -11,8 +11,8 @@ function AllCategories({}) {
   const [item, setItem] = useState([])
   async function getItem() {
     try {
-      const response = await axios.get('https://fakestoreapi.com/products')
-      setItem(response.data)
+      const response = await axios.get('https://dummyjson.com/products/category/furniture')
+      setItem(response.data.products)
       // console.log(response.data)
     } catch (e) {
       console.log(e)

@@ -47,15 +47,16 @@ export default function Signup({ }) {
       placeholder: "password",
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
       required: true,
-    }, {
-      id: 4,
-      name: "confirmPassword",
-      type: view ? "text" : "password",
-      err: "Password dont match",
-      placeholder: " confirmPassword",
-      // pattern: value.password,
-      // required: true,
     }
+    // , {
+    //   id: 4,
+    //   name: "confirmPassword",
+    //   type: view ? "text" : "password",
+    //   err: "Password dont match",
+    //   placeholder: " confirmPassword",
+    //   // pattern: value.password,
+    //   // required: true,
+    // }
   ]
   const [brand, setBrand] = useState(input)
 

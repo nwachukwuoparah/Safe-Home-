@@ -29,7 +29,7 @@
   width: 100%;
   height: 478px;
   margin: 0px auto;
-  object-fit: contain;
+  object-fit:cover;
 }
 
 

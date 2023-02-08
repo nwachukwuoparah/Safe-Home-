@@ -13,8 +13,8 @@ export function Slide({ }) {
 
   async function getItem() {
     try {
-      const response = await axios.get('https://fakestoreapi.com/products')
-      setItem(response.data)
+      const response = await axios.get(`https://dummyjson.com/products/category/furniture`)
+      setItem(response.data.products)
       // console.log(response.data)
     } catch (e) {
       console.log(e)
@@ -66,7 +66,7 @@ export function Slide({ }) {
       <Slider style={slide} className='Slider' {...settings}>
         {item?.map((item) => (
           <div key={item.id} className='slider_wrap'>
-            <img className='image' key={item.id} src={item.image} />
+            <img className='image' key={item.id} src={item.images[2]} />
           </div>))}
       </Slider>
     </div>

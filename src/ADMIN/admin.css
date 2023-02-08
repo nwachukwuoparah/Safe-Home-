@@ -3,13 +3,13 @@
   box-sizing: border-box;
 }
 
-.dashboard {
+.admin_dashboard {
   width: 100%;
   height: 100vh;
   background-color: #F4FBFF;
 }
 
-.dashboard_head {
+.admin_dashboard_head {
   width: 100%;
   height: 10%;
   display: flex;
@@ -18,14 +18,14 @@
   /* background-color: grey; */
 }
 
-.dashboard_head_wrap {
+.admin_dashboard_head_wrap {
   width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.dashboard_input {
+.admin_dashboard_input {
   background-color: #f8f8f8;
   display: flex;
   align-items: center;
@@ -36,21 +36,21 @@
   border: 1px solid rgb(192, 189, 189);
 }
 
-.dashboard_input input {
+.admin_dashboard_input input {
   width: 95%;
   outline: none;
   border: none;
   background-color: inherit;
 }
 
-.dashboard_body {
+.admin_dashboard_body {
   width: 100%;
   height: 90%;
   display: flex;
 
 }
 
-.dashboard_body_left {
+.admin_dashboard_body_left {
   background-color: #003F62;
   width: 20%;
   display: flex;
@@ -58,7 +58,7 @@
   align-items: end;
 }
 
-.dashboard_body_left_wrap {
+.admin_dashboard_body_left_wrap {
   /* background-color: grey; */
   width: 80%;
   display: flex;
@@ -68,38 +68,20 @@
   height: 90%;
 }
 
-.inventory {
+.admin_navs {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 
-.inventory_item {
+.admin_navs_item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 95%;
-  height: 50px;
-  padding: 0px 20px;
-  text-decoration: none;
-  color: inherit;
-  /* background-color: grey; */
 }
 
-.activeClassName {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 95%;
-  height: 50px;
-  padding: 0px 10px;
-  text-decoration: none;
-  color: inherit;
-  border-right: 5px solid #f8f8f8;
-  transition: 2s;
-}
-
-.dashboard_profile {
+.admin_dashboard_profile {
   width: 90%;
   display: flex;
   align-items: center;
@@ -107,39 +89,12 @@
   align-self: start;
 }
 
-.logout {
+.admin_logout {
   display: flex;
   gap: 10px;
 }
 
-
-
-.dashboard_body_right {
-  /* background-color: grey; */
-  width: 80%;
-  height: 100%;
-}
-
-.dashboard_body_right_head {
-  background-color: white;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: -2px 10px 5px -8px rgba(208, 208, 208, 0.75);
-  /* background-color: grey; */
-}
-
-.dashboard_body_right_head_wrap {
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 37px;
-
-}
-
-.dashboard_body_right_head_wrap button {
+.admin_dashboard_body_right_head_wrap button {
   /* display: flex; */
   border: none;
   height: 45px;
@@ -150,12 +105,12 @@
   font-weight: 600;
 }
 
-.dashboard_head_wrap_mobile {
+.admin_dashboard_head_wrap_mobile {
   display: none;
 }
 
 @media screen and (max-width:768px) {
-  .dashboard_head {
+  .admin_dashboard_head {
     position: fixed;
     top: 0px;
     left: 0.1px;
@@ -163,25 +118,25 @@
     background: rgba(235, 234, 234, 0.27);
   }
 
-  .dashboard_body {
+  .admin_dashboard_body {
     margin-top: 70px;
   }
 
-  .dashboard_head_wrap {
+  .admin_dashboard_head_wrap {
     display: none;
   }
 
-  .dashboard_body_left {
+  .admin_dashboard_body_left {
     display: none;
   }
 
-  .dashboard_body_right {
+  .admin_dashboard_body_right {
     /* background-color: grey; */
     width: 100%;
     height: 100%;
   }
 
-  .dashboard_body_right_head {
+  .admin_dashboard_body_right_head {
     background-color: white;
     height: 10%;
     display: flex;
@@ -190,11 +145,10 @@
     box-shadow: -2px 10px 5px -8px rgba(208, 208, 208, 0.75);
   }
 
-  .dashboard_body_right_head_wrap {
+  .admin_dashboard_body_right_head_wrap{
     margin-left: 0px;
   }
-
-  .dashboard_head_wrap_mobile {
+  .admin_dashboard_head_wrap_mobile {
     width: 90%;
     /* background-color: grey; */
     display: flex;
@@ -203,7 +157,7 @@
     margin-left: 0px;
   }
 
-  .dashboard_head_wrap_mobile_nav {
+  .admin_dashboard_head_wrap_mobile_nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -211,7 +165,7 @@
     width: 75%;
   }
 
-  .dashboard_input {
+  .admin_dashboard_input {
     background-color: #f8f8f8;
     display: flex;
     align-items: center;
@@ -222,23 +176,23 @@
     border: 1px solid rgb(192, 189, 189);
   }
 
-  .dashboard_input input {
+  .admin_dashboard_input input {
     width: 85%;
     outline: none;
     border: none;
     background-color: inherit;
   }
 
-  .mobile_dashboard_body_left_cont {
+  .admin_mobile_dashboard_body_left_cont {
     width: 100%;
     position: absolute;
     top: 73px;
     left: 0.1px;
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(2.9px);
+   backdrop-filter: blur(2.9px);
   }
 
-  .mobile_dashboard_body_left {
+  .admin_mobile_dashboard_body_left {
     background-color: #003F62;
     width: 60%;
     height: 90vh;
@@ -247,7 +201,7 @@
     align-items: end;
   }
 
-  .mobile_dashboard_body_left_wrap {
+  .admin_mobile_dashboard_body_left_wrap {
     /* background-color: grey; */
     width: 80%;
     display: flex;
@@ -257,22 +211,20 @@
     height: 90%;
   }
 
-  .mobile_inventory {
+  .admin_mobile_navs {
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
 
-  .mobile_inventory_item {
+  .admin_mobile_item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 95%;
-    text-decoration: none;
-    color: inherit;
   }
 
-  .mobile_dashboard_profile {
+  .admin_mobile_dashboard_profile {
     width: 90%;
     display: flex;
     align-items: center;
@@ -280,7 +232,7 @@
     align-self: start;
   }
 
-  .mobile_logout {
+  .admin_mobile_logout {
     display: flex;
     gap: 10px;
   }

@@ -21,8 +21,8 @@ export default function Cart() {
   async function getItem() {
     display ? changeTheme() : null
     try {
-      const res = await axios.get(`https://fakestoreapi.com/products?limit=5`)
-      setItem(res.data)
+      const res = await axios.get(`https://dummyjson.com/products/category/furniture`)
+      setItem(res.data?.products)
       // console.log(res.data)
 
     } catch (e) {
@@ -52,7 +52,7 @@ export default function Cart() {
             {cart.map((i) => (
               <div key={i.id} className='cart_card'>
                 <div className='cart_card_top'>
-                  <img className='cart_image' src={i.image} />
+                  <img className='cart_image' src={i.images[0]} />
                   <div className='cart_card_top_text'>
                     <h3>{i.title}</h3>
                     <h4>${i.price}</h4>

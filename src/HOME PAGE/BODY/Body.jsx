@@ -21,15 +21,17 @@ function Body(props) {
   async function getItem() {
     try {
       display && changeTheme()
-      const response = await axios.get('https://fakestoreapi.com/products')
+      const response = await axios.get('https://dummyjson.com/products/category/furniture')
       dispach(AllProducts(response.data))
-      setItem(response.data)
+      setItem(response.data?.products)
 
-      // console.log(response.data)
+      console.log(response.data)
     } catch (e) {
       console.log(e)
     }
   }
+
+  
   useEffect(() => {
     getItem()
   }, [])
@@ -39,7 +41,7 @@ function Body(props) {
       <Categoriesroute />
       {item ? <div>
         <Slide />
-        <Slide1 />
+        {/* <Slide1 /> */}
         <Products item={item} title='Best Sellers' />
         <div className='Body_Promo'>
           <div className='Body_Promo_wrap' >

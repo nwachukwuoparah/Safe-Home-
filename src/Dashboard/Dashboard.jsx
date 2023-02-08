@@ -3,7 +3,7 @@ import './dashboard.css'
 import { HiHome } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
 import { ThemeContext } from '../Components/ContexApi/Contex';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { CiLogout } from "react-icons/ci";
 import Logo from './Union.svg'
 import Inventory from './Inventory/Inventory';
@@ -36,12 +36,11 @@ function Dashboard(props) {
           <img style={{ width: 150 }} src={Logo} />
           <div className='mobile_inventory'>
             <h5>inventory</h5>
-            <div className='mobile_inventory_item ' onClick={() => { Navigate('/dashboard'); setListed(false) ; setSold(false) }}><p>Products</p><p>5000</p></div>
-            <div className='mobile_inventory_item' onClick={() => { Navigate('/dashboard/listed'); setListed(true); setSold(false) }}><p >Listed</p><p>{addProduct.length}</p></div>
-            <div className='mobile_inventory_item' onClick={() => { Navigate('/dashboard/sold') ;setListed(false) ;setSold(true) }}><p>Sold</p><p>5000</p></div>
+            <NavLink to={"/dashboard/"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(false); setSold(false) }}><p>Products</p><p>5000</p></NavLink >
+            <NavLink to={"/dashboard/listed"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(true); setSold(false) }} ><p >Listed</p><p>{addProduct.length}</p></NavLink >
+            <NavLink to={"/dashboard/sold"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(false); setSold(true) }}><p>Sold</p><p>5000</p></NavLink >
             <div className='mobile_inventory_item'><p>Processing</p><p>5000</p></div>
-            <MdOutlineInsertLink onClick={() => { Navigate('/dashboard/addProduct') ;setListed(false) ; setSold(false) }} fontSize={50} />
-
+            <MdOutlineInsertLink onClick={() => { Navigate('/dashboard/addProduct'); setListed(false); setSold(false) }} fontSize={50} />
           </div>
           <div className='mobile_dashboard_profile'>
             <img style={{ width: 50 }} src={Logo} />
@@ -89,12 +88,16 @@ function Dashboard(props) {
             <img style={{ width: 150 }} src={Logo} />
             <div className='inventory'>
               <h5>inventory</h5>
-              <div className='inventory_item ' onClick={() => { Navigate('/dashboard') ;setListed(false) ; setSold(false) }}><p>Products</p><p>5000</p></div>
-              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/listed');setListed(true) ; setSold(false) }} ><p >Listed</p><p>{addProduct.length}</p></div>
-              <div className='inventory_item ' onClick={() => { Navigate('/dashboard/sold'); setListed(false); setSold(true)  }}><p>Sold</p><p>5000</p></div>
-              <div className='inventory_item '><p>Processing</p><p>5000</p></div>
-              <MdOutlineInsertLink fontSize={50} onClick={() => { Navigate('/dashboard/addProduct') ; setSold(false) }} />
-            </div>
+              {/* Navigate('/dashboard')
+              Navigate('/dashboard/listed')
+              Navigate('/dashboard/sold')
+              Navigate('/dashboard/addProduct')  */}
+              <NavLink to={"/dashboard/"} className={({ isActive }) => isActive ? 'activeClassName' : "inventory_item"} onClick={() => { setListed(false); setSold(false) }}><p>Products</p><p>5000</p></NavLink >
+              <NavLink to={"/dashboard/listed"} className={({ isActive }) => isActive ? 'activeClassName' : "inventory_item"} onClick={() => { setListed(true); setSold(false) }} ><p >Listed</p><p>{addProduct.length}</p></NavLink >
+              <NavLink to={"/dashboard/sold"} className={({ isActive }) => isActive ? 'activeClassName' : "inventory_item"} onClick={() => { setListed(false); setSold(true) }}><p>Sold</p><p>5000</p></NavLink >
+              <NavLink className="inventory_item"><p>Processing</p><p>5000</p></NavLink >
+              <MdOutlineInsertLink fontSize={50} color={'#f8f8f8'} onClick={() => { Navigate("/dashboard/addProduct"); setSold(false) }} />
+            </div >
             <div className='dashboard_profile'>
               <img style={{ width: 50 }} src={Logo} />
               <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span>
