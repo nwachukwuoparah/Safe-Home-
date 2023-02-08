@@ -38,7 +38,7 @@ function Header() {
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            {activeuser?.isAdmin? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
+            {activeuser?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -55,7 +55,7 @@ function Header() {
           </nav>
 
           <nav className='hl_2'>
-            {activeuser?.isAdmin? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
+            {activeuser?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
             <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>
             <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
@@ -91,7 +91,7 @@ function Header() {
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
-                    <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+                    {activeuser?.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
                   </div>
 
                 </div>

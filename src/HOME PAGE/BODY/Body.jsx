@@ -25,7 +25,7 @@ function Body(props) {
       dispach(AllProducts(response.data))
       setItem(response.data?.products)
 
-      console.log(response.data)
+      // console.log(response.data)
     } catch (e) {
       console.log(e)
     }
