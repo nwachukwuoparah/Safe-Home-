@@ -19,6 +19,7 @@ function Header() {
   const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
   const { changeTheme, notice, activeuser } = useContext(ThemeContext)
+  
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
