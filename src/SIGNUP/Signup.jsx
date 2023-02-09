@@ -7,7 +7,7 @@ import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Signup({ }) {
   const [view, setView] = useState(false)
-  const { changeTheme, display, users, setUsers } = useContext(ThemeContext)
+  const { changeTheme, display, setUsers } = useContext(ThemeContext)
   const [checked, setChecked] = useState(false)
   const [terms, setTerms] = useState(false)
   const Navigate = useNavigate()
@@ -25,7 +25,7 @@ export default function Signup({ }) {
   const adminSign = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/adminSign`, userData)
       .then(function (res) {
-        console.log(res)
+        // console.log(res)
         res.status === 201 ? Navigate('/login') : null
       })
       .catch(function (error) {
@@ -36,7 +36,7 @@ export default function Signup({ }) {
   const userSign = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/sign`, userData)
       .then(function (res) {
-        console.log(res)
+        // console.log(res)
         res.status === 201 ? Navigate('/login') : null
       })
       .catch(function (error) {

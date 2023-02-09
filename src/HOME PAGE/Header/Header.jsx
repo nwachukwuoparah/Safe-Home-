@@ -19,7 +19,6 @@ function Header() {
   const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
   const { changeTheme, notice, activeuser } = useContext(ThemeContext)
-  const { data, message } = activeuser
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
@@ -36,13 +35,12 @@ function Header() {
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            {data?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
+            {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
             </span>
           </div>}
-
 
           <nav className='hi_2' >
             <img className='pointer' onClick={() => Navigate('/')} style={{ width: 70 }} src={Logo} />
@@ -53,9 +51,9 @@ function Header() {
           </nav>
 
           <nav className='hl_2'>
-            {data?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
-            {message === "Successful" ? null : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
-            {message === "Successful" ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
+            {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
+            {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
+            {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
               <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -86,7 +84,7 @@ function Header() {
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
             <div className='mobile_sidebar_cont'>
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
-                {!activeuser?.isAdmin ? <div className='mobile_sidebar_close'>
+                {activeuser?.data.data.isAdmin ? <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
                     <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
@@ -105,7 +103,7 @@ function Header() {
 
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
-                  {message === "Successful" ? null : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
+                  {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
                   {/* <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> */}
                 </div>
               </div>

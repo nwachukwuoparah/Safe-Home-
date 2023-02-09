@@ -17,7 +17,7 @@ export const ThemeProvider = ({ children }) => {
   // handles user logins
   const [activeuser, setactiveuser] = useState(JSON.parse(localStorage.getItem('activeuser')))
   useEffect(() => {
-    localStorage.setItem('activeuser', JSON.stringify(activeuser ? activeuser : {}));
+    localStorage.setItem('activeuser', JSON.stringify(activeuser || {}));
     // console.log(activeuser)
   }, [activeuser])
 

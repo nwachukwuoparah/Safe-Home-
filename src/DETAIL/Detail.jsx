@@ -28,7 +28,7 @@ function Detail({ }) {
     try {
       const res = await axios.get(`https://dummyjson.com/products/${id}`)
       setItem(res.data)
-      console.log(res.data)
+      // console.log(res.data)
     } catch (e) {
       console.log(e)
     }
@@ -48,7 +48,7 @@ function Detail({ }) {
     getItem()
     getItem1()
   }, [])
-
+  console.log(activeuser?.status)
   return (
     <div >
       <Categoriesroute />
@@ -72,7 +72,7 @@ function Detail({ }) {
               <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
-                <button className='button1 pointer' onClick={() => { git ?.email? navigate('/payment') : navigate('/signUp') }}>Buy now</button>
+                <button className='button1 pointer' onClick={() => { activeuser?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Buy now</button>
                 <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button>
               </div>
             </div>

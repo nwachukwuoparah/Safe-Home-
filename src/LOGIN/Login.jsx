@@ -18,9 +18,9 @@ export default function Login({ }) {
   const userSign = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/adminLogin`, value)
       .then(function (res) {
-        // console.log(res.data.data)
+        console.log(res)
         res.status === 201 ? Navigate('/') : null
-        res.status === 201 ? setactiveuser(res.data) : null
+        res.status === 201 ? setactiveuser(res) : null
       })
       .catch(function (error) {
         console.log(error);
