@@ -15,7 +15,8 @@ export default function Addproduct(props) {
       image: "",
       price: "",
       stockQuantity: "",
-      categories: ""
+      categories: "",
+      brand: "" ,
     }
   )
   const handleChange = (event) => {
