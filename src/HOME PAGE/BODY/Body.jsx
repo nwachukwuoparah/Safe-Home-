@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 function Body(props) {
   const navigate = useNavigate()
-  const { changeTheme, display } = useContext(ThemeContext)
+  const { changeTheme, display,activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
   const [item, setItem] = useState([])
   async function getItem() {
@@ -31,7 +31,7 @@ function Body(props) {
     }
   }
 
-  
+
   useEffect(() => {
     getItem()
   }, [])
@@ -39,7 +39,7 @@ function Body(props) {
   return (
     <>
       <Categoriesroute />
-      {item ? <div>
+      <div>
         <Slide />
         {/* <Slide1 /> */}
         <Products item={item} title='Best Sellers' />
@@ -70,14 +70,13 @@ function Body(props) {
           </div>
         </div>
         <Slide1 />
-        <div className="Body_Call_To_Action">
+        {activeuser?.status === 201 ? null : <div className="Body_Call_To_Action">
           <button onClick={() => { navigate('/login') }} className='pointer' >
             Login
           </button>
           <span className="Body_Nav pointer">New customers? <p onClick={() => { navigate('/signup') }}> Start here.</p></span>
-        </div>
-      </div> : <h1>NULL</h1>
-      }
+        </div>}
+      </div>
     </>
   )
 }

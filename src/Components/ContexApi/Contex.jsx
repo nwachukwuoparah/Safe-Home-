@@ -17,23 +17,22 @@ export const ThemeProvider = ({ children }) => {
   // handles user logins
   const [activeuser, setactiveuser] = useState(JSON.parse(localStorage.getItem('activeuser')))
   useEffect(() => {
-    localStorage.setItem('activeuser', JSON.stringify(activeuser || {}));
-    // console.log(activeuser)
-  }, [activeuser])
+    localStorage.setItem('activeuser', JSON.stringify(activeuser));
+  // console.log(activeuser)
+}, [activeuser])
 
+const [cartAlert, setCartAlert] = useState(false)
+const cartA = () => {
+  setCartAlert(true)
+  setTimeout(function () {
+    setCartAlert(false)
+  }, 3000);
 
-  const [cartAlert, setCartAlert] = useState(false)
-  const cartA = () => {
-    setCartAlert(true)
-    setTimeout(function () {
-      setCartAlert(false)
-    }, 3000);
-
-  }
-  return (
-    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, activeuser, setactiveuser }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+}
+return (
+  <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, activeuser, setactiveuser }}>
+    {children}
+  </ThemeContext.Provider>
+)
 }
 
