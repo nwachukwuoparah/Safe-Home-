@@ -19,7 +19,7 @@ function Header() {
   const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
   const { changeTheme, notice, activeuser } = useContext(ThemeContext)
-  
+
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
@@ -30,13 +30,13 @@ function Header() {
     <header className='header' >
       <div className='header1'>
         <div className='header1_wrap'>
-          <img className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 80 }} src={Unionheader} />
+          <img className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 100 }} src={Unionheader} />
           {search ? <div className='mobile_input'>
             <input />
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
+            {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : <TbUserCircle className='pointer adm' fontSize={25} />}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -44,7 +44,7 @@ function Header() {
           </div>}
 
           <nav className='hi_2' >
-            <img className='pointer' onClick={() => Navigate('/')} style={{ width: 70 }} src={Logo} />
+            <img className='pointer' onClick={() => Navigate('/')} style={{ width: 150 }} src={Logo} />
             <div className='input'>
               <input />
               <BsSearch className='pointer' />
@@ -53,7 +53,7 @@ function Header() {
 
           <nav className='hl_2'>
             {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
-            {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
+            {activeuser?.status === 201 ? <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
             {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
@@ -72,7 +72,7 @@ function Header() {
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
-
+          
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
             <p>beds.</p>
             <p>cabinets.</p>
@@ -85,12 +85,12 @@ function Header() {
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
             <div className='mobile_sidebar_cont'>
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
-                {activeuser?.data.data.isAdmin ? <div className='mobile_sidebar_close'>
+              <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
-                    <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
+                     {activeuser?.data.data.isAdmin ?  <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />:<TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>
-                </div> : null}
+                </div> 
                 <div className='mobile_sidebar_wrap'>
                   <div onClick={() => setmobilCategory(!mobileCategory)}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
@@ -104,8 +104,8 @@ function Header() {
 
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
-                  {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
-                  {/* <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> */}
+                  {activeuser?.status === 201 ? <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
+                
                 </div>
               </div>
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>

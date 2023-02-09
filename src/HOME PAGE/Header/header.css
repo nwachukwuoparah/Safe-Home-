@@ -95,9 +95,9 @@
 .catigories {
   display: flex;
   align-items: center;
-  gap: 20px;
+   gap: 10px;
+  /* background-color: grey; */
 }
-
 
 
 .mobile_logo {
@@ -113,6 +113,7 @@
   justify-content: space-evenly;
   margin-left: -170px;
   font-size: 16px;
+ /* background-color: red; */
 }
 
 .categories p:hover {
@@ -160,10 +161,12 @@
 
   .catigories {
     display: none;
+
   }
 
   .header2_wrap {
     width: 95%;
+
   }
 
   .hl_2 {
@@ -194,7 +197,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-   padding: 5px 0px;
+    padding: 5px 0px;
   }
 
   .mobile_sidebar_cont {
