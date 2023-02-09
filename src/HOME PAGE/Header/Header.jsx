@@ -26,9 +26,6 @@ function Header() {
     return QTY
   }
 
-  useEffect(() => {
-    console.log(data.message)
-  }, [])
   return (
     <header className='header' >
       <div className='header1'>
