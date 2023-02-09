@@ -20,7 +20,7 @@ export default function Login({ }) {
       .then(function (res) {
         // console.log(res.data.data)
         res.status === 201 ? Navigate('/') : null
-        res.status === 201 ? setactiveuser(res.data.data) : null
+        res.status === 201 ? setactiveuser(res.data) : null
       })
       .catch(function (error) {
         console.log(error);
@@ -58,7 +58,7 @@ export default function Login({ }) {
   useEffect(() => {
     !display && changeTheme()
   }, [])
-  
+
   return (
 
     <div className='login_in'>

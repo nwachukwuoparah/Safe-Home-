@@ -19,6 +19,7 @@ function Header() {
   const cart = useSelector((state) => state.Commerce.cart)
   const Navigate = useNavigate()
   const { changeTheme, notice, activeuser } = useContext(ThemeContext)
+  const { data, message } = activeuser
   const quantity = () => {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
@@ -26,7 +27,7 @@ function Header() {
   }
 
   useEffect(() => {
-    // activeuser ? null : Navigate("/signUp")
+    console.log(data.message)
   }, [])
   return (
     <header className='header' >
@@ -38,7 +39,7 @@ function Header() {
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            {activeuser?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
+            {data?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : null}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -55,9 +56,9 @@ function Header() {
           </nav>
 
           <nav className='hl_2'>
-            {activeuser?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
-            <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>
-            <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>
+            {data?.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
+            {message === "Successful" ? null : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
+            {message === "Successful" ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
               <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -88,18 +89,17 @@ function Header() {
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
             <div className='mobile_sidebar_cont'>
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
-                <div className='mobile_sidebar_close'>
+                {!activeuser?.isAdmin ? <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
-                    {activeuser?.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : null}
+                    <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />
                   </div>
-
-                </div>
+                </div> : null}
                 <div className='mobile_sidebar_wrap'>
                   <div onClick={() => setmobilCategory(!mobileCategory)}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
-                    <p>beds.</p>
-                    <p>cabinets.</p>
+                    <p onClick={() => { }}>beds.</p>
+                    <p >cabinets.</p>
                     <p>chairs and seating.</p>
                     <p>chests.</p>
                     <p>desks.</p>
@@ -108,7 +108,7 @@ function Header() {
 
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
-                  <p onClick={() => { Navigate('/signup'); }} >Sign up</p>
+                  {message === "Successful" ? null : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
                   {/* <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> */}
                 </div>
               </div>
