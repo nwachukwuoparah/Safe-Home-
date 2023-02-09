@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
+import img from "./img.jpg"
 export function Slide({ }) {
   const [item, setItem] = useState([])
 
@@ -140,10 +141,9 @@ export function Slide1({ auto, arrows }) {
           <div key={item.id} className='slider_wrap1'>
             <div className='Card'>
               <div className='card_title'>
-                <img className='image1' key={item.id} src={item.image} />
-                <p>{item.category}</p>
+                <img className='image1' key={item.id} src={img} />
               </div>
-              <p className='card_P'>{item.title}</p>
+              <p className='card_P'>{item.description}</p>
             </div>
 
           </div>))}
