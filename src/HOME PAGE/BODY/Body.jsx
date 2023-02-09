@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 function Body(props) {
   const navigate = useNavigate()
-  const { changeTheme, display,activeuser } = useContext(ThemeContext)
+  const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
   const [item, setItem] = useState([])
   async function getItem() {
@@ -42,7 +42,7 @@ function Body(props) {
       <div>
         <Slide />
         {/* <Slide1 /> */}
-        <Products item={item} title='Best Sellers' />
+        <Products  item={item} title='Best Sellers' />
         <div className='Body_Promo'>
           <div className='Body_Promo_wrap' >
             <div className="Body_Promo_text">

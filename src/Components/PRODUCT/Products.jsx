@@ -12,7 +12,8 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
-function Products({ item, title }) {
+function Products({ item, title}) {
+  const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
   return (
@@ -23,21 +24,21 @@ function Products({ item, title }) {
           <div className='Products_bar_wrap'>
             <h2>{title}</h2>
             <div className='Products_filter'>
-              <MdList fontSize={30} />
-              <MdOutlineApps fontSize={22.5} />
+              <MdOutlineApps onClick={() => { setToggle(false) }} fontSize={22.5} />
+              <MdList onClick={() => { setToggle(true) }} fontSize={30} />
             </div>
           </div>
         </div>
 
         {item?.map((i) => (
-          <div onClick={() => { dispach(recent(i)) }} key={i.id} className='Products_Cards pointer'>
-            <div className='Products_Cards_wrap'>
-              <Link className='Products_Cards_wrap' to={`/detail/${i.id}`}>
+          <div onClick={() => { dispach(recent(i)) }} key={i.id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
+            <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
+              <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i.id}`}>
                 <img src={i?.images[0]} />
-                <div className='Products_text'>
+                <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                   <p>{i.title}</p>
                   <p>₦{i.price}</p>
-                  <div className='Products_Rating'>
+                  <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
                     <MdStar />
                     <MdStar />
                     <MdStar />
@@ -46,8 +47,8 @@ function Products({ item, title }) {
                   </div>
                 </div>
               </Link>
-              <div onClick={() => { dispach(addToCart(i)); cartA(); }} className='Products_add' >
-                <div className='Products_add_wrap'>
+              <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle?'TOGGLEProducts_add':'Products_add'} >
+                <div className={toggle?'TOGGLEProducts_add_wrap':'Products_add_wrap'}>
                   <p className='pointer' > Add to Cart</p>
                   <HiOutlineShoppingCart />
                 </div>

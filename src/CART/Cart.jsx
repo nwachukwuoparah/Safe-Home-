@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux'
 import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
 import Alert from '../Components/Alert/Alert'
 import { ThemeContext } from '../Components/ContexApi/Contex';
+import Emptycart from './Emptycart'
 export default function Cart() {
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const navigate = useNavigate()
@@ -43,7 +44,7 @@ export default function Cart() {
     <div>
       <Categoriesroute />
       <div className='cart'>
-        <div className='cart_wrap'>
+        {cart.length === 0 ? <Emptycart /> : <div className='cart_wrap'>
           <div className='cart_card_wrap'>
             <div className='cart_head'>
               <h4>Shoping Cart</h4>
@@ -74,7 +75,7 @@ export default function Cart() {
             </div>
           </div>
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
-        </div>
+        </div>}
       </div>
       <Products item={item} title='Related items' />
     </div>

@@ -38,6 +38,7 @@
   display: none;
 }
 
+/* card  */
 .Products_Cards {
   width: 20%;
   height: 350px;
@@ -82,13 +83,13 @@
 }
 
 .Products_Rating {
-  color: #FFA903;
+  color: #F68B1F
 }
 
 .Products_add {
   width: 100%;
   height: 40px;
-  background-color: #FFA903;
+  background-color: #F68B1F;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -97,6 +98,7 @@
   top: 15px;
   left: 0px;
   display: none;
+  color: #f8f8f8
 }
 
 .Products_Cards:hover .Products_add {
@@ -112,15 +114,60 @@
   font-size: 20px;
 }
 
-.swal2-container.swal2-center>.swal2-popup {
-  width: 40%;
-  margin-top: -550px;
-  background-color: #FFA903;
-  display: grid;
-  z-index: 1000000000;
-}
 /* TOGGLE */
 
+.TOGGLEProducts_Cards {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: grey; */
+  /* margin-top: 10px; */
+}
+
+.TOGGLEProducts_Cards_wrap1 {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.TOGGLEProducts_Cards_wrap img {
+  width: 120px;
+  height: 100px;
+}
+
+.TOGGLEProducts_Cards_wrap {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.TOGGLEProducts_text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.TOGGLEProducts_add {
+  width: 100%;
+  background-color: #F68B1F;
+  border-radius: 5px;
+}
+
+.TOGGLEProducts_add_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  font-size: 18px;
+  font-weight: 600;
+}
+/* TOGGLE */
 @media screen and (max-width:768px) {
   .Products_wrap {
     width: 95%;
@@ -129,10 +176,12 @@
   .Products_bar {
     height: 40px;
   }
+
   .Products_Cards:hover {
     box-shadow: 0px 0px 0px;
     /* z-index: 1; */
   }
+
   .Products_bar h2 {
     font-size: 16px;
   }
@@ -158,13 +207,16 @@
     width: 80%;
     font-size: 20px;
   }
+
   .Products_add_wrap {
-width: 70%;
+    width: 70%;
   }
-  .Products_add p{
+
+  .Products_add p {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width:425px) {
   .Products_wrap {
     width: 95%;
@@ -199,10 +251,12 @@ width: 70%;
     width: 80%;
     font-size: 20px;
   }
+
   .Products_add_wrap {
-width: 70%;
+    width: 70%;
   }
-  .Products_add p{
+
+  .Products_add p {
     font-size: 14px;
   }
 }
