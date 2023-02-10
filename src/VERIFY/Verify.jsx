@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext,useState } from 'react'
 import { ThemeContext } from '../Components/ContexApi/Contex'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -33,7 +33,7 @@ export default function () {
   }
   return (
     <div style={style} className='verify'>
-      {state ? <h1>Waiting.....</h1> :
+      {!state ? <h1>Waiting.....</h1> :
         <h1>Your verification was sucessful</h1>}
     </div >
   )
