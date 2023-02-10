@@ -34,9 +34,9 @@ function Admin(props) {
             <h5>inventory</h5>
 
             <div className='admin_mobile_item' onClick={() => { Navigate('/admin'); setListed(false); setSold(false) }}><p>All users</p><p>5000</p></div>
-              <div className='admin_mobile_item' onClick={() => { Navigate('/admin/'); setListed(true); setSold(false) }} ><p >Admins</p><p>5000</p></div>
-              <div className='admin_mobile_item' onClick={() => { Navigate('/admin/'); setListed(false); setSold(true) }}><p>Users</p><p>5000</p></div>
-              <div className='admin_mobile_item' onClick={() => { Navigate('/admin/'); setListed(false); setSold(true) }}><p>Orders</p><p>5000</p></div>
+            <div className='admin_mobile_item' onClick={() => { Navigate('/admin/'); setListed(true); setSold(false) }} ><p >Admins</p><p>5000</p></div>
+            <div className='admin_mobile_item' onClick={() => { Navigate('/admin/'); setListed(false); setSold(true) }}><p>Users</p><p>5000</p></div>
+            <div className='admin_mobile_item' onClick={() => { Navigate('/admin/'); setListed(false); setSold(true) }}><p>Orders</p><p>5000</p></div>
           </div>
           <div className='admin_mobile_dashboard_profile'>
             <img style={{ width: 50 }} src={Logo} />
@@ -84,9 +84,9 @@ function Admin(props) {
             <img style={{ width: 150 }} src={Logo} />
             <div className='admin_navs'>
               <div className='admin_navs_item ' onClick={() => { Navigate('/admin'); setListed(false); setSold(false) }}><p>All users</p><p>5000</p></div>
-              <div className='admin_navs_item ' onClick={() => { Navigate('/admin/'); setListed(true); setSold(false) }} ><p >Admins</p><p>5000</p></div>
-              <div className='admin_navs_item ' onClick={() => { Navigate('/admin/'); setListed(false); setSold(true) }}><p>Users</p><p>5000</p></div>
-              <div className='admin_navs_item ' onClick={() => { Navigate('/admin/'); setListed(false); setSold(true) }}><p>Orders</p><p>5000</p></div>
+              <div className='admin_navs_item ' onClick={() => { Navigate('/admin/alladmins'); setListed(true); setSold(false) }} ><p >Admins</p><p>5000</p></div>
+              <div className='admin_navs_item ' onClick={() => { Navigate('/admin/users'); setListed(false); setSold(true) }}><p>Users</p><p>5000</p></div>
+              <div className='admin_navs_item ' onClick={() => { Navigate('/admin/orders'); setListed(false); setSold(true) }}><p>Orders</p><p>5000</p></div>
             </div>
             <div className='admin_dashboard_profile'>
               <img style={{ width: 50 }} src={Logo} />
@@ -94,13 +94,16 @@ function Admin(props) {
             </div>
           </div>
         </div>
-        <Admincom />
-        {/* <Routes> */}
-        {/* <Route path={'/'} element={< Inventory subtitle='Products' title="Total products:" amount="50,000" />} />
-            <Route path={'listed'} element={<Inventory addProduct={addProduct} Product="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />} />
-            <Route path={'/sold'} element={<Inventory subtitle="Sold" title="Account Balance:" title="Recently Sold Item" amount="50,000" sold={sold} />} />
-            <Route path={'/addProduct'} element={<Addproduct />} /> */}
-        {/* </Routes> */}
+
+
+        <Routes>
+          <Route path={'/'} element={<Admincom />} />
+          <Route path={'alladmins'} element={<Admincom />} />
+          <Route path={'/users'} element={<Admincom />} />
+          <Route path={'/orders'} element={<Admincom />} />
+        </Routes>
+
+
       </div>
     </div>
   )

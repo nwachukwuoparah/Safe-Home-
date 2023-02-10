@@ -5,26 +5,21 @@ import Slider from "react-slick";
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
 import img from "./img.jpg"
+import slider from './slider.jpg'
+import slider1 from './slider1.jpg'
+import slider2 from './slider2.jpg'
+import slider3 from './slider3.jpg'
 export function Slide({ }) {
-  const [item, setItem] = useState([])
+  const item = [
+    slider,
+    slider1,
+    slider2,
+    slider3,
+  ]
 
   const slide = {
     // width: slide_width
   }
-
-  async function getItem() {
-    try {
-      const response = await axios.get(`https://dummyjson.com/products/category/furniture`)
-      setItem(response.data.products)
-      // console.log(response.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  useEffect(() => {
-    getItem()
-  }, [])
 
   const settings = {
     // dots: true,
@@ -67,7 +62,7 @@ export function Slide({ }) {
       <Slider style={slide} className='Slider' {...settings}>
         {item?.map((item) => (
           <div key={item.id} className='slider_wrap'>
-            <img className='image' key={item.id} src={item.images[2]} />
+            <img className='image' key={item.id} src={item} />
           </div>))}
       </Slider>
     </div>

@@ -14,6 +14,7 @@ import { ThemeContext } from "../../Components/ContexApi/Contex";
 import { useNavigate } from "react-router-dom";
 
 function Body(props) {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
@@ -24,7 +25,7 @@ function Body(props) {
       const response = await axios.get('https://dummyjson.com/products/category/furniture')
       dispach(AllProducts(response.data))
       setItem(response.data?.products)
-
+      setLoading(true)
       // console.log(response.data)
     } catch (e) {
       console.log(e)
@@ -42,7 +43,7 @@ function Body(props) {
       <div>
         <Slide />
         {/* <Slide1 /> */}
-        <Products  item={item} title='Best Sellers' />
+        <Products loading={loading} item={item} title='Best Sellers' />
         <div className='Body_Promo'>
           <div className='Body_Promo_wrap' >
             <div className="Body_Promo_text">

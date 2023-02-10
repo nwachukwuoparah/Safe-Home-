@@ -12,10 +12,11 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
-function Products({ item, title}) {
+function Products({ item, title , loading }) {
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
+
   return (
     <div className='Products'>
       {cartAlert && <div className='cartAlert'><h3>Product added successfully</h3></div>}
@@ -29,35 +30,54 @@ function Products({ item, title}) {
             </div>
           </div>
         </div>
-
-        {item?.map((i) => (
-          <div onClick={() => { dispach(recent(i)) }} key={i.id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
-            <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
-              <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i.id}`}>
-                <img src={i?.images[0]} />
-                <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
-                  <p>{i.title}</p>
-                  <p>₦{i.price}</p>
-                  <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
-                    <MdStarHalf />
-                    <MdStarOutline />
+        {loading ? <>
+          {item?.map((i) => (
+            <div onClick={() => { dispach(recent(i)) }} key={i.id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
+              <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
+                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i.id}`}>
+                  <img src={i?.images[0]} />
+                  <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
+                    <p>{i.title}</p>
+                    <p>₦{i.price}</p>
+                    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+                      <MdStar />
+                      <MdStar />
+                      <MdStar />
+                      <MdStarHalf />
+                      <MdStarOutline />
+                    </div>
                   </div>
-                </div>
-              </Link>
-              <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle?'TOGGLEProducts_add':'Products_add'} >
-                <div className={toggle?'TOGGLEProducts_add_wrap':'Products_add_wrap'}>
-                  <p className='pointer' > Add to Cart</p>
-                  <HiOutlineShoppingCart />
+                </Link>
+                <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
+                  <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
+                    <p className='pointer' > Add to Cart</p>
+                    <HiOutlineShoppingCart />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </> :
+          <>
+            {[1, 2, 3, 4, 5,7,8,9,10,11,12,13,14,15,16].map((index) => (
+              <div key ={index} className="card">
+                <div className="Lheader">
+                  <div className="img"></div>
+                </div>
+                <div className="description">
+                  <div className="line line-1"></div>
+                  <div className="line line-2"></div>
+                  <div className="line line-3"></div>
+                </div>
+                <div className="btns">
+                  <div className="btn btn-1"></div>
+                </div>
+              </div>
+            ))}
+          </>}
+
       </div>
-    </div >
+    </div>
   )
 }
 export default Products

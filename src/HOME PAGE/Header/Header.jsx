@@ -11,6 +11,7 @@ import { CiLogout } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../Components/ContexApi/Contex'
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 function Header() {
   const [search, setSearch] = useState(false)
   const [mobile, setMobile] = useState(false)
@@ -24,6 +25,13 @@ function Header() {
     let QTY = 0;
     cart.map((i) => QTY += i.QTY)
     return QTY
+  }
+
+  const logOut = async () => {
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${activeuser.data.data._id}`)
+    console.log(res.data)
+    res.status === 200 ? localStorage.removeItem("activeuser"): null
+    res.status === 200 ? Navigate('login') : null
   }
 
   return (
@@ -53,7 +61,7 @@ function Header() {
 
           <nav className='hl_2'>
             {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
-            {activeuser?.status === 201 ? <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
+            {activeuser?.status === 201 ? <span className='logout' onClick={() => { logOut() }}  ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
             {activeuser?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
@@ -72,7 +80,7 @@ function Header() {
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
-          
+
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
             <p>beds.</p>
             <p>cabinets.</p>
@@ -85,12 +93,12 @@ function Header() {
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
             <div className='mobile_sidebar_cont'>
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
-              <div className='mobile_sidebar_close'>
+                <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
                     <div></div>
-                     {activeuser?.data.data.isAdmin ?  <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} />:<TbUserCircle className='pointer adm' fontSize={50} />}
+                    {activeuser?.data.data.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>
-                </div> 
+                </div>
                 <div className='mobile_sidebar_wrap'>
                   <div onClick={() => setmobilCategory(!mobileCategory)}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
@@ -104,8 +112,8 @@ function Header() {
 
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
-                  {activeuser?.status === 201 ? <span className='logout'><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
-                
+                  {activeuser?.status === 201 ? <span className='logout' onClick={() => { logOut() }} ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
+
                 </div>
               </div>
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>

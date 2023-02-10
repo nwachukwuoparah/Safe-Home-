@@ -13,6 +13,7 @@ import Admin from "./ADMIN/Admin"
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeContext } from './Components/ContexApi/Contex'
 import Payment from './PAYMENT/Payment'
+import Verify from './VERIFY/Verify'
 function App() {
   // const [state, setState] = useState(false)
   const { display } = useContext(ThemeContext)
@@ -28,8 +29,9 @@ function App() {
           <Route path={'/detail/:id'} element={<Detail />} />
           <Route path={'/cart'} element={<Cart />} />
           <Route path={'/login'} element={<Login />} />
+          <Route path={'/verify/:id'} element={<Verify />} />
           <Route path={'/signUp'} element={<Signup />} />
-          <Route  path={'/dashboard/*'} element={<Dashboard />} />
+          <Route path={'/dashboard/*'} element={<Dashboard />} />
           <Route path={'/admin/*'} element={<Admin />} />
         </Routes>
         {!display ? <Footer /> : null}

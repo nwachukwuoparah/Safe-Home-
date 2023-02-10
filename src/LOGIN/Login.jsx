@@ -15,12 +15,11 @@ export default function Login({ }) {
     password: ""
   })
 
-  const userSign = () => {
-    axios.post(`https://safehomefurniture.onrender.com/api/adminLogin`, value)
+  const userSign = async() => {
+    await axios.post("https://safehomefurniture.onrender.com/api/Login", value)
       .then(function (res) {
-        console.log(res)
-        res.status === 201 ? Navigate('/') : null
-        res.status === 201 ? setactiveuser(res) : null
+        res.data.data.email === value.email ? Navigate('/') : null
+        res.data.data.email === value.email ? setactiveuser(res) : null
       })
       .catch(function (error) {
         console.log(error);
@@ -76,6 +75,9 @@ export default function Login({ }) {
 
           <div className='login_action'>
             <button onClick={() => { userSign() }} className='login_button pointer'>Sign in</button>
+            {/* <div className='login_button pointer'>
+             
+            </div> */}
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>

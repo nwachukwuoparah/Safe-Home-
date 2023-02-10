@@ -167,7 +167,116 @@
   font-size: 18px;
   font-weight: 600;
 }
+
 /* TOGGLE */
+
+
+/* Loading */
+
+
+
+
+.card {
+  max-width: 350px;
+  width: 20%;
+  background: #fff;
+  padding: 30px;
+}
+
+.card .Lheader {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.Lheader .img {
+  height: 100%;
+  width: 100%;
+  background: #d9d9d9;
+  position: relative;
+  overflow: hidden;
+}
+
+.card .description {
+  margin: 25px 0;
+}
+
+.description .line {
+  background: #d9d9d9;
+  border-radius: 10px;
+  height: 13px;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.description .line-1 {
+  width: calc(100% - 15%);
+}
+
+.description .line-3 {
+  width: calc(100% - 40%);
+}
+
+.card .btns {
+  display: flex;
+}
+
+.card .btns .btn {
+  height: 45px;
+  width: 100%;
+  background: #d9d9d9;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btns .btn-1 {
+  margin-right: 8px;
+}
+
+.Lheader .img::before,
+.description .line::before,
+.btns .btn::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.07) 20%, #d9d9d9 40%, #d9d9d9 100%);
+  background-repeat: no-repeat;
+  background-size: 450px 400px;
+  animation: shimmer 1s linear infinite;
+}
+
+.header .img::before {
+  background-size: 650px 600px;
+}
+
+.details span::before {
+  animation-delay: 0.2s;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -450px 0;
+  }
+
+  100% {
+    background-position: 450px 0;
+  }
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -450px 0;
+  }
+
+  100% {
+    background-position: 450px 0;
+  }
+}
+
 @media screen and (max-width:768px) {
   .Products_wrap {
     width: 95%;
@@ -216,6 +325,7 @@
     font-size: 14px;
   }
 }
+
 
 @media screen and (max-width:425px) {
   .Products_wrap {

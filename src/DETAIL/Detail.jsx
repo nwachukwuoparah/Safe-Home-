@@ -16,6 +16,7 @@ import { addToCart } from '../REDUX/features'
 import { CartAlert } from "../Components/Alert/Alert"
 import { ThemeContext } from '../Components/ContexApi/Contex';
 function Detail({ }) {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { changeTheme, display, cartAlert, cartA, activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
@@ -33,11 +34,12 @@ function Detail({ }) {
       console.log(e)
     }
   }
-
+ 
   async function getItem1() {
     try {
       const res = await axios.get(`https://dummyjson.com/products/category/furniture`)
       setItem1(res.data.products)
+      setLoading(true)
       // console.log(res.data)
     } catch (e) {
       console.log(e)
@@ -87,7 +89,7 @@ function Detail({ }) {
 
       </div>
       {recent.length !== 0 ? <Products item={recent} title='Recently Viewed' /> : null}
-      <Products item={item1} title='Related items' />
+      <Products loading={loading} item={item1} title='Related items' />
     </div >
   )
 }
