@@ -10,7 +10,7 @@ export default function () {
   const [state, setState] = useState(false)
 
   const verify = async () => {
-    const res = await axios.post(`https://safehomefurniture.onrender.com/api/confirmAdmin/${id}`)
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/userVerify/${id}`)
     console.log(res)
     setState(true)
     setTimeout(() => {
