@@ -13,19 +13,15 @@ export default function () {
     const res = await axios.post(`https://safehomefurniture.onrender.com/api/userVerify/${id}`)
     console.log(res)
     setState(true)
+    setTimeout(() => {
+      navigate('/login')
+    }, 3000);
   }
 
   useEffect(() => {
     !display && changeTheme()
     verify()
   }, [])
-  useEffect(() => {
-    if (state === true) {
-      setTimeout(() => {
-        navigate('login')
-      }, 3000);
-    }
-  }, [state])
   const style = {
     width: '100%',
     height: '100vh',
