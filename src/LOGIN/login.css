@@ -120,6 +120,24 @@
   top: 9px;
 }
 
+.verifyAlert {
+  width: 400px;
+  height: 100px;
+  position: absolute;
+  top: 30px;
+  background-color: rgba(0, 63, 98,70%);
+  color:#f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.forgot{
+  color: rgb(88, 88, 242);
+ margin: 3px 15px;
+}
 @media screen and (max-width:425px) {
   .login_in_Wrap_head h1 {
     font-size: 25px;

@@ -31,7 +31,8 @@ function Header() {
     const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${activeuser.data.data._id}`)
     console.log(res.data)
     res.status === 200 ? localStorage.removeItem("activeuser"): null
-    res.status === 200 ? Navigate('login') : null
+    res.status === 200 ? Navigate('/login') : null 
+    
   }
 
   return (

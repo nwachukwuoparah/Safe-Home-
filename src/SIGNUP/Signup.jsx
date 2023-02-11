@@ -44,7 +44,6 @@ export default function Signup({ }) {
       });
   }
 
-
   const input = [
     {
       id: 1,
@@ -101,7 +100,6 @@ export default function Signup({ }) {
       setBrand(input)
     }
   }
-
 
   const onChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })

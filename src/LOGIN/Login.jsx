@@ -7,19 +7,43 @@ import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
   const [view, setView] = useState(false)
+  const [verifyAlert, setverifyAlert] = useState(false)
   const inputRef = useRef('')
-  const { changeTheme, display, setactiveuser } = useContext(ThemeContext)
+  const { changeTheme, display, activeuser, setactiveuser } = useContext(ThemeContext)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     email: "",
     password: ""
   })
 
-  const userSign = async() => {
+  useEffect(() => {
+    setverifyAlert(true)
+    setTimeout(() => {
+      setverifyAlert(false)
+    }, 5000);
+  }, [])
+
+  const logOut = async () => {
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${activeuser.data.data._id}`)
+    console.log(res.data)
+    res.status === 200 ? localStorage.removeItem("activeuser") : null
+    res.status === 200 ? Navigate('/login') : null
+    setverifyAlert(true)
+    setTimeout(() => {
+      setverifyAlert(false)
+    }, 5000);
+  }
+
+  const userSign = async () => {
     await axios.post("https://safehomefurniture.onrender.com/api/Login", value)
       .then(function (res) {
-        res.data.data.email === value.email ? Navigate('/') : null
+        console.log(res.data)
         res.data.data.email === value.email ? setactiveuser(res) : null
+        if (res.data.data.verify === true) {
+          res.data.data.email === value.email ? Navigate('/') : null
+        } else {
+          logOut()
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -61,6 +85,10 @@ export default function Login({ }) {
   return (
 
     <div className='login_in'>
+      {verifyAlert && <div className='verifyAlert'>
+        <p>please check your Email for a verification link</p>
+        {/* <a href='mailto:nwachukwuoparah@gmail.com'>Verify</a> */}
+      </div>}
       <HiHome onClick={() => { Navigate('/') }} className='login_Home pointer' />
       <div className='login_in_Wrap'>
         <div className='login_in_Wrap_head'>

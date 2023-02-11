@@ -9,8 +9,17 @@ export default function () {
   const navigate = useNavigate()
   const [state, setState] = useState(false)
 
+  // const verify = async () => {
+  //   const res = await axios.post(`https://safehomefurniture.onrender.com/api/userVerify/${id}`)
+  //   console.log(res)
+  //   setState(true)
+  //   setTimeout(() => {
+  //     navigate('/login')
+  //   }, 3000);
+  // }
+
   const verify = async () => {
-    const res = await axios.post(`https://safehomefurniture.onrender.com/api/userVerify/${id}`)
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/adminVeri/${id}`)
     console.log(res)
     setState(true)
     setTimeout(() => {
@@ -30,6 +39,7 @@ export default function () {
     justifyContent: 'center',
     backgroundColor: '#f8f8f8',
   }
+
   return (
     <div style={style} className='verify'>
       {!state ? <h1>Waiting.....</h1> :
