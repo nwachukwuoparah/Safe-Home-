@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
-function Products({ item, title , loading }) {
+function Products({ item, title, loading }) {
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
@@ -30,12 +30,13 @@ function Products({ item, title , loading }) {
             </div>
           </div>
         </div>
+
         {loading ? <>
           {item?.map((i) => (
-            <div onClick={() => { dispach(recent(i)) }} key={i.id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
+            <div onClick={() => { dispach(recent(i)) }} key={i._id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
-                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i.id}`}>
-                  <img src={i?.images[0]} />
+                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i._id}`}>
+                  <img src={i?.image} />
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>
@@ -59,8 +60,8 @@ function Products({ item, title , loading }) {
           ))}
         </> :
           <>
-            {[1, 2, 3, 4, 5,7,8,9,10,11,12,13,14,15,16].map((index) => (
-              <div key ={index} className="card">
+            {[1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((index) => (
+              <div key={index} className="card">
                 <div className="Lheader">
                   <div className="img"></div>
                 </div>

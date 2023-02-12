@@ -13,7 +13,7 @@ const features = createSlice({
       state.product = payload;
     },
     addToCart: (state, { payload }) => {
-      const check = state.cart.findIndex((i) => i.id === payload.id);
+      const check = state.cart.findIndex((i) => i._id === payload._id);
       if (check >= 0) {
         const amount = state.cart[check].QTY += 1;
         state.cart[check].total = amount * state.cart[check].price
@@ -41,7 +41,7 @@ const features = createSlice({
       }
     },
     recent: (state, { payload }) => {
-      const check = state.RECENT.findIndex((i) => i.id === payload.id)
+      const check = state.RECENT.findIndex((i) => i._id === payload._id)
       // console.log(check)
       if (check === -1) {
         const recent = [...state.RECENT, payload]

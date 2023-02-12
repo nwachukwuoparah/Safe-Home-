@@ -16,31 +16,32 @@ import { addToCart } from '../REDUX/features'
 import { CartAlert } from "../Components/Alert/Alert"
 import { ThemeContext } from '../Components/ContexApi/Contex';
 function Detail({ }) {
+
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { changeTheme, display, cartAlert, cartA, activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
-  const { id } = useParams()
+  const { id, categories } = useParams()
+  //  console.log(id)
   const [item, setItem] = useState([])
   const [item1, setItem1] = useState([])
   async function getItem() {
     display ? changeTheme() : null
     try {
-      const res = await axios.get(`https://dummyjson.com/products/${id}`)
-      setItem(res.data)
-      // console.log(res.data)
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
+      setItem(res.data.data)
+      // console.log(res.data.data)
     } catch (e) {
       console.log(e)
     }
   }
- 
   async function getItem1() {
     try {
-      const res = await axios.get(`https://dummyjson.com/products/category/furniture`)
-      setItem1(res.data.products)
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/user`)
+      setItem1(res.data.data)
       setLoading(true)
-      // console.log(res.data)
+      // console.log(res.data.data)
     } catch (e) {
       console.log(e)
     }
@@ -50,7 +51,7 @@ function Detail({ }) {
     getItem()
     getItem1()
   }, [])
-  console.log(activeuser?.status)
+  // console.log(activeuser?.status)
   return (
     <div >
       <Categoriesroute />
@@ -59,7 +60,7 @@ function Detail({ }) {
       <div className='detail'>
         <div className='detail_wrap'>
           <div className='detail_item'>
-            <img src={item?.images?.[0]} />
+            <img src={item?.image} />
             <div className='detail_info_wrap'>
               <h3>{item.title}</h3>
               <p>₦{item.price}</p>
@@ -88,7 +89,7 @@ function Detail({ }) {
         </div>
 
       </div>
-      {recent.length !== 0 ? <Products item={recent} title='Recently Viewed' /> : null}
+      {recent.length !== 0 ? <Products item={recent} loading={loading} title='Recently Viewed' /> : null}
       <Products loading={loading} item={item1} title='Related items' />
     </div >
   )

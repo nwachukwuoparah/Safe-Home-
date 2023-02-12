@@ -19,14 +19,15 @@ function Body(props) {
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const dispach = useDispatch()
   const [item, setItem] = useState([])
+
   async function getItem() {
     try {
       display && changeTheme()
-      const response = await axios.get('https://dummyjson.com/products/category/furniture')
-      dispach(AllProducts(response.data))
-      setItem(response.data?.products)
+      const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
+      dispach(AllProducts(response.data.data))
+      setItem(response.data.data)
       setLoading(true)
-      // console.log(response.data)
+      // console.log(response.data.data)
     } catch (e) {
       console.log(e)
     }

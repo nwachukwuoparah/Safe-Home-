@@ -9,15 +9,14 @@ export default function () {
 
   const inputRef = useRef('')
   const navigate = useNavigate()
+
   const forget = async () => {
-  
     try {
-      const res = await axios.post(`https://safehomefurniture.onrender.com/api/adminForget`,{ email: inputRef.current.value })
+      const res = await axios.post(`https://safehomefurniture.onrender.com/api/adminForget`, { email: inputRef.current.value })
       console.log(res)
     } catch (e) {
       console.log(e)
     }
-  
   }
 
   return (

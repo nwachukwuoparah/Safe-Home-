@@ -60,8 +60,8 @@ export function Slide({ }) {
   return (
     <div className='slid_contain'>
       <Slider style={slide} className='Slider' {...settings}>
-        {item?.map((item) => (
-          <div key={item.id} className='slider_wrap'>
+        {item?.map((item,index) => (
+          <div key={index} className='slider_wrap'>
             <img className='image' key={item.id} src={item} />
           </div>))}
       </Slider>

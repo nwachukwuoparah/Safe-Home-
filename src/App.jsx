@@ -32,7 +32,7 @@ function App() {
           <Route path={'/cart'} element={<Cart />} />
           <Route path={'/login'} element={<Login />} />
           <Route path={'/forgetpassword'} element={<Forgetpassword />} />
-          <Route path={'/resetpassword'} element={<Resetpassword />} />
+          <Route path={'/resetpassword/:id'} element={<Resetpassword />} />
           <Route path={'/verify/:id'} element={<Verify />} />
           <Route path={'/signUp'} element={<Signup />} />
           <Route path={'/dashboard/*'} element={<Dashboard />} />
