@@ -39,11 +39,11 @@ export default function Login({ }) {
       .then(function (res) {
         console.log(res.data)
         res.data.data.email === value.email ? setactiveuser(res) : null
-        if (res.data.data.verify === true) {
-          res.data.data.email === value.email ? Navigate('/') : null
-        } else {
-          logOut()
-        }
+        // if (res.data.data.verify === true) {
+        res.data.data.email === value.email ? Navigate('/') : null
+        // } else {
+        //   logOut()
+        // }
       })
       .catch(function (error) {
         console.log(error);
