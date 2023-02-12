@@ -27,6 +27,7 @@ export default function () {
     }, 3000);
   }
 
+  
   useEffect(() => {
     !display && changeTheme()
     verify()
@@ -39,7 +40,7 @@ export default function () {
     justifyContent: 'center',
     backgroundColor: '#f8f8f8',
   }
-
+  
   return (
     <div style={style} className='verify'>
       {!state ? <h1>Waiting.....</h1> :
