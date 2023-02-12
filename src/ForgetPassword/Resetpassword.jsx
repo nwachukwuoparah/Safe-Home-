@@ -7,11 +7,11 @@ import React from 'react'
 export default function () {
   const inputRef = useRef('')
 const {id}= useParams()
+
   const forget = async ()=>{
     const res = await axios.post(`https://safehomefurniture.onrender.com/api${id}`)
     console.log(res)
   }
-
 
   return (
     <div className='forget'>
