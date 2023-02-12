@@ -65,7 +65,7 @@ export default function Cart() {
                     <button className='cart_change pointer' onClick={() => { dispach(addToCart(i)) }}>+</button>
                     <h4>{i.QTY}</h4>
                     <button className='cart_change pointer' onClick={() => { dispach(Check(i)) }}>-</button>
-                  </div>
+                  </div>ß
                 </div>
               </div>
             ))}
@@ -74,7 +74,7 @@ export default function Cart() {
               <h4>Total:{Total()}</h4>
             </div>
           </div>
-          {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
+          {alert ? <Alßert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
       </div>
       <Products item={item} title='Related items' />

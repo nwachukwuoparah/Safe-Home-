@@ -4,7 +4,9 @@ const initialState = {
   cart: [],
   RECENT: [],
   addProduct: [],
+  user: []
 }
+
 const features = createSlice({
   name: 'e-store',
   initialState,
@@ -23,20 +25,27 @@ const features = createSlice({
       }
     },
     removeItem: (state, { payload }) => {
-      const remove = state.cart.filter((i) => i.id != payload.id);
+      const remove = state.cart.filter((i) => i._id != payload._id);
       state.cart = remove;
     },
-    clearAll: (state, { payload }) => {
+    addUser: (state, { payload }) => {
+      state.user = [payload];
+    },
+    clearUser: (state) => {
+      const clearAll = []
+      state.user = clearAll
+    },
+    clearAll: (state) => {
       const clearAll = []
       state.cart = clearAll
     },
     Check: (state, { payload }) => {
-      const check = state.cart.findIndex((i) => i.id === payload.id)
+      const check = state.cart.findIndex((i) => i._id === payload._id)
       if (state.cart[check].QTY > 1) {
         const newAmount = state.cart[check].QTY -= 1
         state.cart[check].total = newAmount * state.cart[check].price
       } else {
-        const remove = state.cart.filter((i) => i.id != payload.id);
+        const remove = state.cart.filter((i) => i._id != payload._id);
         state.cart = remove;
       }
     },
@@ -48,11 +57,12 @@ const features = createSlice({
         state.RECENT = recent
       }
     },
-    addProduct:(state, { payload }) => {
-    state.addProduct = [...state.addProduct, payload]
+    addProduct: (state, { payload }) => {
+      state.addProduct = [...state.addProduct, payload]
     }
   }
 })
 
-export const { AllProducts, addToCart, removeItem, clearAll, Check, recent,addProduct } = features.actions
+export const { AllProducts, addToCart, removeItem, clearAll, Check, recent, addProduct, addUser, clearUser } = features.actions
 export default features.reducer
+

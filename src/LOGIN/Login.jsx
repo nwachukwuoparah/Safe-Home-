@@ -4,12 +4,17 @@ import Form from './Form'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
+import { addUser } from '../REDUX/features';
+import { clearUser } from '../REDUX/features';
+import { useDispatch,useSelector } from 'react-redux';
 import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
+  const dispach = useDispatch()
   const [view, setView] = useState(false)
   const [verifyAlert, setverifyAlert] = useState(false)
   const inputRef = useRef('')
-  const { changeTheme, display, activeuser, setactiveuser } = useContext(ThemeContext)
+  const { changeTheme, display } = useContext(ThemeContext)
+  const user = useSelector((state) => state.Commerce.user)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     email: "",
@@ -24,9 +29,9 @@ export default function Login({ }) {
   }, [])
 
   const logOut = async () => {
-    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${activeuser.data.data._id}`)
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${user[0]?.data.data._id}`)
     console.log(res.data)
-    res.status === 200 ? localStorage.removeItem("activeuser") : null
+    res.status === 200 ? dispach(clearUser()) : null
     res.status === 200 ? Navigate('/login') : null
     setverifyAlert(true)
     setTimeout(() => {
@@ -38,12 +43,12 @@ export default function Login({ }) {
     await axios.post("https://safehomefurniture.onrender.com/api/Login", value)
       .then(function (res) {
         console.log(res.data)
-        res.data.data.email === value.email ? setactiveuser(res) : null
-        // if (res.data.data.verify === true) {
-        res.data.data.email === value.email ? Navigate('/') : null
-        // } else {
-        //   logOut()
-        // }
+        res.data.data.email === value.email ? dispach(addUser(res)) : null
+        if (res.data.data.verify === true) {
+          res.data.data.email === value.email ? Navigate('/') : null
+        } else {
+          logOut()
+        }
       })
       .catch(function (error) {
         console.log(error);

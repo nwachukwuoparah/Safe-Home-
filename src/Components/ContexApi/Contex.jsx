@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { user } from "../../LOGIN/user"
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
@@ -12,27 +11,17 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem('state', display);
   }, [display])
 
-
-
-  // handles user logins
-  const [activeuser, setactiveuser] = useState(JSON.parse(localStorage.getItem('activeuser')))
-  useEffect(() => {
-    localStorage.setItem('activeuser', JSON.stringify(activeuser));
-  // console.log(activeuser)
-}, [activeuser])
-
-const [cartAlert, setCartAlert] = useState(false)
-const cartA = () => {
-  setCartAlert(true)
-  setTimeout(function () {
-    setCartAlert(false)
-  }, 3000);
-
-}
-return (
-  <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, activeuser, setactiveuser }}>
-    {children}
-  </ThemeContext.Provider>
-)
+  const [cartAlert, setCartAlert] = useState(false)
+  const cartA = () => {
+    setCartAlert(true)
+    setTimeout(function () {
+      setCartAlert(false)
+    }, 5000);ß
+  }
+  return (
+    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA}}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
