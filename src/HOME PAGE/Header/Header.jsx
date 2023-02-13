@@ -48,7 +48,7 @@ function Header() {
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
             
-            {user[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : <TbUserCircle className='pointer adm' fontSize={25} />}
+            {user?.[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : <TbUserCircle className='pointer adm' fontSize={25} />}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -64,9 +64,9 @@ function Header() {
           </nav>
         
           <nav className='hl_2'>
-            {user[0]?.data?.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
-            {user[0]?.status === 201 ? <span className='logout' onClick={() => { logOut() }}  ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
-            {user[0]?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
+            {user?.[0]?.data?.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
+            {user?.[0]?.status === 201 ? <span className='logout' onClick={() => { logOut() }}  ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
+            {user?.[0]?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
             <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
               <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}

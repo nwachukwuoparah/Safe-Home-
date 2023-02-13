@@ -10,13 +10,15 @@ export default function () {
   const inputRef = useRef('')
   const navigate = useNavigate()
 
-  const forget = async () => {
-    try {
-      const res = await axios.post(`https://safehomefurniture.onrender.com/api/Forget/`,{ email: inputRef.current.value })
-      console.log(res)
-    } catch (e) {
-      console.log(e)
-    }
+  const forget = () => {
+    const Email = { email: inputRef.current.value }
+    console.log(Email.email)
+    axios.post("https://safehomefurniture.onrender.com/api/Forget", Email)
+      .then((res) => {
+        console.log(res)
+      }).catch((e) => {
+        console.log(e)
+      })
   }
 
   return (
