@@ -1,9 +1,11 @@
 import './forgetpassword.css'
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import React from 'react'
 import axios from 'axios'
+import { ThemeContext } from '../Components/ContexApi/Contex'
 export default function () {
+  const { changeTheme, display } = useContext(ThemeContext)
   const navigate = useNavigate()
   const inputRef = useRef('')
   const { id } = useParams()
@@ -13,6 +15,10 @@ export default function () {
     res.status === 200 ? navigate('/login') : null
     console.log(res)
   }
+
+  useEffect(() => {
+    !display && changeTheme()
+  }, [])
 
   return (
     <div className='forget'>
