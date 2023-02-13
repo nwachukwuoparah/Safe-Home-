@@ -11,7 +11,7 @@ export default function () {
   const { id } = useParams()
   console.log(id)
   const forget = async () => {
-    const res = await axios.post(`https://safehomefurniture.onrender.com/api/adminChng/${id}`, { password: inputRef.current.value })
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/Chng/${id}`, { password: inputRef.current.value })
     res.status === 200 ? navigate('/login') : null
     console.log(res)
   }
