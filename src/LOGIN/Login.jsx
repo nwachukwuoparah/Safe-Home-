@@ -20,8 +20,8 @@ export default function Login({ }) {
     email: "",
     password: ""
   })
-
   useEffect(() => {
+    console.log(user)
     setverifyAlert(true)
     setTimeout(() => {
       setverifyAlert(false)
@@ -33,10 +33,6 @@ export default function Login({ }) {
     console.log(res.data)
     res.status === 200 ? dispach(clearUser()) : null
     res.status === 200 ? Navigate('/login') : null
-    setverifyAlert(true)
-    setTimeout(() => {
-      setverifyAlert(false)
-    }, 5000);
   }
 
   const userSign = async () => {
@@ -92,7 +88,6 @@ export default function Login({ }) {
     <div className='login_in'>
       {verifyAlert && <div className='verifyAlert'>
         <p>please check your Email for a verification link</p>
-        {/* <a href='mailto:nwachukwuoparah@gmail.com'>Verify</a> */}
       </div>}
       <HiHome onClick={() => { Navigate('/') }} className='login_Home pointer' />
       <div className='login_in_Wrap'>
@@ -109,14 +104,13 @@ export default function Login({ }) {
           <div className='login_action'>
             <button onClick={() => { userSign() }} className='login_button pointer'>Sign in</button>
             {/* <div className='login_button pointer'>
-             
+
             </div> */}
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>
       </div>
     </div>
-
   )
 
 }

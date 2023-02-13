@@ -30,7 +30,6 @@ export default function () {
   useEffect(() => {
     verify()
     !display && changeTheme()
-console.log("api call")
   }, [])
   const style = {
     width: '100%',

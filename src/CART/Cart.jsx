@@ -65,7 +65,7 @@ export default function Cart() {
                     <button className='cart_change pointer' onClick={() => { dispach(addToCart(i)) }}>+</button>
                     <h4>{i.QTY}</h4>
                     <button className='cart_change pointer' onClick={() => { dispach(Check(i)) }}>-</button>
-                  </div>ß
+                  </div>
                 </div>
               </div>
             ))}
