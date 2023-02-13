@@ -6,33 +6,26 @@ import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Components/ContexApi/Contex';
 import { addUser } from '../REDUX/features';
 import { clearUser } from '../REDUX/features';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
   const dispach = useDispatch()
   const [view, setView] = useState(false)
-  const [verifyAlert, setverifyAlert] = useState(false)
   const inputRef = useRef('')
-  const { changeTheme, display } = useContext(ThemeContext)
+  const { changeTheme, display, verifyAlert, login_alert } = useContext(ThemeContext)
   const user = useSelector((state) => state.Commerce.user)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     email: "",
     password: ""
   })
-  useEffect(() => {
-    console.log(user)
-    setverifyAlert(true)
-    setTimeout(() => {
-      setverifyAlert(false)
-    }, 5000);
-  }, [])
 
   const logOut = async () => {
     const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${user[0]?.data.data._id}`)
     console.log(res.data)
     res.status === 200 ? dispach(clearUser()) : null
     res.status === 200 ? Navigate('/login') : null
+    login_alert()
   }
 
   const userSign = async () => {

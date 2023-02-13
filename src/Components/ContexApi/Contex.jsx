@@ -16,10 +16,19 @@ export const ThemeProvider = ({ children }) => {
     setCartAlert(true)
     setTimeout(function () {
       setCartAlert(false)
-    }, 5000);ß
+    }, 5000);
   }
+  const [verifyAlert, setverifyAlert] = useState(false)
+
+  const login_alert = () => {
+    setverifyAlert(true)
+    setTimeout(() => {
+      setverifyAlert(false)
+    }, 7000);
+  }
+
   return (
-    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA}}>
+    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, verifyAlert, login_alert }}>
       {children}
     </ThemeContext.Provider>
   )

@@ -7,7 +7,7 @@ import { ThemeContext } from '../Components/ContexApi/Contex';
 import { HiHome } from "react-icons/hi";
 export default function Signup({ }) {
   const [view, setView] = useState(false)
-  const { changeTheme, display, setUsers } = useContext(ThemeContext)
+  const { changeTheme, display, setUsers, login_alert } = useContext(ThemeContext)
   const [checked, setChecked] = useState(false)
   const [terms, setTerms] = useState(false)
   const Navigate = useNavigate()
@@ -27,6 +27,7 @@ export default function Signup({ }) {
       .then(function (res) {
         // console.log(res)
         res.status === 201 ? Navigate('/login') : null
+        login_alert()
       })
       .catch(function (error) {
         console.log(error);
@@ -38,6 +39,7 @@ export default function Signup({ }) {
       .then(function (res) {
         // console.log(res)
         res.status === 201 ? Navigate('/login') : null
+        login_alert()
       })
       .catch(function (error) {
         console.log(error);
@@ -123,7 +125,7 @@ export default function Signup({ }) {
             <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form className='sign_form' onSubmit={(e) => { e.preventDefault();}}>
+          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); }}>
             {brand.map((i) => (
               <Form key={i.id} {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
