@@ -10,6 +10,7 @@ import { ThemeContext } from '../../Components/ContexApi/Contex';
 export default function Addproduct(props) {
   const { changeTheme, display, activeuser, setactiveuser } = useContext(ThemeContext)
   const addProduc = useSelector((state) => state.Commerce.addProduct)
+  const user = useSelector((state) => state.Commerce.user)
   const dispach = useDispatch()
   const [state, setState] = useState(false)
   const [image, setImage] = useState(null)
@@ -25,7 +26,6 @@ export default function Addproduct(props) {
     }
   )
 
-
   const handleChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -34,7 +34,7 @@ export default function Addproduct(props) {
     setProduct({ ...product, image: save });
   };
 
-  useEffect(() => {
+  const addP = () => {
     console.log(mageDB.image)
     const formData = new FormData();
     formData.append('title', product.title);
@@ -43,11 +43,10 @@ export default function Addproduct(props) {
     formData.append('price', product.price);
     formData.append('stockQuantity', product.stockQuantity);
     formData.append('categories', product.categories);
-    formData.append('brandName', "product brandName");
+    formData.append('brandName', user[0]?.data.data.brandname);
     formData.append('rating', 0);
-    
     if (addProduc.length !== 0) {
-      axios.post(`https://safehomefurniture.onrender.com/api/admin/${activeuser.data.data._id}`, formData, {
+      axios.post(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -59,7 +58,7 @@ export default function Addproduct(props) {
           console.log(error);
         });
     }
-  }, [addProduc])
+  }
 
   return (
     <div className='Addproduct'>
@@ -67,7 +66,8 @@ export default function Addproduct(props) {
         onSubmit={
           (e) => {
             e.preventDefault()
-            dispach(addProduct(product))
+            // dispach(addProduct(product))
+            addP()
           }}
 
       >

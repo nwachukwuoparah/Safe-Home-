@@ -12,10 +12,13 @@ import { MdOutlineInsertLink } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import { useSelector } from 'react-redux';
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import axios from 'axios';
 function Dashboard(props) {
   const [search, setSearch] = useState(false)
   const [menu, setMenu] = useState(false)
+  const [item, setItem] = useState()
   const addProduct = useSelector((state) => state.Commerce.addProduct)
+  const user = useSelector((state) => state.Commerce.user)
   const [productitem, setProductitem] = useState((localStorage.getItem('Product')))
   const { changeTheme, display } = useContext(ThemeContext)
   const Navigate = useNavigate()
@@ -23,11 +26,37 @@ function Dashboard(props) {
   const [listed, setListed] = useState(false)
   const [sold, setSold] = useState(false)
 
+  async function getItem() {
+    try {
+      const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
+      // dispach(AllProducts(response.data.data))
+      setItem(response.data.data)
+      // setLoading(true)
+      // console.log(response.data.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  const adminpriducts = item?.filter((i) => {
+    return i.brandName === user[0]?.data.data.brandname
+  })
+
+  const Delete = async (i) => {
+    console.log(user?.[0].data.data._id,i._id)
+    try {
+      const res = await axios.post(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}/${i._id}`)
+    console.log(res)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   useEffect(() => {
-    !display && changeTheme()
+    !display && changeTheme
+    getItem()
   }, [])
   useEffect(() => {
-    console.log(listed)
+    // console.log(listed)
   }, [listed])
   const mobileSide = (
     <div onClick={() => setMenu(false)} className='mobile_dashboard_body_left_cont '>
@@ -36,7 +65,7 @@ function Dashboard(props) {
           <img style={{ width: 150 }} src={Logo} />
           <div className='mobile_inventory'>
             <h5>inventory</h5>
-            <NavLink to={"/dashboard/"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(false); setSold(false) }}><p>Products</p><p>5000</p></NavLink >
+            <NavLink to={"/dashboard/"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(false); setSold(false) }}><p>Products</p><p>{adminpriducts?.length}</p></NavLink >
             <NavLink to={"/dashboard/listed"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(true); setSold(false) }} ><p >Listed</p><p>{addProduct.length}</p></NavLink >
             <NavLink to={"/dashboard/sold"} className={({ isActive }) => isActive ? 'activeClassName' : "mobile_inventory_item"} onClick={() => { setListed(false); setSold(true) }}><p>Sold</p><p>5000</p></NavLink >
             <div className='mobile_inventory_item'><p>Processing</p><p>5000</p></div>
@@ -49,9 +78,7 @@ function Dashboard(props) {
         </div>
       </div>
     </div>
-
   )
-
 
   return (
     <div className='dashboard'>
@@ -88,10 +115,7 @@ function Dashboard(props) {
             <img style={{ width: 150 }} src={Logo} />
             <div className='inventory'>
               <h5>inventory</h5>
-              {/* Navigate('/dashboard')
-              Navigate('/dashboard/listed')
-              Navigate('/dashboard/sold')
-              Navigate('/dashboard/addProduct')  */}
+
               <NavLink to={"/dashboard/"} className={({ isActive }) => isActive ? 'activeClassName' : "inventory_item"} onClick={() => { setListed(false); setSold(false) }}><p>Products</p><p>5000</p></NavLink >
               <NavLink to={"/dashboard/listed"} className={({ isActive }) => isActive ? 'activeClassName' : "inventory_item"} onClick={() => { setListed(true); setSold(false) }} ><p >Listed</p><p>{addProduct.length}</p></NavLink >
               <NavLink to={"/dashboard/sold"} className={({ isActive }) => isActive ? 'activeClassName' : "inventory_item"} onClick={() => { setListed(false); setSold(true) }}><p>Sold</p><p>5000</p></NavLink >
@@ -113,7 +137,7 @@ function Dashboard(props) {
             </div>
           </div>
           <Routes>
-            <Route path={'/'} element={< Inventory subtitle='Products' title="Total products:" amount="50,000" />} />
+            <Route path={'/'} element={< Inventory handleDelete={Delete} addProduct={adminpriducts} subtitle='Products' title="Total products:" amount="50,000" />} />
             <Route path={'listed'} element={<Inventory addProduct={addProduct} Product="product" subtitle='Listed' title="Total listed products:" amount={addProduct.length} />} />
             <Route path={'/sold'} element={<Inventory subtitle="Sold" title="Account Balance:" title="Recently Sold Item" amount="50,000" sold={sold} />} />
             <Route path={'/addProduct'} element={<Addproduct />} />

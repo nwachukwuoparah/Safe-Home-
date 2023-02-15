@@ -19,19 +19,19 @@ function Inventory(props) {
             <h4>{props.subtitle}</h4>
             <p>Last 7days</p>
           </div>
-          <div className='inventory_main_card'>
-            <div className='inventory_main_card_head'>
-              <div className='inventory_main_card_head_wrap'>
-                <p>Item</p>
-                <div className='inventory_main_card_head_wrap_detail'>
-                  <p>Categories</p>
-                  <p>Quantity</p>
-                  <p>Price</p>
-                </div>
+          <div className='inventory_main_card_head'>
+            <div className='inventory_main_card_head_wrap'>
+              <p>Item</p>
+              <div className='inventory_main_card_head_wrap_detail'>
+                <p>Categories</p>
+                <p>Quantity</p>
+                <p>Price</p>
               </div>
             </div>
+          </div>
+          <div className='inventory_main_card'>
             {props.addProduct?.map((i) => (
-              < div className='inventory_Card'>
+              <div key={i.id} className='inventory_Card' onClick={() => { props.handleDelete(i) }} >
                 <div className='inventory_Card_wrap'>
                   <div className='inventory_Card_image'>
                     <img style={{ width: 100, height: 100 }} src={i.image} />
@@ -45,6 +45,8 @@ function Inventory(props) {
                 </div>
               </div>
             ))}
+
+
           </div>
         </div>
       </div>

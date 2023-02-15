@@ -29,7 +29,7 @@ function Header() {
     cart.map((i) => QTY += i.QTY)
     return QTY
   }
-// {console.log(user[0]?.data.data._id)}
+  // {console.log(user[0]?.data.data._id)}
   const logOut = async () => {
     const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${user[0]?.data.data._id}`)
     console.log(res.status)
@@ -43,11 +43,11 @@ function Header() {
         <div className='header1_wrap'>
           <img className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 100 }} src={Unionheader} />
           {search ? <div className='mobile_input'>
-            <input />
+            <input placeholder='Search by category/name' />
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
-            
+
             {user?.[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : <TbUserCircle className='pointer adm' fontSize={25} />}
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
@@ -58,11 +58,11 @@ function Header() {
           <nav className='hi_2' >
             <img className='pointer' onClick={() => Navigate('/')} style={{ width: 150 }} src={Logo} />
             <div className='input'>
-              <input />
+              <input placeholder='Search Category/name' />
               <BsSearch className='pointer' />
             </div>
           </nav>
-        
+
           <nav className='hl_2'>
             {user?.[0]?.data?.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
             {user?.[0]?.status === 201 ? <span className='logout' onClick={() => { logOut() }}  ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}

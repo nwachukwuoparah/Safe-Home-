@@ -17,10 +17,10 @@ export default function Signup({ }) {
     password: "",
     confirmPassword: "",
     admin: false,
-    brandName: "",
+    brandname: "",
   })
-  const { name, email, password, brandName } = value
-  const userData = { name, email, password, brandName }
+  const { name, email, password, brandname } = value
+  const userData = { name, email, password, brandname }
 
   const adminSign = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/adminSign`, userData)
@@ -35,7 +35,8 @@ export default function Signup({ }) {
   }
 
   const userSign = () => {
-    axios.post(`https://safehomefurniture.onrender.com/api/sign`, userData)
+    // axios.post(`https://safehomefurniture.onrender.com/api/sign`, userData)
+    console.log(userData)
       .then(function (res) {
         // console.log(res)
         res.status === 201 ? Navigate('/login') : null
@@ -89,7 +90,7 @@ export default function Signup({ }) {
     if (value.admin) {
       setBrand([...input, {
         id: 5,
-        name: "brandName",
+        name: "brandname",
         type: "text",
         err: "Brand name should be 3-16 caharters and should not include any special charater!",
         placeholder: "brand name",

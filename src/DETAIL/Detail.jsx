@@ -20,9 +20,10 @@ function Detail({ }) {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { changeTheme, display, cartAlert, cartA, activeuser } = useContext(ThemeContext)
+  const user = useSelector((state) => state.Commerce.user)
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
-  const { id, categories } = useParams()
+  const {id, categories } = useParams()
   //  console.log(id)
   const [item, setItem] = useState([])
   const [item1, setItem1] = useState([])
@@ -31,7 +32,7 @@ function Detail({ }) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
       setItem(res.data.data)
-      // console.log(res.data.data)
+      console.log(res.data.data)
     } catch (e) {
       console.log(e)
     }
@@ -50,7 +51,7 @@ function Detail({ }) {
   useEffect(() => {
     getItem()
     getItem1()
-  }, [])
+  }, [id])
   // console.log(activeuser?.status)
   return (
     <div >
@@ -75,7 +76,7 @@ function Detail({ }) {
               <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>
-                <button className='button1 pointer' onClick={() => { activeuser?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Buy now</button>
+                <button className='button1 pointer' onClick={() => { user?.[0]?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Buy now</button>
                 <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button>
               </div>
             </div>

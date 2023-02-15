@@ -1,55 +1,13 @@
 import "./payment.css"
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeContext } from "../Components/ContexApi/Contex";
 import { HiHome } from "react-icons/hi";
 import payKorapay from "./payKorapay"
-const input = [
-  {
-    id: 1,
-    name: "name",
-    type: "text",
-    err: "Username should be 3-16 caharters and should not include any special charater!",
-    placeholder: "name",
-    pattern: "^[A-Za-z0-9 ]{3,16}$",
-    required: true,
-  },
-  {
-    id: 2,
-    name: "email",
-    type: "email",
-    err: "It should be a valid email address!",
-    placeholder: "email",
-    required: true,
-  }, {
-    id: 3,
-    name: "password",
-    type: "text",
-    err: "Password should be 8-20 charaters and include at least 1 letter, 1 number and one special charater! ",
-    placeholder: "password",
-    pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-    required: true,
-  }, {
-    id: 4,
-    name: "confirmPassword",
-    type: "text",
-    err: "Password dont match",
-    placeholder: " confirmPassword",
-    pattern: 'password',
-    required: true,
-  }
-  , {
-    id: 5,
-    name: "confirmPassword",
-    type: "text",
-    err: "Password dont match",
-    placeholder: " confirmPassword",
-    pattern: 'value.password',
-    required: true,
-  }
-]
+import axios from "axios";
+
 const StyledContainer = styled.h1`
 width: 100%;
 height: 100vh;
@@ -236,14 +194,24 @@ font-size:20px;
 
 const StylebodyRightContMiddle = styled.div`
 width:100%;
-height:80%;
+height:75%;
 border-bottom: 1px solid #A5A5A5;
 background-color:#fff;
 `
-
+const StylebodyRightContMiddle_item = styled.div`
+width:100%;
+height:13%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom: 1px solid #A5A5A5;
+background-color:#fff;
+font-size:15px;
+font-weight:0;
+`
 const StylebodyRightContBottom = styled.div`
 width:100%;
-height:10%;
+height:15%;
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -277,11 +245,73 @@ export default function () {
   const navigate = useNavigate()
   const { changeTheme, display } = useContext(ThemeContext)
   const cart = useSelector((state) => state.Commerce.cart)
+  const user = useSelector((state) => state.Commerce.user)
+  const [order, setOrder] = useState({
+    quantity: cart.length,
+    customerAddress: "",
+    phoneNumber: "",
+    customerName: "",
+    customerEmail: "",
+    delivery: false,
+    product: cart
+  })
+
+  const input = [
+    {
+      id: 1,
+      name: "customerName",
+      type: "text",
+      err: "Username should be 3-16 caharters and should not include any special charater!",
+      placeholder: "name",
+      pattern: "^[A-Za-z0-9 ]{3,16}$",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "customerEmail",
+      type: "email",
+      err: "It should be a valid email address!",
+      placeholder: "email",
+      required: true,
+    }, {
+      id: 3,
+      name: "customerAddress",
+      type: "text",
+      err: "Password should be 8-20 charaters and include at least 1 letter, 1 number and one special charater! ",
+      placeholder: "Address",
+      pattern: "^[A-Za-z0-9 ]{8,20}$",
+      required: true,
+    }, {
+      id: 4,
+      name: "phoneNumber",
+      type: "text",
+      err: "Password dont match",
+      placeholder: "Phone Number",
+      pattern: 'password',
+      required: true,
+    }
+  ]
   const Total = () => {
     let Total = 0;
     cart.map((i) => Total += i.total)
     return Total
   }
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setOrder({ ...order, [e.target.name]: e.target.value })
+  }
+
+  const order_product = () => {
+    axios.post(`https://safehomefurniture.onrender.com/api/order/${user?.[0]?.data?.data._id}`, order)
+      .then(function (res) {
+        console.log(res)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  
   useEffect(() => {
     !display && changeTheme()
   }, [])
@@ -301,46 +331,44 @@ export default function () {
             <StyledbodoLefttopwrap>
               <p>hello</p>
             </StyledbodoLefttopwrap>
-
           </StyledbodoLefttop>
           <StyledbodoLeftbottom>
             {input.map((i) => (
-              <Styledbodoinput>
-
+              <Styledbodoinput key={i.id} onChange={(e) => { handleChange(e) }} placeholder={i.placeholder} name={i.name}>
               </Styledbodoinput>
             ))}
           </StyledbodoLeftbottom>
-
         </StyledbodoLeft>
-
         <StyledbodyRight>
           <StylebodyRightCont>
             <StylebodyRightContWrap>
-
               <StylebodyRightContTop>
-                food
+                Item
               </StylebodyRightContTop>
-
               <StylebodyRightContMiddle>
-                food
+                {cart?.map((i) => (
+                  <StylebodyRightContMiddle_item >
+                    <p>{i.title}</p>
+                    <p>{i.price}</p>
+                  </StylebodyRightContMiddle_item>
+                ))}
               </StylebodyRightContMiddle>
-
               <StylebodyRightContBottom>
                 <StylebodyRightContBottomWrap>
                   <p>Delivery</p>
-
+                  <input type="checkbox" onChange={() => { setOrder({ ...order, delivery: !order.delivery }) }} />
                 </StylebodyRightContBottomWrap>
                 <StylebodyRightContBottomWrap>
                   <p>Total</p>
                   <p>$500</p>
                 </StylebodyRightContBottomWrap>
-
               </StylebodyRightContBottom>
-
             </StylebodyRightContWrap>
-
           </StylebodyRightCont>
-          <StylebodyrightButton onClick={() => { payKorapay(5000) }} >
+          <StylebodyrightButton onClick={() => {
+            //  payKorapay(5000)
+            order_product()
+          }} >
             Continue to payment
           </StylebodyrightButton>
         </StyledbodyRight>

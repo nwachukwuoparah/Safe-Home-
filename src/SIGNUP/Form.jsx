@@ -15,6 +15,7 @@ export default function Form(props) {
             onChange={props.onChange}
             placeholder={props.placeholder} type={props.type}
             name={props.name}
+            value={props.value}
             required={props.required}
             pattern={props.pattern}
             onBlur={handleFocus}

@@ -56,7 +56,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  height: 85%;
   width: 100%;
   border-radius: 5px 5px 0px 0px;
   box-shadow: 0px -1px 3px 0px rgba(207, 203, 207, 1);
@@ -75,6 +75,7 @@
 .inventory_main_card {
   width: 100%;
   height: 90%;
+  overflow-y:scroll
 }
 
 .inventory_main_card_head {
@@ -129,6 +130,9 @@
   width: 40%;
 }
 
+.inventory_scrole{
+  overflow-y:scroll
+}
 @media screen and (max-width: 425px) {
   .inventory {
     display: flex;

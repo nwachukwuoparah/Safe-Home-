@@ -4,8 +4,7 @@ import './cart.css'
 import axios from "axios";
 import Categoriesroute from '../Components/ROUT/Categoriesroute'
 import Products from '../Components/PRODUCT/Products';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
 import Alert from '../Components/Alert/Alert'
 import { ThemeContext } from '../Components/ContexApi/Contex';
@@ -18,6 +17,7 @@ export default function Cart() {
   const dispach = useDispatch()
   const cart = useSelector((state) => state.Commerce.cart)
   const recent = useSelector((state) => state.Commerce.RECENT)
+  const user = useSelector((state) => state.Commerce.user)
   const [item, setItem] = useState([])
   async function getItem() {
     display ? changeTheme() : null
@@ -70,11 +70,11 @@ export default function Cart() {
               </div>
             ))}
             <div className='cart_card_buttom'>
-              <button className='cart_checkout pointer' onClick={() => { activeuser?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
+              <button className='cart_checkout pointer' onClick={() => { user?.[0]?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
               <h4>Total:{Total()}</h4>
             </div>
           </div>
-          {alert ? <Alßert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
+          {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
       </div>
       <Products item={item} title='Related items' />
