@@ -35,7 +35,7 @@ export default function Addproduct(props) {
   };
 
   const addP = () => {
-    // console.log(mageDB.image)
+    console.log(mageDB.image)
     const formData = new FormData();
     formData.append('title', product.title);
     formData.append('description', product.description);
