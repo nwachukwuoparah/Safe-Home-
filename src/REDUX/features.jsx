@@ -4,7 +4,8 @@ const initialState = {
   cart: [],
   RECENT: [],
   addProduct: [],
-  user: []
+  user: [],
+  addOrder: [],
 }
 
 const features = createSlice({
@@ -59,10 +60,18 @@ const features = createSlice({
     },
     addProduct: (state, { payload }) => {
       state.addProduct = [...state.addProduct, payload]
-    }
+    },
+    addOrders: (state, { payload }) => {
+      state.addOrder = payload;
+      console.log(payload)
+    },
+    removeOrders: (state, { payload }) => {
+      const clearAll = {}
+      state.addOrder = clearAll
+    },
   }
 })
 
-export const { AllProducts, addToCart, removeItem, clearAll, Check, recent, addProduct, addUser, clearUser } = features.actions
+export const { AllProducts, addToCart, removeItem, clearAll, Check, recent, addProduct, addUser, clearUser, addOrders, removeOrders } = features.actions
 export default features.reducer
 

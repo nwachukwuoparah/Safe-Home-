@@ -1,50 +1,23 @@
-import React, { useState } from 'react'
-import { MdStarOutline } from "react-icons/md";
+import React, { useState, useEffect } from 'react'
+import { MdOutlineStarPurple500 } from "react-icons/md";
 import styled from "styled-components";
-
-const StyledContainer = styled.div`
-background-color: rgb(255, 255, 255, 90%);
-width: 100%;
-height: 100%;
-position: fixed;
-top: 0px;
-left: 0px;
-overflow-x: hidden;
-overflow-y: hidden;
-z-index: 10000;
-display: flex;
-align-items: center;
-justify-content: center;
-
-
-`;
+import axios from 'axios';
 const StyledRatingUl = styled.div`
-background-color:#B3D4E5;
-width: 30%;
-height: 30%;
-border-radius:20px;
-gap:5px;
+gap:10px;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size:50px;
+font-size:20px;
 @media (width:768px){
-  width:60%;
   font-size:50px;
 }
 @media (width:425px){
-  width:60%;
-  height:20%;
   font-size:25px;
 }
 @media (width:375px){
-  width:70%;
-  height:20%;
   font-size:30px;
 }
 @media (width:320px){
-  width:80%;
-  height:20%;
   font-size:30px;
 }
 `;
@@ -53,26 +26,58 @@ const StyledRatingLi = styled.div`
 
 const Star = ({ yellow }) => {
   return (
-    <MdStarOutline style={{ color: yellow ? 'yellow' : "" }} />
-
+    <MdOutlineStarPurple500 style={{ color: yellow ? '#e69b04' : "" }} />
   )
 }
 
 export default function Rating(props) {
   const [rating, setRating] = useState(0)
   const [hoverindex, setHoverIndex] = useState(0)
+  const [total, setTotal] = useState()
+
+
+
+  const getProduct = async (id) => {
+    try {
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rating })
+      console.log(res)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
+
+
+  const handleRating = async (id) => {
+    console.log(id)
+    try {
+      const res = await axios.patch(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rating })
+      console.log(res)
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+  useEffect(() => {
+    // console.log(rating)
+  }, [rating])
+
   return (
-    <StyledContainer >
+
+    <div className='order_item'>
+      <p>{props.title}</p>
       <StyledRatingUl>
         {
           [1, 2, 3, 4, 5].map((i) => (
             <StyledRatingLi
               onMouseEnter={() => { setHoverIndex(i) }}
               onMouseLeave={() => { setHoverIndex(0) }}
-              onClick={() => { setRating(i) }}
-              key={i}><Star yellow={(i <= hoverindex) || (i <= rating)} /></StyledRatingLi>
+              onClick={() => { setRating(i); handleRating(props.id) }}
+              key={i}> <MdOutlineStarPurple500 style={{ color: (i <= hoverindex) || (i <= rating) ? '#e69b04' : "" }} />
+            </StyledRatingLi>
           ))}
       </StyledRatingUl>
-    </StyledContainer>
+    </div>
   )
 }

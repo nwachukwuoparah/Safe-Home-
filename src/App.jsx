@@ -13,13 +13,12 @@ import Admin from "./ADMIN/Admin"
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeContext } from './Components/ContexApi/Contex'
 import Payment from './PAYMENT/Payment'
+import Order from './PAYMENT/order'
 import Verify from './VERIFY/Verify'
 import Forgetpassword from './ForgetPassword/Forgetpassword'
 import Resetpassword from './ForgetPassword/Resetpassword'
 function App() {
-  // const [state, setState] = useState(false)
   const { display } = useContext(ThemeContext)
-  // console.log(theme)
   return (
     <div className='App'>
       <Router>
@@ -27,6 +26,7 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Home />} />
           <Route path={'/payment'} element={<Payment />} />
+          <Route path={'/order'} element={<Order />} />
           <Route path={'/Catogories'} element={<AllCategories />} />
           <Route path={'/detail/:id'} element={<Detail />} />
           <Route path={'/cart'} element={<Cart />} />

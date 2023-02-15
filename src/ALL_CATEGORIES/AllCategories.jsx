@@ -7,7 +7,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 function AllCategories({}) {
-
+  const [loading, setLoading] = useState(false)
   const [item, setItem] = useState([])
   async function getItem() {
     try {
@@ -27,7 +27,7 @@ function AllCategories({}) {
   return (
     <div>
       <Categoriesroute/>
-      < Products item={item} title='All category'/>
+      < Products loading={loading} item={item} title='All category'/>
       <div className='categories_Promo'>
         <div className='categories_Promo_wrap' >
           <div className="categories_Promo_text">

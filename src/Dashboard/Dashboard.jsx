@@ -44,7 +44,7 @@ function Dashboard(props) {
   const Delete = async (i) => {
     console.log(user?.[0].data.data._id,i._id)
     try {
-      const res = await axios.post(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}/${i._id}`)
+      const res = await axios.delete(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}/${i._id}`)
     console.log(res)
     } catch (e) {
       console.log(e)
@@ -52,12 +52,14 @@ function Dashboard(props) {
   }
 
   useEffect(() => {
-    !display && changeTheme
+    !display && changeTheme()
     getItem()
   }, [])
+
   useEffect(() => {
-    // console.log(listed)
-  }, [listed])
+    console.log(display)
+  }, [display])
+
   const mobileSide = (
     <div onClick={() => setMenu(false)} className='mobile_dashboard_body_left_cont '>
       <div className='mobile_dashboard_body_left'>

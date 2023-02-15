@@ -9,7 +9,6 @@ import { MdOutlineStarHalf } from "react-icons/md";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { MdGppGood } from "react-icons/md";
 import { useSelector } from 'react-redux';
-import Rating from '../PAYMENT/Rating';
 import Alert from "../Components/Alert/Alert"
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../REDUX/features'
@@ -56,7 +55,6 @@ function Detail({ }) {
   return (
     <div >
       <Categoriesroute />
-      {/* <Rating/> */}
       {cartAlert && <CartAlert />}
       <div className='detail'>
         <div className='detail_wrap'>

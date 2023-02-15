@@ -1,13 +1,13 @@
-import "./payment.css"
 import React, { useContext, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeContext } from "../Components/ContexApi/Contex";
 import { HiHome } from "react-icons/hi";
 import payKorapay from "./payKorapay"
 import axios from "axios";
-
+import { useDispatch, useSelector } from 'react-redux'
+import { addOrders } from '../REDUX/features';
+import { removeOrders } from '../REDUX/features';
 const StyledContainer = styled.h1`
 width: 100%;
 height: 100vh;
@@ -181,7 +181,6 @@ width:85%;
 height:100%;
 background-color:#fff;
 `
-
 const StylebodyRightContTop = styled.div`
 width:100%;
 height:10%;
@@ -191,7 +190,6 @@ border-bottom: 1px solid #A5A5A5;
 background-color:#fff;
 font-size:20px;
 `
-
 const StylebodyRightContMiddle = styled.div`
 width:100%;
 height:75%;
@@ -228,8 +226,6 @@ gap:20px;
 // background-color:grey;
 font-size:15px;
 `
-
-
 const StylebodyrightButton = styled.button`
 width:100%;
 height:10%;
@@ -242,6 +238,7 @@ color:#f8f8f8;
 `
 
 export default function () {
+  const dispach = useDispatch()
   const navigate = useNavigate()
   const { changeTheme, display } = useContext(ThemeContext)
   const cart = useSelector((state) => state.Commerce.cart)
@@ -302,16 +299,24 @@ export default function () {
     setOrder({ ...order, [e.target.name]: e.target.value })
   }
 
+
+
   const order_product = () => {
+
+
     axios.post(`https://safehomefurniture.onrender.com/api/order/${user?.[0]?.data?.data._id}`, order)
       .then(function (res) {
         console.log(res)
+        res.status === 201 ? dispach(addOrders(res)) : null
+
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  
+
+
+
   useEffect(() => {
     !display && changeTheme()
   }, [])
@@ -368,7 +373,7 @@ export default function () {
           <StylebodyrightButton onClick={() => {
             //  payKorapay(5000)
             order_product()
-          }} >
+          }}>
             Continue to payment
           </StylebodyrightButton>
         </StyledbodyRight>
