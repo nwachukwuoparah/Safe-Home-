@@ -35,7 +35,7 @@ export default function Addproduct(props) {
   };
 
   const addP = () => {
-    console.log(mageDB.image)
+    console.log('cliked')
     const formData = new FormData();
     formData.append('title', product.title);
     formData.append('description', product.description);
@@ -45,19 +45,17 @@ export default function Addproduct(props) {
     formData.append('categories', product.categories);
     formData.append('brandName', user[0]?.data.data.brandname);
     formData.append('rating', 0);
-    if (addProduc.length !== 0) {
-      axios.post(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    axios.post(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(response => {
+        console.log(response.data);
       })
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   return (
