@@ -61,7 +61,7 @@ const features = createSlice({
     addProduct: (state, { payload }) => {
       state.addProduct = [...state.addProduct, payload]
     },
-    addOrders: (state, { payload }) => {
+    orderproduct: (state, { payload }) => {
       state.addOrder = payload;
       console.log(payload)
     },
@@ -72,6 +72,6 @@ const features = createSlice({
   }
 })
 
-export const { AllProducts, addToCart, removeItem, clearAll, Check, recent, addProduct, addUser, clearUser, addOrders, removeOrders } = features.actions
+export const { AllProducts, addToCart, removeItem, clearAll, Check, recent, addProduct, addUser, clearUser,  orderproduct, removeOrders } = features.actions
 export default features.reducer
 

@@ -6,15 +6,15 @@ import { HiHome } from "react-icons/hi";
 import payKorapay from "./payKorapay"
 import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux'
-import { addOrders } from '../REDUX/features';
+import {  orderproduct } from '../REDUX/features';
 import { removeOrders } from '../REDUX/features';
 const StyledContainer = styled.h1`
 width: 100%;
-min-height: 100vh;
+height: 100vh;
 display: flex;
 flex-direction:column;
 align-items: center;
-gap:20px;
+gap:50px;
 background-color:#E6E7F3;
 
 @media (width:425px){
@@ -22,12 +22,12 @@ background-color:#E6E7F3;
   @media (width:375px){
   
     }
-    @media (width < 320px){
-      background-color:grey;
+    @media (width:320px){
+   
       }
 `;
 const Styledheader = styled.div`
-// width:100%;
+width:100%;
 height:10%;
 display: flex;
 align-items: center;
@@ -87,7 +87,6 @@ border-radius:5px;
 box-sizing: border-box;
 @media (width:425px){
   width: 90%;
-  background-color:red;
   }
   @media (width:375px){
     width: 90%;
@@ -303,12 +302,11 @@ export default function () {
 
 
   const order_product = () => {
-
-
     axios.post(`https://safehomefurniture.onrender.com/api/order/${user?.[0]?.data?.data._id}`, order)
       .then(function (res) {
+
         console.log(res)
-        res.status === 201 ? dispach(addOrders(res)) : null
+        res.status === 201 ? dispach(orderproduct(res)) : null
 
       })
       .catch(function (error) {

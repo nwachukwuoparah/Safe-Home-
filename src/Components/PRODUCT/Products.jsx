@@ -142,18 +142,18 @@ function Products({ item, title, loading }) {
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>
 
-                    {i.rating === 500 && five_Star}
-                    {i.rating === 450 && four_half}
-                    {i.rating === 400 && four_star}
-                    {i.rating === 350 && three_half}
-                    {i.rating === 300 && three_star}
-                    {i.rating === 250 && two_half}
-                    {i.rating === 200 && two_star}
-                    {i.rating === 150 && one_half}
-                    {i.rating === 100 && one_Star}
-                    {i.rating === 50 && halfStar}
-                    {i.rating < 50 && Outline}
-                
+                    {i.rating >= 500 && five_Star}
+                    {i.rating <== 449 && four_half}
+                    {i.rating <== 399 && four_star}
+                    {i.rating <== 349 && three_half}
+                    {i.rating <== 299 && three_star}
+                    {i.rating <== 249 && two_half}
+                    {i.rating <== 199 && two_star}
+                    {i.rating <== 149 && one_half}
+                    {i.rating <== 99 && one_Star}
+                    {i.rating <== 50 && halfStar}
+                    {i.rating < 49 && Outline}
+
                   </div>
                 </Link>
                 <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
