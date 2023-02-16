@@ -104,11 +104,11 @@ export default function Addproduct(props) {
       </form>
 
       <div className='Addproduct_right'>
-        <div className='Addproduct_right_top'>
-          <div className='Addproduct_right_top_image1'>
-            {product.image ? <img className='' src={product.image} /> : < FaUserCircle fontSize={300} />}
-          </div>
+
+        <div className='Addproduct_right_top_image1'>
+          {product.image ? <img className='' src={product.image} /> : < FaUserCircle fontSize={300} />}
         </div>
+
         <div className='Addproduct_right_buttom'>
           <div className='Addproduct_right_buttom_text'>
             <h3>{product.title}</h3>

@@ -62,19 +62,21 @@ function Header() {
               <BsSearch className='pointer' />
             </div>
           </nav>
-
           <nav className='hl_2'>
             {user?.[0]?.data?.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
-            {user?.[0]?.status === 201 ? <span className='logout' onClick={() => { logOut() }}  ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
+            {user?.[0]?.status === 201 ? <span className='logout adm' onClick={() => { logOut() }}  ><p>Log Out</p><CiLogout fontSize={20} /></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
             {user?.[0]?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
-            <div className='pointer adm' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
+
+            <div className='pointer adm logout' onClick={() => Navigate('/cart')} style={{ display: 'flex' }}>
               <p>Cart</p>
-              <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
+              <span>
+                <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
+              </span>
+
             </div>
           </nav>
         </div>
       </div>
-
       <div className='header2' onClick={() => setSearch(false)}>
         <div className='header2_wrap'>
           <div
@@ -84,7 +86,6 @@ function Header() {
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
-
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
             <p>beds.</p>
             <p>cabinets.</p>

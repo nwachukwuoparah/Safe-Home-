@@ -36,24 +36,25 @@ export default function Rating(props) {
   const [total, setTotal] = useState()
 
 
-
-  const getProduct = async (id) => {
+  const getProduct = async (i, id) => {
+    console.log(id)
     try {
-      const res = await axios.get(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rating })
-      console.log(res)
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
+      // console.log(res.data.data.rating)
+      const total = res.data.data.rating += i
+      // console.log(total)
+      id === res.data.data._id ? handleRating(id, total) : null
     } catch (e) {
       console.log(e)
     }
   }
 
 
-
-
-  const handleRating = async (id) => {
+  const handleRating = async (id, rate) => {
     console.log(id)
     try {
-      const res = await axios.patch(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rating })
-      console.log(res)
+      const res = await axios.patch(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rate })
+      // console.log(res)
     } catch (e) {
       console.log(e)
     }
@@ -73,7 +74,7 @@ export default function Rating(props) {
             <StyledRatingLi
               onMouseEnter={() => { setHoverIndex(i) }}
               onMouseLeave={() => { setHoverIndex(0) }}
-              onClick={() => { setRating(i); handleRating(props.id) }}
+              onClick={() => { getProduct(i, props.id) }}
               key={i}> <MdOutlineStarPurple500 style={{ color: (i <= hoverindex) || (i <= rating) ? '#e69b04' : "" }} />
             </StyledRatingLi>
           ))}

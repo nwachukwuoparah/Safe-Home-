@@ -16,6 +16,107 @@ function Products({ item, title, loading }) {
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
+  const Outline = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+  const halfStar = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStarHalf />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+  const one_Star = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+
+  const one_half = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStarHalf />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+  const two_star = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStarOutline />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+  const two_half = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStarHalf />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+  const three_star = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStarOutline />
+      <MdStarOutline />
+    </div>
+  )
+  const three_half = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStarHalf />
+      <MdStarOutline />
+    </div>
+  )
+
+  const four_star = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStarOutline />
+    </div>
+  )
+  const four_half = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStarHalf />
+    </div>
+  )
+  const five_Star = (
+    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStar />
+      <MdStar />
+    </div>
+  )
 
   return (
     <div className='Products'>
@@ -40,13 +141,19 @@ function Products({ item, title, loading }) {
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>
-                    <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
-                      <MdStar />
-                      <MdStar />
-                      <MdStar />
-                      <MdStarHalf />
-                      <MdStarOutline />
-                    </div>
+
+                    {i.rating === 500 && five_Star}
+                    {i.rating === 450 && four_half}
+                    {i.rating === 400 && four_star}
+                    {i.rating === 350 && three_half}
+                    {i.rating === 300 && three_star}
+                    {i.rating === 250 && two_half}
+                    {i.rating === 200 && two_star}
+                    {i.rating === 150 && one_half}
+                    {i.rating === 100 && one_Star}
+                    {i.rating === 50 && halfStar}
+                    {i.rating < 50 && Outline}
+                
                   </div>
                 </Link>
                 <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >

@@ -10,11 +10,11 @@ import { addOrders } from '../REDUX/features';
 import { removeOrders } from '../REDUX/features';
 const StyledContainer = styled.h1`
 width: 100%;
-height: 100vh;
+min-height: 100vh;
 display: flex;
 flex-direction:column;
 align-items: center;
-gap:50px;
+gap:20px;
 background-color:#E6E7F3;
 
 @media (width:425px){
@@ -22,12 +22,12 @@ background-color:#E6E7F3;
   @media (width:375px){
   
     }
-    @media (width:320px){
-   
+    @media (width < 320px){
+      background-color:grey;
       }
 `;
 const Styledheader = styled.div`
-width:100%;
+// width:100%;
 height:10%;
 display: flex;
 align-items: center;
@@ -87,6 +87,7 @@ border-radius:5px;
 box-sizing: border-box;
 @media (width:425px){
   width: 90%;
+  background-color:red;
   }
   @media (width:375px){
     width: 90%;
