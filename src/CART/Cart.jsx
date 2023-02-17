@@ -36,7 +36,7 @@ export default function Cart() {
   }, [])
 
   const Total = () => {
-    let Total = 0;
+    let Total=0;
     cart.map((i) => Total += i.total)
     return Total
   }
@@ -71,7 +71,7 @@ export default function Cart() {
             ))}
             <div className='cart_card_buttom'>
               <button className='cart_checkout pointer' onClick={() => { user?.[0]?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
-              <h4>Total:{Total()}</h4>
+              <h4>Total:{Math.ceil(Total())}</h4>
             </div>
           </div>
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}

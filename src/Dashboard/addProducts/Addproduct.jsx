@@ -15,6 +15,9 @@ export default function Addproduct(props) {
   const [state, setState] = useState(false)
   const [image, setImage] = useState(null)
   const [mageDB, setImageDB] = useState({ image: "" })
+  const [err, setErr] = useState('')
+  const [herr, setHerr] = useState(false)
+  const [loader, setLoader] = useState(false)
   const [product, setProduct] = useState(
     {
       title: "",
@@ -52,11 +55,21 @@ export default function Addproduct(props) {
     })
       .then(response => {
         console.log(response.data);
+        setLoader(false)
       })
       .catch(error => {
         console.log(error);
+        setLoader(false)  
+        setErr(error.response.data.message)
       });
   }
+
+  useEffect(() => {
+    setHerr(true)
+    setTimeout(() => {
+      setHerr(false)
+    }, 5000);
+  }, [err])
 
   return (
     <div className='Addproduct'>
@@ -66,6 +79,7 @@ export default function Addproduct(props) {
             e.preventDefault()
             // dispach(addProduct(product))
             addP()
+            setLoader(true)
           }}
 
       >
@@ -100,7 +114,9 @@ export default function Addproduct(props) {
             <p>Categories</p>
             <input onChange={(e) => { setProduct({ ...product, [e.target.name]: e.target.value }) }} name="categories" />
           </div>
-        </div> <button className='Addproduct_right_buttom_button'>Commit</button>
+        </div>
+        {!loader ? <button className='Addproduct_right_buttom_button'>Commit</button> : <button className='Addproduct_right_buttom_button'><div className="loader"></div></button>}
+
       </form>
 
       <div className='Addproduct_right'>
@@ -114,6 +130,7 @@ export default function Addproduct(props) {
             <h3>{product.title}</h3>
             <h3>{product.price}</h3>
             <p>{product.description}</p>
+            {herr && <p style={{ color: 'red' }}>{err}</p>}
           </div>
 
         </div>

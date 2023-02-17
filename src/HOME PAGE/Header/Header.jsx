@@ -8,6 +8,7 @@ import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import { VscClose } from "react-icons/vsc";
 import { CiLogout } from "react-icons/ci";
+import { MdPending } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../Components/ContexApi/Contex'
 import { useSelector, useDispatch } from 'react-redux';
@@ -100,7 +101,8 @@ function Header() {
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
-                    <div></div>
+                    {/* <div></div> */}
+                    <MdPending fontSize={30} color={'#f8f8f8'} onClick={() => { Navigate('/order') }} />
                     {user[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>
                 </div>
@@ -117,12 +119,15 @@ function Header() {
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
                   {user?.data?.status === 201 ? <span className='logout' onClick={() => { logOut() }} ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
-
                 </div>
               </div>
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>
             </div>}
-          <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
+          <div style={{display:'flex', alignItems:'center',gap:10}}>
+            <MdPending className='order_icon' fontSize={25} color={'#003F62'} onClick={()=>{Navigate('/order')}} />
+            <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
+          </div>
+
         </div>
       </div>
 

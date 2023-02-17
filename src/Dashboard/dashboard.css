@@ -232,7 +232,7 @@
   .mobile_dashboard_body_left_cont {
     width: 100%;
     position: absolute;
-    top: 73px;
+    top: 67px;
     left: 0.1px;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(2.9px);

@@ -10,6 +10,10 @@ export default function Signup({ }) {
   const { changeTheme, display, setUsers, login_alert } = useContext(ThemeContext)
   const [checked, setChecked] = useState(false)
   const [terms, setTerms] = useState(false)
+  const [termsErr, setTermsErr] = useState(true)
+  const [loader, setLoader] = useState(false)
+  const [err, setErr] = useState()
+  const [herr, setHerr] = useState(false)
   const Navigate = useNavigate()
   const [value, setValue] = useState({
     name: "",
@@ -27,23 +31,28 @@ export default function Signup({ }) {
       .then(function (res) {
         // console.log(res)
         res.status === 201 ? Navigate('/login') : null
+        res.status === 201 ? setLoader(false) : null
         login_alert()
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        setErr(error.response.data.message)
+        setLoader(false)
       });
   }
 
   const userSign = () => {
-    // axios.post(`https://safehomefurniture.onrender.com/api/sign`, userData)
-    console.log(userData)
+    axios.post(`https://safehomefurniture.onrender.com/api/sign`, userData)
       .then(function (res) {
         // console.log(res)
         res.status === 201 ? Navigate('/login') : null
+        res.status === 201 ? setLoader(false) : null
         login_alert()
       })
       .catch(function (error) {
         console.log(error);
+        setErr(error.response.data.message)
+        setLoader(false)
       });
   }
 
@@ -105,6 +114,18 @@ export default function Signup({ }) {
     }
   }
 
+  useEffect(() => {
+    setHerr(true)
+    setTimeout(() => {
+      setHerr(false)
+    }, 2000);
+  }, [err])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTermsErr(true)
+    }, 5000);
+  }, [termsErr])
 
   const onChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })
@@ -126,7 +147,17 @@ export default function Signup({ }) {
             <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
             <h1> Create an account</h1>
           </div>
-          <form className='sign_form' onSubmit={(e) => { e.preventDefault(); }}>
+          {herr && <p style={{ color: 'red' }}>{err}</p>}
+          <form className='sign_form' onSubmit={
+            (e) => {
+              e.preventDefault();
+              if (terms) {
+                setLoader(true)
+                value.admin ? adminSign() : userSign()
+              } else {
+                setTermsErr(false)
+              }
+            }}>
             {brand.map((i) => (
               <Form key={i.id} {...i} value={value[i.name]} onChange={onChange} setView={setView} view={view} />
             ))}
@@ -138,11 +169,12 @@ export default function Signup({ }) {
               /> <p>sign up as our Agent(Optional)</p></label>
               <label className='label'><input className='pointer' type="checkbox"
                 onChange={() => { setTerms(!terms) }}
-              /> <span className='label'><p>I Agree to the </p> <p style={{ color: "#0056FC" }} className="pointer">Terms & Privacy Policy</p></span></label>
+              /> <span className='label'><p>I Agree to the </p> <p style={{ color: termsErr ? "#0056FC": 'red' }} className="pointer">Terms & Privacy Policy</p></span></label>
             </div>
 
             <div className='Signup_action'>
-              {value.admin ? <button onClick={() => { adminSign() }} className='button pointer'>Admin</button> : <button onClick={() => { userSign() }} className='button pointer'>Sign up</button>}
+              {!loader && <>{value.admin ? <button className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}</>}
+              {loader && <button className='button pointer'><div className="loader"></div> </button>}
               <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
             </div>
 

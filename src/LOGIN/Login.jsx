@@ -11,7 +11,10 @@ import { HiHome } from "react-icons/hi";
 export default function Login({ }) {
   const dispach = useDispatch()
   const [view, setView] = useState(false)
+  const [loader, setLoader] = useState(false)
   const inputRef = useRef('')
+  const [err, setErr] = useState('')
+  const [herr, setHerr] = useState(false)
   const { changeTheme, display, verifyAlert, login_alert } = useContext(ThemeContext)
   const user = useSelector((state) => state.Commerce.user)
   const Navigate = useNavigate()
@@ -33,19 +36,21 @@ export default function Login({ }) {
       .then(function (res) {
         console.log(res.data)
         res.data.data.email === value.email ? dispach(addUser(res)) : null
+        setLoader(false)
         if (res.data.data.verify === true) {
           res.data.data.email === value.email ? Navigate('/') : null
         } else {
           logOut()
+          setLoader(false)
         }
       })
       .catch(function (error) {
         console.log(error);
+        setErr(error.response.data.message)
+        setLoader(false)
       });
   }
 
-
-  
   const input = [
     {
       id: 1,
@@ -77,6 +82,14 @@ export default function Login({ }) {
     !display && changeTheme()
   }, [])
 
+
+  useEffect(() => {
+    setHerr(true)
+    setTimeout(() => {
+      setHerr(false)
+    }, 5000);
+  }, [err])
+
   return (
 
     <div className='login_in'>
@@ -89,17 +102,20 @@ export default function Login({ }) {
           <img className='pointer' onClick={() => { Navigate('/') }} style={{ width: 200 }} src='/Union.svg' />
           <h1> Log into account</h1>
         </div>
-
-        <form className='form_wrap' onSubmit={() => { event.preventDefault(); }}>
+        {herr && <p style={{ color: 'red' }}>{err}</p>}
+        <form className='form_wrap' onSubmit={
+          () => {
+            event.preventDefault();
+            userSign()
+            setLoader(true)
+          }}>
           {input.map((i) => (
             <Form key={i.id} {...i} view={view} setView={setView} onChange={onChange} />
           ))}
 
           <div className='login_action'>
-            <button onClick={() => { userSign() }} className='login_button pointer'>Sign in</button>
-            {/* <div className='login_button pointer'>
-
-            </div> */}
+            {!loader && <button className='login_button pointer'>Sign in</button>}
+            {loader && <button className='login_button pointer'><div className="loader"></div> </button>}
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>

@@ -141,18 +141,17 @@ function Products({ item, title, loading }) {
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>
-
-                    {i.rating >= 500 && five_Star}
-                    {i.rating <= 449 && four_half}
-                    {i.rating <= 399 && four_star}
-                    {i.rating <= 349 && three_half}
-                    {i.rating <= 299 && three_star}
-                    {i.rating <= 249 && two_half}
-                    {i.rating <= 199 && two_star}
-                    {i.rating <= 149 && one_half}
-                    {i.rating <= 99 && one_Star}
-                    {i.rating <= 50 && halfStar}
-                    {i.rating < 49 && Outline}
+                    {i.rating > 350 && i.rating > 550 && five_Star}
+                    {i.rating > 350 && i.rating <= 500 && four_half}
+                    {i.rating > 350 && i.rating <= 450 && four_star}
+                    {i.rating > 350 && i.rating <= 400 && three_half}
+                    {i.rating > 350 && i.rating <= 350 && three_star}
+                    {i.rating > 250 && i.rating <= 300 && two_half}
+                    {i.rating > 200 && i.rating <= 250 && two_star}
+                    {i.rating > 150 && i.rating <= 200 && one_half}
+                    {i.rating > 100 && i.rating <= 150 && one_Star}
+                    {i.rating > 50 && i.rating <= 100 && halfStar}
+                    {i.rating < 50 && Outline}
 
                   </div>
                 </Link>

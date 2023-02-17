@@ -78,3 +78,15 @@
   flex-direction: column;
   align-items: content;
 }
+
+@media screen and (width <= 834px) {
+  .order_wrap {
+    width: 95%;
+  }
+
+  .order_button {
+    width: 50%;
+   
+  }
+
+}

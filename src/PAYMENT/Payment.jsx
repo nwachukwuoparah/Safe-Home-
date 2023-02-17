@@ -6,7 +6,7 @@ import { HiHome } from "react-icons/hi";
 import payKorapay from "./payKorapay"
 import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux'
-import {  orderproduct } from '../REDUX/features';
+import { orderproduct } from '../REDUX/features';
 import { removeOrders } from '../REDUX/features';
 const StyledContainer = styled.h1`
 width: 100%;
@@ -15,16 +15,12 @@ display: flex;
 flex-direction:column;
 align-items: center;
 gap:50px;
-background-color:#E6E7F3;
+// background-color:#E6E7F3;
 
-@media (width:425px){
+@media only screen and (width <= 834px){
+  height: 150vh;
+  gap30px;
   }
-  @media (width:375px){
-  
-    }
-    @media (width:320px){
-   
-      }
 `;
 const Styledheader = styled.div`
 width:100%;
@@ -33,25 +29,22 @@ display: flex;
 align-items: center;
 justify-content: center;
 background-color:#fff;
+@media only screen and (width <= 834px){
+  }
+
 `
 const StyledheaderWrap = styled.div`
 width:80%;
 background-color:#fff;
 font-Size:1.7rem;
 color:#606060;
-
-@media (width:425px){
-  width: 90%;
-  // background-color:grey;
+ 
+@media only screen and (width <= 834px){
+ display: flex;
+   align-items: center;
+   justify-content:center;
+  width:90%;
   }
-  @media (width:375px){
-    width: 90%;
-    font-Size:1rem;
-    }
-    @media (width:320px){
-      width: 90%;
-      font-Size:1rem;
-      }
 `
 const StyledheaderWrapinner = styled.div`
 width:50%;
@@ -59,19 +52,14 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 
-@media (width:425px){
-  width: 100%;
-  font-Size:1.5rem;
+@media only screen and (width <= 834px){
+ display: flex;
+   align-items: center;
+   justify-content:center;
+   justify-content:space-between;
+  width:100%;
   }
-  @media (width:375px){
-    width: 100%;
-    font-Size:1.5rem;
-    // background-color:grey;
-    }
-    @media (width:320px){
-      width: 100%;
-      font-Size:1.5rem;
-      }
+
 
 `
 const Styledbody = styled.div`
@@ -85,15 +73,12 @@ gap:150px;
 background-color:#F8F8F8;
 border-radius:5px;
 box-sizing: border-box;
-@media (width:425px){
+@media (width <= 834px){
   width: 90%;
+  // background-color:red;
+  gap:10px;
+  height:50%;
   }
-  @media (width:375px){
-    width: 90%;
-    }
-    @media (width:320px){
-      width: 90%;
-      }
 `;
 const StyledbodoLeft = styled.div`
 width:45%;
@@ -105,24 +90,12 @@ justify-content:center;
 gap:20px;
 // background-color:gold;
 border-radius:5px;
-@media (width:425px){
+@media (width <= 834px){
   align-items:center;
   justify-content:center;
   gap:0px;
   width: 100%;
   }
-  @media (width:375px){
-    width: 100%;
-    gap:0px;
-    width: 100%;
-    }
-    @media (width:320px){
-      width: 100%;
-      gap:0px;
-      width: 100%;
-      }
-
-
 `
 const StyledbodoLefttop = styled.div`
 width:90%;
@@ -132,6 +105,9 @@ justify-content:center;
 height:15%;
 background-color:#FFFFFF;
 border-radius:5px;
+@media (width <= 834px){
+  width: 100%;
+  }
 `
 const StyledbodoLefttopwrap = styled.div`
 width:95%;
@@ -147,6 +123,9 @@ flex-direction:column;
 align-items: center;
 justify-content: center;
 gap:40px;
+@media (width <= 834px){
+  width: 100%;
+  }
 `
 const Styledbodoinput = styled.input`
 width:90%;
@@ -162,9 +141,15 @@ height:95%;
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:space-between;
+gap:50px;
 border-radius:5px;
 // background-color:gold;
+@media (width <= 834px){
+  height:800px;
+  // background-color:gold;
+  gap:10px;
+  width: 100%;
+  }
 `
 const StylebodyRightCont = styled.div`
 width:100%;
@@ -195,6 +180,7 @@ width:100%;
 height:75%;
 border-bottom: 1px solid #A5A5A5;
 background-color:#fff;
+overflow-y:auto;
 `
 const StylebodyRightContMiddle_item = styled.div`
 width:100%;

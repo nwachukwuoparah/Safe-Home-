@@ -150,6 +150,9 @@
 }
 
 @media screen and (max-width:425px) {
+  .order_icon{
+    display: none;
+  }
   .header1_wrap {
     width: 90%;
   }
@@ -187,6 +190,7 @@
     border-bottom: 1px solid #b2b1b1;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 50%;
     /* padding: 5px; background-color: grey; */
   }

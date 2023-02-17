@@ -129,6 +129,24 @@
   font-size: 14px;
 }
 
+.loader {
+  border: 1px solid #f3f3f3;
+  border-top: 1px solid rgb(159, 155, 155);
+  border-left: 1px solid #f8f8f8;
+  border-bottom: 1px solid #025e9c;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* This will create a circular loader with a blue border that spins continuously. You can adjust the colors and dimensions to your liking. */
+
 @media screen and (max-width:425px) {
  .sign_in_Wrap {
     width: 80%;
