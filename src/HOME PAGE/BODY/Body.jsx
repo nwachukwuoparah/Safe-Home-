@@ -7,7 +7,6 @@ import Categoriesroute from "../../Components/ROUT/Categoriesroute";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
-import { useDispatch } from 'react-redux'
 import { AllProducts } from "../../REDUX/features";
 import axios from 'axios'
 import { ThemeContext } from "../../Components/ContexApi/Contex";
@@ -17,16 +16,14 @@ function Body(props) {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
-  const dispach = useDispatch()
   const [item, setItem] = useState([])
-
   async function getItem() {
     try {
       display && changeTheme()
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
-      dispach(AllProducts(response.data.data))
-      setItem(response.data.data)
-      setLoading(true)
+      const result = response.data.data.filter((i) => { return i.rating >= 350 })
+      setItem(result)
+      result.length !== 0 && setLoading(true)
       // console.log(response.data.data)
     } catch (e) {
       console.log(e)

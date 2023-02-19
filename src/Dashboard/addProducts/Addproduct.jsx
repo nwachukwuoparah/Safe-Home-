@@ -54,7 +54,7 @@ export default function Addproduct(props) {
       }
     })
       .then(response => {
-        console.log(response.data);
+        console.log(response);
         setLoader(false)
       })
       .catch(error => {

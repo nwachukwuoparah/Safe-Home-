@@ -44,7 +44,7 @@ function Header() {
         <div className='header1_wrap'>
           <img className='pointer mobile_logo' onClick={() => Navigate('/')} style={{ width: 100 }} src={Unionheader} />
           {search ? <div className='mobile_input'>
-            <input placeholder='Search by category/name' />
+            <input placeholder='Search Products' />
             <BsSearch className='pointer' onClick={() => setSearch(!search)} fontSize={13} />
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
@@ -59,7 +59,7 @@ function Header() {
           <nav className='hi_2' >
             <img className='pointer' onClick={() => Navigate('/')} style={{ width: 150 }} src={Logo} />
             <div className='input'>
-              <input placeholder='Search Category/name' />
+              <input placeholder='Search Products' />
               <BsSearch className='pointer' />
             </div>
           </nav>

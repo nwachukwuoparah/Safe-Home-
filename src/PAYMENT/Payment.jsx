@@ -290,10 +290,8 @@ export default function () {
   const order_product = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/order/${user?.[0]?.data?.data._id}`, order)
       .then(function (res) {
-
-        console.log(res)
-        res.status === 201 ? dispach(orderproduct(res)) : null
-
+        res.status === 201 ? dispach(orderproduct(res.data.data)) : null
+        console.log(res.data.data)
       })
       .catch(function (error) {
         console.log(error);
@@ -337,7 +335,7 @@ export default function () {
               </StylebodyRightContTop>
               <StylebodyRightContMiddle>
                 {cart?.map((i) => (
-                  <StylebodyRightContMiddle_item >
+                  <StylebodyRightContMiddle_item key={i._id} >
                     <p>{i.title}</p>
                     <p>{i.price}</p>
                   </StylebodyRightContMiddle_item>
@@ -355,10 +353,36 @@ export default function () {
               </StylebodyRightContBottom>
             </StylebodyRightContWrap>
           </StylebodyRightCont>
-          <StylebodyrightButton onClick={() => {
-            //  payKorapay(5000)
-            order_product()
-          }}>
+
+          <StylebodyrightButton onClick={
+            () => { order_product() }
+            // function payKorapay() {
+            //   let key = `key${Math.random()}`
+            //   // console.log(amount)
+            //   // console.log(key)
+            //   window.Korapay.initialize({
+            //     key: 'pk_test_GEtMPZuJ3BtsD1AFT7nFq85YYQjssECg7tzDTQPd',
+            //     reference: key,
+            //     amount: 1000,
+            //     currency: "NGN",
+            //     customer: {
+            //       name: "John Doe",
+            //       email: "john@doe.com"
+            //     },
+            //     onClose: function () {
+            //       // Handle when modal is closed
+            //     },
+            //     onSuccess: function (data) {
+            //       order_product()
+            //       console.log(data)
+            //     },
+            //     onFailed: function (data) {
+            //       console.log(data)
+            //     }
+            //     // notification_url: "https://example.com/webhook"
+            //   });
+            // }
+          }>
             Continue to payment
           </StylebodyrightButton>
         </StyledbodyRight>

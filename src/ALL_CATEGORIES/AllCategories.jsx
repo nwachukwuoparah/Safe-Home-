@@ -4,16 +4,21 @@ import './allcategories.css'
 import Products from '../Components/PRODUCT/Products'
 import Categoriesroute from '../Components/ROUT/Categoriesroute';
 import { TbTruckDelivery } from "react-icons/tb";
+import { useDispatch } from 'react-redux'
+import { AllProducts } from "../REDUX/features";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
-function AllCategories({}) {
+function AllCategories({ }) {
   const [loading, setLoading] = useState(false)
   const [item, setItem] = useState([])
+  const dispach = useDispatch()
+
   async function getItem() {
     try {
-      const response = await axios.get('https://dummyjson.com/products/category/furniture')
-      setItem(response.data.products)
-      // console.log(response.data)
+      const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
+      setItem(response.data.data)
+      dispach(AllProducts(response.data.data))
+      setLoading(true)
     } catch (e) {
       console.log(e)
     }
@@ -23,11 +28,13 @@ function AllCategories({}) {
     getItem()
   }, [])
 
-
+  useEffect(() => {
+    console.log(item)
+  }, [item])
   return (
     <div>
-      <Categoriesroute/>
-      < Products loading={loading} item={item} title='All category'/>
+      <Categoriesroute />
+      < Products loading={loading} item={item} title='All category' />
       <div className='categories_Promo'>
         <div className='categories_Promo_wrap' >
           <div className="categories_Promo_text">
