@@ -52,7 +52,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {addOrder?.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {addOrder.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'
