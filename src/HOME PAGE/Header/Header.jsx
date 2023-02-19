@@ -107,7 +107,7 @@ function Header() {
                   </div>
                 </div>
                 <div className='mobile_sidebar_wrap'>
-                  <div onClick={() => setmobilCategory(!mobileCategory)}><p>All category</p> </div>
+                  <div onClick={() => {setmobilCategory(!mobileCategory); Navigate('/Catogories')}}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
                     <p onClick={() => { }}>beds.</p>
                     <p >cabinets.</p>
