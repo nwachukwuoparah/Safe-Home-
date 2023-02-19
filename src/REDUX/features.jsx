@@ -65,7 +65,7 @@ const features = createSlice({
       state.addOrder = payload;
     },
     removeOrders: (state, { payload }) => {
-      const clearAll = { id: '' }
+      const clearAll = {}
       state.addOrder = clearAll
     },
   }

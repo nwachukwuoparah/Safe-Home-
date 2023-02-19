@@ -8,6 +8,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux'
 import { orderproduct } from '../REDUX/features';
 import { removeOrders } from '../REDUX/features';
+import { clearAll } from '../REDUX/features';
 const StyledContainer = styled.h1`
 width: 100%;
 height: 100vh;
@@ -285,12 +286,11 @@ export default function () {
     setOrder({ ...order, [e.target.name]: e.target.value })
   }
 
-
-
   const order_product = () => {
-    axios.post(`https://safehomefurniture.onrender.com/api/order/${user?.[0]?.data?.data._id}`, order)
+    axios.post(`https://safehomefurniture.onrender.com/api/neworder/${user?.[0]?.data?.data._id}`, order)
       .then(function (res) {
         res.status === 201 ? dispach(orderproduct(res.data.data)) : null
+        res.status === 201 ? dispach(clearAll()) : null
         console.log(res.data.data)
       })
       .catch(function (error) {
@@ -298,11 +298,12 @@ export default function () {
       });
   }
 
-
-
   useEffect(() => {
     !display && changeTheme()
   }, [])
+
+
+
   return (
     <StyledContainer>
       <Styledheader>
@@ -355,33 +356,34 @@ export default function () {
           </StylebodyRightCont>
 
           <StylebodyrightButton onClick={
-            () => { order_product() }
-            // function payKorapay() {
-            //   let key = `key${Math.random()}`
-            //   // console.log(amount)
-            //   // console.log(key)
-            //   window.Korapay.initialize({
-            //     key: 'pk_test_GEtMPZuJ3BtsD1AFT7nFq85YYQjssECg7tzDTQPd',
-            //     reference: key,
-            //     amount: 1000,
-            //     currency: "NGN",
-            //     customer: {
-            //       name: "John Doe",
-            //       email: "john@doe.com"
-            //     },
-            //     onClose: function () {
-            //       // Handle when modal is closed
-            //     },
-            //     onSuccess: function (data) {
-            //       order_product()
-            //       console.log(data)
-            //     },
-            //     onFailed: function (data) {
-            //       console.log(data)
-            //     }
-            //     // notification_url: "https://example.com/webhook"
-            //   });
-            // }
+            // () => { order_product() }
+            function payKorapay() {
+              let key = `key${Math.random()}`
+              // console.log(amount)
+              // console.log(key)
+              window.Korapay.initialize({
+                key: 'pk_test_GEtMPZuJ3BtsD1AFT7nFq85YYQjssECg7tzDTQPd',
+                reference: key,
+                amount: 1000,
+                currency: "NGN",
+                customer: {
+                  name: "John Doe",
+                  email: "john@doe.com"
+                },
+                onClose: function () {
+                  // Handle when modal is closed
+                },
+                onSuccess: function (data) {
+                  data.reference === key ? order_product() : null
+                  // console.log(data)
+                  // console.log(key)
+                },
+                onFailed: function (data) {
+                  console.log(data)
+                }
+                // notification_url: "https://example.com/webhook"
+              });
+            }
           }>
             Continue to payment
           </StylebodyrightButton>

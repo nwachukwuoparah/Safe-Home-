@@ -14,16 +14,28 @@ export default function Order(props) {
   const dispach = useDispatch()
   console.log(addOrder._id)
 
-  const getOrder = async () => {
-    try {
-      const res = await axios.get(`https://safehomefurniture.onrender.com/api/orders/${addOrder._id}`)
-      console.log(res)
-      dispach(removeOrders())
-      navigate("/")
-    } catch (e) {
-      console.log(e)
-    }
+  const getOrder = () => {
+    axios.post(`https://safehomefurniture.onrender.com/api/ordered/${addOrder._id}`)
+      .then(function (res) {
+        console.log(res)
+        dispach(removeOrders())
+        navigate("/")
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
+
+  // const getOrder = async () => {
+  //   try {
+  //     const res = await axios.get(`https://safehomefurniture.onrender.com/api/ordered/${addOrder._id}`)
+  //     console.log(res)
+  //     dispach(removeOrders())
+  //     navigate("/")
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
 
 
 
@@ -40,7 +52,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {addOrder?.product.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {addOrder?.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'

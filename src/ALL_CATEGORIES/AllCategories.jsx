@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import './allcategories.css'
 import Products from '../Components/PRODUCT/Products'
@@ -8,8 +8,10 @@ import { useDispatch } from 'react-redux'
 import { AllProducts } from "../REDUX/features";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
+import { ThemeContext } from "../Components/ContexApi/Contex";
 function AllCategories({ }) {
   const [loading, setLoading] = useState(false)
+  const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const [item, setItem] = useState([])
   const dispach = useDispatch()
 
@@ -31,6 +33,11 @@ function AllCategories({ }) {
   useEffect(() => {
     console.log(item)
   }, [item])
+
+  useEffect(() => {
+    display && changeTheme()
+  }, [])
+
   return (
     <div>
       <Categoriesroute />

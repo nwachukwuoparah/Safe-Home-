@@ -17,6 +17,7 @@ function Body(props) {
   const navigate = useNavigate()
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const [item, setItem] = useState([])
+
   async function getItem() {
     try {
       display && changeTheme()
@@ -29,7 +30,6 @@ function Body(props) {
       console.log(e)
     }
   }
-
 
   useEffect(() => {
     getItem()
