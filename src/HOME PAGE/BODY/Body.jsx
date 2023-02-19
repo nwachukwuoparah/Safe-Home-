@@ -22,8 +22,9 @@ function Body(props) {
     try {
       display && changeTheme()
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
-      const result = response.data.data.filter((i) => { return i.rating >= 350 })
+      const result = response.data.data.filter((i) => { return i.rating > 550 })
       setItem(result)
+      console.log(result)
       result.length !== 0 && setLoading(true)
       // console.log(response.data.data)
     } catch (e) {

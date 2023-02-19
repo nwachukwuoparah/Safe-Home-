@@ -286,17 +286,35 @@ export default function () {
     setOrder({ ...order, [e.target.name]: e.target.value })
   }
 
+
+
+
+
   const order_product = () => {
+    console.log("called")
     axios.post(`https://safehomefurniture.onrender.com/api/neworder/${user?.[0]?.data?.data._id}`, order)
-      .then(function (res) {
+      .then((res) => {
         res.status === 201 ? dispach(orderproduct(res.data.data)) : null
         res.status === 201 ? dispach(clearAll()) : null
-        console.log(res.data.data)
+        // console.log(res.data.data)
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((error) => {
+        // console.log(error);
       });
   }
+
+
+  const debounce = (fn, delay) => {
+    let timer;
+    return () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn()
+      }, delay);
+    }
+  }
+
+  const createOrder = debounce(order_product, 2000)
 
   useEffect(() => {
     !display && changeTheme()
@@ -307,8 +325,8 @@ export default function () {
   return (
     <StyledContainer>
       <Styledheader>
-        <StyledheaderWrap >
-          <StyledheaderWrapinner >
+        <StyledheaderWrap>
+          <StyledheaderWrapinner>
             <p>CHECKOUT </p>
             < HiHome onClick={() => { navigate('/cart') }} color={'#003F62'} />
           </StyledheaderWrapinner>
@@ -356,7 +374,6 @@ export default function () {
           </StylebodyRightCont>
 
           <StylebodyrightButton onClick={
-            // () => { order_product() }
             function payKorapay() {
               let key = `key${Math.random()}`
               // console.log(amount)
@@ -374,14 +391,13 @@ export default function () {
                   // Handle when modal is closed
                 },
                 onSuccess: function (data) {
-                  data.reference === key ? order_product() : null
+                  data.reference === key ? createOrder() : null
                   // console.log(data)
                   // console.log(key)
                 },
                 onFailed: function (data) {
-                  console.log(data)
+                  // console.log(data)
                 }
-                // notification_url: "https://example.com/webhook"
               });
             }
           }>
@@ -389,6 +405,6 @@ export default function () {
           </StylebodyrightButton>
         </StyledbodyRight>
       </ Styledbody>
-    </StyledContainer>
+    </StyledContainer >
   )
 }

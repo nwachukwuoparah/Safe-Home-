@@ -132,7 +132,7 @@ function Products({ item, title, loading }) {
           </div>
         </div>
         {/* {console.log(item)} */}
-        {loading? <>
+        {loading ? <>
           {item?.map((i) => (
             <div onClick={() => { dispach(recent(i)) }} key={i._id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
@@ -141,16 +141,16 @@ function Products({ item, title, loading }) {
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>
-                    {i.rating > 550 && i.rating > 600 && five_Star}
-                    {i.rating > 500 && i.rating <= 550 && four_half}
-                    {i.rating > 450 && i.rating <= 500 && four_star}
-                    {i.rating > 400 && i.rating <= 450 && three_half}
-                    {i.rating > 350 && i.rating <= 400 && three_star}
-                    {i.rating > 250 && i.rating <= 300 && two_half}
-                    {i.rating > 200 && i.rating <= 250 && two_star}
-                    {i.rating > 150 && i.rating <= 200 && one_half}
-                    {i.rating > 100 && i.rating <= 150 && one_Star}
-                    {i.rating > 50 && i.rating <= 100 && halfStar}
+                    {i.rating > 1000 && five_Star}
+                    {i.rating > 850 && i.rating <= 1000 && four_half}
+                    {i.rating > 750 && i.rating <= 850 && four_star}
+                    {i.rating > 650 && i.rating <= 750 && three_half}
+                    {i.rating > 550 && i.rating <= 650 && three_star}
+                    {i.rating > 450 && i.rating <= 550 && two_half}
+                    {i.rating > 350 && i.rating <= 450 && two_star}
+                    {i.rating > 250 && i.rating <= 350 && one_half}
+                    {i.rating > 150 && i.rating <= 250 && one_Star}
+                    {i.rating > 50 && i.rating <= 150 && halfStar}
                     {i.rating < 50 && Outline}
 
                   </div>
