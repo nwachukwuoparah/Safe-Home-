@@ -74,7 +74,7 @@ export default function Rating(props) {
             <StyledRatingLi
               onMouseEnter={() => { setHoverIndex(i) }}
               onMouseLeave={() => { setHoverIndex(0) }}
-              onClick={() => { getProduct(i, props.id) }}
+              onClick={() => {setRating(hoverindex);  getProduct(i, props.id) }}
               key={i}> <MdOutlineStarPurple500 style={{ color: (i <= hoverindex) || (i <= rating) ? '#e69b04' : "" }} />
             </StyledRatingLi>
           ))}

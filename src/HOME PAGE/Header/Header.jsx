@@ -38,6 +38,15 @@ function Header() {
     res.status === 200 ? Navigate('login') : null
   }
 
+  const getOrder = () => {
+    const res = axios.get(`https://safehomefurniture.onrender.com/api/`)
+  }
+
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <header className='header' >
       <div className='header1'>
@@ -107,7 +116,7 @@ function Header() {
                   </div>
                 </div>
                 <div className='mobile_sidebar_wrap'>
-                  <div onClick={() => {setmobilCategory(!mobileCategory); Navigate('/Catogories')}}><p>All category</p> </div>
+                  <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
                     <p onClick={() => { }}>beds.</p>
                     <p >cabinets.</p>
@@ -123,8 +132,8 @@ function Header() {
               </div>
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>
             </div>}
-          <div style={{display:'flex', alignItems:'center',gap:10}}>
-            <MdPending className='order_icon' fontSize={25} color={'#003F62'} onClick={()=>{Navigate('/order')}} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <MdPending className='order_icon' fontSize={25} color={'#003F62'} onClick={() => { Navigate('/order') }} />
             <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
           </div>
 
