@@ -22,6 +22,8 @@ function Header() {
   const [mobileCategory, setmobilCategory] = useState(false)
   const cart = useSelector((state) => state.Commerce.cart)
   const user = useSelector((state) => state.Commerce.user)
+  const order = useSelector((state) => state.Commerce.addOrder)
+  const [userorder, setuserOrder] = useState({})
   const Navigate = useNavigate()
   const { changeTheme, notice, activeuser } = useContext(ThemeContext)
   // console.log(data)
@@ -38,13 +40,20 @@ function Header() {
     res.status === 200 ? Navigate('login') : null
   }
 
-  const getOrder = () => {
-    const res = axios.get(`https://safehomefurniture.onrender.com/api/`)
+  const getOrder = async () => {
+    try {
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${order?._id}`)
+      setuserOrder(res.data.data)
+      console.log(res.data.data)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
 
   useEffect(() => {
-
+    order._id ? getOrder() : null;
+    console.log(order._id)
   }, [])
 
   return (
@@ -110,8 +119,8 @@ function Header() {
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
-                    {/* <div></div> */}
-                    <MdPending fontSize={30} color={'#f8f8f8'} onClick={() => { Navigate('/order') }} />
+                    {!userorder?.delivered && !userorder?._id &&<div></div>}
+                    {!userorder?.delivered && userorder?._id && <MdPending fontSize={30} color={'#f8f8f8'} onClick={() => { Navigate('/order') }} />}
                     {user[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>
                 </div>
@@ -133,7 +142,7 @@ function Header() {
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>
             </div>}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <MdPending className='order_icon' fontSize={25} color={'#003F62'} onClick={() => { Navigate('/order') }} />
+            {!userorder?.delivered && userorder?._id && <MdPending className='order_icon' fontSize={25} color={'#003F62'} onClick={() => { Navigate('/order') }} />}
             <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
           </div>
 
