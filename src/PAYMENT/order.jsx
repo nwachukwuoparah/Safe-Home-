@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./order.css"
 import Rating from "./Rating"
 import { useNavigate } from 'react-router-dom';
@@ -12,9 +12,54 @@ export default function Order(props) {
   const { changeTheme, display } = useContext(ThemeContext)
   const navigate = useNavigate()
   const dispach = useDispatch()
-  console.log(addOrder._id)
+  console.log(addOrder.product)
+  let count = 0
+  const recusive = () => {
+    const arr = addOrder.product
+    getitem(arr[count])
+    count++
+    console.log(count)
+  }
 
-  const getOrder = () => {
+  const getitem = async (i) => {
+    console.log("i")
+    try {
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i._id}`)
+      const stockQuantity = Number(res.data.data.stockQuantity) - 1
+      const id = res.data.data._id
+      // console.log(stockQuantity)
+      // console.log(stockQuantity)
+      instock(id, stockQuantity)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
+  const instock = (id, stoc) => {
+    console.log(id)
+    console.log(stoc)
+    axios.post(`https://safehomefurniture.onrender.com/api/stock/${id}`, { stock: stoc })
+      .then(function (res) {
+        console.log(res)
+        dispach(removeOrders())
+        navigate("/")
+        console.log(res)
+        if (count !== addOrder.product.length) {
+          setTimeout(() => {
+            recusive()
+          }, 2000);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
+
+
+  const confirmOrder = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/ordered/${addOrder._id}`)
       .then(function (res) {
         console.log(res)
@@ -26,16 +71,6 @@ export default function Order(props) {
       });
   }
 
-  // const getOrder = async () => {
-  //   try {
-  //     const res = await axios.get(`https://safehomefurniture.onrender.com/api/ordered/${addOrder._id}`)
-  //     console.log(res)
-  //     dispach(removeOrders())
-  //     navigate("/")
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
 
 
 
@@ -57,7 +92,8 @@ export default function Order(props) {
         <div className='button_wrap'>
           <button className='order_button'
             onClick={() => {
-              getOrder()
+              confirmOrder()
+              // recusive()
             }}
           >confirm order</button>
         </div>

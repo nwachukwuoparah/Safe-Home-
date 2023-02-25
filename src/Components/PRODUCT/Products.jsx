@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
-function Products({ item, title, loading }) {
+function Products({ item, title, loading, length }) {
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
@@ -43,7 +43,6 @@ function Products({ item, title, loading }) {
       <MdStarOutline />
     </div>
   )
-
   const one_half = (
     <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
       <MdStar />
@@ -89,7 +88,6 @@ function Products({ item, title, loading }) {
       <MdStarOutline />
     </div>
   )
-
   const four_star = (
     <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
       <MdStar />
@@ -121,7 +119,7 @@ function Products({ item, title, loading }) {
   return (
     <div className='Products'>
       {cartAlert && <div className='cartAlert'><h3>Product added successfully</h3></div>}
-      <div className='Products_wrap'>
+      {length && <div className='Products_wrap'>
         <div className='Products_bar'>
           <div className='Products_bar_wrap'>
             <h2>{title}</h2>
@@ -131,7 +129,6 @@ function Products({ item, title, loading }) {
             </div>
           </div>
         </div>
-        {/* {console.log(item)} */}
         {loading ? <>
           {item?.map((i) => (
             <div onClick={() => { dispach(recent(i)) }} key={i._id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
@@ -182,8 +179,7 @@ function Products({ item, title, loading }) {
               </div>
             ))}
           </>}
-
-      </div>
+      </div>}
     </div>
   )
 }

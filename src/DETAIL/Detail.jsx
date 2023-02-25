@@ -86,11 +86,10 @@ function Detail({ }) {
             </div>
           </div>
         </div>
-
       </div>
-      {recent.length !== 0 ? <Products item={recent} loading={loading} title='Recently Viewed' /> : null}
-      <Products loading={loading} item={item1} title='Related items' />
-    </div >
+      {recent.length !== 0 ? <Products length={true} item={recent} loading={loading} title='Recently Viewed' /> : null}
+      <Products length={true} loading={loading} item={item1} title='Related items' />
+    </div>
   )
 }
 export default Detail

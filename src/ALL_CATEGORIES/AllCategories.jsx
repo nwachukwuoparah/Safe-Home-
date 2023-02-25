@@ -41,7 +41,7 @@ function AllCategories({ }) {
   return (
     <div>
       <Categoriesroute />
-      < Products loading={loading} item={item} title='All category' />
+      < Products loading={loading} length={true} item={item} title='All category' />
       <div className='categories_Promo'>
         <div className='categories_Promo_wrap' >
           <div className="categories_Promo_text">

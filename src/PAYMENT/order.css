@@ -79,6 +79,7 @@
   align-items: content;
 }
 
+
 @media screen and (width <= 834px) {
   .order_wrap {
     width: 95%;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import './header.css'
 import Logo from './Union.svg'
 import Unionheader from './Union header.svg'
@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { clearUser } from '../../REDUX/features';
 function Header() {
+  const searchRef = useRef('')
   const dispach = useDispatch()
   const [search, setSearch] = useState(false)
   const [mobile, setMobile] = useState(false)
@@ -25,7 +26,7 @@ function Header() {
   const order = useSelector((state) => state.Commerce.addOrder)
   const [userorder, setuserOrder] = useState({})
   const Navigate = useNavigate()
-  const { changeTheme, notice, activeuser } = useContext(ThemeContext)
+  const { changeTheme, notice, activeuser, searchinput,setSearchInput } = useContext(ThemeContext)
   // console.log(data)
   const quantity = () => {
     let QTY = 0;
@@ -56,6 +57,10 @@ function Header() {
     console.log(order._id)
   }, [])
 
+useEffect(() => {
+  searchRef.current.value = '';
+}, [searchinput])
+
   return (
     <header className='header' >
       <div className='header1'>
@@ -77,8 +82,8 @@ function Header() {
           <nav className='hi_2' >
             <img className='pointer' onClick={() => Navigate('/')} style={{ width: 150 }} src={Logo} />
             <div className='input'>
-              <input placeholder='Search Products' />
-              <BsSearch className='pointer' />
+              <input ref={searchRef} placeholder='Search Products' />
+              <BsSearch className='pointer' onClick={() => {setSearchInput(searchRef.current.value); Navigate('/') }} />
             </div>
           </nav>
           <nav className='hl_2'>
@@ -119,7 +124,7 @@ function Header() {
               <div onClick={() => !mobile ? setMobile(!mobile) : null} className='mobile_sidebar'>
                 <div className='mobile_sidebar_close'>
                   <div className='mobile_sidebar_close_wrap '>
-                    {!userorder?.delivered && !userorder?._id &&<div></div>}
+                    {!userorder?.delivered && !userorder?._id && <div></div>}
                     {!userorder?.delivered && userorder?._id && <MdPending fontSize={30} color={'#f8f8f8'} onClick={() => { Navigate('/order') }} />}
                     {user[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>

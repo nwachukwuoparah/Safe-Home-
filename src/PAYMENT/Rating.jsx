@@ -36,6 +36,8 @@ export default function Rating(props) {
   const [total, setTotal] = useState()
 
 
+
+
   const getProduct = async (i, id) => {
     console.log(id)
     try {
@@ -50,35 +52,38 @@ export default function Rating(props) {
   }
 
 
+
   const handleRating = async (id, rate) => {
     console.log(id)
     try {
       const res = await axios.patch(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rate })
-      // console.log(res)
+      console.log(res)
     } catch (e) {
       console.log(e)
     }
-
   }
-  useEffect(() => {
-    // console.log(rating)
-  }, [rating])
+
+  // useEffect(() => {
+  //   localStorage.setItem('rated', false)
+  // }, [])
+
 
   return (
 
     <div className='order_item'>
       <p>{props.title}</p>
-      <StyledRatingUl>
+      <p className='rated'>Product rated successfully!</p>
+      {!props.rating && <StyledRatingUl>
         {
           [1, 2, 3, 4, 5].map((i) => (
             <StyledRatingLi
               onMouseEnter={() => { setHoverIndex(i) }}
               onMouseLeave={() => { setHoverIndex(0) }}
-              onClick={() => {setRating(hoverindex);  getProduct(i, props.id) }}
+              onClick={() => { setRating(hoverindex); getProduct(i, props.id) }}
               key={i}> <MdOutlineStarPurple500 style={{ color: (i <= hoverindex) || (i <= rating) ? '#e69b04' : "" }} />
             </StyledRatingLi>
           ))}
-      </StyledRatingUl>
+      </StyledRatingUl>}
     </div>
   )
 }

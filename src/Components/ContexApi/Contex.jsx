@@ -19,7 +19,7 @@ export const ThemeProvider = ({ children }) => {
     }, 5000);
   }
   const [verifyAlert, setverifyAlert] = useState(false)
-
+  const [searchinput, setSearchInput] = useState('')
   const login_alert = () => {
     setverifyAlert(true)
     setTimeout(() => {
@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
   }
 
   return (
-    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, verifyAlert, login_alert }}>
+    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, verifyAlert, login_alert, searchinput, setSearchInput}}>
       {children}
     </ThemeContext.Provider>
   )

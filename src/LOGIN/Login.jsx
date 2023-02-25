@@ -46,6 +46,7 @@ export default function Login({ }) {
       })
       .catch(function (error) {
         console.log(error);
+        Navigate('/login')
         setErr(error.response.data.message)
         setLoader(false)
       });
@@ -93,9 +94,8 @@ export default function Login({ }) {
   return (
 
     <div className='login_in'>
-      {verifyAlert && <div className='verifyAlert'>
-        <p>please check your Email for a verification link</p>
-      </div>}
+      {verifyAlert && <a className='verifyAlert' href={'https://mail.google.com'}>please click here or check your Email for a verification link</a>}
+
       <HiHome onClick={() => { Navigate('/') }} className='login_Home pointer' />
       <div className='login_in_Wrap'>
         <div className='login_in_Wrap_head'>

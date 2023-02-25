@@ -77,7 +77,7 @@ export default function Cart() {
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
       </div>
-      <Products item={item} title='Related items' />
+      <Products length={true} item={item} title='Related items' />
     </div>
   )
 }

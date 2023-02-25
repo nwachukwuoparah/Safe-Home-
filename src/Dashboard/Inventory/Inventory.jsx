@@ -1,56 +1,69 @@
-import React, { useEffect } from 'react'
 import './inventory.css'
-import { GrMoney } from "react-icons/gr";
-import image from "./image.jpeg"
-function Inventory(props) {
+import React from 'react'
+import { RxDotFilled } from "react-icons/rx";
+import { useNavigate } from 'react-router-dom';
+
+
+export default function Inventory({ product }) {
+  const navigate = useNavigate()
+
+  //  {console.log(product)}
 
   return (
-    <div className='inventory'>
-      <div className='inventory_wrap'>
-        <div className='inventory_top'>
-          <div className='inventory_top_wrap'>
-            <div className='inventory_top_wrap_amount'><h1>{props.title}</h1><h1>{props.amount}</h1></div>
-            {props.sold && <div className='inventory_top_wrap_cashout'><GrMoney fontSize={30} /><p>Cash out</p></div>}
-          </div>
-        </div>
+    <div className='Paymentlink'>
+      <div className='Paymentlink_wrap'>
+        <div className='Paymentlink_head'>
+          <div className='Paymentlink_head_top'>
 
-        <div className='inventory_main'>
-          <div className='inventory_main_head'>
-            <h4>{props.subtitle}</h4>
-            <p>Last 7days</p>
+            <div className='title'>
+              <h1>Products Links</h1>
+              <p>You have generated 5 payment links</p>
+            </div>
+            <button onClick={() => { navigate('/dashboard/addproduct') }}  >Create new product</button>
           </div>
-          <div className='inventory_main_card_head'>
-            <div className='inventory_main_card_head_wrap'>
-              <p>Item</p>
-              <div className='inventory_main_card_head_wrap_detail'>
-                <p>Categories</p>
-                <p>Quantity</p>
-                <p>Price</p>
-              </div>
+
+          <div className='Paymentlink_head_buttom'>
+            <div className='Paymentlink_head_buttom_left'>
+              <p>Link Title</p>
+              <p className='Paymentlink_head_buttom_left_P'>Type</p>
+            </div>
+
+
+            <div className='Paymentlink_head_buttom_left'>
+              <p>Amount</p>
+              <p className='Paymentlink_head_buttom_left_P'>Status</p>
             </div>
           </div>
-          <div className='inventory_main_card'>
-            {props.addProduct?.map((i) => (
-              <div key={i.id} className='inventory_Card' onClick={() => { props.handleDelete(i) }} >
-                <div className='inventory_Card_wrap'>
-                  <div className='inventory_Card_image'>
-                    <img style={{ width: 100, height: 100 }} src={i.image} />
-                    <h3>{i.title}</h3>
+        </div>
+        
+        <div className='Links_cont_wrap'>
+          {product?.map((i) => (
+            <div className='Links_cont'>
+              <div className='Links'>
+                <div className='Paymentlink_head_buttom_left'>
+                  <p>Three sitter</p>
+                  <p>One-time</p>
+                </div>
+                <div className='Paymentlink_head_buttom_left'>
+                  <div>
+                    <p>KES 30,405.02</p>
+                    <p className='Paymentlink_head_buttom_left_P1'>Fixed</p>
                   </div>
-                  <div className='inventory_Card_details'>
-                    <p>{i.categories}</p>
-                    <p>{i.stockQuantity}</p>
-                    <p>{i.price}</p>
+                  <div className='activ'>
+                    <RxDotFilled color={'green'} />
+                    <p>In stock</p>
                   </div>
                 </div>
               </div>
-            ))}
-
-
-          </div>
+              <div className='Links_navs'>
+                <p style={{ color: '#7139CD' }} >Preview product</p>
+                <p>Delete</p>
+                <p>Manage</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div >
+    </div>
   )
 }
-export default Inventory

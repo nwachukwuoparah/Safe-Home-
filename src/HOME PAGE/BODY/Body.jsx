@@ -14,9 +14,46 @@ import { useNavigate } from "react-router-dom";
 
 function Body(props) {
   const [loading, setLoading] = useState(false)
+  const [sloading, setSLoading] = useState(false)
+  const [length, setLength] = useState(false)
+  const [searchresult, setSearch] = useState([])
   const navigate = useNavigate()
-  const { changeTheme, display, activeuser } = useContext(ThemeContext)
+  const { changeTheme, display, activeuser, searchinput } = useContext(ThemeContext)
   const [item, setItem] = useState([])
+
+
+  function searchProducts(productsarr, query) {
+    const results = [];
+    for (const product of productsarr) {
+      if (product.categories.toLowerCase().includes(query.toLowerCase())) {
+        results.push(product);
+      }
+    }
+    // console.log(results)
+    setSearch(results);
+    results.length !== 0 && setSLoading(true)
+  }
+
+  async function search(searchinput) {
+    console.log('result')
+    try {
+
+      const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
+      searchProducts(response.data.data, searchinput)
+
+      // console.log(response.data.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    searchinput && search(searchinput)
+  }, [searchinput])
+
+  useEffect(() => {
+    searchresult.length === 0 ? null : setLength(true)
+  }, [searchresult])
 
   async function getItem() {
     try {
@@ -36,13 +73,16 @@ function Body(props) {
     getItem()
   }, [])
 
+
+
   return (
     <>
       <Categoriesroute />
       <div>
         <Slide />
         {/* <Slide1 /> */}
-        <Products loading={loading} item={item} title='Best Sellers' />
+        <Products loading={sloading} item={searchresult} length={length} title={`${searchresult.length} items found`} />
+        <Products loading={loading} item={item} length={true} title='Best Sellers' />
         <div className='Body_Promo'>
           <div className='Body_Promo_wrap' >
             <div className="Body_Promo_text">
