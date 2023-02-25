@@ -148,7 +148,10 @@
 .invisible {
   display: none;
 }
-
+.logout{
+  display: flex;
+  gap: 5px;
+}
 @media screen and (max-width:425px) {
   .order_icon{
     display: none;
