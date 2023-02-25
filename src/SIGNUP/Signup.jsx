@@ -163,19 +163,19 @@ export default function Signup({ }) {
             ))}
 
             <div className='check'>
-              <label className='label'><input className='pointer' type="checkbox"
+              <label className='signup_label'><input className='pointer' type="checkbox"
                 // checked={checked}
                 onChange={() => { setValue({ ...value, admin: !value.admin }) }}
               /> <p>sign up as our Agent(Optional)</p></label>
-              <label className='label'><input className='pointer' type="checkbox"
+              <label className='signup_label'><input className='pointer' type="checkbox"
                 onChange={() => { setTerms(!terms) }}
-              /> <span className='label'><p>I Agree to the </p> <p style={{ color: termsErr ? "#0056FC": 'red' }} className="pointer">Terms & Privacy Policy</p></span></label>
+              /> <span className='signup_label'><p>I Agree to the </p> <p style={{ color: termsErr ? "#0056FC": 'red' }} className="pointer">Terms & Privacy Policy</p></span></label>
             </div>
 
             <div className='Signup_action'>
               {!loader && <>{value.admin ? <button className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}</>}
               {loader && <button className='button pointer'><div className="loader"></div> </button>}
-              <span className='label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
+              <span className='signup_label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
             </div>
 
           </form>
