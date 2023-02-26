@@ -102,6 +102,17 @@
   height: 40px;
   border-radius: 5px;
   border: none;
+  background-color:#FFA903;
+  font-size: 15px;
+  font-weight: 900;
+}
+.loading_button {
+  position: absolute;
+  top: 686px;
+  width: 200px;
+  height: 45px;
+  border-radius: 5px;
+  border: none;
   background-color: #FFA903;
   font-size: 15px;
   font-weight: 900;
@@ -169,6 +180,17 @@
   .button {
     width: 150px;
     height: 40px;
+  }
+  .loading_button {
+    position: absolute;
+    top: 662.5px;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #FFA903;
+    font-size: 15px;
+    font-weight: 900;
   }
   .Signup_action {
     margin-top:30px;

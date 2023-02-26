@@ -33,7 +33,12 @@ export default function Cart() {
 
   useEffect(() => {
     getItem()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }, [])
+
 
   const Total = () => {
     let Total=0;

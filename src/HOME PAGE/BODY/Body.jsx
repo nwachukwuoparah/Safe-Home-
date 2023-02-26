@@ -20,7 +20,7 @@ function Body(props) {
   const navigate = useNavigate()
   const { changeTheme, display, activeuser, searchinput } = useContext(ThemeContext)
   const [item, setItem] = useState([])
-
+  // console.log(searchinput.toLowerCase())
 
   function searchProducts(productsarr, query) {
     const results = [];
@@ -34,13 +34,12 @@ function Body(props) {
     results.length !== 0 && setSLoading(true)
   }
 
-  async function search(searchinput) {
+  async function search() {
     console.log('result')
     try {
-
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
+      console.log(response)
       searchProducts(response.data.data, searchinput)
-
       // console.log(response.data.data)
     } catch (e) {
       console.log(e)
@@ -48,12 +47,18 @@ function Body(props) {
   }
 
   useEffect(() => {
-    searchinput && search(searchinput)
+    searchinput && search()
+    searchresult.length === 0 ? null : setLength(true)
   }, [searchinput])
 
+
   useEffect(() => {
-    searchresult.length === 0 ? null : setLength(true)
-  }, [searchresult])
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [])
+
 
   async function getItem() {
     try {

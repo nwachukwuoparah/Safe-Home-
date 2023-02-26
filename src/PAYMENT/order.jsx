@@ -12,43 +12,46 @@ export default function Order(props) {
   const { changeTheme, display } = useContext(ThemeContext)
   const navigate = useNavigate()
   const dispach = useDispatch()
-  console.log(addOrder.product)
+  // console.log(addOrder.product)
   let count = 0
+
   const recusive = () => {
     const arr = addOrder.product
     getitem(arr[count])
     count++
-    console.log(count)
+    // console.log(count)
   }
 
   const getitem = async (i) => {
     console.log("i")
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i._id}`)
-      const stockQuantity = Number(res.data.data.stockQuantity) - 1
+      const stockQuantity = res.data.data.stockQuantity - 1
       const id = res.data.data._id
       // console.log(stockQuantity)
       // console.log(stockQuantity)
       instock(id, stockQuantity)
+      // console.log('call timer')
     } catch (e) {
       console.log(e)
     }
   }
 
 
+
   const instock = (id, stoc) => {
     console.log(id)
     console.log(stoc)
-    axios.post(`https://safehomefurniture.onrender.com/api/stock/${id}`, { stock: stoc })
+    axios.patch(`https://safehomefurniture.onrender.com/api/stock/${id}`, { newStock: stoc })
       .then(function (res) {
-        console.log(res)
-        dispach(removeOrders())
-        navigate("/")
         console.log(res)
         if (count !== addOrder.product.length) {
           setTimeout(() => {
+            console.log('timer')
             recusive()
           }, 2000);
+        } else {
+          confirmOrder()
         }
       })
       .catch(function (error) {
@@ -65,6 +68,7 @@ export default function Order(props) {
         console.log(res)
         dispach(removeOrders())
         navigate("/")
+        console.log("confirm")
       })
       .catch(function (error) {
         console.log(error);
@@ -92,8 +96,7 @@ export default function Order(props) {
         <div className='button_wrap'>
           <button className='order_button'
             onClick={() => {
-              confirmOrder()
-              // recusive()
+              recusive()
             }}
           >confirm order</button>
         </div>

@@ -71,7 +71,15 @@
   font-size: 15px;
   font-weight: 900;
 }
-
+.login_loading_button {
+  position: absolute;
+  top: 523px;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #FFA903;
+}
 
 
 .login_action {
@@ -161,6 +169,16 @@
   .login_button {
     width: 150px;
     height: 40px;
+  }
+
+  .login_loading_button {
+    position: absolute;
+    top: 506.7px;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #FFA903;
   }
 
   .login_label p {

@@ -35,11 +35,11 @@ export default function Addproduct(props) {
   )
   const handleChange = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
     const save = URL.createObjectURL(file);
     setImageDB({ image: save });
     setProduct({ ...product, image: file });
   };
+
 
   const addItem = (e) => {
     e.preventDefault()
@@ -81,7 +81,7 @@ export default function Addproduct(props) {
       title: 'Title',
       name: 'title',
       type: 'text',
-      pattern: "^[A-Za-z0-9 ]{3,20}$",
+      pattern: '^[0-9]{3,20}$',
       required: true,
       err: "Username should be 3-16 caharters and should not include any special charater!",
     },

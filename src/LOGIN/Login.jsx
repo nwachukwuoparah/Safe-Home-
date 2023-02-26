@@ -114,11 +114,12 @@ export default function Login({ }) {
           ))}
 
           <div className='login_action'>
-            {!loader && <button className='login_button pointer'>Sign in</button>}
-            {loader && <button className='login_button pointer'><div className="loader"></div> </button>}
+            <button className='login_button pointer'>Sign in</button>
+            {/* {loader && <button className='login_button pointer'><div className="loader"></div> </button>} */}
             <span className='login_label'><p>Don’t have an account?</p> <p className='pointer' style={{ color: "#0056FC" }} onClick={() => Navigate('/signUp')}>Sign up</p></span>
           </div>
         </form>
+        {loader&& <button className='login_loading_button pointer'><div className="loader"></div> </button>}
       </div>
     </div>
   )

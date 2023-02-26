@@ -30,13 +30,15 @@ function AllCategories({ }) {
     getItem()
   }, [])
 
-  useEffect(() => {
-    console.log(item)
-  }, [item])
 
   useEffect(() => {
     display && changeTheme()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }, [])
+
 
   return (
     <div>

@@ -151,6 +151,7 @@ export default function Signup({ }) {
           <form className='sign_form' onSubmit={
             (e) => {
               e.preventDefault();
+              console.log('clicked')
               if (terms) {
                 setLoader(true)
                 value.admin ? adminSign() : userSign()
@@ -171,14 +172,12 @@ export default function Signup({ }) {
                 onChange={() => { setTerms(!terms) }}
               /> <span className='signup_label'><p>I Agree to the </p> <p style={{ color: termsErr ? "#0056FC": 'red' }} className="pointer">Terms & Privacy Policy</p></span></label>
             </div>
-
             <div className='Signup_action'>
-              {!loader && <>{value.admin ? <button className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}</>}
-              {loader && <button className='button pointer'><div className="loader"></div> </button>}
-              <span className='signup_label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
+            <>{value.admin ? <button className='button pointer'>Admin</button> : <button className='button pointer'>Sign up</button>}</>
+             <span className='signup_label'><p>Already have an account?</p> <p style={{ color: "#0056FC" }} onClick={() => Navigate('/login')} className="pointer">Sign in </p></span>
             </div>
-
           </form>
+          {loader && <button className='loading_button pointer'><div className="loader"></div> </button>}
         </div>
       </div >
     </>

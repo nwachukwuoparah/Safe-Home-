@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import './App.css'
 import Header from './HOME PAGE/Header/Header'
 import Footer from './HOME PAGE/Footer/Footer'
@@ -19,6 +19,8 @@ import Forgetpassword from './ForgetPassword/Forgetpassword'
 import Resetpassword from './ForgetPassword/Resetpassword'
 function App() {
   const { display } = useContext(ThemeContext)
+
+
   return (
     <div className='App'>
       <Router>
