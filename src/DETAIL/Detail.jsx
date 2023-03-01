@@ -22,7 +22,7 @@ function Detail({ }) {
   const user = useSelector((state) => state.Commerce.user)
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
-  const {id, categories } = useParams()
+  const { id, categories } = useParams()
   //  console.log(id)
   const [item, setItem] = useState([])
   const [item1, setItem1] = useState([])
@@ -54,7 +54,7 @@ function Detail({ }) {
   // console.log(activeuser?.status)
   return (
     <div >
-      <Categoriesroute />
+      <Categoriesroute item="DETAIL" />
       {cartAlert && <CartAlert />}
       <div className='detail'>
         <div className='detail_wrap'>
@@ -70,7 +70,7 @@ function Detail({ }) {
                 <MdOutlineStarOutline />
                 <MdOutlineStarOutline />
               </span>
-              <span className='detail_info' style={{ color: '#04A5FF' }}><p>Availability:</p> <MdGppGood /><p>In stock</p></span>
+              <span style={{ color: item.stockQuantity === 0 ? '#ff000033' :'#04A5FF' }} className='detail_info' ><p>Availability:</p> <MdGppGood /><p>In stock</p></span>
               <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
               <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
               <div className='button_wrap'>

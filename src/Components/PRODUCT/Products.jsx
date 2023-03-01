@@ -149,15 +149,22 @@ function Products({ item, title, loading, length }) {
                     {i.rating > 150 && i.rating <= 250 && one_Star}
                     {i.rating > 50 && i.rating <= 150 && halfStar}
                     {i.rating < 50 && Outline}
-
                   </div>
                 </Link>
-                <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
+                {i.stockQuantity !== 0 ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
                   <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
                     <p className='pointer' > Add to Cart</p>
                     <HiOutlineShoppingCart />
                   </div>
                 </div>
+                  :
+                  <div className={toggle ? 'disable_TOGGLEProducts_add' : 'disable_Products_add'} >
+                    <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
+                      <p className='pointer' > Add to Cart</p>
+                      <HiOutlineShoppingCart />
+                    </div>
+                  </div>}
+
               </div>
             </div>
           ))}

@@ -82,7 +82,7 @@ function Body(props) {
 
   return (
     <>
-      <Categoriesroute />
+      <Categoriesroute  item='HOME' />
       <div>
         <Slide />
         {/* <Slide1 /> */}

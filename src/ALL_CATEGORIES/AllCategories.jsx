@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import './allcategories.css'
 import Products from '../Components/PRODUCT/Products'
 import Categoriesroute from '../Components/ROUT/Categoriesroute';
@@ -9,11 +10,29 @@ import { AllProducts } from "../REDUX/features";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 import { ThemeContext } from "../Components/ContexApi/Contex";
+
+
 function AllCategories({ }) {
+  const { caregory } = useParams()
   const [loading, setLoading] = useState(false)
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const [item, setItem] = useState([])
+  const [title, setTitle] = useState('')
   const dispach = useDispatch()
+
+
+  async function getCategory() {
+    try {
+      const response = await axios.get(`https://safehomefurniture.onrender.com/api/${caregory}`)
+      setItem(response.data.data)
+      dispach(AllProducts(response.data.data))
+      setLoading(true)
+      setTitle('caregory')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
 
   async function getItem() {
     try {
@@ -21,15 +40,16 @@ function AllCategories({ }) {
       setItem(response.data.data)
       dispach(AllProducts(response.data.data))
       setLoading(true)
+      setTitle('All category')
     } catch (e) {
       console.log(e)
     }
   }
 
-  useEffect(() => {
-    getItem()
-  }, [])
 
+  useEffect(() => {
+    caregory ? getCategory() : getItem()
+  }, [])
 
   useEffect(() => {
     display && changeTheme()
@@ -42,8 +62,8 @@ function AllCategories({ }) {
 
   return (
     <div>
-      <Categoriesroute />
-      < Products loading={loading} length={true} item={item} title='All category' />
+      <Categoriesroute item='CATEGORY' />
+      <Products loading={loading} length={true} item={item} title={title} />
       <div className='categories_Promo'>
         <div className='categories_Promo_wrap' >
           <div className="categories_Promo_text">

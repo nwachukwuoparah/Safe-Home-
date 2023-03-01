@@ -95,7 +95,7 @@
   /* background-color: #f7f7f7; */
 }
 
-.activ {
+.activ{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,6 +103,8 @@
   padding: 2px 6px 2px 0px;
   border-radius: 20px;
   color: #008049;
+  /* background-color: #ff000033;
+  color: red; */
 }
 
 .Links_navs {

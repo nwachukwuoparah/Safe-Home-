@@ -26,7 +26,21 @@
   gap: 10px;
   height: 35px;
   width: 98%;
-  /* background-color: rgba(94, 6, 177, 8%); */
+  background-color: rgba(94, 6, 177, 15%);
+  display: flex;
+  align-items: center;
+  padding: 3px 0px 3px 5px;
+  border-radius: 3px;
+  color: #393E53;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navs1 {
+  display: flex;
+  gap: 10px;
+  height: 35px;
+  width: 98%;
   display: flex;
   align-items: center;
   padding: 3px 0px 0px 5px;
@@ -34,5 +48,5 @@
   color: #393E53;
   font-size: 16px;
   cursor: pointer;
+  text-decoration: none;
 }
-

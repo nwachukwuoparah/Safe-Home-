@@ -20,7 +20,7 @@ export default function Addproduct(props) {
   const [state, setState] = useState(false)
   const [image, setImage] = useState(null)
   const [mageDB, setImageDB] = useState({ image: "" })
-  const [err, setErr] = useState('')
+  const [message, setmessage] = useState('')
   const [herr, setHerr] = useState(false)
   const [loader, setLoader] = useState(false)
   const [product, setProduct] = useState(
@@ -37,7 +37,7 @@ export default function Addproduct(props) {
     const file = event.target.files[0];
     const save = URL.createObjectURL(file);
     setImageDB({ image: save });
-    setProduct({ ...product, image: file });
+    setProduct({ ...product, image: file }); console.log(file)
   };
 
 
@@ -52,7 +52,6 @@ export default function Addproduct(props) {
     formData.append('stockQuantity', product.stockQuantity);
     formData.append('categories', product.categories);
     formData.append('brandName', user[0]?.data.data.brandname);
-    formData.append('rating', 0);
     axios.post(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -61,19 +60,21 @@ export default function Addproduct(props) {
       .then(response => {
         console.log(response);
         setLoader(false)
+        setmessage(response.data.message)
       })
       .catch(error => {
         console.log(error);
         setLoader(false)
-        setErr(error.response.data.message)
+        setmessage(error.response.data.message)
       });
   }
+
   useEffect(() => {
     setHerr(true)
     setTimeout(() => {
       setHerr(false)
     }, 5000);
-  }, [err])
+  }, [message])
 
   const List = [
     {
@@ -81,7 +82,7 @@ export default function Addproduct(props) {
       title: 'Title',
       name: 'title',
       type: 'text',
-      pattern: '^[0-9]{3,20}$',
+      pattern: '^[a-z,A-Z]{3,20}$',
       required: true,
       err: "Username should be 3-16 caharters and should not include any special charater!",
     },
@@ -99,7 +100,7 @@ export default function Addproduct(props) {
       title: 'Stock Quantity',
       name: 'stockQuantity',
       type: 'text',
-      pattern: "^[0-9]{3,20}$",
+      pattern: "^[0-9]{1,20}$",
       required: true,
       err: "Stock Quantity should be a number 3-16 caharters!",
     },
@@ -114,7 +115,7 @@ export default function Addproduct(props) {
             <RxCross2 fontSize={25} onClick={() => { navigate('/dashboard') }} />
             <h2>Create new payment link</h2>
           </div>
-          {herr && <h4>{err}</h4>}
+          {herr && <h4>{message}</h4>}
           {/* <button className='newlink_top_button' onClick={() => { console.log(product) }} >Create Product</button> */}
         </div>
       </div>
@@ -163,7 +164,7 @@ export default function Addproduct(props) {
                 </textarea>
               </label>
 
-              <button className='newlink_top_button' onClick={() => { }} >Create Product</button>
+              <button className='newlink_top_button'>Create Product</button>
             </form>
           </div>
         </div>

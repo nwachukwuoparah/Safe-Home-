@@ -47,7 +47,7 @@ export default function Cart() {
   }
   return (
     <div>
-      <Categoriesroute />
+      <Categoriesroute item="CART" />
       <div className='cart'>
         {cart.length === 0 ? <Emptycart /> : <div className='cart_wrap'>
           <div className='cart_card_wrap'>

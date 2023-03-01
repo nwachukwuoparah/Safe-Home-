@@ -9,7 +9,7 @@ import { FiMenu } from "react-icons/fi";
 import { VscClose } from "react-icons/vsc";
 import { CiLogout } from "react-icons/ci";
 import { MdPending } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink, useParams } from 'react-router-dom';
 import { ThemeContext } from '../../Components/ContexApi/Contex'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -17,16 +17,19 @@ import { clearUser } from '../../REDUX/features';
 function Header() {
   const searchRef = useRef('')
   const dispach = useDispatch()
+  const { id } = useParams()
   const [search, setSearch] = useState(false)
   const [mobile, setMobile] = useState(false)
   const [category, setCategory] = useState(false)
   const [mobileCategory, setmobilCategory] = useState(false)
+  const [categories, setCategories] = useState([])
   const cart = useSelector((state) => state.Commerce.cart)
   const user = useSelector((state) => state.Commerce.user)
   const order = useSelector((state) => state.Commerce.addOrder)
   const [userorder, setuserOrder] = useState({})
   const Navigate = useNavigate()
-  const { changeTheme, notice, activeuser, searchinput,setSearchInput } = useContext(ThemeContext)
+
+  const { changeTheme, notice, activeuser, searchinput, setSearchInput } = useContext(ThemeContext)
   // console.log(data)
   const quantity = () => {
     let QTY = 0;
@@ -35,8 +38,8 @@ function Header() {
   }
   // {console.log(user[0]?.data.data._id)}
   const logOut = async () => {
-    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${user[0]?.data.data._id}`)
-    console.log(res.status)
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/${id}?${id}:${user[0]?.data.data._id}`)
+    // console.log(res.status)
     res.status === 200 ? dispach(clearUser()) : console.log("it did not run")
     res.status === 200 ? Navigate('login') : null
   }
@@ -45,21 +48,31 @@ function Header() {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${order?._id}`)
       setuserOrder(res.data.data)
-      console.log(res.data.data)
+      // console.log(res.data.data)
     } catch (e) {
       console.log(e)
     }
   }
 
+  const getCategories = async () => {
+    try {
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/allCates/category`)
+      setCategories(res.data.data)
+      // console.log(res.data.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   useEffect(() => {
     order._id ? getOrder() : null;
-    console.log(order._id)
+    // console.log(order._id)
+    getCategories()
   }, [])
 
-useEffect(() => {
-  searchRef.current.value = '';
-}, [searchinput])
+  useEffect(() => {
+    searchRef.current.value = '';
+  }, [searchinput])
 
   return (
     <header className='header' >
@@ -72,7 +85,15 @@ useEffect(() => {
           </div> : <div className='mobile_nav'>
             <BsSearch onClick={() => setSearch(!search)} className='pointer' />
 
-            {user?.[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={25} /> : <TbUserCircle className='pointer adm' fontSize={25} />}
+            <TbUserCircle className='pointer adm' onClick={() => {
+              if (user?.[0]?.data?.data.isAdmin) {
+                Navigate('/dashboard')
+              } else if (user?.[0]?.data?.data.isSuperAdmin) {
+                Navigate('/admin')
+              } else {
+                return
+              }
+            }} fontSize={25} />
             <span className='mobile_cart' onClick={() => Navigate('/cart')} >
               <p >Cart</p>
               <HiOutlineShoppingCart className='pointer adm' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
@@ -83,11 +104,19 @@ useEffect(() => {
             <img className='pointer' onClick={() => Navigate('/')} style={{ width: 150 }} src={Logo} />
             <div className='input'>
               <input ref={searchRef} placeholder='Search Products' />
-              <BsSearch className='pointer' onClick={() => {setSearchInput(searchRef.current.value); Navigate('/') }} />
+              <BsSearch className='pointer' onClick={() => { setSearchInput(searchRef.current.value); Navigate('/') }} />
             </div>
           </nav>
           <nav className='hl_2'>
-            {user?.[0]?.data?.data.isAdmin ? <TbUserCircle className='pointer adm' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={30} />}
+            <TbUserCircle className='pointer adm' onClick={() => {
+              if (user?.[0]?.data?.data.isAdmin) {
+                Navigate('/dashboard')
+              } else if (user?.[0]?.data?.data.isSuperAdmin) {
+                Navigate('/admin')
+              } else {
+                return
+              }
+            }} fontSize={30} />
             {user?.[0]?.status === 201 ? <span className='logout adm' onClick={() => { logOut() }}  ><p>Log Out</p><CiLogout fontSize={20} /></span> : <p onClick={() => { Navigate('/login'); }} className="adm" >Login</p>}
             {user?.[0]?.status === 201 ? null : <p onClick={() => { Navigate('/signup'); }} className="adm" >Sign up</p>}
 
@@ -111,12 +140,7 @@ useEffect(() => {
             <p>All category</p>
           </div>
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
-            <p>beds.</p>
-            <p>cabinets.</p>
-            <p>chairs and seating.</p>
-            <p>chests.</p>
-            <p>desks.</p>
-            <p>tables.</p>
+            {categories?.map((i) => (<NavLink><p>{i.categoryName}</p></NavLink>))}
           </div>}
           {mobile && <div></div>}
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
@@ -132,12 +156,7 @@ useEffect(() => {
                 <div className='mobile_sidebar_wrap'>
                   <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
-                    <p onClick={() => { }}>beds.</p>
-                    <p >cabinets.</p>
-                    <p>chairs and seating.</p>
-                    <p>chests.</p>
-                    <p>desks.</p>
-                    <p>tables.</p>
+                    {categories?.map((i) => (<NavLink><p>{i.categoryName}</p></NavLink>))}
                   </div>}
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
