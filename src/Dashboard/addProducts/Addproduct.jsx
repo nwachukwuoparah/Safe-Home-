@@ -84,7 +84,7 @@ export default function Addproduct(props) {
       type: 'text',
       pattern: '^[a-z,A-Z]{3,20}$',
       required: true,
-      err: "Username should be 3-16 caharters and should not include any special charater!",
+      err: "Username should be 3-20 caharters and should not include any special charater!",
     },
     {
       id: 2,
@@ -148,12 +148,12 @@ export default function Addproduct(props) {
               <label className='label'>
                 <select className='label_input' name="categories" onChange={(e) => { setProduct({ ...product, [e.target.name]: e.target.value }) }} >
                   <option value="">select a category</option>
-                  <option value="Small">Small</option>
-                  <option value="Family">Family</option>
-                  <option value="Luxury">Luxury</option>
-                  <option value="small">Small</option>
-                  <option value="Family Sedan">Family Sedan</option>
-                  <option value="Luxury">Luxury</option>
+                  <option value="chairs">chairs</option>
+                  <option value="tables">tables</option>
+                  <option value="wardrobes">wardrobes</option>
+                  <option value="desks">desks</option>
+                  <option value="beds">beds</option>
+                  <option value="cabinets">cabinets</option>
                 </select>
               </label>
 

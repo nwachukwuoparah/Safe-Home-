@@ -43,50 +43,26 @@ function Header() {
     res.status === 200 ? Navigate('login') : null
   }
 
-  // const getCategories = async () => {
-  //   try {
-  //     const res = await axios.get(`https://safehomefurniture.onrender.com/api/allCates/category`)
-  //     setCategories(res.data.data)
-  //     // console.log(res.data.data)
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
 
+  const getCategories = async () => {
+    try {
+      const res = await axios.get("https://safehomefurniture.onrender.com/api/allCates/category")
+      setCategories(res.data.data)
+      console.log(res.data.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  
   useEffect(() => {
     // console.log(order._id)
-    // getCategories()
+    getCategories()
   }, [])
 
-  const cate = [
-    {
-      id: 1,
-      categoryName: "Chair",
-    },
-    {
-      id: 2,
-      categoryName: "Table",
-    },
-    {
-      id: 3,
-      categoryName: "",
-    },
-    {
-      id: 4,
-      categoryName: "chairs",
-    },
-    {
-      id: 5,
-      categoryName: "chairs",
-    },
-    {
-      id: 6,
-      categoryName: "chairs",
-    }
-  ]
 
 
-
+  
   useEffect(() => {
     searchRef.current.value = '';
   }, [searchinput])
@@ -142,7 +118,6 @@ function Header() {
               <span>
                 <HiOutlineShoppingCart className='pointer' />{cart.length !== 0 ? <sup>{quantity()}</sup> : null}
               </span>
-
             </div>
           </nav>
         </div>
@@ -158,7 +133,7 @@ function Header() {
           </div>
 
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
-            {cate?.map((i) => {
+            {categories?.map((i) => {
               return <NavLink to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
             })}
           </div>}
@@ -176,7 +151,7 @@ function Header() {
                 <div className='mobile_sidebar_wrap'>
                   <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
-                    {cate?.map((i) => {
+                    {categories?.map((i) => {
                       return <NavLink to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
                     })}
                   </div>}

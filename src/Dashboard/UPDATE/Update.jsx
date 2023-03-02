@@ -21,7 +21,6 @@ export default function Update(props) {
   const [product, setProduct] = useState({})
   const { id } = useParams()
 
-
   const updateProduct = () => {
     console.log('cliked',id)
 

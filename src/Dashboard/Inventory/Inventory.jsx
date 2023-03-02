@@ -49,7 +49,7 @@ export default function Inventory({ product, buttonC }) {
 
           <div className='Paymentlink_head_buttom'>
             <div className='Paymentlink_head_buttom_left'>
-              <p>Link Title</p>
+              <p> Title</p>
               <p className='Paymentlink_head_buttom_left_P'>Type</p>
             </div>
 
