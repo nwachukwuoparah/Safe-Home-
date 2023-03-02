@@ -172,6 +172,18 @@ textarea {
   justify-content: center;
   /* background-color: grey; */
 }
+.loader_newlink_right {
+  position:absolute;
+  width: 45.8%;
+  height: 83%;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  background: rgba(235, 234, 234, 0.27%);
+
+}
 
 .newlink_right_wrap {
   width: 90%;

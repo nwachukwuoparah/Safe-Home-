@@ -33,15 +33,33 @@ export default function Addproduct(props) {
       categories: "",
     }
   )
-  const handleChange = (event) => {
+
+  function handleChange(event) {
     const file = event.target.files[0];
-    const save = URL.createObjectURL(file);
-    setImageDB({ image: save });
-    setProduct({ ...product, image: file }); console.log(file)
-  };
+    const img = new Image();
+    img.onload = function () {
+      // if (img.width !== 512 || img.height !== 512) {
+      //   alert('The image must be 512px X 512px');
+      // } else 
+      if (!['image/png', 'image/jpeg'].includes(file.type)) {
+        alert('The image must be in JPG or PNG format');
+      } else if (file.size > 1048576) {
+        alert('The image must be under 1MB');
+      } else {
+        setImageDB({ image: URL.createObjectURL(file) });
+        setProduct({ ...product, image: file });
+        console.log(file)
+        console.log(URL.createObjectURL(file))
+      }
+    };
+    img.src = URL.createObjectURL(file);
+  }
+
+
 
 
   const addItem = (e) => {
+    setLoader(true)
     e.preventDefault()
     console.log('cliked')
     const formData = new FormData();
@@ -127,7 +145,7 @@ export default function Addproduct(props) {
               <h3></h3>
               <div className='newlink_left_top_image'>
                 <label className='newlink_left_top_file'>
-                  <input type='file' onChange={handleChange} />
+                  <input type='file' onChange={handleChange} accept="image/png, image/jpeg" maxlength="1048576" />
                   <CgImage fontSize={40} />
                 </label>
                 <span className='newlink_left_top_image_text'>
@@ -164,11 +182,12 @@ export default function Addproduct(props) {
                 </textarea>
               </label>
 
-              <button className='newlink_top_button'>Create Product</button>
+              {!loader && <button className='newlink_top_button'>Create Product</button>}
+
             </form>
           </div>
         </div>
-
+        {loader && <div className='loader_newlink_right'><div className="loader"></div></div>}
         <div className='newlink_right'>
           <div className='newlink_right_wrap'>
             <div className='newlink_right_img'>

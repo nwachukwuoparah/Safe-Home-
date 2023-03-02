@@ -12,7 +12,7 @@ export default function Order(props) {
   const { changeTheme, display } = useContext(ThemeContext)
   const navigate = useNavigate()
   const dispach = useDispatch()
-  // console.log(addOrder.product)
+  console.log(addOrder.product)
   let count = 0
 
   const recusive = () => {
@@ -91,7 +91,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {addOrder.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {addOrder?.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'

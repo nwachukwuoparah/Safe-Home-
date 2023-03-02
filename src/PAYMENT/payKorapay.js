@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 // const navigate = useNavigate()
 function payKorapay(amount) {
   let key = `key${Math.random()}`
-  // console.log(amount)
-  // console.log(key)
   window.Korapay.initialize({
     key: 'pk_test_GEtMPZuJ3BtsD1AFT7nFq85YYQjssECg7tzDTQPd',
     reference: key,

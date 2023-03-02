@@ -42,7 +42,7 @@ export default function Inventory({ product, buttonC }) {
 
             <div className='title'>
               <h1>Products Links</h1>
-              <p>You have generated 5 payment links</p>
+              <p>You have generated {product.length} Products</p>
             </div>
             {button && <button onClick={() => { navigate('/dashboard/addproduct') }} >Create new product</button>}
           </div>

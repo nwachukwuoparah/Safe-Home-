@@ -296,7 +296,9 @@ export default function () {
       .then((res) => {
         res.status === 201 ? dispach(orderproduct(res.data.data)) : null
         res.status === 201 ? dispach(clearAll()) : null
+        res.status === 201 ? navigate('/') : null
         // console.log(res.data.data)
+
       })
       .catch((error) => {
         // console.log(error);
@@ -372,12 +374,9 @@ export default function () {
               </StylebodyRightContBottom>
             </StylebodyRightContWrap>
           </StylebodyRightCont>
-
           <StylebodyrightButton onClick={
             function payKorapay() {
               let key = `key${Math.random()}`
-              // console.log(amount)
-              // console.log(key)
               window.Korapay.initialize({
                 key: 'pk_test_GEtMPZuJ3BtsD1AFT7nFq85YYQjssECg7tzDTQPd',
                 reference: key,
@@ -392,7 +391,7 @@ export default function () {
                 },
                 onSuccess: function (data) {
                   data.reference === key ? createOrder() : null
-                  // console.log(data)
+                  console.log(data)
                   // console.log(key)
                 },
                 onFailed: function (data) {

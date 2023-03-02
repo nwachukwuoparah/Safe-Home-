@@ -48,7 +48,7 @@ function Header() {
     try {
       const res = await axios.get("https://safehomefurniture.onrender.com/api/allCates/category")
       setCategories(res.data.data)
-      console.log(res.data.data)
+      // console.log(res.data.data)
     } catch (e) {
       console.log(e)
     }
@@ -134,7 +134,7 @@ function Header() {
 
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
             {categories?.map((i) => {
-              return <NavLink to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+              return <NavLink style={{textDecoration:'none', color:'inherit'}} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
             })}
           </div>}
           {mobile && <div></div>}
@@ -152,7 +152,7 @@ function Header() {
                   <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
                     {categories?.map((i) => {
-                      return <NavLink to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+                      return <NavLink style={{textDecoration:'none', color:'inherit'}} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
                     })}
                   </div>}
                 </div>

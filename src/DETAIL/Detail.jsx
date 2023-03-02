@@ -8,9 +8,8 @@ import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarHalf } from "react-icons/md";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { MdGppGood } from "react-icons/md";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Alert from "../Components/Alert/Alert"
-import { useDispatch } from 'react-redux'
 import { addToCart } from '../REDUX/features'
 import { CartAlert } from "../Components/Alert/Alert"
 import { ThemeContext } from '../Components/ContexApi/Contex';
@@ -31,7 +30,7 @@ function Detail({ }) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
       setItem(res.data.data)
-      console.log(res.data.data)
+      // console.log(res.data.data)
     } catch (e) {
       console.log(e)
     }
@@ -70,11 +69,18 @@ function Detail({ }) {
                 <MdOutlineStarOutline />
                 <MdOutlineStarOutline />
               </span>
-              <span style={{ color: item.stockQuantity === 0 ? '#ff000033' :'#04A5FF' }} className='detail_info' ><p>Availability:</p> <MdGppGood /><p>In stock</p></span>
-              <span className='detail_info'><p>Brand:</p><p>Loading...</p></span>
-              <span className='detail_info' ><p>Sex:</p><p>Unisex</p></span>
+              <span style={{ color: item.stockQuantity !== 0 ? '#04A5FF' : '#ff000033' }} className='detail_info' ><p>Availability:</p> <MdGppGood />{item.stockQuantity !== 0 ? <p>In stock</p> : <p>Not In stock</p>}</span>
+              {/* <span style={{ color: '#ff000033' }} className='detail_info' ><p>Availability:</p> <MdGppGood /><p>Not In stock</p></span>} */}
+              <span className='detail_info'><p>Brand:</p><p>{item.brandName}</p></span>
               <div className='button_wrap'>
-                <button className='button1 pointer' onClick={() => { user?.[0]?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Buy now</button>
+                <button className='button1 pointer' onClick={() => {
+                  if (user?.[0]?.status === 201) {
+                    navigate('/payment');
+                    dispach(addToCart(item));
+                  } else {
+                    navigate('/signUp')
+                  }
+                }}>Buy now</button>
                 <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button>
               </div>
             </div>

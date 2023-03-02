@@ -17,13 +17,14 @@ export default function Update(props) {
   const [category, setCategory] = useState(false)
   const [description, setDescription] = useState(false)
   const [List, setList] = useState([])
+  const [loader, setLoader] = useState(false)
   const [mageDB, setImageDB] = useState({ image: "" })
   const [product, setProduct] = useState({})
   const { id } = useParams()
 
   const updateProduct = () => {
-    console.log('cliked',id)
-
+    console.log('cliked', id)
+    setLoader(true)
     const formData = new FormData();
     { product?.title && formData.append('title', product.title); }
     { product?.description && formData.append('description', product.description); }
@@ -58,7 +59,7 @@ export default function Update(props) {
 
 
 
-  
+
   const item = [
     {
       id: 1,
@@ -157,7 +158,7 @@ export default function Update(props) {
             })}
           </div>
 
-          <button className='newlink_top_button' onClick={() => { updateProduct() }} >Update Product</button>
+          {!loader && <button className='newlink_top_button' onClick={() => { updateProduct() }} >Update Product</button>}
           {/* {herr && <h4>{err}</h4>} */}
           {/* <button className='newlink_top_button' onClick={() => { console.log(product) }} >Create Product</button> */}
         </div>
@@ -209,7 +210,7 @@ export default function Update(props) {
             </form>
           </div>
         </div>
-
+        {loader && <div className='loader_newlink_right'><div className="loader"></div></div>}
         <div className='newlink_right'>
           <div className='newlink_right_wrap'>
             <div className='newlink_right_img'>

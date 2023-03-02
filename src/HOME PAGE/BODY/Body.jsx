@@ -10,6 +10,7 @@ import { RiShieldKeyholeFill } from "react-icons/ri";
 import { AllProducts } from "../../REDUX/features";
 import axios from 'axios'
 import { ThemeContext } from "../../Components/ContexApi/Contex";
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 function Body(props) {
@@ -19,6 +20,7 @@ function Body(props) {
   const [searchresult, setSearch] = useState([])
   const navigate = useNavigate()
   const { changeTheme, display, activeuser, searchinput } = useContext(ThemeContext)
+  const user = useSelector((state) => state.Commerce.user)
   const [item, setItem] = useState([])
   // console.log(searchinput.toLowerCase())
 
@@ -82,7 +84,7 @@ function Body(props) {
 
   return (
     <>
-      <Categoriesroute  item='HOME' />
+      <Categoriesroute item='HOME' />
       <div>
         <Slide />
         {/* <Slide1 /> */}
@@ -115,7 +117,7 @@ function Body(props) {
           </div>
         </div>
         <Slide1 />
-        {activeuser?.status === 201 ? null : <div className="Body_Call_To_Action">
+        {user[0]?.status === 201 ? null : <div className="Body_Call_To_Action">
           <button onClick={() => { navigate('/login') }} className='pointer' >
             Login
           </button>

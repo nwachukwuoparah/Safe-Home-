@@ -5,7 +5,7 @@ import './allcategories.css'
 import Products from '../Components/PRODUCT/Products'
 import Categoriesroute from '../Components/ROUT/Categoriesroute';
 import { TbTruckDelivery } from "react-icons/tb";
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { AllProducts } from "../REDUX/features";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
@@ -19,7 +19,7 @@ function AllCategories({ }) {
   const [item, setItem] = useState([])
   const [title, setTitle] = useState('')
   const dispach = useDispatch()
-
+  const user = useSelector((state) => state.Commerce.user)
 
   async function getCategory() {
     try {
@@ -35,7 +35,7 @@ function AllCategories({ }) {
 
 
   async function getItem() {
-    console.log('run')
+    // console.log('run')
     try {
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
       setItem(response.data.data)
@@ -49,7 +49,7 @@ function AllCategories({ }) {
 
 
   useEffect(() => {
-    console.log(categoryName)
+    // console.log(categoryName)
     categoryName !== '2' ? getCategory() : getItem()
   }, [categoryName])
 
@@ -92,12 +92,12 @@ function AllCategories({ }) {
           </div>
         </div>
       </div>
-      <div className="categories_Call_To_Action">
+      {user[0]?.status === 201 ? null :<div className="categories_Call_To_Action">
         <button>
           Sign in
         </button>
         <span className="categories_Nav">New customers? <p> Start here.</p></span>
-      </div>
+      </div>}
     </div>
   )
 }
