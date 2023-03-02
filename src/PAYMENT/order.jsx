@@ -13,8 +13,8 @@ export default function Order(props) {
   const navigate = useNavigate()
   const dispach = useDispatch()
   console.log(addOrder.product)
+  
   let count = 0
-
   const recusive = () => {
     const arr = addOrder.product
     getitem(arr[count])
