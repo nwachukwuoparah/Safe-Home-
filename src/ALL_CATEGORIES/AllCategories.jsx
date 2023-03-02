@@ -13,7 +13,7 @@ import { ThemeContext } from "../Components/ContexApi/Contex";
 
 
 function AllCategories({ }) {
-  const { caregory } = useParams()
+  const { categoryName } = useParams()
   const [loading, setLoading] = useState(false)
   const { changeTheme, display, activeuser } = useContext(ThemeContext)
   const [item, setItem] = useState([])
@@ -23,7 +23,7 @@ function AllCategories({ }) {
 
   async function getCategory() {
     try {
-      const response = await axios.get(`https://safehomefurniture.onrender.com/api/${caregory}`)
+      const response = await axios.get(`https://safehomefurniture.onrender.com/api/category?category=${categoryName}`)
       setItem(response.data.data)
       dispach(AllProducts(response.data.data))
       setLoading(true)
@@ -35,6 +35,7 @@ function AllCategories({ }) {
 
 
   async function getItem() {
+    console.log('run')
     try {
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
       setItem(response.data.data)
@@ -48,8 +49,9 @@ function AllCategories({ }) {
 
 
   useEffect(() => {
-    caregory ? getCategory() : getItem()
-  }, [])
+    console.log(categoryName)
+    categoryName !== '2' ? getCategory() : getItem()
+  }, [categoryName])
 
   useEffect(() => {
     display && changeTheme()

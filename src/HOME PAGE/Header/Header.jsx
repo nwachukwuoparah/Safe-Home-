@@ -28,7 +28,6 @@ function Header() {
   const order = useSelector((state) => state.Commerce.addOrder)
   const [userorder, setuserOrder] = useState({})
   const Navigate = useNavigate()
-  console.log(id)
   const { changeTheme, notice, activeuser, searchinput, setSearchInput } = useContext(ThemeContext)
   // console.log(data)
   const quantity = () => {
@@ -44,31 +43,49 @@ function Header() {
     res.status === 200 ? Navigate('login') : null
   }
 
-  const getOrder = async () => {
-    try {
-      const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${order?._id}`)
-      setuserOrder(res.data.data)
-      // console.log(res.data.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  const getCategories = async () => {
-    try {
-      const res = await axios.get(`https://safehomefurniture.onrender.com/api/allCates/category`)
-      setCategories(res.data.data)
-      // console.log(res.data.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  // const getCategories = async () => {
+  //   try {
+  //     const res = await axios.get(`https://safehomefurniture.onrender.com/api/allCates/category`)
+  //     setCategories(res.data.data)
+  //     // console.log(res.data.data)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
 
   useEffect(() => {
-    order._id ? getOrder() : null;
     // console.log(order._id)
-    getCategories()
+    // getCategories()
   }, [])
+
+  const cate = [
+    {
+      id: 1,
+      categoryName: "Chair",
+    },
+    {
+      id: 2,
+      categoryName: "Table",
+    },
+    {
+      id: 3,
+      categoryName: "",
+    },
+    {
+      id: 4,
+      categoryName: "chairs",
+    },
+    {
+      id: 5,
+      categoryName: "chairs",
+    },
+    {
+      id: 6,
+      categoryName: "chairs",
+    }
+  ]
+
+
 
   useEffect(() => {
     searchRef.current.value = '';
@@ -135,12 +152,15 @@ function Header() {
           <div
             onMouseEnter={() => setCategory(true)}
             onMouseLeave={() => setCategory(false)}
-            onClick={() => Navigate('/Catogories')} className='catigories pointer'>
+            onClick={() => Navigate('/Catogories/2')} className='catigories pointer'>
             <FiMenu fontSize={30} />
             <p>All category</p>
           </div>
+
           {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
-            {categories?.map((i) => (<NavLink><p>{i.categoryName}</p></NavLink>))}
+            {cate?.map((i) => {
+              return <NavLink to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+            })}
           </div>}
           {mobile && <div></div>}
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
@@ -156,7 +176,9 @@ function Header() {
                 <div className='mobile_sidebar_wrap'>
                   <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
-                    {categories?.map((i) => (<NavLink><p>{i.categoryName}</p></NavLink>))}
+                    {cate?.map((i) => {
+                      return <NavLink to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+                    })}
                   </div>}
                 </div>
                 <div className='mobile_sidebar_wrap_profile'>
@@ -166,7 +188,6 @@ function Header() {
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>
             </div>}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            {!userorder?.delivered && userorder?._id && <MdPending className='order_icon' fontSize={25} color={'#003F62'} onClick={() => { Navigate('/order') }} />}
             <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
           </div>
 

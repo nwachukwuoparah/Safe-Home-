@@ -7,6 +7,7 @@ import { BsCardImage } from "react-icons/bs";
 import Input from '../addProducts/input';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 export default function Update(props) {
   const user = useSelector((state) => state.Commerce.user)
   const [image, setImage] = useState(false)
@@ -22,7 +23,8 @@ export default function Update(props) {
 
 
   const updateProduct = () => {
-    console.log('cliked')
+    console.log('cliked',id)
+
     const formData = new FormData();
     { product?.title && formData.append('title', product.title); }
     { product?.description && formData.append('description', product.description); }
@@ -130,7 +132,7 @@ export default function Update(props) {
           title: 'Stock Quantity',
           name: 'stockQuantity',
           type: 'text',
-          pattern: "^[0-9]{3,20}$",
+          pattern: "^[0-9]{1,20}$",
           required: true,
           err: "Stock Quantity should be a number 3-16 caharters!",
         }])
