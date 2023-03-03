@@ -43,7 +43,7 @@ export default function Rating(props) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
       // console.log(res.data.data.rating)
-      const total = res.data.data.rating += i
+      const total = res.data.data.rating += 500
       // console.log(total)
       id === res.data.data._id ? handleRating(id, total) : null
     } catch (e) {

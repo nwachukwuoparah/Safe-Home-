@@ -277,7 +277,8 @@ export default function () {
   ]
   const Total = () => {
     let Total = 0;
-    cart.map((i) => { console.log(i) })
+    console.log(cart)
+    cart.map((i) => Total += i.price)
   }
 
   const handleChange = (e) => {

@@ -4,7 +4,7 @@ import './cart.css'
 import axios from "axios";
 import Categoriesroute from '../Components/ROUT/Categoriesroute'
 import Products from '../Components/PRODUCT/Products';
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
 import Alert from '../Components/Alert/Alert'
 import { ThemeContext } from '../Components/ContexApi/Contex';
@@ -41,7 +41,7 @@ export default function Cart() {
 
 
   const Total = () => {
-    let Total=0;
+    let Total = 0;
     cart.map((i) => Total += i.total)
     return Total
   }
@@ -61,7 +61,7 @@ export default function Cart() {
                   <img className='cart_image' src={i.image} />
                   <div className='cart_card_top_text'>
                     <h3>{i.title}</h3>
-                    <h4>${i.price}</h4>
+                    <h4>₦{i.price}</h4>
                   </div>
                 </div>
                 <div className='cart_card_middle'>
