@@ -100,7 +100,7 @@ export default function Addproduct(props) {
       title: 'Title',
       name: 'title',
       type: 'text',
-      pattern: '^[a-z,A-Z]{3,20}$',
+      pattern: "^[A-Za-z0-9 ]{3,16}$",
       required: true,
       err: "Username should be 3-20 caharters and should not include any special charater!",
     },
@@ -178,7 +178,6 @@ export default function Addproduct(props) {
               <label className='label'>
                 <p>description</p>
                 <textarea required type="text" id="w3review" name="description" maxLength="50%" rows="5" cols="20" onChange={(e) => { setProduct({ ...product, description: e.target.value }) }}>
-                  Write a brief description about your product
                 </textarea>
               </label>
 
@@ -196,7 +195,7 @@ export default function Addproduct(props) {
             </div>
             <div className='newlink_right_text'>
               <span><h4>Title:</h4><p>{product.title}</p></span>
-              <span><h4>Price:</h4>{product.price && <p>${product.price}</p>}</span>
+              <span><h4>Price:</h4>{product.price && <p>₦ {product.price}</p>}</span>
               <span><h4>Stock Quantity:</h4><p>{product.stockQuantity}</p></span>
               <span><h4>Category:</h4><p>{product.categories}</p></span>
               <span><h4>description:</h4><p>{product.description}</p></span>

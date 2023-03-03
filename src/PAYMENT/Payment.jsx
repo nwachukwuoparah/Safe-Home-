@@ -277,8 +277,7 @@ export default function () {
   ]
   const Total = () => {
     let Total = 0;
-    cart.map((i) => Total += i.total)
-    return Total
+    cart.map((i) => { console.log(i) })
   }
 
   const handleChange = (e) => {
@@ -369,7 +368,7 @@ export default function () {
                 </StylebodyRightContBottomWrap>
                 <StylebodyRightContBottomWrap>
                   <p>Total</p>
-                  <p>$500</p>
+                  <p>₦ {Total()}</p>
                 </StylebodyRightContBottomWrap>
               </StylebodyRightContBottom>
             </StylebodyRightContWrap>
