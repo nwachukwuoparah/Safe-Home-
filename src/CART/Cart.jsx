@@ -18,6 +18,7 @@ export default function Cart() {
   const cart = useSelector((state) => state.Commerce.cart)
   const recent = useSelector((state) => state.Commerce.RECENT)
   const user = useSelector((state) => state.Commerce.user)
+  const [loading, setLoading] = useState(false)
   const [item, setItem] = useState([])
   async function getItem() {
     display ? changeTheme() : null
@@ -37,6 +38,7 @@ export default function Cart() {
       top: 0,
       behavior: 'smooth'
     })
+    console.log(recent)
   }, [])
 
 
@@ -81,8 +83,8 @@ export default function Cart() {
           </div>
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
-      </div>
-      <Products length={true} item={item} title='Related items' />
+      </div>z
+      <Products Products length={true} item={recent} loading={loading} title='Recently Viewed' />
     </div>
   )
 }

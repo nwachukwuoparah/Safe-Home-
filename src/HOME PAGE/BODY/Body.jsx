@@ -40,7 +40,7 @@ function Body(props) {
     console.log('result')
     try {
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
-      console.log(response)
+      // console.log(response)
       searchProducts(response.data.data, searchinput)
       // console.log(response.data.data)
     } catch (e) {
@@ -63,12 +63,13 @@ function Body(props) {
 
 
   async function getItem() {
+    console.log('run getItem')
     try {
       display && changeTheme()
       const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
       const result = response.data.data.filter((i) => { return i.rating > 550 })
       setItem(result)
-      // console.log(result)
+      console.log(result)
       result.length !== 0 && setLoading(true)
       // console.log(response.data.data)
     } catch (e) {
@@ -79,8 +80,6 @@ function Body(props) {
   useEffect(() => {
     getItem()
   }, [])
-
-
 
   return (
     <>

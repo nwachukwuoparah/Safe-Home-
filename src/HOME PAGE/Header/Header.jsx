@@ -54,7 +54,7 @@ function Header() {
     }
   }
 
-  
+
   useEffect(() => {
     // console.log(order._id)
     getCategories()
@@ -62,7 +62,7 @@ function Header() {
 
 
 
-  
+
   useEffect(() => {
     searchRef.current.value = '';
   }, [searchinput])
@@ -124,19 +124,25 @@ function Header() {
       </div>
       <div className='header2' onClick={() => setSearch(false)}>
         <div className='header2_wrap'>
-          <div
+          <div className='categories_wrap'
             onMouseEnter={() => setCategory(true)}
             onMouseLeave={() => setCategory(false)}
-            onClick={() => Navigate('/Catogories/2')} className='catigories pointer'>
-            <FiMenu fontSize={30} />
-            <p>All category</p>
+          >
+            <div
+               onMouseEnter={() => setCategory(true)}
+              //  onMouseLeave={() => setCategory(false)}
+              onClick={() => Navigate('/Catogories/2')} className='catigories pointer'>
+              <FiMenu fontSize={30} />
+              <p>All category</p>
+            </div>
+
+            {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
+              {categories?.map((i) => {
+                return <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+              })}
+            </div>}
           </div>
 
-          {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
-            {categories?.map((i) => {
-              return <NavLink style={{textDecoration:'none', color:'inherit'}} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
-            })}
-          </div>}
           {mobile && <div></div>}
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
             <div className='mobile_sidebar_cont'>
@@ -152,7 +158,7 @@ function Header() {
                   <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
                     {categories?.map((i) => {
-                      return <NavLink style={{textDecoration:'none', color:'inherit'}} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+                      return <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
                     })}
                   </div>}
                 </div>
@@ -165,11 +171,10 @@ function Header() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
           </div>
-
         </div>
       </div>
 
-    </header >
+    </header>
   )
 }
 export default Header

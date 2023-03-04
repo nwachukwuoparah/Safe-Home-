@@ -133,7 +133,7 @@ function Products({ item, title, loading, length }) {
           {item?.map((i) => (
             <div onClick={() => { dispach(recent(i)) }} key={i._id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
-                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i._id}`}>
+                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i._id}/${i.categories[0]}`}>
                   <img src={i?.image} />
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>

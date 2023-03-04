@@ -95,21 +95,27 @@
   display: flex;
   align-items: center;
    gap: 10px;
-  /* background-color: grey; */
+  /* background-color: rgb(230, 226, 226); */
 }
-
 
 .mobile_logo {
   display: none;
 }
 
+.categories_wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width:60%;
+  /* background-color: grey; */
+}
+
 .categories {
-  transition: 1.2s;
-  width: 65%;
+  width: 85%;
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-left: -170px;
   font-size: 16px;
  /* background-color: red; */

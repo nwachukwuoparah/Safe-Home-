@@ -11,9 +11,10 @@ export default function Form(props) {
   }
   return (
     <>
-      <div style={{ marginTop: props.name === "password" ? 30 : null }} className='form_input_wrap'>
+      <div style={{ marginTop: props.name === "password" ? 30 : null}} className='form_input_wrap'>
         <div className='login_input_warp'>
           <input className='login_input'
+          style={{ backgroundColor: focus? '#f8f8f8':''}}
             onChange={props.onChange}
             placeholder={props.placeholder}
             type={props.type}
