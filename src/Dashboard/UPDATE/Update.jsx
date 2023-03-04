@@ -23,7 +23,7 @@ export default function Update(props) {
   const { id } = useParams()
 
   const updateProduct = () => {
-    console.log('cliked', id)
+    console.log('cliked', id, "-", user?.[0].data.data._id)
     setLoader(true)
     const formData = new FormData();
     { product?.title && formData.append('title', product.title); }

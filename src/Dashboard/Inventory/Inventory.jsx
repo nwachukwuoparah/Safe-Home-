@@ -1,11 +1,11 @@
 import './inventory.css'
 import React, { useState, useEffect } from 'react'
 import { RxDotFilled } from "react-icons/rx";
+import { RxDotsHorizontal } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Alert from '../../Components/Alert/Alert';
 import axios from 'axios';
-
 export default function Inventory({ product, buttonC }) {
   const [remove, setremove] = useState({})
   const [alert, setAlert] = useState(false)
@@ -83,11 +83,12 @@ export default function Inventory({ product, buttonC }) {
                   </div>
                 </div>
               </div>
-              <div className='Links_navs'>
+              <RxDotsHorizontal fontSize={25} />
+              {/* <div className='Links_navs'>
                 <p style={{ color: '#7139CD' }} >Preview product</p>
                 <p onClick={() => { setAlert(true); setremove(i) }} >Delete</p>
                 <p onClick={() => { navigate(`/dashboard/update/${i._id}`) }} >Manage</p>
-              </div>
+              </div> */}
             </div>) : null
           ))}
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dell={Delete} items={remove} /> : null}

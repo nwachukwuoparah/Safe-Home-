@@ -24,7 +24,7 @@ export default function Login({ }) {
   })
 
   const logOut = async () => {
-    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/:${user[0]?.data.data._id}`)
+    const res = await axios.post(`https://safehomefurniture.onrender.com/api/logout/${user[0]?.data.data._id}`)
     console.log(res.data)
     res.status === 200 ? dispach(clearUser()) : null
     res.status === 200 ? Navigate('/login') : null

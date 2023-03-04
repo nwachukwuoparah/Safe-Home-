@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import './dashboard.css'
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from './SIDE_BAR/Sidebar'
+import { Sidebar_Mobile } from './SIDE_BAR/Sidebar';
 import { MdHome } from "react-icons/md";
 import { BiCoinStack } from "react-icons/bi";
 import { IoIosTimer } from "react-icons/io";
@@ -13,6 +14,8 @@ import { RiFileList3Line } from "react-icons/ri";
 import { CiSettings } from "react-icons/ci";
 import { TiDocumentText } from "react-icons/ti";
 import { CiLogout } from "react-icons/ci";
+import { IoIosMenu } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
 import { BiDockBottom } from "react-icons/bi";
 import { BsBell } from "react-icons/bs";
 import { HiOutlineUserCircle } from "react-icons/hi";
@@ -32,6 +35,7 @@ function Dashboard(props) {
   const [item, setItem] = useState()
   const [allorders, setAllorders] = useState([])
   const [notice, setNotice] = useState(false)
+  const [side, setSide] = useState(false)
   const Navigate = useNavigate()
 
   const sort = (val) => {
@@ -111,6 +115,8 @@ function Dashboard(props) {
       state: false
     },
   ]
+
+
   return (
     <div className='Dashboard_contain'>
       <div className='Dashboard_left'>
@@ -121,13 +127,28 @@ function Dashboard(props) {
           {Item?.map((i) => (
             <Sidebar {...i} />
           ))}
-        </div>
 
+        </div>
       </div>
+
+      {side && <div className='Dashboard_left_Mobile'>
+        <div className='side_bar_cont_Mobile'>
+          <div className='Logo_Mobile'>
+            <img src={''} />
+          </div>
+          {Item?.map((i) => (
+            <Sidebar_Mobile {...i} />
+          ))}
+
+        </div>
+      </div>}
 
       <div className='Dashboard_rigth'>
         <div className='Dashboard_rigth_head'>
+          {!side ? <IoIosMenu fontSize={30} onClick={() => { setSide(true) }} /> :
+            <RxCross2 fontSize={25} onClick={() => { setSide(false) }} />}
           <div className='Dashboard_rigth_head_contain'>
+
             <div className='Dashboard_rigth_head_nav1'><MdHome fontSize={25} onClick={() => Navigate('/')} /></div>
             <BsBell />
             <div className='Dashboard_rigth_head_nav2'

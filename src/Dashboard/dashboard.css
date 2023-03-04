@@ -2,7 +2,7 @@
   margin: 0px;
 }
 
-.Logo {
+.Logo_Mobile {
   width: 100%;
   height: 70px;
   display: flex;
@@ -27,13 +27,23 @@
   justify-content: center;
   border-right: 1px solid rgba(128, 128, 128, 10%);
 }
+.Dashboard_left_Mobile {
+  width: 80%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid rgba(128, 128, 128, 10%);
+  position: fixed;
+  top: 51.5px;
+  background-color: #003F62;
+}
 
 .Dashboard_rigth {
   width: 100%;
   height: 100vh;
 }
 
-.side_bar_cont {
+.side_bar_cont_Mobile {
   width: 85%;
 }
 
@@ -132,20 +142,29 @@ justify-content: center;
 
   .Dashboard_rigth {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  .Dashboard_rigth_head_contain {
-    font-size: 13px;
-    gap: 6px;
-  }
-
   .Dashboard_rigth_head {
-    width: 100%;
+    width: 90%;
     position: fixed;
     top: 0px;
     backdrop-filter: blur(20px);
     background: rgba(235, 234, 234, 0.27%);
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+  .Dashboard_rigth_head_contain {
+    width: 90%;
+    font-size: 13px;
+    gap: 6px;
+    /* background-color: grey; */
+  }
+
+
 }
 
 @media screen and (max-width:375px) {

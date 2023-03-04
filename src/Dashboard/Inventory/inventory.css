@@ -201,10 +201,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 85%;
+    width: 80%;
     /* background-color: #f7f7f7; */
   }
 
+  .Links_cont {
+    justify-content: space-around;
+  }
   .Paymentlink_head_buttom_left_P {
     width: 39px;
   }
@@ -253,6 +256,10 @@
     justify-content: space-between;
     width: 85%;
     /* background-color: #f7f7f7; */
+  }
+
+  .Links_cont {
+    justify-content: space-around;
   }
 
   .Paymentlink_head_buttom_left_P {
@@ -304,6 +311,11 @@
     /* background-color: #f7f7f7; */
   }
 
+
+  .Links_cont {
+    justify-content: space-around;
+  }
+  
   .Paymentlink_head_buttom_left_P {
     width: 39px;
   }
