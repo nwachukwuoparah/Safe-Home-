@@ -23,7 +23,7 @@ export default function Order(props) {
     // console.log(count)
   }
   useEffect(() => {
-    // console.log(addOrder[0].product)
+    console.log(addOrder[0]._id)
   }, [])
   const getitem = async (i) => {
     try {
@@ -62,7 +62,7 @@ export default function Order(props) {
 
 
   const confirmOrder = () => {
-    axios.post(`https://safehomefurniture.onrender.com/api/ordered/${addOrder._id}`)
+    axios.post(`https://safehomefurniture.onrender.com/api/ordered/${addOrder[0]._id}`)
       .then(function (res) {
         console.log(res)
         dispach(removeOrders())
