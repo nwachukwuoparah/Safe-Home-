@@ -6,10 +6,13 @@ import { MdOutlineStarPurple500 } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux'
 import { removeOrders } from '../REDUX/features';
 import { ThemeContext } from '../Components/ContexApi/Contex';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 export default function Order(props) {
+  const { id } = useParams()
   const addOrder = useSelector((state) => state.Commerce.addOrder)
   const { changeTheme, display } = useContext(ThemeContext)
+  const [order, setOrder] = useState([])
   const navigate = useNavigate()
   const dispach = useDispatch()
   // console.log(addOrder.product)
@@ -62,7 +65,7 @@ export default function Order(props) {
 
 
   const confirmOrder = () => {
-    axios.post(`https://safehomefurniture.onrender.com/api/ordered/${addOrder[0]._id}`)
+    axios.post(`https://safehomefurniture.onrender.com/api/ordered/${id}`)
       .then(function (res) {
         console.log(res)
         dispach(removeOrders())
@@ -75,10 +78,23 @@ export default function Order(props) {
   }
 
 
+  const getOrder = async () => {
+    try {
+      const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
+      setOrder(res)
+      console.log(res)
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
 
 
   useEffect(() => {
     !display && changeTheme()
+    getOrder()
+    // console.log(order.data.data.product)
   }, [])
   return (
     <div className='order'>
@@ -90,7 +106,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {addOrder[0]?.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {order?.data?.data?.product.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'
