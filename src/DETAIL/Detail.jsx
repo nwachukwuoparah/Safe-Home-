@@ -50,10 +50,6 @@ function Detail({ }) {
   }, [id])
 
 
-  useEffect(() => {
-    // console.log(user.length)
-  }, [])
-  // console.log(activeuser?.status)
   return (
     <div >
       <Categoriesroute item="DETAIL" />
@@ -95,7 +91,7 @@ function Detail({ }) {
           </div>
         </div>
       </div>
-      {recent.length !== 0 ? <Products length={true} item={recent} loading={loading} title='Recently Viewed' /> : null}
+      {recent?.length !== 0 ? <Products length={true} item={recent} loading={loading} title='Recently Viewed' /> : null}
       <Products length={true} loading={loading} item={item1} title='Related items' />
     </div>
   )
