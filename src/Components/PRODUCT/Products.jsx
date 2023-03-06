@@ -164,7 +164,6 @@ function Products({ item, title, loading, length }) {
                       <HiOutlineShoppingCart />
                     </div>
                   </div>}
-
               </div>
             </div>
           ))}

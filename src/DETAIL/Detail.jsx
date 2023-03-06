@@ -29,7 +29,7 @@ function Detail({ }) {
     display ? changeTheme() : null
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
-      setItem(res.data.data)
+      setItem(res?.data?.data)
     } catch (e) {
       console.log(e)
     }
@@ -37,7 +37,7 @@ function Detail({ }) {
   async function getItem1() {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/category?category=${cate}`)
-      setItem1(res.data.data)
+      setItem1(res?.data?.data)
       setLoading(true)
     } catch (e) {
       console.log(e)
@@ -51,7 +51,7 @@ function Detail({ }) {
 
 
   useEffect(() => {
-    console.log(user.length)
+    // console.log(user.length)
   }, [])
   // console.log(activeuser?.status)
   return (
@@ -64,7 +64,7 @@ function Detail({ }) {
             <img src={item?.image} />
             <div className='detail_info_wrap'>
               <h3>{item.title}</h3>
-              <p>₦{item.price}</p>
+              <p>₦ {item.price}</p>
               <span style={{ color: '#FFA903' }}>
                 <MdOutlineStar />
                 <MdOutlineStar />

@@ -48,10 +48,10 @@ export default function Order(props) {
     console.log(stoc)
     axios.patch(`https://safehomefurniture.onrender.com/api/stock/${id}`, { newStock: stoc })
       .then(function (res) {
-        console.log(res)
+        // console.log(res)
         if (count !== addOrder[0]?.product?.length) {
           setTimeout(() => {
-            console.log('timer')
+            // console.log('timer')
             recusive()
           }, 2000);
         } else {
@@ -67,10 +67,10 @@ export default function Order(props) {
   const confirmOrder = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/ordered/${id}`)
       .then(function (res) {
-        console.log(res)
+        // console.log(res)
         dispach(removeOrders())
         navigate("/")
-        console.log("confirm")
+        // console.log("confirm")
       })
       .catch(function (error) {
         console.log(error);
@@ -83,7 +83,7 @@ export default function Order(props) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
       setOrder(res)
-      console.log(res)
+      // console.log(res)
     } catch (e) {
       console.log(e)
     }
@@ -95,7 +95,7 @@ export default function Order(props) {
   useEffect(() => {
     !display && changeTheme()
     getOrder()
-    console.log(addOrder[0]?.product)
+    // console.log(addOrder[0]?.product)
     // console.log(order.data.data.product)
   }, [])
   return (
