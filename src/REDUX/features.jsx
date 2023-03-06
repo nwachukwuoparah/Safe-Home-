@@ -54,7 +54,7 @@ const features = createSlice({
       const check = state.RECENT.findIndex((i) => i._id === payload._id)
       // console.log(check)
       if (check === -1) {
-        const recent = [...state.RECENT, payload]
+        const recent = [payload, ...state.RECENT]
         state.RECENT = recent
       }
     },

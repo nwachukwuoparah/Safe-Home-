@@ -90,7 +90,6 @@ useEffect(() => {
         </div>}
       </div>
 
-
       {recent && <Products length={true} item={recent}  loading={loading} title='Recently Viewed' />}
       
     </div>
