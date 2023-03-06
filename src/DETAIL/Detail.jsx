@@ -23,7 +23,7 @@ function Detail({ }) {
   const user = useSelector((state) => state.Commerce.user)
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
-  const { id, cate } = useParams()
+  const { id,cate } = useParams()
 
   const [item, setItem] = useState([])
   const [item1, setItem1] = useState([])
@@ -32,6 +32,7 @@ function Detail({ }) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${id}`)
       setItem(res?.data?.data)
+      setLoading(true)
     } catch (e) {
       console.log(e)
     }
@@ -40,7 +41,7 @@ function Detail({ }) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/category?category=${cate}`)
       setItem1(res?.data?.data)
-      setLoading(true)
+      // setLoading(true)
     } catch (e) {
       console.log(e)
     }
@@ -52,7 +53,7 @@ function Detail({ }) {
   }, [id])
 
   useEffect(() => {
-    console.log(item)
+    // console.log(item)
   }, [])
   return (
     <div >
@@ -95,7 +96,7 @@ function Detail({ }) {
           </div>
         </div>
       </div>
-      {/* {recent && <Products length={true} item={recent} loading={loading} title='Recently Viewed' />} */}
+      {recent && <Products length={true} item={recent} loading={loading} title='Recently Viewed' />}
       <Products length={true} loading={loading} item={item1} title='Related items' />
     </div>
   )

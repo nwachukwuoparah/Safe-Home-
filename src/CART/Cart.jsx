@@ -26,7 +26,7 @@ export default function Cart() {
       const res = await axios.get(`https://dummyjson.com/products/category/furniture`)
       setItem(res.data?.products)
       // console.log(res.data)
-
+      setLoading(true)
     } catch (e) {
       console.log(e)
     }
@@ -38,7 +38,7 @@ export default function Cart() {
       top: 0,
       behavior: 'smooth'
     })
-    console.log(recent)
+    // console.log(recent)
   }, [])
 
 
@@ -47,6 +47,10 @@ export default function Cart() {
     cart.map((i) => Total += i.total)
     return Total
   }
+useEffect(() => {
+  // console.log(recent)
+}, [])
+
   return (
     <div>
       <Categoriesroute item="CART" />
@@ -83,8 +87,9 @@ export default function Cart() {
           </div>
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
-      </div>z
-      <Products Products length={true} item={recent} loading={loading} title='Recently Viewed' />
+      </div>
+      {/* <Products Products length={true} item={recent} loading={loading} title='Recently Viewed' /> */}
+      {recent && <Products length={true} item={recent} loading={loading} title='Recently Viewed' />}
     </div>
   )
 }
