@@ -95,6 +95,7 @@ export default function Order(props) {
   useEffect(() => {
     !display && changeTheme()
     getOrder()
+    console.log(addOrder[0]?.product)
     // console.log(order.data.data.product)
   }, [])
   return (
