@@ -5,7 +5,7 @@ import axios from "axios";
 import Categoriesroute from '../Components/ROUT/Categoriesroute'
 import Products from '../Components/PRODUCT/Products';
 import { useDispatch, useSelector } from 'react-redux'
-import { removeItem, clearAll, Check, addToCart } from '../REDUX/features'
+import { removeItem, clearAll, Check, addToCart} from '../REDUX/features'
 import Alert from '../Components/Alert/Alert'
 import { ThemeContext } from '../Components/ContexApi/Contex';
 import Emptycart from './Emptycart'
@@ -38,7 +38,7 @@ export default function Cart() {
       top: 0,
       behavior: 'smooth'
     })
-    // console.log(recent)
+    console.log(recent)
   }, [])
 
 
@@ -48,7 +48,8 @@ export default function Cart() {
     return Total
   }
 useEffect(() => {
-  // console.log(recent)
+  console.log('recent')
+  // dispach(clearAll())
 }, [])
 
   return (
@@ -89,7 +90,8 @@ useEffect(() => {
         </div>}
       </div>
 
-      {recent && <Products length={true}  loading={loading} title='Recently Viewed' />}
+
+      {recent && <Products length={true} item={recent}  loading={loading} title='Recently Viewed' />}
       
     </div>
   )

@@ -137,6 +137,7 @@ function Products({ item, title, loading, length }) {
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
                 <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i._id}/${i.categories[0]}`}>
                   <img src={i?.image} />
+                  {/* {console.log(i.categories[0])} */}
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>
