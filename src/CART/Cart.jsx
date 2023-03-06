@@ -88,7 +88,7 @@ useEffect(() => {
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
       </div>
-      <Products Products length={true} item={recent} loading={loading} title='Recently Viewed' />
+      <Products Products length={true} loading={loading} title='Recently Viewed' />
       {/* {recent && <Products length={true} item={recent} loading={loading} title='Recently Viewed' />} */}
     </div>
   )

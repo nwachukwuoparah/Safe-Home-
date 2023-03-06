@@ -12,10 +12,12 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
 import { recent } from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
+
 function Products({ item, title, loading, length }) {
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA } = useContext(ThemeContext)
   const dispach = useDispatch()
+  
   const Outline = (
     <div className={toggle ? 'TOGGLEProducts_Rating' : 'Products_Rating'}>
       <MdStarOutline />
