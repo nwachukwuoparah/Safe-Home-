@@ -76,7 +76,7 @@ useEffect(() => {
               <span className='detail_info'><p>Brand:</p><p>{item.brandName}</p></span>
               <div className='button_wrap'>
                 <button className='button1 pointer' onClick={() => {
-                  if (user[0]?.status? === 201) {
+                  if (user[0]?.status === 201) {
                     navigate('/payment');
                     dispach(addToCart(item));
                   } else {
