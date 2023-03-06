@@ -145,8 +145,8 @@ function Dashboard(props) {
 
       <div className='Dashboard_rigth'>
         <div className='Dashboard_rigth_head'>
-          {!side ? <IoIosMenu fontSize={30} onClick={() => { setSide(true) }} /> :
-            <RxCross2 fontSize={25} onClick={() => { setSide(false) }} />}
+          {!side ? <IoIosMenu className='side_mobile' fontSize={30} onClick={() => { setSide(true) }} /> :
+            <RxCross2 className='side_mobile' fontSize={25} onClick={() => { setSide(false) }} />}
           <div className='Dashboard_rigth_head_contain'>
 
             <div className='Dashboard_rigth_head_nav1'><MdHome fontSize={25} onClick={() => Navigate('/')} /></div>

@@ -172,6 +172,7 @@ export default function Addproduct(props) {
                   <option value="desks">desks</option>
                   <option value="beds">beds</option>
                   <option value="cabinets">cabinets</option>
+                  <option value="sofas">sofas</option>
                 </select>
               </label>
 

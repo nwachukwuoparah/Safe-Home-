@@ -154,7 +154,7 @@ export default function Signup({ }) {
               console.log('clicked')
               if (terms) {
                 setLoader(true)
-                value.admin ? adminSign() : userSign()
+                value.admin ? adminSign() : userSign() 
               } else {
                 setTermsErr(false)
               }

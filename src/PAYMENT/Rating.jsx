@@ -54,7 +54,7 @@ export default function Rating(props) {
 
 
   const handleRating = async (id, rate) => {
-    console.log(id)
+    console.log(props.id)
     try {
       const res = await axios.patch(`https://safehomefurniture.onrender.com/api/rate/${id}`, { rating: rate })
       console.log(res)
@@ -63,9 +63,9 @@ export default function Rating(props) {
     }
   }
 
-  // useEffect(() => {
-  //   localStorage.setItem('rated', false)
-  // }, [])
+  useEffect(() => {
+  console.log(props.id)
+  }, [])
 
 
   return (

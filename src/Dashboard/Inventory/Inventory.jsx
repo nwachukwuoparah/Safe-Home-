@@ -12,7 +12,7 @@ export default function Inventory({ product, buttonC }) {
   const user = useSelector((state) => state.Commerce.user)
   const navigate = useNavigate()
   const [button, setButton] = useState(true)
-
+  const [nav, setNav] = useState(false)
   //  {console.log(product)}
 
 
@@ -63,6 +63,7 @@ export default function Inventory({ product, buttonC }) {
         <div className='Links_cont_wrap'>
           {product?.map((i) => (
             i.brandName === user[0]?.data.data.brandname ? (<div className='Links_cont'>
+              <div style={{backgroundColor:'red'}}>
               <div className='Links'>
                 <div className='Paymentlink_head_buttom_left'>
                   <p>{i.title}</p>
@@ -82,13 +83,25 @@ export default function Inventory({ product, buttonC }) {
                     }
                   </div>
                 </div>
+                <RxDotsHorizontal className='inventory_select' fontSize={25} />
               </div>
-              <RxDotsHorizontal fontSize={25} />
-              {/* <div className='Links_navs'>
+
+              {<div className='Links_navs_mobile'>
                 <p style={{ color: '#7139CD' }} >Preview product</p>
                 <p onClick={() => { setAlert(true); setremove(i) }} >Delete</p>
                 <p onClick={() => { navigate(`/dashboard/update/${i._id}`) }} >Manage</p>
-              </div> */}
+              </div>}
+
+              
+
+
+              </div>
+              <div className='Links_navs'>
+                <p style={{ color: '#7139CD' }} >Preview product</p>
+                <p onClick={() => { setAlert(true); setremove(i) }} >Delete</p>
+                <p onClick={() => { navigate(`/dashboard/update/${i._id}`) }} >Manage</p>
+              </div>
+
             </div>) : null
           ))}
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dell={Delete} items={remove} /> : null}

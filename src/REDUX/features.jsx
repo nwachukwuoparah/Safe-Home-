@@ -5,7 +5,7 @@ const initialState = {
   RECENT: [],
   addProduct: [],
   user: [],
-  addOrder: {},
+  addOrder: [],
 }
 
 const features = createSlice({
@@ -62,10 +62,10 @@ const features = createSlice({
       state.addProduct = [...state.addProduct, payload]
     },
     orderproduct: (state, { payload }) => {
-      state.addOrder = payload;
+      state.addOrder = [payload];
     },
     removeOrders: (state, { payload }) => {
-      const clearAll = {}
+      const clearAll = []
       state.addOrder = clearAll
     },
   }

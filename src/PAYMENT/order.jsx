@@ -12,8 +12,8 @@ export default function Order(props) {
   const { changeTheme, display } = useContext(ThemeContext)
   const navigate = useNavigate()
   const dispach = useDispatch()
-  console.log(addOrder.product)
-  
+  // console.log(addOrder.product)
+
   let count = 0
   const recusive = () => {
     const arr = addOrder.product
@@ -21,9 +21,12 @@ export default function Order(props) {
     count++
     // console.log(count)
   }
-
+  useEffect(() => {
+    addOrder.product
+  }, [])
   const getitem = async (i) => {
-    console.log("i")
+
+
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i._id}`)
       const stockQuantity = res.data.data.stockQuantity - 1
@@ -91,7 +94,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {addOrder?.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {addOrder.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'
