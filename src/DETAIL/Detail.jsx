@@ -13,6 +13,8 @@ import Alert from "../Components/Alert/Alert"
 import { addToCart } from '../REDUX/features'
 import { CartAlert } from "../Components/Alert/Alert"
 import { ThemeContext } from '../Components/ContexApi/Contex';
+
+
 function Detail({ }) {
 
   const [loading, setLoading] = useState(false)
@@ -49,7 +51,9 @@ function Detail({ }) {
     getItem1()
   }, [id])
 
-
+useEffect(() => {
+  console.log(user[0].status)
+}, [])
   return (
     <div >
       <Categoriesroute item="DETAIL" />
@@ -72,7 +76,7 @@ function Detail({ }) {
               <span className='detail_info'><p>Brand:</p><p>{item.brandName}</p></span>
               <div className='button_wrap'>
                 <button className='button1 pointer' onClick={() => {
-                  if (user?.[user.length]?.status === 201) {
+                  if (user[0]?.status? === 201) {
                     navigate('/payment');
                     dispach(addToCart(item));
                   } else {
