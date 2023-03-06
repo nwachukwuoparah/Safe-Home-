@@ -51,9 +51,9 @@ function Detail({ }) {
     getItem1()
   }, [id])
 
-useEffect(() => {
-  console.log(user[0].status)
-}, [])
+  useEffect(() => {
+    console.log(item)
+  }, [])
   return (
     <div >
       <Categoriesroute item="DETAIL" />
@@ -72,7 +72,7 @@ useEffect(() => {
                 <MdOutlineStarOutline />
                 <MdOutlineStarOutline />
               </span>
-              <span style={{ color: item.stockQuantity !== 0 ? '#04A5FF' : '#ff000033' }} className='detail_info' ><p>Availability:</p> <MdGppGood />{item.stockQuantity !== 0 ? <p>In stock</p> : <p>Not In stock</p>}</span>
+              <span style={{ color: item.stockQuantity >= 1 ? '#04A5FF' : '#ff000033' }} className='detail_info' ><p>Availability:</p> <MdGppGood />{item.stockQuantity  >= 1 ? <p>In stock</p> : <p>Not In stock</p>}</span>
               <span className='detail_info'><p>Brand:</p><p>{item.brandName}</p></span>
               <div className='button_wrap'>
                 <button className='button1 pointer' onClick={() => {
@@ -95,7 +95,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      {recent ? <Products length={true} item={recent} loading={loading} title='Recently Viewed' /> : null}
+      {recent && <Products length={true} item={recent} loading={loading} title='Recently Viewed' />}
       <Products length={true} loading={loading} item={item1} title='Related items' />
     </div>
   )
