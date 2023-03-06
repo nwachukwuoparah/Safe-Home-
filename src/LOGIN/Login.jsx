@@ -32,7 +32,7 @@ export default function Login({ }) {
   }
 
   const userSign = async () => {
-    await axios.post("https://safehomefurniture.onrender.com/api/doctorlogin", value)
+    await axios.post("https://safehomefurniture.onrender.com/api/Login", value)
       .then(function (res) {
         // console.log(res.data)
         res.data.data.email === value.email ? dispach(addUser(res)) : null

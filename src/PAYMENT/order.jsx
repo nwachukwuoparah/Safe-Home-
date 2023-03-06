@@ -32,7 +32,6 @@ export default function Order(props) {
       const stockQuantity = res.data.data.stockQuantity - 1
       const id = res.data.data._id
       // console.log(stockQuantity)
-      // console.log(stockQuantity)
       instock(id, stockQuantity)
       // console.log('call timer')
     } catch (e) {
