@@ -129,7 +129,7 @@ function Header() {
             onMouseLeave={() => setCategory(false)}
           >
             <div
-               onMouseEnter={() => setCategory(true)}
+              onMouseEnter={() => setCategory(true)}
               //  onMouseLeave={() => setCategory(false)}
               onClick={() => Navigate('/Catogories/2')} className='catigories pointer'>
               <FiMenu fontSize={30} />
@@ -138,7 +138,7 @@ function Header() {
 
             {category && <div onMouseEnter={() => setCategory(true)} onMouseLeave={() => setCategory(false)} className='categories'>
               {categories?.map((i) => {
-                return <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+                return <NavLink key={i.id} style={{ textDecoration: 'none', color: 'inherit' }} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
               })}
             </div>}
           </div>
