@@ -135,7 +135,7 @@ function Products({ item, title, loading, length }) {
           {item?.map((i) => (
             <div onClick={() => { dispach(recent(i)) }} key={i._id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
-                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i?._id}/${i?.categories[0]}`}>
+                <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i?._id}/${i?.categories?.[0]}`}>
                   <img src={i?.image} />
                   {/* {console.log(i.categories[0])} */}
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
@@ -154,7 +154,7 @@ function Products({ item, title, loading, length }) {
                     {i.rating < 50 && Outline}
                   </div>
                 </Link>
-                {/* {i.stockQuantity !== 0 ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
+                {i.stockQuantity !== 0 ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
                   <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
                     <p className='pointer' > Add to Cart</p>
                     <HiOutlineShoppingCart />
@@ -166,7 +166,7 @@ function Products({ item, title, loading, length }) {
                       <p className='pointer' > Add to Cart</p>
                       <HiOutlineShoppingCart />
                     </div>
-                  </div>} */}
+                  </div>}
               </div>
             </div>
           ))}
