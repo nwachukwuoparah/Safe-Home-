@@ -154,7 +154,7 @@ function Products({ item, title, loading, length }) {
                     {i.rating < 50 && Outline}
                   </div>
                 </Link>
-                {i.stockQuantity !== 0 ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
+                {/* {i.stockQuantity !== 0 ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
                   <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
                     <p className='pointer' > Add to Cart</p>
                     <HiOutlineShoppingCart />
@@ -166,7 +166,7 @@ function Products({ item, title, loading, length }) {
                       <p className='pointer' > Add to Cart</p>
                       <HiOutlineShoppingCart />
                     </div>
-                  </div>}
+                  </div>} */}
               </div>
             </div>
           ))}
