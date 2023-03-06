@@ -22,7 +22,7 @@ export default function Order(props) {
     // console.log(count)
   }
   useEffect(() => {
-    addOrder.product
+    console.log(addOrder[0].product)
   }, [])
   const getitem = async (i) => {
 
@@ -93,7 +93,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {addOrder.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {addOrder[0]?.product?.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'

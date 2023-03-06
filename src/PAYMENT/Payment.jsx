@@ -277,7 +277,7 @@ export default function () {
   ]
   const Total = () => {
     let Total = 0;
-    console.log(cart)
+    // console.log(cart)
     cart.map((i) => Total += i.price)
   }
 
@@ -391,7 +391,7 @@ export default function () {
                 },
                 onSuccess: function (data) {
                   data.reference === key ? createOrder() : null
-                  console.log(data)
+                  // console.log(data)
                   // console.log(key)
                 },
                 onFailed: function (data) {
