@@ -16,17 +16,16 @@ export default function Order(props) {
 
   let count = 0
   const recusive = () => {
-    const arr = addOrder.product
+    const arr = addOrder[0]?.product
     getitem(arr[count])
+    console.log(arr[count])
     count++
     // console.log(count)
   }
   useEffect(() => {
-    console.log(addOrder[0].product)
+    // console.log(addOrder[0].product)
   }, [])
   const getitem = async (i) => {
-
-
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i._id}`)
       const stockQuantity = res.data.data.stockQuantity - 1
@@ -47,7 +46,7 @@ export default function Order(props) {
     axios.patch(`https://safehomefurniture.onrender.com/api/stock/${id}`, { newStock: stoc })
       .then(function (res) {
         console.log(res)
-        if (count !== addOrder.product.length) {
+        if (count !== addOrder[0]?.product.length) {
           setTimeout(() => {
             console.log('timer')
             recusive()
@@ -60,8 +59,6 @@ export default function Order(props) {
         console.log(error);
       });
   }
-
-
 
 
   const confirmOrder = () => {
