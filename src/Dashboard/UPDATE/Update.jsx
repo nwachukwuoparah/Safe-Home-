@@ -191,42 +191,43 @@ export default function Update(props) {
 
               {category && <label className='label'>
                 <select className='label_input' name="categories" onChange={(e) => { setProduct({ ...product, [e.target.name]: e.target.value }) }} >
-                  <option value="">select a category</option>
-                  <option value="Small">Small</option>
-                  <option value="Family">Family</option>
-                  <option value="Luxury">Luxury</option>
-                  <option value="small">Small</option>
-                  <option value="Family Sedan">Family Sedan</option>
-                  <option value="Luxury">Luxury</option>
-                </select>
+                <option value="">select a category</option>
+                <option value="chairs">chairs</option>
+                <option value="tables">tables</option>
+                <option value="wardrobes">wardrobes</option>
+                <option value="desks">desks</option>
+                <option value="beds">beds</option>
+                <option value="cabinets">cabinets</option>
+                <option value="sofas">sofas</option>
+              </select>
               </label>}
 
-              {description && <label className='label'>
-                <p>description</p>
-                <textarea required type="text" id="w3review" name="description" maxLength="50%" rows="5" cols="20" onChange={(e) => { setProduct({ ...product, description: e.target.value }) }}>
+            {description && <label className='label'>
+              <p>description</p>
+              <textarea required type="text" id="w3review" name="description" maxLength="50%" rows="5" cols="20" onChange={(e) => { setProduct({ ...product, description: e.target.value }) }}>
 
-                </textarea>
-              </label>}
-            </form>
+              </textarea>
+            </label>}
+          </form>
+        </div>
+      </div>
+      {loader && <div className='loader_newlink_right'><div className="loader"></div></div>}
+      <div className='newlink_right'>
+        <div className='newlink_right_wrap'>
+          <div className='newlink_right_img'>
+            {mageDB.image ? <img src={mageDB.image} /> :
+              <BsCardImage fontSize={300} color={'grey'} />}
+          </div>
+          <div className='newlink_right_text'>
+            <span><h4>Title:</h4><p>{product.title}</p></span>
+            <span><h4>Price:</h4>{product.price && <p>${product.price}</p>}</span>
+            <span><h4>Stock Quantity:</h4><p>{product.stockQuantity}</p></span>
+            <span><h4>Category:</h4><p>{product.categories}</p></span>
+            <span><h4>description:</h4><p>{product.description}</p></span>
           </div>
         </div>
-        {loader && <div className='loader_newlink_right'><div className="loader"></div></div>}
-        <div className='newlink_right'>
-          <div className='newlink_right_wrap'>
-            <div className='newlink_right_img'>
-              {mageDB.image ? <img src={mageDB.image} /> :
-                <BsCardImage fontSize={300} color={'grey'} />}
-            </div>
-            <div className='newlink_right_text'>
-              <span><h4>Title:</h4><p>{product.title}</p></span>
-              <span><h4>Price:</h4>{product.price && <p>${product.price}</p>}</span>
-              <span><h4>Stock Quantity:</h4><p>{product.stockQuantity}</p></span>
-              <span><h4>Category:</h4><p>{product.categories}</p></span>
-              <span><h4>description:</h4><p>{product.description}</p></span>
-            </div>
-          </div>
-        </div>
-      </div >
+      </div>
+    </div >
     </div >
   )
 }
