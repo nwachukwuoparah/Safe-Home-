@@ -97,7 +97,7 @@ function Detail({ }) {
         </div>
       </div>
       {/* {recent && <Products length={true} item={recent} loading={loading} title='Recently Viewed' />} */}
-      <Products Products length={true} item={recent} loading={loading} title='Recently Viewed' />
+      <Products Products length={true} loading={loading} title='Recently Viewed' />
       <Products length={true} loading={loading} item={item1} title='Related items' />
     </div>
   )
