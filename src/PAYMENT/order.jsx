@@ -78,6 +78,7 @@ export default function Order(props) {
   }
 
 
+
   const getOrder = async () => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
@@ -106,7 +107,7 @@ export default function Order(props) {
           </div>
         </div>
         <div className='order_item_wrap'>
-          {order?.data?.data?.product.map((i) => (<Rating key={i._id} id={i._id} title={i.title} />))}
+          {order?.data?.data?.product.map((i) => (<Rating key={i?._id} id={i?._id} title={i?.title} />))}
         </div>
         <div className='button_wrap'>
           <button className='order_button'
