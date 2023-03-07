@@ -277,8 +277,9 @@ export default function () {
   ]
   const Total = () => {
     let Total = 0;
-    // console.log(cart)
-    cart.map((i) => Total += i.price)
+    console.log(cart)
+    cart.map((i) => Total += i.total)
+    return Total
   }
 
   const handleChange = (e) => {
@@ -297,7 +298,7 @@ export default function () {
 
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
       });
   }
 
@@ -354,7 +355,7 @@ export default function () {
                 {cart?.map((i) => (
                   <StylebodyRightContMiddle_item key={i._id} >
                     <p>{i.title}</p>
-                    <p>{i.price}</p>
+                    <p>{i.total}</p>
                   </StylebodyRightContMiddle_item>
                 ))}
               </StylebodyRightContMiddle>
@@ -365,7 +366,7 @@ export default function () {
                 </StylebodyRightContBottomWrap>
                 <StylebodyRightContBottomWrap>
                   <p>Total</p>
-                  <p>₦ {Total()}</p>
+                  <p>₦ {Total().toLocaleString()}</p>
                 </StylebodyRightContBottomWrap>
               </StylebodyRightContBottom>
             </StylebodyRightContWrap>

@@ -32,7 +32,7 @@ export default function Order(props) {
   const getitem = async (i) => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i?._id}`)
-      const stockQuantity = res.data.data.stockQuantity - 1
+      const stockQuantity = res?.data?.data?.stockQuantity - 1
       const id = res?.data?.data?._id
       // console.log(id)
       // instock(id, stockQuantity)
@@ -64,7 +64,6 @@ export default function Order(props) {
       });
   }
 
-
   const confirmOrder = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/ordered/${id}`)
       .then(function (res) {
@@ -78,8 +77,6 @@ export default function Order(props) {
       });
   }
 
-
-
   const getOrder = async () => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
@@ -91,9 +88,9 @@ export default function Order(props) {
       } else {
         return
       }
-      !user ? (user?._id === res?.data?.data._id ? null : navigate('/')) : null
+      !user ? (user?._id === res?.data?.data?._id ? null : navigate('/')) : null
       console.log(user._id)
-      console.log(res?.data?.data._id)
+      console.log(res?.data?.data?._id)
     } catch (e) {
       console.log(e)
     }
