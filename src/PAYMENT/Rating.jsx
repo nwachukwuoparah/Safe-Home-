@@ -68,11 +68,12 @@ export default function Rating(props) {
   }, [])
 
 
+
   return (
 
     <div className='order_item'>
       <p>{props.title}</p>
-      <p className='rated'>Product rated successfully!</p>
+      {/* <p className='rated'>Product rated successfully!</p> */}
       {!props.rating && <StyledRatingUl>
         {
           [1, 2, 3, 4, 5].map((i) => (

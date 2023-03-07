@@ -17,14 +17,16 @@ export default function Order(props) {
   const [order, setOrder] = useState([])
   const navigate = useNavigate()
   const dispach = useDispatch()
+  const [loading, setLoading] = useState(false)
   // console.log(addOrder.product)
 
   let count = 0
   const recusive = () => {
+    setLoading(true)
     const arr = addOrder[0]?.product
     getitem(arr[count])
-    // console.log(arr[count])
-    // count++
+    console.log(arr[count])
+    count++
     // console.log(count)
   }
   useEffect(() => {
@@ -35,8 +37,8 @@ export default function Order(props) {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i?._id}`)
       const stockQuantity = res?.data?.data?.stockQuantity - 1
       const id = res?.data?.data?._id
-      // console.log(id)
-      // instock(id, stockQuantity)
+      console.log(id)
+      instock(id, stockQuantity)
       // console.log('call timer')
     } catch (e) {
       console.log(e)
@@ -72,21 +74,28 @@ export default function Order(props) {
         dispach(removeOrders())
         navigate("/")
         // console.log("confirm")
+         setLoading(false)
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-
+  const arr = [1]
   const getOrder = async () => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
       setOrder(res)
       if (!user) {
         navigate('/login')
+        console.log("1")
       } else if (user?._id !== res?.data?.data.userId) {
         navigate('/')
+        console.log("2")
+      } else if (!addOrder) {
+        navigate('/')
+        console.log("3")
       } else {
+
         return
       }
       !user ? (user?._id === res?.data?.data?._id ? null : navigate('/')) : null
@@ -108,6 +117,7 @@ export default function Order(props) {
   }, [])
   return (
     <div className='order'>
+      {loading && <div className='order_wrap_loading'><div className="loader"></div> </div>}
       <div className='order_wrap'>
         <div className='ordet_title'>
           <div className='ordet_title_wrap'>

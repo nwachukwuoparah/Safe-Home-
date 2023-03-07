@@ -15,6 +15,17 @@
   align-items: center;
   justify-content: center;
 }
+.order_wrap_loading{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  backdrop-filter: blur(20px);
+    background: rgba(235, 234, 234, 0.27%);
+}
 
 .order_wrap {
   width: 80%;
