@@ -12,6 +12,7 @@ export default function Order(props) {
   const { id } = useParams()
   const addOrder = useSelector((state) => state.Commerce.addOrder)
   const user = useSelector((state) => state.Commerce.user[0].data.data)
+  console.log(user)
   const { changeTheme, display } = useContext(ThemeContext)
   const [order, setOrder] = useState([])
   const navigate = useNavigate()
@@ -83,7 +84,7 @@ export default function Order(props) {
       setOrder(res)
       if (!user) {
         navigate('/login')
-      } else if (user?._id !== res?.data?.data._id) {
+      } else if (user?._id !== res?.data?.data.userId) {
         navigate('/')
       } else {
         return
