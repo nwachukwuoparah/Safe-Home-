@@ -163,9 +163,11 @@ justify-content: center;
     justify-content: space-between;
   }
   .Dashboard_rigth_head_contain {
-    width: 90%;
+    width: 100%;
     font-size: 13px;
-    gap: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     /* background-color: grey; */
   }
 
@@ -189,7 +191,7 @@ justify-content: center;
   }
 
   .Dashboard_rigth_head {
-    width: 100%;
+    width: 90%;
     position: fixed;
     top: 0px;
     backdrop-filter: blur(20px);
@@ -209,10 +211,11 @@ justify-content: center;
   .Dashboard_rigth_head_contain {
     font-size: 13px;
     gap: 6px;
+
   }
 
   .Dashboard_rigth_head {
-    width: 100%;
+    width: 90%;
     position: fixed;
     top: 0px;
     backdrop-filter: blur(20px);

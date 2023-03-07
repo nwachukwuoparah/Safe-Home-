@@ -286,10 +286,6 @@ export default function () {
     setOrder({ ...order, [e.target.name]: e.target.value })
   }
 
-
-
-
-
   const order_product = () => {
     console.log("called")
     axios.post(`https://safehomefurniture.onrender.com/api/neworder/${user?.[0]?.data?.data._id}`, order)

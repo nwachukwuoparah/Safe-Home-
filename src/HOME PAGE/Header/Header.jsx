@@ -122,6 +122,11 @@ function Header() {
           </nav>
         </div>
       </div>
+
+
+
+
+
       <div className='header2' onClick={() => setSearch(false)}>
         <div className='header2_wrap'>
           <div className='categories_wrap'
@@ -143,6 +148,9 @@ function Header() {
             </div>}
           </div>
 
+
+
+
           {mobile && <div></div>}
           {!mobile ? <FiMenu onClick={() => setMobile(!mobile)} className='mobile_menu' fontSize={25} /> :
             <div className='mobile_sidebar_cont'>
@@ -154,20 +162,28 @@ function Header() {
                     {user[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>
                 </div>
+
+
+
+
                 <div className='mobile_sidebar_wrap'>
-                  <div onClick={() => { setmobilCategory(!mobileCategory); Navigate('/Catogories') }}><p>All category</p> </div>
+                  <div className='home_sidebar' onClick={() => { setmobilCategory(!mobileCategory); Navigate('/catogories/2') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>
                     {categories?.map((i) => {
-                      return <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to={`/Catogories/${i.categoryName.toLowerCase()}`} ><p>{i.categoryName}</p></NavLink>
+                      return <NavLink className='home_sidebar'  style={{ textDecoration: 'none', color: 'inherit' }} to={`/catogories/${i.categoryName.toLowerCase()}`}><p>{i.categoryName}</p></NavLink>
                     })}
+
                   </div>}
                 </div>
+
+
                 <div className='mobile_sidebar_wrap_profile'>
-                  {user?.data?.status === 201 ? <span className='logout' onClick={() => { logOut() }} ><CiLogout fontSize={20} /><p>Log Out</p></span> : <p onClick={() => { Navigate('/signup'); }} >Sign up</p>}
+                  {user?.data?.status === 201 ? <span className='logout' onClick={() => { logOut() }} className='home_sidebar'  ><CiLogout fontSize={20}  /><p>Log Out</p></span> :<div className='home_sidebar' onClick={() => { Navigate('/signup'); }}><p  >Sign up</p></div> }
                 </div>
               </div>
               <div className="invisible" onClick={() => setMobile(!mobile)}></div>
             </div>}
+
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <h3 style={{ color: '#003F62' }}>30 Days Free return</h3>
           </div>

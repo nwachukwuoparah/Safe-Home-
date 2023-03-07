@@ -11,6 +11,7 @@ import axios from 'axios';
 export default function Order(props) {
   const { id } = useParams()
   const addOrder = useSelector((state) => state.Commerce.addOrder)
+  const user = useSelector((state) => state.Commerce.user[0].data.data)
   const { changeTheme, display } = useContext(ThemeContext)
   const [order, setOrder] = useState([])
   const navigate = useNavigate()
@@ -83,7 +84,16 @@ export default function Order(props) {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
       setOrder(res)
-      // console.log(res)
+      if (!user) {
+        navigate('/login')
+      } else if (user?._id !== res?.data?.data._id) {
+        navigate('/')
+      } else {
+        return
+      }
+      !user ? (user?._id === res?.data?.data._id ? null : navigate('/')) : null
+      console.log(user._id)
+      console.log(res?.data?.data._id)
     } catch (e) {
       console.log(e)
     }
@@ -95,7 +105,7 @@ export default function Order(props) {
   useEffect(() => {
     !display && changeTheme()
     getOrder()
-    // console.log(addOrder[0]?.product)
+    // console.log(user)
     // console.log(order.data.data.product)
   }, [])
   return (

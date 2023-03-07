@@ -127,7 +127,6 @@ function Dashboard(props) {
           {Item?.map((i) => (
             <Sidebar {...i} />
           ))}
-
         </div>
       </div>
 
@@ -145,26 +144,33 @@ function Dashboard(props) {
 
       <div className='Dashboard_rigth'>
         <div className='Dashboard_rigth_head'>
-          {!side ? <IoIosMenu className='side_mobile' fontSize={30} onClick={() => { setSide(true) }} /> :
-            <RxCross2 className='side_mobile' fontSize={25} onClick={() => { setSide(false) }} />}
+
           <div className='Dashboard_rigth_head_contain'>
 
-            <div className='Dashboard_rigth_head_nav1'><MdHome fontSize={25} onClick={() => Navigate('/')} /></div>
-            <BsBell />
-            <div className='Dashboard_rigth_head_nav2'
-              onMouseEnter={() => { setNotice(true) }}
-              onMouseLeave={() => { setNotice(false) }}
-            >
-              <HiOutlineUserCircle />
-              <p>{user[0]?.data?.data.brandname}</p>
-              <MdKeyboardArrowDown />
+            {!side ? <IoIosMenu className='side_mobile' fontSize={30} onClick={() => { setSide(true) }} /> :
+              <RxCross2 className='side_mobile' fontSize={25} onClick={() => { setSide(false) }} />}
+
+
+            <div style={{display:'flex', alignItems:'center',gap:20}}>
+              <div className='Dashboard_rigth_head_nav1'><MdHome fontSize={25} onClick={() => Navigate('/')} /></div>
+              <BsBell />
+              <div className='Dashboard_rigth_head_nav2'
+                onMouseEnter={() => { setNotice(true) }}
+                onMouseLeave={() => { setNotice(false) }}
+                onClick={() => { setNotice(!notice) }}
+              >
+                <HiOutlineUserCircle />
+                <p>{user[0]?.data?.data.brandname}</p>
+                <MdKeyboardArrowDown />
+              </div>
+              {notice && <div className='notice'
+                onMouseEnter={() => { setNotice(true) }}
+                onMouseLeave={() => { setNotice(false) }}
+              >
+                <span className='bash_logout' onClick={() => { logOut() }}  ><p>Log Out</p><CiLogout fontSize={20} /></span>
+              </div>}
             </div>
-            {notice && <div className='notice'
-              onMouseEnter={() => { setNotice(true) }}
-              onMouseLeave={() => { setNotice(false) }}
-            >
-              <span className='bash_logout' onClick={() => { logOut() }}  ><p>Log Out</p><CiLogout fontSize={20} /></span>
-            </div>}
+
           </div>
         </div>
         <Routes>

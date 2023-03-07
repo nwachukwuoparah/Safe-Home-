@@ -94,7 +94,7 @@
 .catigories {
   display: flex;
   align-items: center;
-   gap: 10px;
+  gap: 10px;
   /* background-color: rgb(230, 226, 226); */
 }
 
@@ -102,11 +102,11 @@
   display: none;
 }
 
-.categories_wrap{
+.categories_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width:60%;
+  min-width: 60%;
   /* background-color: grey; */
 }
 
@@ -118,7 +118,7 @@
   justify-content: space-around;
   margin-left: -170px;
   font-size: 16px;
- /* background-color: red; */
+  /* background-color: red; */
 }
 
 .categories p:hover {
@@ -154,14 +154,19 @@
 .invisible {
   display: none;
 }
-.logout{
+
+.logout {
   display: flex;
   gap: 5px;
 }
+
+
+
 @media screen and (max-width:425px) {
-  .order_icon{
+  .order_icon {
     display: none;
   }
+
   .header1_wrap {
     width: 90%;
   }
@@ -175,10 +180,15 @@
 
   }
 
-  .header2_wrap {
-    width: 95%;
-
+  .categories_wrap {
+    display: none;
   }
+
+  .header2_wrap {
+    width: 90%;
+    /* background-color: grey; */
+  }
+
 
   .hl_2 {
     display: none;
@@ -190,7 +200,6 @@
 
   .mobile_menu {
     display: flex;
-    margin: 10px 20px;
     color: #003F62;
   }
 
@@ -219,7 +228,7 @@
     left: 0px;
     position: absolute;
     backdrop-filter: blur(2.1px);
-    background: rgba(255, 255, 255, 0.3);
+    /* background: rgba(255, 255, 255, 0.3); */
     /* background-color: red;  */
     z-index: 10000000;
   }
@@ -236,6 +245,14 @@
 
   }
 
+  .home_sidebar{
+    background-color: rgba(128, 128, 128,40%);
+    width: 90%;
+    padding: 7px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+  }
   .invisible {
     display: flex;
     width: 40%;
@@ -246,20 +263,30 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 75%;
-    /* background-color: grey; */
+    width: 100%;
+    /* background-color: rgb(186, 183, 183); */
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+
   }
 
 
   .All_category {
+    width: 100%;
+    /* background-color: #f8f8f8; */
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
   }
 
   .mobile_sidebar_wrap_profile {
-    width: 80%;
+    width: 100%;
+    /* background-color: #f8f8f8; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile_cart {
@@ -296,4 +323,6 @@
     justify-content: space-between;
     /* font-size: 20px; */
   }
+
+  
 }

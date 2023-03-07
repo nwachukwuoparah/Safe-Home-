@@ -1,24 +1,22 @@
 import './inventory.css'
 import React, { useState, useEffect } from 'react'
-import { RxDotFilled } from "react-icons/rx";
-import { RxDotsHorizontal } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Alert from '../../Components/Alert/Alert';
 import axios from 'axios';
+import { Product } from './Product';
 export default function Inventory({ product, buttonC }) {
   const [remove, setremove] = useState({})
   const [alert, setAlert] = useState(false)
   const user = useSelector((state) => state.Commerce.user)
-  const navigate = useNavigate()
   const [button, setButton] = useState(true)
   const [nav, setNav] = useState(false)
+const navigate =useNavigate()
   //  {console.log(product)}
 
 
-
-
   const Delete = async (i) => {
+    console.log(i)
     console.log(user?.[0].data.data._id, i._id)
     try {
       const res = await axios.delete(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}/${i._id}`)
@@ -61,48 +59,7 @@ export default function Inventory({ product, buttonC }) {
         </div>
 
         <div className='Links_cont_wrap'>
-          {product?.map((i) => (
-            i.brandName === user[0]?.data.data.brandname ? (<div className='Links_cont'>
-              <div style={{backgroundColor:'red'}}>
-              <div className='Links'>
-                <div className='Paymentlink_head_buttom_left'>
-                  <p>{i.title}</p>
-                  <p>One-time</p>
-                </div>
-                <div className='Paymentlink_head_buttom_left'>
-                  <div>
-                    <p>{i.price}</p>
-                    <p className='Paymentlink_head_buttom_left_P1'>Fixed</p>
-                  </div>
-                  <div style={{
-                    backgroundColor: i.stockQuantity === 0 ? '#ff000033' : null,
-                    color: i.stockQuantity === 0 ? 'red' : null
-                  }} className='activ'>
-                    <RxDotFilled />
-                    {i.stockQuantity === 0 ? <p>out of stock</p> : <p>In stock</p>
-                    }
-                  </div>
-                </div>
-                <RxDotsHorizontal className='inventory_select' fontSize={25} />
-              </div>
-
-              {<div className='Links_navs_mobile'>
-                <p style={{ color: '#7139CD' }} >Preview product</p>
-                <p onClick={() => { setAlert(true); setremove(i) }} >Delete</p>
-                <p onClick={() => { navigate(`/dashboard/update/${i._id}`) }} >Manage</p>
-              </div>}
-
-              
-
-
-              </div>
-              <div className='Links_navs'>
-                <p style={{ color: '#7139CD' }} >Preview product</p>
-                <p onClick={() => { setAlert(true); setremove(i) }} >Delete</p>
-                <p onClick={() => { navigate(`/dashboard/update/${i._id}`) }} >Manage</p>
-              </div>
-
-            </div>) : null
+          {product?.map((i) => (i.brandName === user[0]?.data.data.brandname ? (<Product {...i} setremove={setremove} alert={alert} setAlert={setAlert} />) : null
           ))}
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dell={Delete} items={remove} /> : null}
         </div>

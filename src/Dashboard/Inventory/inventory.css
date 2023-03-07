@@ -68,15 +68,17 @@
   width: 60px;
 }
 
-.Paymentlink_head_buttom_left_P1{
+.Paymentlink_head_buttom_left_P1 {
   font-size: 14px;
 }
-.Links_cont_wrap{
+
+.Links_cont_wrap {
   overflow-y: scroll;
   height: 70%;
   width: 100%;
   /* background-color: grey; */
 }
+
 .Links_cont {
   width: 100%;
   padding: 30px 0px 25px 0px;
@@ -91,11 +93,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
-  /* background-color: #f7f7f7; */
+  width: 90%;
+  /* background-color: #726f6f; */
 }
 
-.activ{
+.activ {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,17 +119,19 @@
   cursor: pointer;
 }
 
-.inventory_select{
+.inventory_select {
   display: none;
 }
 
-.Links_navs_mobile{
+.Links_navs_mobile {
   display: none;
 }
+
 @media screen and (max-width:768px) {
   .Paymentlink {
     margin-top: 50px;
   }
+
   .Paymentlink_head_top {
     padding: 30px 10px;
   }
@@ -167,28 +171,41 @@
   .Paymentlink_head_buttom_left_P {
     width: 39px;
   }
-  
-  .Paymentlink_head_buttom_left_P1{
+
+  .Paymentlink_head_buttom_left_P1 {
     font-size: 10px;
   }
-  .inventory_select{
+
+  .inventory_select {
     display: flex;
   }
-  .Links_navs{
+
+  .Links_navs {
     display: none;
   }
-  .Links_navs_mobile{
-    display:block;
-    position: relative;
-    background-color: grey;
-    top: 30px;
-    width: 20%;
+  .Links_cont {
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px 0px 6px 0px;
+  }
+  .Links_navs_mobile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(240, 237, 237);
+    width: 100%;
+    gap: 15px;
+    margin-top:10px;
+    padding:5px 10px;
+    font-size: 12px;
   }
 }
+
 @media screen and (max-width:425px) {
   .Paymentlink {
     margin-top: 50px;
   }
+
   .Paymentlink_head_top {
     padding: 30px 10px;
   }
@@ -227,18 +244,22 @@
 
   .Links_cont {
     justify-content: space-around;
+    flex-direction: column;
   }
+
   .Paymentlink_head_buttom_left_P {
     width: 39px;
   }
-  
-  .Paymentlink_head_buttom_left_P1{
+
+  .Paymentlink_head_buttom_left_P1 {
     font-size: 10px;
   }
-  .inventory_select{
+
+  .inventory_select {
     display: flex;
   }
-  .Links_navs{
+
+  .Links_navs {
     display: none;
   }
 }
@@ -247,7 +268,7 @@
   .Paymentlink {
     margin-top: 50px;
   }
-  
+
   .Paymentlink_head_top {
     padding: 30px 10px;
   }
@@ -291,14 +312,16 @@
   .Paymentlink_head_buttom_left_P {
     width: 39px;
   }
-  
-  .Paymentlink_head_buttom_left_P1{
+
+  .Paymentlink_head_buttom_left_P1 {
     font-size: 10px;
   }
-  .inventory_select{
+
+  .inventory_select {
     display: flex;
   }
-  .Links_navs{
+
+  .Links_navs {
     display: none;
   }
 }
@@ -307,6 +330,7 @@
   .Paymentlink {
     margin-top: 50px;
   }
+
   .Paymentlink_head_top {
     padding: 30px 10px;
   }
@@ -351,16 +375,16 @@
   .Paymentlink_head_buttom_left_P {
     width: 39px;
   }
-  
-  .Paymentlink_head_buttom_left_P1{
+
+  .Paymentlink_head_buttom_left_P1 {
     font-size: 10px;
   }
 
-  .inventory_select{
+  .inventory_select {
     display: flex;
   }
-  .Links_navs{
+
+  .Links_navs {
     display: none;
   }
 }
-
