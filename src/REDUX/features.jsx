@@ -38,7 +38,7 @@ const features = createSlice({
     },
     clearAll: (state) => {
       const clearAll = []
-      state.RECENT = clearAll
+      state.cart = clearAll
     },
     Check: (state, { payload }) => {
       const check = state.cart.findIndex((i) => i._id === payload._id)

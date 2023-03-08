@@ -317,6 +317,7 @@ export default function () {
 
   useEffect(() => {
     !display && changeTheme()
+    console.log(user[0].data.data.name)
   }, [])
 
 
@@ -377,11 +378,11 @@ export default function () {
               window.Korapay.initialize({
                 key: 'pk_test_GEtMPZuJ3BtsD1AFT7nFq85YYQjssECg7tzDTQPd',
                 reference: key,
-                amount: 1000,
+                amount: Total(),
                 currency: "NGN",
                 customer: {
-                  name: "John Doe",
-                  email: "john@doe.com"
+                  name: user[0].data.data.name,
+                  email: user[0].data.data.email
                 },
                 onClose: function () {
                   // Handle when modal is closed

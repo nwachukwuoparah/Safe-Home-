@@ -64,6 +64,62 @@ p {
   color: #0056FC;
 }
 
+
+.Body_Container {
+  width: 100%;
+  overflow: hidden;
+  /* background-color: rgb(224, 217, 217); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.Body_img {
+  display: flex;
+  width: 70%;
+  overflow-x: hidden;
+  animation: slide 16s infinite;
+}
+
+#Body_img_img {
+  width: 100%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translatex(0);
+  }
+
+  25% {
+    transform: translatex(0);
+  }
+
+  30% {
+    transform: translatex(-100%);
+  }
+
+  50% {
+    transform: translatex(-100%);
+  }
+
+  55% {
+    transform: translatex(-200%);
+  }
+
+  75% {
+    transform: translatex(-200%);
+  }
+
+  80% {
+    transform: translatex(-300%);
+  }
+
+  100% {
+    transform: translatex(-300);
+  }
+}
+
 @media screen and (max-width:425px) {
   .Body_Promo_wrap {
     width: 70%;
@@ -79,6 +135,7 @@ p {
   .Body_Promo {
     background-color: #E2F4FF;
   }
+
   .Body_Call_To_Action button {
     width: 150px;
     height: 40px;
@@ -88,7 +145,8 @@ p {
     font-size: 18px;
     font-weight: 700;
   }
-  .Body_Nav  {
+
+  .Body_Nav {
     font-size: 14px;
   }
 }

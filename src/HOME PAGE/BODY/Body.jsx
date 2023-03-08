@@ -12,6 +12,10 @@ import axios from 'axios'
 import { ThemeContext } from "../../Components/ContexApi/Contex";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import image1 from './img1.jpg'
+import image2 from './img2.jpeg'
+import image3 from './img3.jpeg'
+import image4 from './img4.jpeg'
 
 function Body(props) {
   const [loading, setLoading] = useState(false)
@@ -115,7 +119,15 @@ function Body(props) {
             </div>
           </div>
         </div>
-        <Slide1 />
+        {/* <div className="Body_Container">
+          <div className="Body_img" alt="image">
+            <img id="Body_img_img" src={image2} />
+            <img id="Body_img_img" src={image3} />
+            <img id="Body_img_img" src={image4} />
+            <img id="Body_img_img" src={image1} />
+          </div>
+        </div> */}
+
         {user[0]?.status === 201 ? null : <div className="Body_Call_To_Action">
           <button onClick={() => { navigate('/login') }} className='pointer' >
             Login

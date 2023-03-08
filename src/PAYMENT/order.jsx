@@ -70,7 +70,6 @@ export default function Order(props) {
   const confirmOrder = () => {
     axios.post(`https://safehomefurniture.onrender.com/api/ordered/${id}`)
       .then(function (res) {
-        // console.log(res)
         dispach(removeOrders())
         navigate("/")
         // console.log("confirm")
