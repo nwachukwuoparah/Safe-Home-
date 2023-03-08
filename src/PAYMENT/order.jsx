@@ -12,15 +12,16 @@ export default function Order(props) {
   const { id } = useParams()
   const addOrder = useSelector((state) => state.Commerce.addOrder)
   const user = useSelector((state) => state.Commerce.user[0].data.data)
-  console.log(user)
+  console.log(addOrder)
   const { changeTheme, display } = useContext(ThemeContext)
   const [order, setOrder] = useState([])
   const navigate = useNavigate()
   const dispach = useDispatch()
   const [loading, setLoading] = useState(false)
-  // console.log(addOrder.product)
+
 
   let count = 0
+  console.log(addOrder[count]?.product)
   const recusive = () => {
     setLoading(true)
     const arr = addOrder[0]?.product
@@ -29,9 +30,6 @@ export default function Order(props) {
     count++
     // console.log(count)
   }
-  useEffect(() => {
-    // console.log(addOrder[0]._id)
-  }, [])
   const getitem = async (i) => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i?._id}`)
@@ -73,13 +71,13 @@ export default function Order(props) {
         dispach(removeOrders())
         navigate("/")
         // console.log("confirm")
-         setLoading(false)
+        setLoading(false)
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  const arr = [1]
+  // const arr = [1]
   const getOrder = async () => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
@@ -90,11 +88,7 @@ export default function Order(props) {
       } else if (user?._id !== res?.data?.data.userId) {
         navigate('/')
         console.log("2")
-      } else if (!addOrder) {
-        navigate('/')
-        console.log("3")
       } else {
-
         return
       }
       !user ? (user?._id === res?.data?.data?._id ? null : navigate('/')) : null
