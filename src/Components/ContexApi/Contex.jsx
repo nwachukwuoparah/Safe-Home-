@@ -10,6 +10,8 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('state', display);
   }, [display])
+  
+  const [alertValue, setAlertValue] = useState('Product added successfully')
 
   const [cartAlert, setCartAlert] = useState(false)
   const cartA = () => {
@@ -28,7 +30,7 @@ export const ThemeProvider = ({ children }) => {
   }
 
   return (
-    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, verifyAlert, login_alert, searchinput, setSearchInput}}>
+    <ThemeContext.Provider value={{ display, changeTheme, cartAlert, cartA, verifyAlert, login_alert, searchinput, setSearchInput, alertValue, setAlertValue }}>
       {children}
     </ThemeContext.Provider>
   )

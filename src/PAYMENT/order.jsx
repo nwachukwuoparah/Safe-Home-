@@ -21,22 +21,24 @@ export default function Order(props) {
 
 
   let count = 0
-  console.log(addOrder[count]?.product)
+  // console.log(addOrder)
   const recusive = () => {
     setLoading(true)
-    const arr = addOrder[0]?.product
+    const arr = addOrder[count]?.product
     getitem(arr[count])
-    console.log(arr[count])
+    console.log(arr[count].stockQuantity, arr[count].QTY)
     count++
     // console.log(count)
   }
+
   const getitem = async (i) => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/get/${i?._id}`)
-      const stockQuantity = res?.data?.data?.stockQuantity - 1
-      const id = res?.data?.data?._id
-      console.log(id)
-      instock(id, stockQuantity)
+      const stockQuantity = res?.data?.data?.stockQuantity - i.QTY
+      console.log(res?.data?.data?.stockQuantity, i.QTY)
+      // const id = res?.data?.data?._id
+      console.log(i._id)
+      instock(i._id, stockQuantity)
       // console.log('call timer')
     } catch (e) {
       console.log(e)
@@ -45,12 +47,12 @@ export default function Order(props) {
 
 
 
-  const instock = (id, stoc) => {
-    console.log(id)
+  const instock = (Id, stoc) => {
+    console.log(Id)
     console.log(stoc)
-    axios.patch(`https://safehomefurniture.onrender.com/api/stock/${id}`, { newStock: stoc })
+    axios.patch(`https://safehomefurniture.onrender.com/api/stock/${Id}`, { newStock: stoc })
       .then(function (res) {
-        // console.log(res)
+        console.log(res)
         if (count !== addOrder[0]?.product?.length) {
           setTimeout(() => {
             // console.log('timer')
@@ -70,14 +72,13 @@ export default function Order(props) {
       .then(function (res) {
         dispach(removeOrders())
         navigate("/")
-        // console.log("confirm")
+        console.log(res)
         setLoading(false)
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  // const arr = [1]
   const getOrder = async () => {
     try {
       const res = await axios.get(`https://safehomefurniture.onrender.com/api/order/${id}`)
@@ -92,12 +93,11 @@ export default function Order(props) {
         return
       }
       !user ? (user?._id === res?.data?.data?._id ? null : navigate('/')) : null
-      console.log(user._id)
-      console.log(res?.data?.data?._id)
+      // console.log(user._id)
+      // console.log(res?.data?.data?._id)
     } catch (e) {
       console.log(e)
     }
-
   }
 
 

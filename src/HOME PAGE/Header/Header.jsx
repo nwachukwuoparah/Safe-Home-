@@ -162,10 +162,6 @@ function Header() {
                     {user[0]?.data.data.isAdmin ? <TbUserCircle className='pointer adm ' onClick={() => { Navigate('/dashboard') }} fontSize={30} /> : <TbUserCircle className='pointer adm' fontSize={50} />}
                   </div>
                 </div>
-
-
-
-
                 <div className='mobile_sidebar_wrap'>
                   <div className='home_sidebar' onClick={() => { setmobilCategory(!mobileCategory); Navigate('/catogories/2') }}><p>All category</p> </div>
                   {mobileCategory && <div className='All_category'>

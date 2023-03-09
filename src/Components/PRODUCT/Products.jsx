@@ -8,14 +8,15 @@ import { MdStarHalf } from "react-icons/md";
 import { MdStarOutline } from "react-icons/md";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useDispatch ,useSelector } from 'react-redux'
 import { addToCart } from '../../REDUX/features';
-import { recent } from '../../REDUX/features'
+import { recent} from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
 
 function Products({ item, title, loading, length }) {
   const [toggle, setToggle] = useState(false)
-  const { cartAlert, cartA } = useContext(ThemeContext)
+  const { cartAlert, cartA, alertValue, setAlertValue } = useContext(ThemeContext)
+  const cartState = useSelector((state) => state.Commerce.cartState)
   const dispach = useDispatch()
 
   const Outline = (
@@ -117,10 +118,12 @@ function Products({ item, title, loading, length }) {
       <MdStar />
     </div>
   )
-
+useEffect(() => {
+  console.log(cartState)
+}, [])
   return (
     <div className='Products'>
-      {cartAlert && <div className='cartAlert'><h3>Product added successfully</h3></div>}
+      {cartAlert && <div className='cartAlert'><h3>{alertValue}</h3></div>}
       {length && <div className='Products_wrap'>
         <div className='Products_bar'>
           <div className='Products_bar_wrap'>
@@ -154,7 +157,7 @@ function Products({ item, title, loading, length }) {
                     {i.rating < 50 && Outline}
                   </div>
                 </Link>
-                {i.stockQuantity !== 0 ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
+                {i.stockQuantity !== 0 && !cartState ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
                   <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
                     <p className='pointer' > Add to Cart</p>
                     <HiOutlineShoppingCart />

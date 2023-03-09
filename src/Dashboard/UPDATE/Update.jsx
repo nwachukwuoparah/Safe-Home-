@@ -156,9 +156,9 @@ export default function Update(props) {
               return <Button {...i} addinput={addinput} />
             })}
           </div>
-          {/* {!loader && <button className='newlink_top_button' onClick={() => { updateProduct() }} >Update Product</button>} */}
-          {/* {herr && <h4>{err}</h4>} */}
-          {/* <button className='newlink_top_button' onClick={() => { console.log(product) }} >Create Product</button> */}
+          {!loader && <button className='newlink_top_button' onClick={() => { updateProduct() }} >Update Product</button>} 
+          {/* {herr && <h4>{err}</h4>}  */}
+       {/* <button className='newlink_top_button' onClick={() => { console.log(product) }} >Create Product</button> */}
         </div>
       </div>
       <div className='newlink_wrap'>

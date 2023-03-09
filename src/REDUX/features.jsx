@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { ThemeContext } from '../Components/ContexApi/Contex';
+import { useContext } from 'react';
+
 const initialState = {
   product: [],
   cart: [],
@@ -6,7 +9,21 @@ const initialState = {
   addProduct: [],
   user: [],
   addOrder: [],
+  cartState: false
 }
+
+const MyComponent = () => {
+  const { alertValue, setAlertValue } = useContext(ThemeContext)
+  setAlertValue('Out of stock')
+  console.log('alertValue')
+  // return (
+  //   <div>
+  //     {setAlertValue('Out of stock')}
+  //   </div>
+  // );
+};
+
+
 
 const features = createSlice({
   name: 'e-store',
@@ -17,17 +34,24 @@ const features = createSlice({
     },
     addToCart: (state, { payload }) => {
       const check = state.cart.findIndex((i) => i._id === payload._id);
-      if (check >= 0) {
+
+      if (check >= 0 && state.cart[check].QTY != state.cart[check].stockQuantity) {
+        state.cartState = false
         const amount = state.cart[check].QTY += 1;
         state.cart[check].total = amount * state.cart[check].price
-      } else {
+      } else if (check < 0) {
+        state.cartState = false
         const item = { ...payload, QTY: 1, total: payload.price };
         state.cart.push(item);
+        console.log(item)
+      } else {
+        state.cartState = true
       }
     },
     removeItem: (state, { payload }) => {
       const remove = state.cart.filter((i) => i._id != payload._id);
       state.cart = remove;
+      state.cartState = false
     },
     addUser: (state, { payload }) => {
       state.user = [payload];
