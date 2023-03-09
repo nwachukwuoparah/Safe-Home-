@@ -156,9 +156,7 @@ export default function Update(props) {
               return <Button {...i} addinput={addinput} />
             })}
           </div>
-          {!loader && <button className='newlink_top_button' onClick={() => { updateProduct() }} >Update Product</button>} 
-          {/* {herr && <h4>{err}</h4>}  */}
-       {/* <button className='newlink_top_button' onClick={() => { console.log(product) }} >Create Product</button> */}
+          {!loader && <button className='update_Product' onClick={() => { updateProduct() }} >Update Product</button>} 
         </div>
       </div>
       <div className='newlink_wrap'>
@@ -179,7 +177,7 @@ export default function Update(props) {
                 </span>
               </div>}
             </div>
-
+            
             <form className='newlink_left_wrap_bottom'>
               {List.map((i) => (
                 <Input key={i.id} {...i} setProduct={setProduct} product={product} />
@@ -206,6 +204,7 @@ export default function Update(props) {
                 </textarea>
               </label>}
             </form>
+             {!loader && <button className='update_Product_mobile' onClick={() => { updateProduct() }} >Update Product</button>}
           </div>
         </div>
         {loader && <div className='loader_newlink_right'><div className="loader"></div></div>}
