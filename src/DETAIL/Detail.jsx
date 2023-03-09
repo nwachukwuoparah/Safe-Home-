@@ -80,7 +80,7 @@ function Detail({ }) {
               <div className='button_wrap'>
 
 
-                {item.stockQuantity !== 0 && !cartState ? <button className='button1 pointer' onClick={() => {
+                {item.stockQuantity !== 0 ? <button className='button1 pointer' onClick={() => {
                   if (user[0]?.status === 201) {
                     navigate('/payment');
                     dispach(addToCart(item));
@@ -94,7 +94,7 @@ function Detail({ }) {
 
 
 
-                {item.stockQuantity !== 0 && !cartState ? <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button> :
+                {item.stockQuantity !== 0 && !cartState ? <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); !cartState ? cartA() : NULL }}  >Add to cart</button> :
                   <button className='button2_out pointer'>Add to cart</button>
                 }
               </div>

@@ -160,7 +160,7 @@ useEffect(() => {
                     {i.rating < 50 && Outline}
                   </div>
                 </Link>
-                {i.stockQuantity !== 0 && !cartState ? <div onClick={() => { dispach(addToCart(i)); cartA(); }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
+                {i.stockQuantity !== 0? <div onClick={() => { dispach(addToCart(i)); !cartState ? cartA() : NULL }} className={toggle ? 'TOGGLEProducts_add' : 'Products_add'} >
                   <div className={toggle ? 'TOGGLEProducts_add_wrap' : 'Products_add_wrap'}>
                     <p className='pointer' > Add to Cart</p>
                     <HiOutlineShoppingCart />
