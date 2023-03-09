@@ -14,6 +14,7 @@ import { recent} from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
 
 function Products({ item, title, loading, length }) {
+
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA, alertValue, setAlertValue } = useContext(ThemeContext)
   const cartState = useSelector((state) => state.Commerce.cartState)
@@ -118,9 +119,11 @@ function Products({ item, title, loading, length }) {
       <MdStar />
     </div>
   )
+
 useEffect(() => {
   console.log(cartState)
 }, [])
+
   return (
     <div className='Products'>
       {cartAlert && <div className='cartAlert'><h3>{alertValue}</h3></div>}
@@ -140,7 +143,7 @@ useEffect(() => {
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
                 <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i?._id}/${i?.categories?.[0]}`}>
                   <img src={i?.image} />
-                  {/* {console.log(i.categories[0])} */}
+                  {console.log(i.categories)}
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>

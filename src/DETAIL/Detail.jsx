@@ -23,6 +23,7 @@ function Detail({ }) {
   const user = useSelector((state) => state.Commerce.user)
   const dispach = useDispatch()
   const recent = useSelector((state) => state.Commerce.RECENT)
+  const cartState = useSelector((state) => state.Commerce.cartState)
   const { id, cate } = useParams()
 
   const [item, setItem] = useState([])
@@ -74,22 +75,28 @@ function Detail({ }) {
                 <MdOutlineStarOutline />
               </span>
               <span style={{ color: item.stockQuantity >= 1 ? '#04A5FF' : '#ff000033' }} className='detail_info' ><p>Availability:</p> <MdGppGood />{item.stockQuantity >= 1 ? <p>In stock</p> : <p>Not In stock</p>}</span>
-              <div style={{display:'flex',gap:5}}>Qty<p>{item.stockQuantity}</p></div>
+              <div style={{ display: 'flex', gap: 5 }}>Qty<p>{item.stockQuantity}</p></div>
               <span className='detail_info'><p>Brand:</p><p>{item.brandName}</p></span>
               <div className='button_wrap'>
-                {item.stockQuantity < 1 ? <button className='button1_out pointer'>Buy now</button> :
-                  <button className='button1 pointer' onClick={() => {
-                    if (user[0]?.status === 201) {
-                      navigate('/payment');
-                      dispach(addToCart(item));
-                    } else {
-                      navigate('/signUp')
-                    }
-                  }}>Buy now</button>}
 
 
-                {item.stockQuantity < 1 ? <button className='button2_out pointer'>Add to cart</button> :
-                  <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button>}
+                {item.stockQuantity !== 0 && !cartState ? <button className='button1 pointer' onClick={() => {
+                  if (user[0]?.status === 201) {
+                    navigate('/payment');
+                    dispach(addToCart(item));
+                  } else {
+                    navigate('/signUp')
+                  }
+                }}>Buy now</button> : <button className='button1_out pointer'>Buy now</button>
+                }
+
+
+
+
+
+                {item.stockQuantity !== 0 && !cartState ? <button className='button2 pointer' onClick={() => { dispach(addToCart(item)); cartA() }}  >Add to cart</button> :
+                  <button className='button2_out pointer'>Add to cart</button>
+                }
               </div>
             </div>
           </div>
