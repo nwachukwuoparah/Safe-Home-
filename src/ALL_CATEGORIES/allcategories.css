@@ -1,0 +1,90 @@
+
+.categories_Call_To_Action {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 100px;
+}
+
+
+
+.categories_Promo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 50px;
+}
+
+.categories_Promo_wrap {
+  width: 85%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #E2F4FF;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.categories_Promo_text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.categories_Promo_text,
+h4,
+p {
+  font-size: 1em;
+}
+.categories_Call_To_Action button{
+width: 250px;
+height: 50px;
+background-color: #FFA903;
+border-radius: 5px;
+border: none;
+font-size: 18px;
+}
+.categories_Nav{
+  display: flex;
+  gap: 5px;
+}
+.categories_Nav p{
+  color: #0056FC;
+}
+
+
+@media screen and (max-width:425px) {
+  .categories_Promo_wrap {
+    width: 70%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0px;
+    font-size: 15px;
+  }
+
+  .categories_Promo {
+    background-color: #E2F4FF;
+  }
+  .categories_Call_To_Action button {
+    width: 150px;
+    height: 40px;
+    background-color: #FFA903;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .categories_Nav  {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,390 @@
+.Paymentlink {
+  width: 100%;
+  height: 93%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Paymentlink_wrap {
+  width: 95%;
+  height: 100%;
+}
+
+.Paymentlink_head {
+  width: 100%;
+  height: 30%;
+}
+
+.Paymentlink_head_top {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 0px 50px 0px;
+  border-bottom: 1px solid rgba(128, 128, 128, 10%);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #393E53;
+}
+
+.Paymentlink_head_top button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7139CD;
+  padding: 10px;
+  border-color: transparent;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #f8f8f8;
+  cursor: pointer;
+}
+
+.Paymentlink_head_buttom {
+  height: 30px;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  /* background-color: #f7f7f7; */
+}
+
+.Paymentlink_head_buttom_left {
+  width: 43%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #393E53;
+}
+
+.Paymentlink_head_buttom_left_P {
+  width: 60px;
+}
+
+.Paymentlink_head_buttom_left_P1 {
+  font-size: 14px;
+}
+
+.Links_cont_wrap {
+  overflow-y: scroll;
+  height: 70%;
+  width: 100%;
+  /* background-color: grey; */
+}
+
+.Links_cont {
+  width: 100%;
+  padding: 30px 0px 25px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(128, 128, 128, 10%);
+}
+
+.Links {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  /* background-color: #726f6f; */
+}
+
+.activ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(4, 247, 142, 25%);
+  padding: 2px 6px 2px 0px;
+  border-radius: 20px;
+  color: #008049;
+  /* background-color: #ff000033;
+  color: red; */
+}
+
+.Links_navs {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: underline;
+  color: rgb(61, 60, 60);
+  cursor: pointer;
+}
+
+.inventory_select {
+  display: none;
+}
+
+.Links_navs_mobile {
+  display: none;
+}
+
+@media screen and (max-width:768px) {
+  .Paymentlink {
+    margin-top: 50px;
+  }
+
+  .Paymentlink_head_top {
+    padding: 30px 10px;
+  }
+
+  .title {
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .Paymentlink_head_top button {
+    padding: 8px 5px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .Paymentlink_head_buttom {
+    width: 85%;
+  }
+
+  .Paymentlink_head_buttom_left {
+    width: 45%;
+    /* background-color: grey; */
+    padding-left: 10px;
+    font-size: 10px;
+  }
+
+
+  .Links {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    /* background-color: #f7f7f7; */
+  }
+
+  .Paymentlink_head_buttom_left_P {
+    width: 39px;
+  }
+
+  .Paymentlink_head_buttom_left_P1 {
+    font-size: 10px;
+  }
+
+  .inventory_select {
+    display: flex;
+  }
+
+  .Links_navs {
+    display: none;
+  }
+  .Links_cont {
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px 0px 6px 0px;
+  }
+  .Links_navs_mobile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(240, 237, 237);
+    width: 100%;
+    gap: 15px;
+    margin-top:10px;
+    padding:5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .Paymentlink {
+    margin-top: 50px;
+  }
+
+  .Paymentlink_head_top {
+    padding: 30px 10px;
+  }
+
+  .title {
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .Paymentlink_head_top button {
+    padding: 8px 5px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .Paymentlink_head_buttom {
+    width: 85%;
+  }
+
+  .Paymentlink_head_buttom_left {
+    width: 45%;
+    /* background-color: grey; */
+    padding-left: 10px;
+    font-size: 10px;
+  }
+
+
+  .Links {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    /* background-color: #f7f7f7; */
+  }
+
+  .Links_cont {
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .Paymentlink_head_buttom_left_P {
+    width: 39px;
+  }
+
+  .Paymentlink_head_buttom_left_P1 {
+    font-size: 10px;
+  }
+
+  .inventory_select {
+    display: flex;
+  }
+
+  .Links_navs {
+    display: none;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .Paymentlink {
+    margin-top: 50px;
+  }
+
+  .Paymentlink_head_top {
+    padding: 30px 10px;
+  }
+
+  .title {
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .Paymentlink_head_top button {
+    padding: 8px 5px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .Paymentlink_head_buttom {
+    width: 85%;
+  }
+
+  .Paymentlink_head_buttom_left {
+    width: 45%;
+    /* background-color: grey; */
+    padding-left: 10px;
+    font-size: 10px;
+  }
+
+
+  .Links {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    /* background-color: #f7f7f7; */
+  }
+
+  .Links_cont {
+    justify-content: space-around;
+  }
+
+  .Paymentlink_head_buttom_left_P {
+    width: 39px;
+  }
+
+  .Paymentlink_head_buttom_left_P1 {
+    font-size: 10px;
+  }
+
+  .inventory_select {
+    display: flex;
+  }
+
+  .Links_navs {
+    display: none;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .Paymentlink {
+    margin-top: 50px;
+  }
+
+  .Paymentlink_head_top {
+    padding: 30px 10px;
+  }
+
+  .title {
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .Paymentlink_head_top button {
+    padding: 8px 5px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .Paymentlink_head_buttom {
+    width: 85%;
+  }
+
+  .Paymentlink_head_buttom_left {
+    width: 45%;
+    /* background-color: grey; */
+    padding-left: 10px;
+    font-size: 10px;
+  }
+
+
+  .Links {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    /* background-color: #f7f7f7; */
+  }
+
+
+  .Links_cont {
+    justify-content: space-around;
+  }
+
+  .Paymentlink_head_buttom_left_P {
+    width: 39px;
+  }
+
+  .Paymentlink_head_buttom_left_P1 {
+    font-size: 10px;
+  }
+
+  .inventory_select {
+    display: flex;
+  }
+
+  .Links_navs {
+    display: none;
+  }
+}

@@ -1,0 +1,151 @@
+.footer {
+  background-color: #003F62;
+  margin-top: 30px;
+  width: 100%;
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_wrap {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  /* background-color: grey; */
+}
+
+.News_Letter {
+  width: 80%;
+  height: 100px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.input_wrap {
+  width: 60%;
+  height: 35px;
+  display: flex;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.input_wrap:hover {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input_wrap input {
+  width: 97%;
+  display: flex;
+  outline: none;
+  border: none;
+}
+
+.footer_navs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: #f8f8f8; */
+}
+.p{
+  display: none;
+}
+.footer_nav_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+width: 100%;
+  color: white;
+}
+
+.span_nav {
+  display: flex;
+  gap: 5px;
+
+}
+
+.footer_footer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: grey; */
+  border-top: 2px solid white;
+  color: #c6c3c3;
+}
+
+.footer_aderss {
+  display: flex;
+  align-items: center;
+}
+
+.footer_socials {
+  display: flex;
+  gap: 15px;
+}
+
+@media screen and (max-width:425px) {
+  .footer {
+    height: 50vh;
+  }
+
+  .footer_wrap {
+    gap: 50px;
+  }
+
+  .News_Letter {
+    width: 100%;
+    height: 60px;
+    background: none;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: left;
+    justify-content: space-around;
+    font-size: 12px;
+    color: #f8f8f8;
+  }
+
+  .input_wrap {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .footer_navs {
+    font-size: 14px;
+    gap: 30px;
+    color: #f8f8f8;
+  }
+  .footer_nav_wrap {
+    display: none;
+  }
+.footer_aderss{
+  font-size: 13px;
+}
+.mobile_footer{
+  font-size: 20px;
+}
+.p{
+  display: flex;
+}
+}

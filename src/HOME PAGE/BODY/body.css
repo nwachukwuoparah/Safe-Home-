@@ -1,0 +1,152 @@
+.Body_Promo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 50px;
+}
+
+.Body_Promo_wrap {
+  width: 85%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #E2F4FF;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.Body_Promo_text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.Body_Promo_text,
+h4,
+p {
+  font-size: 1em;
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+.Body_Call_To_Action {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 100px;
+}
+
+.Body_Call_To_Action button {
+  width: 250px;
+  height: 50px;
+  background-color: #FFA903;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+}
+
+.Body_Nav {
+  display: flex;
+  gap: 5px;
+}
+
+.Body_Nav p {
+  color: #0056FC;
+}
+
+
+.Body_Container {
+  width: 100%;
+  overflow: hidden;
+  /* background-color: rgb(224, 217, 217); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.Body_img {
+  display: flex;
+  width: 70%;
+  overflow-x: hidden;
+  animation: slide 16s infinite;
+}
+
+#Body_img_img {
+  width: 100%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translatex(0);
+  }
+
+  25% {
+    transform: translatex(0);
+  }
+
+  30% {
+    transform: translatex(-100%);
+  }
+
+  50% {
+    transform: translatex(-100%);
+  }
+
+  55% {
+    transform: translatex(-200%);
+  }
+
+  75% {
+    transform: translatex(-200%);
+  }
+
+  80% {
+    transform: translatex(-300%);
+  }
+
+  100% {
+    transform: translatex(-300);
+  }
+}
+
+@media screen and (max-width:425px) {
+  .Body_Promo_wrap {
+    width: 70%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0px;
+    font-size: 15px;
+  }
+
+  .Body_Promo {
+    background-color: #E2F4FF;
+  }
+
+  .Body_Call_To_Action button {
+    width: 150px;
+    height: 40px;
+    background-color: #FFA903;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .Body_Nav {
+    font-size: 14px;
+  }
+}
