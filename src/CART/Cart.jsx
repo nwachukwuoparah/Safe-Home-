@@ -18,27 +18,12 @@ export default function Cart() {
   const cart = useSelector((state) => state.Commerce.cart)
   const recent = useSelector((state) => state.Commerce.RECENT)
   const user = useSelector((state) => state.Commerce.user)
-  const [loading, setLoading] = useState(false)
-  const [item, setItem] = useState([])
-  async function getItem() {
-    display ? changeTheme() : null
-    try {
-      const res = await axios.get(`https://dummyjson.com/products/category/furniture`)
-      setItem(res.data?.products)
-      // console.log(res.data)
-      setLoading(true)
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   useEffect(() => {
-    getItem()
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
-    console.log(recent)
   }, [])
 
 
@@ -47,10 +32,6 @@ export default function Cart() {
     cart.map((i) => Total += i.total)
     return Total
   }
-useEffect(() => {
-  console.log('recent')
-  // dispach(clearAll())
-}, [])
 
   return (
     <div>
@@ -68,7 +49,7 @@ useEffect(() => {
                   <img className='cart_image' src={i.image} />
                   <div className='cart_card_top_text'>
                     <h3>{i.title}</h3>
-                    <h4>₦{i.price}</h4>
+                    <h4>₦ {i.price.toLocaleString()}</h4>
                   </div>
                 </div>
                 <div className='cart_card_middle'>
@@ -83,14 +64,14 @@ useEffect(() => {
             ))}
             <div className='cart_card_buttom'>
               <button className='cart_checkout pointer' onClick={() => { user?.[0]?.status === 201 ? navigate('/payment') : navigate('/signUp') }}>Checkout</button>
-              <h4>Total: {Math.ceil(Total()).toLocaleString()}</h4>
+              <h4>Total: ₦ {Math.ceil(Total()).toLocaleString()}</h4>
             </div>
           </div>
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dispach={dispach} removeItem={removeItem} item={remove} /> : null}
         </div>}
       </div>
 
-      {recent && <Products length={true} item={recent}  loading={loading} title='Recently Viewed' />}
+      {recent && <Products length={true} item={recent}  loading={false} title='Recently Viewed' />}
       
     </div>
   )

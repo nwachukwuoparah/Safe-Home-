@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
 import './body.css'
 import { Slide } from '../../Components/Slider'
 import { Slide1 } from '../../Components/Slider'
@@ -16,7 +17,7 @@ import image1 from './img1.jpg'
 import image2 from './img2.jpeg'
 import image3 from './img3.jpeg'
 import image4 from './img4.jpeg'
-
+import { getByRating } from "../../Components/Api/Query";
 function Body(props) {
   const [loading, setLoading] = useState(false)
   const [sloading, setSLoading] = useState(false)
@@ -26,63 +27,19 @@ function Body(props) {
   const { changeTheme, display, activeuser, searchinput } = useContext(ThemeContext)
   const user = useSelector((state) => state.Commerce.user)
   const [item, setItem] = useState([])
-  // console.log(searchinput.toLowerCase())
 
-  function searchProducts(productsarr, query) {
-    const results = [];
-    for (const product of productsarr) {
-      if (product.categories.toLowerCase().includes(query.toLowerCase())) {
-        results.push(product);
-      }
-    }
-    // console.log(results)
-    setSearch(results);
-    results.length !== 0 && setSLoading(true)
-  }
+  const { data, isLoading } = useQuery(["all_category"], getByRating, {
+    refetchOnWindowFocus: false,
+  });
 
-  async function search() {
-    console.log('result')
-    try {
-      const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
-      // console.log(response)
-      searchProducts(response.data.data, searchinput)
-      // console.log(response.data.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  useEffect(() => {
-    searchinput && search()
-    searchresult.length === 0 ? null : setLength(true)
-  }, [searchinput])
-
-
+  console.log(data)
+ 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
-  }, [])
-
-
-  async function getItem() {
-    // console.log('run getItem')
-    try {
-      display && changeTheme()
-      const response = await axios.get('https://safehomefurniture.onrender.com/api/user')
-      const result = response.data.data.filter((i) => { return i.rating > 550 })
-      setItem(result)
-      // console.log(result)
-      result.length !== 0 && setLoading(true)
-      // console.log(response.data.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  useEffect(() => {
-    getItem()
+    display && changeTheme()
   }, [])
 
   return (
@@ -90,9 +47,8 @@ function Body(props) {
       <Categoriesroute item='HOME' />
       <div>
         <Slide />
-        {/* <Slide1 /> */}
-        <Products loading={sloading} item={searchresult} length={length} title={`${searchresult.length} items found`} />
-        <Products loading={loading} item={item} length={true} title='Best Sellers' />
+        {/* <Products loading={sloading} item={searchresult} length={length} title={`${searchresult.length} items found`} /> */}
+        <Products loading={data?.length === 0 ? !isLoading :false} item={data?.data?.data} length={true} title='Best Sellers' />
         <div className='Body_Promo'>
           <div className='Body_Promo_wrap' >
             <div className="Body_Promo_text">
@@ -119,15 +75,6 @@ function Body(props) {
             </div>
           </div>
         </div>
-        {/* <div className="Body_Container">
-          <div className="Body_img" alt="image">
-            <img id="Body_img_img" src={image2} />
-            <img id="Body_img_img" src={image3} />
-            <img id="Body_img_img" src={image4} />
-            <img id="Body_img_img" src={image1} />
-          </div>
-        </div> */}
-
         {user[0]?.status === 201 ? null : <div className="Body_Call_To_Action">
           <button onClick={() => { navigate('/login') }} className='pointer' >
             Login

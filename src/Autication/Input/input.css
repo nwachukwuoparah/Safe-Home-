@@ -1,0 +1,22 @@
+.aut_input {
+    width: 100%;
+    height: 50px;
+    border-color: transparent;
+    background: rgba(217, 217, 217, 0.1);
+    border: 1px solid #002642;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin: 7px 0px;
+  }
+  
+  .aut_input1{
+    width: 100%;
+    height: 50px;
+    border-color: transparent;
+    background: rgba(217, 217, 217, 0.1);
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin: 7px 0px;
+  }
+  

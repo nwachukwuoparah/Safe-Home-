@@ -13,7 +13,7 @@ import { addToCart } from '../../REDUX/features';
 import { recent} from '../../REDUX/features'
 import { ThemeContext } from '../ContexApi/Contex';
 
-function Products({ item, title, loading, length }) {
+function Products({ item, loading, length,title }) {
 
   const [toggle, setToggle] = useState(false)
   const { cartAlert, cartA, alertValue, setAlertValue } = useContext(ThemeContext)
@@ -120,10 +120,6 @@ function Products({ item, title, loading, length }) {
     </div>
   )
 
-useEffect(() => {
-  console.log(cartState)
-}, [])
-
   return (
     <div className='Products'>
       {cartAlert && <div className='cartAlert'><h3>{alertValue}</h3></div>}
@@ -137,13 +133,13 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        {loading ? <>
+        {!loading ? <>
           {item?.map((i) => (
             <div onClick={() => { dispach(recent(i)) }} key={i._id} className={toggle ? 'TOGGLEProducts_Cards pointer' : 'Products_Cards pointer'}>
               <div className={toggle ? 'TOGGLEProducts_Cards_wrap1' : 'Products_Cards_wrap'}>
                 <Link className={toggle ? 'TOGGLEProducts_Cards_wrap' : 'Products_Cards_wrap'} to={`/detail/${i?._id}/${i?.categories?.[0]}`}>
                   <img src={i?.image} />
-                  {console.log(i.categories)}
+                  {/* {console.log(i.categories)} */}
                   <div className={toggle ? 'TOGGLEProducts_text' : 'Products_text'}>
                     <p>{i.title}</p>
                     <p>₦{i.price}</p>

@@ -5,8 +5,8 @@ import Footer from './HOME PAGE/Footer/Footer'
 import Home from './HOME PAGE/Home'
 import AllCategories from './ALL_CATEGORIES/AllCategories'
 import Detail from './DETAIL/Detail'
-import Login from './LOGIN/Login'
-import Signup from './SIGNUP/Signup'
+import Login from './Autication/LOGIN/Login'
+import Signup from './Autication/SIGNUP/Signup'
 import Cart from './CART/Cart'
 import Dashboard from './Dashboard/Dashboard'
 import Admin from "./ADMIN/Admin"
@@ -30,7 +30,7 @@ function App() {
           <Route path={'/payment'} element={<Payment />} />
           <Route path={'/order/:id'} element={<Order />} />
           <Route path={'/Catogories/:categoryName'} element={<AllCategories />} />
-          <Route path={'/detail/:id/:cate'} element={<Detail />} />
+          <Route path={'/detail/:id/:categoryName'} element={<Detail />} />
           <Route path={'/cart'} element={<Cart />} />
           <Route path={'/login'} element={<Login />} />
           <Route path={'/signUp'} element={<Signup />} />

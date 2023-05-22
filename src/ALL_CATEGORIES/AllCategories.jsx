@@ -1,58 +1,34 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import "./allcategories.css";
 import Products from "../Components/PRODUCT/Products";
 import Categoriesroute from "../Components/ROUT/Categoriesroute";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useDispatch, useSelector } from "react-redux";
-import { AllProducts } from "../REDUX/features";
 import { MdHighQuality } from "react-icons/md";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 import { ThemeContext } from "../Components/ContexApi/Contex";
-
+import { getALLCategory } from "../Components/Api/Query";
+import { getByCategory } from "../Components/Api/Query";
+import { useSelector } from "react-redux";
 function AllCategories({}) {
   const { categoryName } = useParams();
-  const [loading, setLoading] = useState(false);
   const { changeTheme, display, activeuser } = useContext(ThemeContext);
-  const [item, setItem] = useState([]);
-  const [title, setTitle] = useState("");
-  const dispach = useDispatch();
   const user = useSelector((state) => state.Commerce.user);
 
-  async function getCategory() {
-    try {
-      const response = await axios.get(
-        `https://safe-home-back-end.vercel.app/api/category?category=${categoryName}`
-      );
-      setItem(response.data.data);
-      dispach(AllProducts(response.data.data));
-      setLoading(true);
-      setTitle("caregory");
-    } catch (e) {
-      console.log(e);
+  const { data: category_data, isLoading: category_loading } = useQuery(
+    ["products", categoryName],
+    getByCategory,
+    {
+      refetchOnWindowFocus: false,
+      enabled: categoryName !== "2",
     }
-  }
+  );
 
-  async function getItem() {
-    // console.log('run')
-    try {
-      const response = await axios.get(
-        "https://safe-home-back-end.vercel.app/api/user"
-      );
-      setItem(response.data.data);
-      dispach(AllProducts(response.data.data));
-      setLoading(true);
-      setTitle("All category");
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  useEffect(() => {
-    // console.log(categoryName)
-    categoryName !== "2" ? getCategory() : getItem();
-  }, [categoryName]);
+  const { data, isLoading } = useQuery(["all_category"], getALLCategory, {
+    refetchOnWindowFocus: false,
+    enabled: categoryName === "2",
+  });
 
   useEffect(() => {
     display && changeTheme();
@@ -65,7 +41,11 @@ function AllCategories({}) {
   return (
     <div>
       <Categoriesroute item="CATEGORY" />
-      <Products loading={loading} length={true} item={item} title={title} />
+      <Products
+        loading={!isLoading ? isLoading : category_loading}
+        length={true}
+        item={categoryName === "2" ? data?.data?.data : category_data?.data.data}
+      />
       <div className="categories_Promo">
         <div className="categories_Promo_wrap">
           <div className="categories_Promo_text">

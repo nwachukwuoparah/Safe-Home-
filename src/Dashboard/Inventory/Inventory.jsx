@@ -16,8 +16,8 @@ const navigate =useNavigate()
 
 
   const Delete = async (i) => {
-    console.log(i)
-    console.log(user?.[0].data.data._id, i._id)
+    // console.log(i)
+    // console.log(user?.[0].data.data._id, i._id)
     try {
       const res = await axios.delete(`https://safehomefurniture.onrender.com/api/admin/${user?.[0].data.data._id}/${i._id}`)
       console.log(res)
@@ -25,9 +25,6 @@ const navigate =useNavigate()
       console.log(e)
     }
   }
-
-
-
 
   useEffect(() => {
     setButton(buttonC)
@@ -59,7 +56,7 @@ const navigate =useNavigate()
         </div>
 
         <div className='Links_cont_wrap'>
-          {product?.map((i) => (i.brandName === user[0]?.data.data.brandname ? (<Product {...i} setremove={setremove} alert={alert} setAlert={setAlert} />) : null
+          {product?.map((i) => (i.brandName === user[0]?.brandname ? (<Product {...i} setremove={setremove} alert={alert} setAlert={setAlert} />) : null
           ))}
           {alert ? <Alert red="Delete" blue="Cancle" alert={alert} SetAlert={setAlert} dell={Delete} items={remove} /> : null}
         </div>
