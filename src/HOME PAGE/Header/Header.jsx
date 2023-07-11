@@ -244,7 +244,7 @@ function Header() {
                         }}
                       />
                     )}
-                    {user[0]?.data.data.isAdmin ? (
+                    {user[0]?.isAdmin ? (
                       <TbUserCircle
                         className="pointer adm "
                         onClick={() => {
@@ -285,7 +285,7 @@ function Header() {
                 </div>
 
                 <div className="mobile_sidebar_wrap_profile">
-                  {user?.data?.status === 201 ? (
+                  {user[0] ? (
                     <span
                       className="logout home_sidebar"
                       onClick={() => {
