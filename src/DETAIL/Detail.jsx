@@ -17,8 +17,7 @@ import { getByCategory } from "../Components/Api/Query";
 import { getById } from "../Components/Api/Query";
 function Detail({}) {
   const navigate = useNavigate();
-  const { changeTheme, display, cartAlert, cartA, activeuser } =
-    useContext(ThemeContext);
+  const { changeTheme, display, cartAlert, cartA, activeuser } = useContext(ThemeContext);
   const user = useSelector((state) => state.Commerce.user);
   const dispach = useDispatch();
   const recent = useSelector((state) => state.Commerce.RECENT);
@@ -39,6 +38,7 @@ function Detail({}) {
 
   useEffect(() => {
     display && changeTheme();
+    console.log(display)
   }, []);
   return (
     <div>

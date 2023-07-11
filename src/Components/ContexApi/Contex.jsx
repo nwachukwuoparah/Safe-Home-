@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
+  
   const [display, setDisplay] = useState(JSON.parse(localStorage.getItem('state')))
   // changes the value if display from false to true 
   const changeTheme = () => {

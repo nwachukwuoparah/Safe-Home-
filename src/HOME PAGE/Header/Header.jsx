@@ -135,7 +135,7 @@ function Header() {
               }}
               fontSize={30}
             />
-            {user ? (
+            {user[0] ? (
               <span
                 className="logout adm"
                 onClick={() => {
@@ -155,7 +155,7 @@ function Header() {
                 Login
               </p>
             )}
-            {user ? null : (
+            {user[0] ? null : (
               <p
                 onClick={() => {
                   Navigate("/signup");

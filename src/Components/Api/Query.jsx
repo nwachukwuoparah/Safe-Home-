@@ -22,7 +22,7 @@ export const categoryList = async () => {
 export const getByRating = async () => {
   const res = await axios.get(`${VITE_Base_Url}/api/user`);
   const result = res.data.data.filter((i) => {
-    return i.rating > 550;
+    return i.rating > 10;
   });
   return result;
 };

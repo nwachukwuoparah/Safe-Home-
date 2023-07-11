@@ -40,25 +40,27 @@ export default function Login() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const { mutate: mutate_log_out } = useMutation(["mutate_log_out"], Log_out, {
-    onSuccess: (data) => {
-      dispach(clearUser());
-      console.log("logged out");
-      console.log(data);
-      login_alert();
-    },
-  });
+  // const { mutate: mutate_log_out } = useMutation(["mutate_log_out"], Log_out, {
+  //   onSuccess: (data) => {
+  //     dispach(clearUser());
+  //     console.log("logged out");
+  //     console.log(data);
+  //     login_alert();
+  //   },
+  // });
 
   const { data, error, isLoading, mutate, status } = useMutation(
     ["user-login"],
     User_login,
     {
       onSuccess: (data) => {
-        console.log("suscess");
+        Navigate("/");
+        // console.log("suscess");
         dispach(addUser(data?.data.data));
-        !data?.data.data.verify
-          ? mutate_log_out(data?.data.data._id)
-          : Navigate("/");
+        // !data?.data.data.verify
+        //   ? mutate_log_out(data?.data.data._id)
+        // :
+
         // console.log(data, user);
       },
     }
@@ -93,11 +95,11 @@ export default function Login() {
 
   return (
     <div className="login_in">
-      {verifyAlert && (
+      {/* {verifyAlert && (
         <a className="verifyAlert" href={"https://mail.google.com"}>
           please click here or check your Email for a verification link
         </a>
-      )}
+      )} */}
       <HiHome
         onClick={() => {
           Navigate("/");

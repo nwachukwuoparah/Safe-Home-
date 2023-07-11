@@ -317,7 +317,7 @@ export default function () {
 
   useEffect(() => {
     !display && changeTheme()
-    console.log(user[0].data.data.name)
+    // console.log(user[0].data.data.name)
   }, [])
 
 
@@ -381,8 +381,8 @@ export default function () {
                 amount: Total(),
                 currency: "NGN",
                 customer: {
-                  name: user[0].data.data.name,
-                  email: user[0].data.data.email
+                  name: user[0].name,
+                  email: user[0].email
                 },
                 onClose: function () {
                   // Handle when modal is closed

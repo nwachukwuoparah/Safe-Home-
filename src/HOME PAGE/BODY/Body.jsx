@@ -31,8 +31,6 @@ function Body(props) {
   const { data, isLoading } = useQuery(["all_category"], getByRating, {
     refetchOnWindowFocus: false,
   });
-
-  console.log(data)
  
   useEffect(() => {
     window.scrollTo({
@@ -48,7 +46,7 @@ function Body(props) {
       <div>
         <Slide />
         {/* <Products loading={sloading} item={searchresult} length={length} title={`${searchresult.length} items found`} /> */}
-        <Products loading={data?.length === 0 ? !isLoading :false} item={data?.data?.data} length={true} title='Best Sellers' />
+        <Products loading={data?.length === 0 ? !isLoading :false} item={data} length={true} title='Best Sellers' />
         <div className='Body_Promo'>
           <div className='Body_Promo_wrap' >
             <div className="Body_Promo_text">
@@ -75,7 +73,7 @@ function Body(props) {
             </div>
           </div>
         </div>
-        {user[0]?.status === 201 ? null : <div className="Body_Call_To_Action">
+        {user[0] ? null : <div className="Body_Call_To_Action">
           <button onClick={() => { navigate('/login') }} className='pointer' >
             Login
           </button>

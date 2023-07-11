@@ -13,7 +13,9 @@ import { getByCategory } from "../Components/Api/Query";
 import { useSelector } from "react-redux";
 function AllCategories({}) {
   const { categoryName } = useParams();
+
   const { changeTheme, display, activeuser } = useContext(ThemeContext);
+
   const user = useSelector((state) => state.Commerce.user);
 
   const { data: category_data, isLoading: category_loading } = useQuery(
@@ -44,7 +46,9 @@ function AllCategories({}) {
       <Products
         loading={!isLoading ? isLoading : category_loading}
         length={true}
-        item={categoryName === "2" ? data?.data?.data : category_data?.data.data}
+        item={
+          categoryName === "2" ? data?.data?.data : category_data?.data.data
+        }
       />
       <div className="categories_Promo">
         <div className="categories_Promo_wrap">
